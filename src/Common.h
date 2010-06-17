@@ -27,7 +27,6 @@
 
 #include <cassert>
 #include <string>
-#include <curl/curl.h>
 #include <json/json.h>
 
 #endif // FACEBOOK_COMMON_H_

@@ -8,8 +8,6 @@
 #include <iomanip>
 
 #if _MSC_VER >= 1400 // VC++ 8.0
-#pragma warning( disable : 4100 )   // disable warning about unreferenced formal parameters
-#pragma warning( disable : 4127 )   // disable warning about constant conditional expressions
 #pragma warning( disable : 4996 )   // disable warning about strdup being deprecated.
 #endif
 

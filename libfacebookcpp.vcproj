@@ -174,7 +174,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\Albums.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Deserializer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\From.cpp"
 				>
 			</File>
 			<File
@@ -187,6 +195,10 @@
 			</File>
 			<File
 				RelativePath=".\Photo.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Session.cpp"
 				>
 			</File>
 			<Filter
@@ -204,10 +216,6 @@
 					RelativePath=".\libs\json\json_writer.cpp"
 					>
 				</File>
-				<File
-					RelativePath=".\Session.cpp"
-					>
-				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -216,11 +224,19 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\Albums.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Common.h"
 				>
 			</File>
 			<File
 				RelativePath=".\Deserializer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\From.h"
 				>
 			</File>
 			<File

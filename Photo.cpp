@@ -4,15 +4,6 @@
 
 namespace Facebook
 {
-	void Photo::From::Deserialize(const Json::Value &json)
-	{
-		Deserializer deserializer(json);
-
-		deserializer.Deserialize("name", &name_);
-		deserializer.Deserialize("category", &category_);
-		deserializer.Deserialize("id", &id_);
-	}
-
 	void Photo::Deserialize(const Json::Value &json)
 	{
 		Deserializer deserializer(json);

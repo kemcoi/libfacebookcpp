@@ -18,42 +18,31 @@
  *
  *
  */
+#ifndef FACEBOOK_FROM_H_
+#define FACEBOOK_FROM_H_
 
-#ifndef FACEBOOK_SESSION_H_
-#define FACEBOOK_SESSION_H_
-
-// Aggregate include's here
 #include "Common.h"
-#include "From.h"
-#include "Albums.h"
-#include "Photo.h"
-
-
+#include "Object.h"
 
 namespace Facebook
 {
-	class Session
+	class From : public Object
 	{
-	public:
+	public: // public interface
 		//----------------------------------------------
-		// TODO: User login
-		Session();
-
-		//----------------------------------------------
-		void Destroy();
+		void Deserialize(const Json::Value &json);
 
 		//----------------------------------------------
-		// Getters
+		// Accessors
+		const std::string& GetName() const { return name_; }
+		const std::string& GetCategory() const { return category_; }
+		const std::string& GetId() const { return id_; }
 
-
-
-
-	private:
-		// TODO: Implement destructor
-		~Session();
-
+	private: // private members
+		std::string name_;
+		std::string category_;
+		std::string id_;
 	};
 }
 
 #endif
-

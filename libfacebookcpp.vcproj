@@ -178,10 +178,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Deserializer.h"
-				>
-			</File>
-			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -217,6 +213,10 @@
 			>
 			<File
 				RelativePath=".\Common.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Deserializer.h"
 				>
 			</File>
 			<File

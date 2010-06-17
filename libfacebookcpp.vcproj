@@ -204,6 +204,10 @@
 					RelativePath=".\libs\json\json_writer.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\Session.cpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -225,6 +229,10 @@
 			</File>
 			<File
 				RelativePath=".\Photo.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Session.h"
 				>
 			</File>
 		</Filter>

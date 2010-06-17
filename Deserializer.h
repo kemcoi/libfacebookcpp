@@ -43,7 +43,7 @@ namespace Facebook
 		if(value.isNull()) \
 		throw std::exception(); \
 		\
-		if(value.isConvertibleTo(JsonType)) \
+		if(!value.isConvertibleTo(JsonType)) \
 		throw std::exception(); \
 		\
 		*t = value.ConvertFunction(); \

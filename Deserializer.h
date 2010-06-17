@@ -23,6 +23,7 @@
 #define FACEBOOK_DESERIALIZER_H_
 
 #include "Common.h"
+#include "Object.h"
 
 namespace Facebook
 {
@@ -53,25 +54,37 @@ namespace Facebook
 			t->Deserialize(value);
 		}
 
-#define DESERIALIZER_INTRINSIC_TYPES(Type, JsonType, ConvertFunction) \
-	template<> \
-	void Deserialize(const char *tag, Type *t) \
-	{ \
-		assert(tag); \
-		assert(t); \
-		\
-		const Json::Value &value = json_[tag]; \
-		if(value.isNull()) \
-		throw std::exception(); \
-		\
-		if(!value.isConvertibleTo(JsonType)) \
-		throw std::exception(); \
-		\
-		*t = value.ConvertFunction(); \
-	}
+		template<>
+		void Deserialize(const char *tag, std::string *str)
+		{
+			assert(tag);
+			assert(str);
 
-		DESERIALIZER_INTRINSIC_TYPES(std::string, Json::stringValue, asString);
-		DESERIALIZER_INTRINSIC_TYPES(unsigned int, Json::uintValue, asUInt);
+			const Json::Value &value = json_[tag];
+			if(value.isNull())
+				throw std::exception();
+
+			if(!value.isConvertibleTo(Json::stringValue))
+				throw std::exception();
+
+			*str = value.asString();
+		}
+
+		template<>
+		void Deserialize(const char *tag, unsigned int *uint)
+		{
+			assert(tag);
+			assert(uint);
+
+			const Json::Value &value = json_[tag];
+			if(value.isNull())
+				throw std::exception();
+
+			if(!value.isConvertibleTo(Json::uintValue))
+				throw std::exception();
+
+			*uint = value.asUInt();
+		}
 
 	private: // private members
 		const Json::Value &json_;

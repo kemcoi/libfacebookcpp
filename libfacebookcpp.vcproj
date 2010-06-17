@@ -174,7 +174,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\Albums.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Deserializer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\From.cpp"
 				>
 			</File>
 			<File
@@ -187,6 +195,14 @@
 			</File>
 			<File
 				RelativePath=".\Photo.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Session.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Status.cpp"
 				>
 			</File>
 			<Filter
@@ -212,6 +228,10 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\Albums.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Common.h"
 				>
 			</File>
@@ -220,11 +240,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\From.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Object.h"
 				>
 			</File>
 			<File
 				RelativePath=".\Photo.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Session.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Status.h"
 				>
 			</File>
 		</Filter>

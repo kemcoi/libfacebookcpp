@@ -19,52 +19,54 @@
  *
  */
 
-#ifndef FACEBOOK_PHOTO_H_
-#define FACEBOOK_PHOTO_H_
+#ifndef FACEBOOK_ALBUM_H_
+#define FACEBOOK_ALBUM_H_
 
 #include "Common.h"
 #include "Object.h"
-#include "From.h"
+#include "Photo.h"
+
+#include <list>
 
 namespace Facebook
 {
-	class Photo : public Object
+	class Album: public Object
 	{
-		typedef Object inherited;
+	public:
+		//----------------------------------------------
+		Album();
+		virtual ~Album();
 
-	public: // ctor and ~()
-		Photo() { }
-		virtual ~Photo() { }
-
-	public: // public interface
+		//----------------------------------------------
 		void Deserialize(const Json::Value &json);
 
-		//TODO: Accessors for From class
-		const std::string& GetId() const { return id_; }
-		const From& GetFrom() const { return from_; }
-		const std::string& GetName() const { return name_; }
-		const std::string& GetPicture() const { return picture_; }
-		const std::string& GetSource() const { return source_; }
-		unsigned int GetHeight() const { return height_; }
-		unsigned int GetWidth() const { return width_; }
-		const std::string& GetLink() const { return link_; }
-		const std::string& GetIcon() const { return icon_; }
-		const std::string& GetCreatedTime() const { return created_time_; }
-		const std::string& GetUpdatedTime() const { return updated_time_; }
+		//----------------------------------------------
+		std::list<Facebook::Photo*>* getPhotoList() const;
 
-	private: // private members
+		//----------------------------------------------
+		// Accessors
+		//TODO: Accessors for From class
+		const std::string& getId() const { return id_; }
+		const From& GetFrom() const { return from_; }
+		const std::string& getName() const { return name_; }
+		const std::string& getDescription() const { return description_; }
+		const std::string& getLocation() const { return location_; }
+		const std::string& getLink() const { return link_; }
+		const unsigned int& getCount() const { return count_; }
+		const std::string& getCreatedTime() const { return created_time_;}
+		const std::string& getUpdatedTime_() const { return updated_time_; }
+
+	private:
 		std::string id_;
 		From from_;
 		std::string name_;
-		std::string picture_;
-		std::string source_;
-		unsigned int height_;
-		unsigned int width_;
+		std::string description_;
+		std::string location_;
 		std::string link_;
-		std::string icon_;
+		unsigned int count_;
 		std::string created_time_;
 		std::string updated_time_;
 	};
 }
 
-#endif // FACEBOOK_PHOTO_H_
+#endif

@@ -19,26 +19,41 @@
  *
  */
 
+#ifndef FACEBOOK_SESSION_H_
+#define FACEBOOK_SESSION_H_
+
+// Aggregate include's here
 #include "Common.h"
-#include "Deserializer.h"
+#include "From.h"
+#include "Albums.h"
 #include "Photo.h"
+
+
 
 namespace Facebook
 {
-	void Photo::Deserialize(const Json::Value &json)
+	class Session
 	{
-		Deserializer deserializer(json);
+	public:
+		//----------------------------------------------
+		// TODO: User login
+		Session();
 
-		deserializer.Deserialize("id", &id_);
-		deserializer.Deserialize("from", &from_);
-		deserializer.Deserialize("name", &name_);
-		deserializer.Deserialize("picture", &picture_);
-		deserializer.Deserialize("source", &source_);
-		deserializer.Deserialize("height", &height_);
-		deserializer.Deserialize("width", &width_);
-		deserializer.Deserialize("link", &link_);
-		deserializer.Deserialize("icon", &icon_);
-		deserializer.Deserialize("created_time", &created_time_);
-		deserializer.Deserialize("updated_time", &updated_time_);
-	}
+		//----------------------------------------------
+		void Destroy();
+
+		//----------------------------------------------
+		// Getters
+
+
+
+
+	private:
+		// TODO: Implement destructor
+		~Session();
+
+	};
 }
+
+#endif
+

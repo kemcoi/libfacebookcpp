@@ -17,6 +17,12 @@
 #define JSON_ASSERT( condition ) assert( condition );  // @todo <= change this into an exception throw
 #define JSON_ASSERT_MESSAGE( condition, message ) if (!( condition )) throw std::runtime_error( message );
 
+#if _MSC_VER >= 1400 // VC++ 8.0
+#pragma warning( disable : 4100 )   // disable warning about unreferenced formal parameters
+#pragma warning( disable : 4127 )   // disable warning about constant conditional expressions
+#pragma warning( disable : 4996 )   // disable warning about strdup being deprecated.
+#endif
+
 namespace Json {
 
 const Value Value::null;

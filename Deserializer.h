@@ -5,6 +5,10 @@
 
 namespace Facebook
 {
+	// TODO: The compiler complains that it can't generate an assignment operator for this object (on /W4)
+	// We shut it up for now. This needs to be fixed
+#pragma warning(push)
+#pragma warning(disable: 4512)
 	class Deserializer
 	{
 	public: // public ctor
@@ -51,6 +55,7 @@ namespace Facebook
 	private: // private members
 		const Json::Value &json_;
 	};
+#pragma warning(pop)
 }
 
 #endif // FACEBOOK_DESERIALIZER_H_

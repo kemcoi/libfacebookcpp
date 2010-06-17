@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="libs\"
+				AdditionalIncludeDirectories="..\libs\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -62,7 +62,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libs\curllib.lib"
+				AdditionalDependencies="..\libs\curllib.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -209,15 +209,15 @@
 				Name="jsoncpp"
 				>
 				<File
-					RelativePath=".\libs\json\json_reader.cpp"
+					RelativePath="..\libs\json\json_reader.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\libs\json\json_value.cpp"
+					RelativePath="..\libs\json\json_value.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\libs\json\json_writer.cpp"
+					RelativePath="..\libs\json\json_writer.cpp"
 					>
 				</File>
 			</Filter>

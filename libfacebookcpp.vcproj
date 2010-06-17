@@ -201,6 +201,10 @@
 				RelativePath=".\Session.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\Status.cpp"
+				>
+			</File>
 			<Filter
 				Name="jsoncpp"
 				>
@@ -249,6 +253,10 @@
 			</File>
 			<File
 				RelativePath=".\Session.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Status.h"
 				>
 			</File>
 		</Filter>

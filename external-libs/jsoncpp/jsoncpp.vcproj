@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="libfacebookcpp"
-	ProjectGUID="{43C2EBFD-32D9-418C-8BD4-5BD11CBC4D16}"
-	RootNamespace="libfacebookcpp"
+	Name="jsoncpp"
+	ProjectGUID="{2BE594F7-6E62-4B8F-97D6-723F29D2716A}"
+	RootNamespace="jsoncpp"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -20,7 +20,7 @@
 			Name="Debug|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="1"
+			ConfigurationType="2"
 			CharacterSet="1"
 			>
 			<Tool
@@ -41,14 +41,12 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\libs\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
+				AdditionalIncludeDirectories="..\include\"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;JSON_DLL_BUILD"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				UsePrecompiledHeader="0"
 				WarningLevel="4"
-				WarnAsError="true"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -62,10 +60,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="..\libs\curllib.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
-				SubSystem="1"
+				SubSystem="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -94,7 +91,7 @@
 			Name="Release|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
-			ConfigurationType="1"
+			ConfigurationType="2"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>
@@ -117,10 +114,10 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;JSONCPP_EXPORTS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -137,7 +134,7 @@
 				Name="VCLinkerTool"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
-				SubSystem="1"
+				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"
@@ -174,35 +171,37 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\Albums.cpp"
+				RelativePath=".\dllmain.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						CompileAsManaged="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+						CompileAsManaged="0"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\json_reader.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Deserializer.cpp"
+				RelativePath=".\json_value.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\From.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\main.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Object.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Photo.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Session.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Status.cpp"
+				RelativePath=".\json_writer.cpp"
 				>
 			</File>
 		</Filter>
@@ -212,35 +211,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Albums.h"
+				RelativePath=".\json_batchallocator.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Common.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Deserializer.h"
-				>
-			</File>
-			<File
-				RelativePath=".\From.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Object.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Photo.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Session.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Status.h"
+				RelativePath=".\targetver.h"
 				>
 			</File>
 		</Filter>

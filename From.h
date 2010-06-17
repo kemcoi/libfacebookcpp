@@ -18,27 +18,31 @@
  *
  *
  */
+#ifndef FACEBOOK_FROM_H_
+#define FACEBOOK_FROM_H_
 
 #include "Common.h"
-#include "Deserializer.h"
-#include "Photo.h"
+#include "Object.h"
 
 namespace Facebook
 {
-	void Photo::Deserialize(const Json::Value &json)
+	class From : public Object
 	{
-		Deserializer deserializer(json);
+	public: // public interface
+		//----------------------------------------------
+		void Deserialize(const Json::Value &json);
 
-		deserializer.Deserialize("id", &id_);
-		deserializer.Deserialize("from", &from_);
-		deserializer.Deserialize("name", &name_);
-		deserializer.Deserialize("picture", &picture_);
-		deserializer.Deserialize("source", &source_);
-		deserializer.Deserialize("height", &height_);
-		deserializer.Deserialize("width", &width_);
-		deserializer.Deserialize("link", &link_);
-		deserializer.Deserialize("icon", &icon_);
-		deserializer.Deserialize("created_time", &created_time_);
-		deserializer.Deserialize("updated_time", &updated_time_);
-	}
+		//----------------------------------------------
+		// Accessors
+		const std::string& GetName() const { return name_; }
+		const std::string& GetCategory() const { return category_; }
+		const std::string& GetId() const { return id_; }
+
+	private: // private members
+		std::string name_;
+		std::string category_;
+		std::string id_;
+	};
 }
+
+#endif

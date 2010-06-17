@@ -18,27 +18,37 @@
  *
  *
  */
+#ifndef FACEBOOK_STATUS_H_
+#define FACEBOOK_STATUS_H_
 
 #include "Common.h"
-#include "Deserializer.h"
-#include "Photo.h"
+#include "Object.h"
+#include "From.h"
 
 namespace Facebook
 {
-	void Photo::Deserialize(const Json::Value &json)
+	class Status : public Object
 	{
-		Deserializer deserializer(json);
+	public:
+		//----------------------------------------------
+		Status();
+		virtual ~Status();
 
-		deserializer.Deserialize("id", &id_);
-		deserializer.Deserialize("from", &from_);
-		deserializer.Deserialize("name", &name_);
-		deserializer.Deserialize("picture", &picture_);
-		deserializer.Deserialize("source", &source_);
-		deserializer.Deserialize("height", &height_);
-		deserializer.Deserialize("width", &width_);
-		deserializer.Deserialize("link", &link_);
-		deserializer.Deserialize("icon", &icon_);
-		deserializer.Deserialize("created_time", &created_time_);
-		deserializer.Deserialize("updated_time", &updated_time_);
-	}
+		//----------------------------------------------
+		void Deserialize(const Json::Value &json);
+
+		//----------------------------------------------
+		// Accessors
+		//TODO: Accessors for From class
+		const std::string& getId() const { return id_; }
+		const From& GetFrom() const { return from_; }
+	private:
+		std::string id_;
+		From from_;
+		std::string message_;
+		std::string updated_time_;
+	};
 }
+
+#endif
+

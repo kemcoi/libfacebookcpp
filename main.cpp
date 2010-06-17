@@ -19,8 +19,7 @@
  *
  */
 
-#include "Common.h"
-#include "Photo.h"
+#include "Session.h"
 
 int main()
 {

@@ -4,7 +4,7 @@
 
 namespace Facebook
 {
-	void Facebook::Album::Deserialize( const Json::Value &json )
+	void Album::Deserialize( const Json::Value &json )
 	{
 		Deserializer d(json);
 
@@ -16,5 +16,11 @@ namespace Facebook
 		d.Deserialize("count", &count_);
 		d.Deserialize("created_time", &created_time_);
 		d.Deserialize("updated_time", &updated_time_);
+	}
+
+	std::list<Facebook::Photo*>* Album::getPhotoList() const
+	{
+		// TODO: Implement this
+		return NULL;
 	}
 }

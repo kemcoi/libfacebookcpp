@@ -1,3 +1,8 @@
+#ifndef FACEBOOK_DESERIALIZER_H_
+#define FACEBOOK_DESERIALIZER_H_
+
+#include "Common.h"
+
 namespace Facebook
 {
 	class Deserializer
@@ -47,3 +52,5 @@ namespace Facebook
 		const Json::Value &json_;
 	};
 }
+
+#endif // FACEBOOK_DESERIALIZER_H_

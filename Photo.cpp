@@ -1,3 +1,7 @@
+#include "Common.h"
+#include "Deserializer.h"
+#include "Photo.h"
+
 namespace Facebook
 {
 	void Photo::From::Deserialize(const Json::Value &json)

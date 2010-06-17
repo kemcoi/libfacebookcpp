@@ -1,3 +1,9 @@
+#ifndef FACEBOOK_PHOTO_H_
+#define FACEBOOK_PHOTO_H_
+
+#include "Common.h"
+#include "Object.h"
+
 namespace Facebook
 {
 	class Photo : public Object
@@ -53,3 +59,5 @@ namespace Facebook
 		std::string updated_time_;
 	};
 }
+
+#endif // FACEBOOK_PHOTO_H_

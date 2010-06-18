@@ -26,7 +26,7 @@
 
 int main()
 {
-	Facebook::HttpRequest req;
+	/*Facebook::HttpRequest req;
 	req.SetUrl("");
 
 	std::auto_ptr<Json::Value> val = req.GetResponse();
@@ -35,7 +35,7 @@ int main()
 
 	photo->Deserialize(*val);
 
-	delete photo;
+	delete photo;*/
 
 	Facebook::Session* session = new Facebook::Session();
 

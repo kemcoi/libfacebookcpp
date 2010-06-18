@@ -24,6 +24,7 @@
 
 #include "Common.h"
 #include "Object.h"
+#include "Exception.h"
 
 namespace Facebook
 {
@@ -37,7 +38,7 @@ namespace Facebook
 		Deserializer(const Json::Value &json) : json_(json)
 		{
 			if(!json_.isObject())
-				throw std::exception();
+				throw InvalidArgument("json");
 		}
 
 	public: // public interface
@@ -49,7 +50,7 @@ namespace Facebook
 
 			const Json::Value &value = json_[tag];
 			if(value.isNull())
-				throw std::exception();
+				throw UnexpectedException("json_[tag].isNull()");
 
 			t->Deserialize(value);
 		}
@@ -62,10 +63,10 @@ namespace Facebook
 
 			const Json::Value &value = json_[tag];
 			if(value.isNull())
-				throw std::exception();
+				throw UnexpectedException("json_[tag].isNull()");
 
 			if(!value.isConvertibleTo(Json::stringValue))
-				throw std::exception();
+				throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
 
 			*str = value.asString();
 		}
@@ -78,10 +79,10 @@ namespace Facebook
 
 			const Json::Value &value = json_[tag];
 			if(value.isNull())
-				throw std::exception();
+				throw UnexpectedException("value.isNull()");
 
 			if(!value.isConvertibleTo(Json::uintValue))
-				throw std::exception();
+				throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");
 
 			*uint = value.asUInt();
 		}

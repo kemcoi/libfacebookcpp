@@ -34,7 +34,9 @@ int main()
 
 	photo->Deserialize(value);
 
+	Facebook::Session* session = new Facebook::Session();
 	std:: cout << curlpp::libcurlVersion() << std::endl;
 
+	system("pause"); // VS Debug
 	return 0;
 }

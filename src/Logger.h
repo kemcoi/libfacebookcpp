@@ -19,44 +19,23 @@
  *
  */
 
-#ifndef FACEBOOK_SESSION_H_
-#define FACEBOOK_SESSION_H_
+#ifndef FACEBOOK_LOGGER_H_
+#define FACEBOOK_LOGGER_H_
 
-// Aggregate include's here
 #include "Common.h"
-#include "From.h"
-#include "Albums.h"
-#include "Photo.h"
-#include "Logger.h"
-
-
 
 namespace Facebook
 {
-	class Session
+	static int logInstances = 1;
+	class Logger
 	{
 	public:
 		//----------------------------------------------
-		// TODO: User login
-		Session();
-
-		//----------------------------------------------
-		void Destroy();
-
-		//----------------------------------------------
-		// Getters
-
-
-
-
+		Logger();
+		~Logger();
 	private:
-		// TODO: Implement destructor
-		~Session();
-
-		Facebook::Logger logger_;
-
+		int instance_;
 	};
 }
 
 #endif
-

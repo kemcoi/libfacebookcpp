@@ -6,9 +6,8 @@
 // Constructor
 Facebook::Session::Session()
 {
-	// TODO
+	
 }
-
 //----------------------------------------------
 void Facebook::Session::Destroy()
 {

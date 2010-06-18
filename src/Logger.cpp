@@ -1,5 +1,6 @@
 
 #include "Logger.h"
+#include <curlpp/cURLpp.hpp>
 #include <iostream>
 
 namespace Facebook
@@ -8,7 +9,7 @@ namespace Facebook
 	{
 		instance_ = logInstances; logInstances++; // ghetto instancing
 		std::cout << "Initializing Logger " << instance_ << std::endl;
-		std:: cout << curlpp::libcurlVersion() << std::endl;
+		std::cout << curlpp::libcurlVersion() << std::endl;
 
 	}
 

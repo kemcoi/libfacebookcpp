@@ -26,7 +26,6 @@
 
 namespace Facebook
 {
-	static int logInstances = 1;
 	class Logger
 	{
 	public:

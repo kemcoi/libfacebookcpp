@@ -40,6 +40,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/wd4481"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\external-libs\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;JSON_DLL;CURLPP_STATICLIB;BUILDING_CURLPP"
@@ -48,6 +49,7 @@
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
+				WarnAsError="true"
 				DebugInformationFormat="4"
 			/>
 			<Tool

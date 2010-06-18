@@ -39,6 +39,8 @@ int main()
 
 	Facebook::Session* session = new Facebook::Session();
 
+	session;
+
 	system("pause"); // VS Debug
 	return 0;
 }

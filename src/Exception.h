@@ -19,6 +19,9 @@
  *
  */
 
+#ifndef FACEBOOK_EXCEPTION_H_
+#define FACEBOOK_EXCEPTION_H_
+
 #include <curlpp/Exception.hpp>
 
 namespace Facebook
@@ -37,3 +40,5 @@ namespace Facebook
 		UnexpectedException(const std::string& message) : inherited(message) { }
 	};
 }
+
+#endif // FACEBOOK_EXCEPTION_H_

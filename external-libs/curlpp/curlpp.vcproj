@@ -86,7 +86,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy ..\libcurl.dll ..\Debug\ /y &amp;&amp; xcopy ..\libeay32.dll ..\Debug\ /y &amp;&amp; xcopy ..\ssleay32.dll ..\Debug\ /y"
+				CommandLine="xcopy ..\libcurl.dll ..\..\Debug\ /y &amp;&amp; xcopy ..\libeay32.dll ..\..\Debug\ /y &amp;&amp; xcopy ..\ssleay32.dll ..\..\Debug\ /y"
 			/>
 		</Configuration>
 		<Configuration

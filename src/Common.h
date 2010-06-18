@@ -28,6 +28,6 @@
 #include <cassert>
 #include <string>
 #include <json/json.h>
-#include <curl/curl.h>
+#include <curlpp/cURLpp.hpp>
 
 #endif // FACEBOOK_COMMON_H_

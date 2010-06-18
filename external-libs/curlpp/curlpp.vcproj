@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="jsoncpp"
-	ProjectGUID="{2BE594F7-6E62-4B8F-97D6-723F29D2716A}"
-	RootNamespace="jsoncpp"
+	Name="curlpp"
+	ProjectGUID="{63F47B1C-923D-4D99-9009-1B98C049852F}"
+	RootNamespace="curlpp"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -42,11 +42,11 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\include\"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;JSON_DLL_BUILD"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;BUILDING_CURLPP"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
-				WarningLevel="4"
+				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -60,6 +60,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="..\libcurl_imp.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -114,7 +115,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;JSONCPP_EXPORTS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CURLPP_EXPORTS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="2"
@@ -171,27 +172,63 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\json_reader.cpp"
+				RelativePath=".\curlpp\cURLpp.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\json_value.cpp"
+				RelativePath=".\curlpp\Easy.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\json_writer.cpp"
+				RelativePath=".\curlpp\Exception.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\curlpp\Form.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\curlpp\Info.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\curlpp\Multi.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\curlpp\OptionBase.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\curlpp\Options.cpp"
+				>
+			</File>
+			<Filter
+				Name="internal"
+				>
+				<File
+					RelativePath=".\curlpp\internal\CurlHandle.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\curlpp\internal\OptionList.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\curlpp\internal\OptionSetter.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\curlpp\internal\SList.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
-			<File
-				RelativePath=".\json_batchallocator.h"
-				>
-			</File>
 			<File
 				RelativePath=".\targetver.h"
 				>

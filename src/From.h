@@ -30,7 +30,7 @@ namespace Facebook
 	{
 	public: // public interface
 		//----------------------------------------------
-		void Deserialize(const Json::Value &json);
+		void Deserialize(const Json::Value &json) OVERRIDE;
 
 		//----------------------------------------------
 		// Accessors

@@ -14,6 +14,11 @@
 #  include <cpptl/forwards.h>
 # endif
 
+#if _MSC_VER >= 1400 // VC++ 8.0
+#pragma warning( push )
+#pragma warning( disable : 4251 )   // disable warning about needing dll-interface to private members
+#endif
+
 /** \brief JSON (JavaScript Object Notation).
  */
 namespace Json {
@@ -1065,5 +1070,8 @@ public: // overridden from ValueArrayAllocator
 
 } // namespace Json
 
+#if _MSC_VER >= 1400 // VC++ 8.0
+#pragma warning( pop )
+#endif
 
 #endif // CPPTL_JSON_H_INCLUDED

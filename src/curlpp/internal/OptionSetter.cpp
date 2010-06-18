@@ -73,6 +73,8 @@ struct Callbacks
 		return handle->executeReadFunctor(buffer, size, nitems);
 	};
 
+#pragma warning(push)
+#pragma warning(disable: 4996) // ->readsome is unsafe function
 
 	static size_t
 	StreamReadCallback(char * buffer, size_t size, size_t nitems, std::istream * stream)
@@ -84,6 +86,7 @@ struct Callbacks
 		return realread;
 	};
 
+#pragma warning(pop)
 
 	static int
 	ProgressCallback(internal::CurlHandle * handle, 

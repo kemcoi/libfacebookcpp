@@ -34,7 +34,7 @@ int main()
 
 	photo->Deserialize(value);
 
-	std:: cout << curl_version();
+	std:: cout << curlpp::libcurlVersion() << std::endl;
 
 	return 0;
 }

@@ -3,10 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libfacebookcpp", "src\libfacebookcpp.vcproj", "{43C2EBFD-32D9-418C-8BD4-5BD11CBC4D16}"
 	ProjectSection(ProjectDependencies) = postProject
+		{63F47B1C-923D-4D99-9009-1B98C049852F} = {63F47B1C-923D-4D99-9009-1B98C049852F}
 		{2BE594F7-6E62-4B8F-97D6-723F29D2716A} = {2BE594F7-6E62-4B8F-97D6-723F29D2716A}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jsoncpp", "external-libs\jsoncpp\jsoncpp.vcproj", "{2BE594F7-6E62-4B8F-97D6-723F29D2716A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "external-libs\curlpp\curlpp.vcproj", "{63F47B1C-923D-4D99-9009-1B98C049852F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +25,10 @@ Global
 		{2BE594F7-6E62-4B8F-97D6-723F29D2716A}.Debug|Win32.Build.0 = Debug|Win32
 		{2BE594F7-6E62-4B8F-97D6-723F29D2716A}.Release|Win32.ActiveCfg = Release|Win32
 		{2BE594F7-6E62-4B8F-97D6-723F29D2716A}.Release|Win32.Build.0 = Release|Win32
+		{63F47B1C-923D-4D99-9009-1B98C049852F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{63F47B1C-923D-4D99-9009-1B98C049852F}.Debug|Win32.Build.0 = Debug|Win32
+		{63F47B1C-923D-4D99-9009-1B98C049852F}.Release|Win32.ActiveCfg = Release|Win32
+		{63F47B1C-923D-4D99-9009-1B98C049852F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

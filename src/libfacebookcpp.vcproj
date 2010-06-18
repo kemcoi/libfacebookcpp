@@ -286,6 +286,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Exception.h"
+				>
+			</File>
+			<File
 				RelativePath=".\From.h"
 				>
 			</File>

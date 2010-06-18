@@ -5,6 +5,8 @@
 
 namespace Facebook
 {
+	static int logInstances = 1;
+
 	Logger::Logger()
 	{
 		instance_ = logInstances; logInstances++; // ghetto instancing

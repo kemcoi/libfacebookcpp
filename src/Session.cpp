@@ -2,21 +2,29 @@
 #include "Session.h"
 
 
-//----------------------------------------------
-// Constructor
-Facebook::Session::Session()
+namespace Facebook
 {
-	
-}
-//----------------------------------------------
-void Facebook::Session::Destroy()
-{
-	delete this;
-}
+	//----------------------------------------------
+	// Constructor
+	Session::Session()
+	{
+		logger_ = new Facebook::Logger();
+	}
+	//----------------------------------------------
+	void Session::Destroy()
+	{
+		delete this;
+	}
 
-//----------------------------------------------
-Facebook::Session::~Session()
-{
-	//TODO
-}
+	//----------------------------------------------
+	Facebook::Session::~Session()
+	{
+		//TODO
+	}
 
+	Session* Session::getSession()
+	{
+		//TODO
+		return new Session();
+	}
+}

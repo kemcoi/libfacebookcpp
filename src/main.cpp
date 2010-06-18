@@ -35,8 +35,9 @@ int main()
 
 	photo->Deserialize(*val);
 
-	Facebook::Session* session = new Facebook::Session();
 	delete photo;
+
+	Facebook::Session* session = new Facebook::Session();
 
 	system("pause"); // VS Debug
 	return 0;

@@ -33,6 +33,8 @@
 #include <list>
 #include <string>
 
+#pragma warning(push)
+#pragma warning(disable: 4512) // assignment operator could not be generated
 
 namespace curlpp
 {
@@ -266,6 +268,8 @@ namespace FormParts
 
 
 } // namespace curlpp
+
+#pragma warning(pop)
 
 namespace cURLpp = curlpp;
 

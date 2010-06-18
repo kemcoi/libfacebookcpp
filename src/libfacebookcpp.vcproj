@@ -61,6 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="..\external-libs\libcurl_imp.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -86,6 +87,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="xcopy ..\external-libs\libcurl.dll ..\Debug\ /y &amp;&amp; xcopy ..\external-libs\libeay32.dll ..\Debug\ /y &amp;&amp; xcopy ..\external-libs\ssleay32.dll ..\Debug\ /y"
 			/>
 		</Configuration>
 		<Configuration

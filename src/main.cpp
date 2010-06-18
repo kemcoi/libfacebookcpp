@@ -21,6 +21,8 @@
 
 #include "Session.h"
 
+#include <iostream>
+
 int main()
 {
 	Json::Reader reader;
@@ -31,6 +33,8 @@ int main()
 	Facebook::Photo *photo = new Facebook::Photo();
 
 	photo->Deserialize(value);
+
+	std:: cout << curl_version();
 
 	return 0;
 }

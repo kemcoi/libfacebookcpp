@@ -22,6 +22,7 @@ namespace Facebook
 		//TODO
 	}
 
+	//----------------------------------------------
 	Session* Session::getSession()
 	{
 		//TODO

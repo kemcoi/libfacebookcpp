@@ -37,7 +37,7 @@ int main()
 
 	delete photo;*/
 
-	Facebook::Session* session = new Facebook::Session();
+	Facebook::Session* session = Facebook::Session::getSession();
 
 	session;
 

@@ -37,9 +37,7 @@ namespace Facebook
 	{
 	public:
 		//----------------------------------------------
-		// TODO: User login
-		Session();
-
+		static Session* getSession();
 		//----------------------------------------------
 		void Destroy();
 
@@ -50,10 +48,10 @@ namespace Facebook
 
 
 	private:
-		// TODO: Implement destructor
+		Session();
 		~Session();
 
-		Facebook::Logger logger_;
+		Facebook::Logger* logger_;
 
 	};
 }

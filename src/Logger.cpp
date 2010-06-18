@@ -10,13 +10,17 @@ namespace Facebook
 	Logger::Logger()
 	{
 		instance_ = logInstances; logInstances++; // ghetto instancing
-		std::cout << "Initializing Logger " << instance_ << std::endl;
-		std::cout << curlpp::libcurlVersion() << std::endl;
-
+		FacebookLog(FB_Info, "Initializing Logger ");
 	}
 
 	Logger::~Logger()
 	{
-		std::cout<< "Destroying Logger Instance " << instance_ << std::endl;
+		FacebookLog(FB_Info, "Destroying Logger Instance ");
+	}
+
+	// Make this va_list?
+	void Logger::FacebookLog( LogType type, char* logString )
+	{
+		std::cout<< type << logString << std::endl;
 	}
 }

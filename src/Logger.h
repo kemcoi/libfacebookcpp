@@ -32,6 +32,10 @@ namespace Facebook
 		//----------------------------------------------
 		Logger();
 		~Logger();
+		//----------------------------------------------
+		//TODO: hardcore overload this
+		static void FacebookLog(LogType type, char* logString);
+
 	private:
 		int instance_;
 	};

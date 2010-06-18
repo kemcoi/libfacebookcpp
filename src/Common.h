@@ -29,4 +29,18 @@
 #include <string>
 #include <json/json.h>
 
+// This is probably not the best way to do it.
+// Leaving it like this for now
+// Change it if to we have to once we know more of
+// what this logger needs to be able to do
+// Also make it so that users can't just create a 
+// string themselves to pass in
+#define LogType const char* const
+const char* const FB_Warn = "Warning: ";
+const char* const FB_Error = "Error: ";
+const char* const FB_Message = "Message: ";
+const char* const FB_Debug = "Debug: ";
+const char* const FB_Info = "Info: ";
+
+
 #endif // FACEBOOK_COMMON_H_

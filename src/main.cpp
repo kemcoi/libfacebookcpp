@@ -27,7 +27,7 @@
 int main()
 {
 	Facebook::HttpRequest req;
-	req.SetUrl("https://graph.facebook.com/98423808305?access_token=2227470867|2.dMuycEstKb8_fvwZ1SbpoQ__.3600.1276830000-100000189955997|7AJo2z-nLZT1fZAOVgjcUhbPGl0.");
+	req.SetUrl("");
 
 	std::auto_ptr<Json::Value> val = req.GetResponse();
 

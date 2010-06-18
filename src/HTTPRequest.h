@@ -14,7 +14,7 @@ namespace Facebook
 		void SetUrl(const std::string& str) { str_ = str; }
 		const std::string GetUrl() const { return str_; }
 
-		QueryParamList& GetQueryParams() { return query_params_; }
+		QueryParamList& GetQueryParams() { return query_params_; } 
 		const QueryParamList& GetQueryParams() const { return query_params_; }
 
 		std::auto_ptr<Json::Value> GetResponse();

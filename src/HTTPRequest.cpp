@@ -36,6 +36,8 @@ namespace Facebook
 
 		curlpp::Easy curl;
 		curl.setOpt(curlpp::options::Url(oss_url.str()));
+		// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
+		curl.setOpt(curlpp::options::SslVerifyPeer(false));
 
 		std::stringstream oss_request;
 

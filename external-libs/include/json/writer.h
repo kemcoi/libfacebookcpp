@@ -6,6 +6,11 @@
 # include <string>
 # include <iostream>
 
+#if _MSC_VER >= 1400 // VC++ 8.0
+#pragma warning( push )
+#pragma warning( disable : 4251 )   // disable warning about needing dll-interface to private members
+#endif
+
 namespace Json {
 
    class Value;
@@ -169,6 +174,8 @@ namespace Json {
 
 } // namespace Json
 
-
+#if _MSC_VER >= 1400 // VC++ 8.0
+#pragma warning( pop )
+#endif
 
 #endif // JSON_WRITER_H_INCLUDED

@@ -65,6 +65,14 @@ namespace Facebook
 
 			std::cout << "--" << l << std::endl;
 		}
+
+		static void URLLog(int lineNumber, const char* file, const std::string URL)
+		{
+			std::string f = file;
+			std::cout << std::endl ;
+			std::cout << "Line: " << lineNumber << "  " << f << std::endl;
+			std::cout << URL << std::endl;
+		}
 	private:
 		int instance_;
 	};

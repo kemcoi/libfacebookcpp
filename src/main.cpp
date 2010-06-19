@@ -44,9 +44,12 @@ int main()
 	// let's use this for now
 	std::string	clientid = "232486072316";
 	std::string redirectURI = "http://www.facebook.com/connect/login_success.html";
-	std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, std::string(), std::string());
+	std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, "user_agent", std::string());
 
-	std::string redirectURL = "http://www.facebook.com/connect/login_success.html?code=2.sU5pVytL4Pz3DCy0h9i3kw__.86400.1277056800-100000189955997|7DCCiMAJR75W_KgzwoFs406S2SQ.";
+	std::cout<<std::endl << url << std::endl;
+	std::string redirectURL;
+	system("pause"); // VS Debug
+	std::cin >> redirectURL;
 	Facebook::Session* session_ = Facebook::Session::Authenticate(redirectURL);
 
 	session_->getCurrentUser();

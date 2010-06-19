@@ -47,8 +47,9 @@ int main()
 	std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, std::string(), std::string());
 
 	std::string redirectURL = "http://www.facebook.com/connect/login_success.html?code=2.sU5pVytL4Pz3DCy0h9i3kw__.86400.1277056800-100000189955997|7DCCiMAJR75W_KgzwoFs406S2SQ.";
-	Facebook::Session::Authenticate(redirectURL);
+	Facebook::Session* session_ = Facebook::Session::Authenticate(redirectURL);
 
+	session_->getCurrentUser();
 	system("pause"); // VS Debug
 	return 0;
 }

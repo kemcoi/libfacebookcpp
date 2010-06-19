@@ -12,14 +12,14 @@ namespace Facebook
 {
 	//----------------------------------------------
 	// Constructor
-	Session::Session(std::string redirectedURL)
+	Session::Session(std::string accessToken): cachedUser_(NULL)
 	{
 		Logger::FacebookLog(FB_Info, LOG_PARAMS, "Initializing Session");
 		logger_ = new Facebook::Logger();
-		HtppHandler_ = new HttpRequest(redirectedURL);
+		HttpHandler_ = std::tr1::shared_ptr<HttpRequest>(new HttpRequest(accessToken));
 
 		// Yes, I'm going to abuse the const_cast here temporarily.
-		Logger::FacebookLog(FB_Info, LOG_PARAMS, redirectedURL.c_str());
+		Logger::FacebookLog(FB_Info, LOG_PARAMS, accessToken.c_str());
 		
 	}
 	//----------------------------------------------
@@ -31,9 +31,10 @@ namespace Facebook
 	//----------------------------------------------
 	Facebook::Session::~Session()
 	{
-		//TODO
+		delete logger_; logger_ = NULL;
 	}
 
+	//----------------------------------------------
 	const std::string Session::GetAuthenticationURL(const std::string clientID, const std::string redirectURI, const std::string type, const std::string display)
 	{
 		Logger::FacebookLog<LogType>(FB_Info, LOG_PARAMS,  "Creating Authentication URL");
@@ -56,6 +57,7 @@ namespace Facebook
 		return oss.str();
 	}
 
+	//----------------------------------------------
 	Session* Session::Authenticate(std::string redirectedURL)
 	{	
 		Facebook::Uri redirectedParams;
@@ -79,9 +81,27 @@ namespace Facebook
 		}	
 	}
 
+	//----------------------------------------------
 	const Facebook::User* Session::getCurrentUser()
 	{
-		//Facebook::QueryParamMap paramsList;
-		return NULL;
+		Facebook::User* newUser = new Facebook::User(HttpHandler_);
+		Facebook::Uri userLink;
+
+		userLink.base_uri = "https://graph.facebook.com/me/";
+		userLink.query_params["access_token"] = HttpHandler_->access_token_;
+
+		Json::Value userValues;
+
+		HttpHandler_->GetResponse(userLink, userValues);
+		newUser->Deserialize(userValues);
+		
+		// let's keep a copy on our sesion object
+		if( NULL != cachedUser_)
+		{
+			cachedUser_ = newUser->clone();
+		}
+ 		return newUser;
 	}
+
+	//----------------------------------------------
 }

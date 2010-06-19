@@ -63,7 +63,7 @@ namespace Facebook
 		~Session();
 
 		Facebook::Logger* logger_;
-		HttpRequest* HtppHandler_;
+		std::tr1::shared_ptr<HttpRequest> HttpHandler_;
 
 		Facebook::User* cachedUser_;
 	

@@ -28,10 +28,10 @@ namespace Facebook
 {
 	struct Uri
 	{
-		typedef std::list<std::pair<std::string, std::string>> QueryParamList;
+		typedef std::map<std::string, std::string> QueryParamMap;
 
 		std::string base_uri;
-		QueryParamList query_params;
+		QueryParamMap query_params;
 
 		std::string GetUri() const;
 		void Clear() { base_uri.clear(); query_params.clear(); }

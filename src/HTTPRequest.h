@@ -34,17 +34,26 @@ namespace Facebook
 		QueryParamList query_params;
 
 		std::string GetUri() const;
+		void Clear() { base_uri.clear(); query_params.clear(); }
+	};
+
+	namespace HttpUtils
+	{
+		void DecomposeUri(const std::string& str, Uri& uri);
 	};
 
 	class HttpRequest
 	{
-	public: // public types
-		typedef std::list<std::pair<std::string, std::string>> QueryParamList;
+	private: // private ctor
+		HttpRequest(const std::string &access_token) : access_token_(access_token) { }
 
 	public: // public interface
-		std::auto_ptr<Json::Value> GetResponse(const Uri& uri);
+		void GetResponse(const Uri& uri, Json::Value &value);
 
 	private: // member variables
+		std::string access_token_;
+
+		friend class Session;
 	};
 }
 

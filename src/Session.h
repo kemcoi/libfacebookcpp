@@ -66,6 +66,8 @@ namespace Facebook
 		HttpRequest* HtppHandler_;
 
 		Facebook::User* cachedUser_;
+	
+
 	};
 }
 

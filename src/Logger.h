@@ -36,11 +36,11 @@ namespace Facebook
 		//----------------------------------------------
 		//TODO: hardcore overload this
 		template<typename T>
-		static void FacebookLog(T type, int lineNumber, const char* file, char* logString)
+		static void FacebookLog(T type, int lineNumber, const char* file, const char* logString)
 		{}
 		
 		template<>
-		static void FacebookLog<LogType>(LogType type, int lineNumber, const char* file, char* logString)
+		static void FacebookLog<LogType>(LogType type, int lineNumber, const char* file, const char* logString)
 		{
 			std::string f = file;
 			std::string l = logString;

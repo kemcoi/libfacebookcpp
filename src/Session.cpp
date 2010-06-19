@@ -19,7 +19,7 @@ namespace Facebook
 		HtppHandler_ = new HttpRequest(redirectedURL);
 
 		// Yes, I'm going to abuse the const_cast here temporarily.
-		Logger::FacebookLog(FB_Info, LOG_PARAMS, const_cast<char*>(redirectedURL.c_str()));
+		Logger::FacebookLog(FB_Info, LOG_PARAMS, redirectedURL.c_str());
 		
 	}
 	//----------------------------------------------
@@ -81,7 +81,7 @@ namespace Facebook
 
 	const Facebook::User* Session::getCurrentUser()
 	{
-	
+		//Facebook::QueryParamMap paramsList;
 		return NULL;
 	}
 }

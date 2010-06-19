@@ -24,7 +24,7 @@ namespace Facebook
 
 			// Due to the check above, we must have at least one element
 
-			QueryParamList::const_iterator it = query_params.begin();
+			QueryParamMap::const_iterator it = query_params.begin();
 
 			oss << curlpp::escape(it->first) << "=" << curlpp::escape(it->second);
 			++it;
@@ -75,7 +75,7 @@ namespace Facebook
 				{
 					std::string str1 = *it++;
 					std::string str2 = *it++;
-					uri.query_params.push_back(std::pair<std::string, std::string>(curlpp::unescape(str1), curlpp::unescape(str2)));
+					uri.query_params.insert(std::pair<std::string, std::string>(curlpp::unescape(str1), curlpp::unescape(str2)));
 				}
 			}
 		}

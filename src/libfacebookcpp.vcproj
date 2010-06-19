@@ -180,6 +180,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\AuthroizedObject.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Deserializer.cpp"
 				>
 			</File>
@@ -188,7 +192,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\HTTPRequest.cpp"
+				RelativePath=".\HttpRequest.cpp"
 				>
 			</File>
 			<File
@@ -278,6 +282,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\AuthroizedObject.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Common.h"
 				>
 			</File>
@@ -294,7 +302,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\HTTPRequest.h"
+				RelativePath=".\HttpRequest.h"
 				>
 			</File>
 			<File

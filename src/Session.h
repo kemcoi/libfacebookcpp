@@ -37,7 +37,16 @@ namespace Facebook
 	{
 	public:
 		//----------------------------------------------
-		static Session* getSession();
+		// You must call this to recieve the authentication URL
+		// This URL must be accepted to 
+		static const std::string GetAuthenticationURL(const std::string clientID, 
+											   const std::string redirectURI,
+											   const std::string type, 
+											   const std::string display);
+
+		//----------------------------------------------
+		// 
+		static Session* Authenticate();
 		//----------------------------------------------
 		void Destroy();
 

@@ -37,9 +37,16 @@ int main()
 
 	delete photo;*/
 
-	Facebook::Session* session = Facebook::Session::getSession();
+// 	Facebook::Session* session = Facebook::Session::getSession();
+// 
+// 	session;
 
-	session;
+	// let's use this for now
+	std::string	clientid = "121632984524183";
+	std::string redirectURI = "http://www.facebook.com/connect/login_success.html";
+	std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, std::string(), std::string());
+
+
 
 	system("pause"); // VS Debug
 	return 0;

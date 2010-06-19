@@ -30,7 +30,7 @@
 
 namespace Facebook
 {
-	class Album: public Object
+	class Album: public AuthorizedObject
 	{
 	public:
 		//----------------------------------------------

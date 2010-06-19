@@ -22,13 +22,16 @@
 #define FACEBOOK_FROM_H_
 
 #include "Common.h"
-#include "Object.h"
+#include "AuthroizedObject.h"
 
 namespace Facebook
 {
-	class From : public Object
+	class From : public AuthorizedObject
 	{
 	public: // public interface
+		typedef AuthorizedObject inherited;
+		From(const std::tr1::shared_ptr<HttpRequest> request) : inherited(request) { }
+
 		//----------------------------------------------
 		void Deserialize(const Json::Value &json) OVERRIDE;
 

@@ -18,37 +18,27 @@
  *
  *
  */
-#ifndef FACEBOOK_STATUS_H_
-#define FACEBOOK_STATUS_H_
 
-#include "Common.h"
+#ifndef FACEBOOK_AUTHORIZED_OBJECT_H_
+#define FACEBOOK_AUTHORIZED_OBJECT_H_
+
+#include <memory> // std::tr1::shared_ptr
 #include "Object.h"
-#include "From.h"
+#include "HTTPRequest.h"
 
 namespace Facebook
 {
-	class Status : public AuthorizedObject
+	class AuthorizedObject : public Object
 	{
-	public:
-		//----------------------------------------------
-		Status();
-		virtual ~Status();
+	protected: // interface
+		AuthorizedObject(const std::tr1::shared_ptr<HttpRequest>& request) : request_(request) { }
+		const std::tr1::shared_ptr<HttpRequest>& GetHttpRequest() const { return request_; }
+		std::tr1::shared_ptr<HttpRequest>& GetHttpRequest() { return request_; }
 
-		//----------------------------------------------
-		void Deserialize(const Json::Value &json) OVERRIDE;
-
-		//----------------------------------------------
-		// Accessors
-		//TODO: Accessors for From class
-		const std::string& getId() const { return id_; }
-		const From& GetFrom() const { return from_; }
 	private:
-		std::string id_;
-		From from_;
-		std::string message_;
-		std::string updated_time_;
+		// XXX: This makes us thread-safe up to the Session level
+		std::tr1::shared_ptr<HttpRequest> request_;
 	};
 }
 
-#endif
-
+#endif // FACEBOOK_AUTHORIZED_OBJECT_H_

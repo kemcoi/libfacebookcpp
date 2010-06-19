@@ -28,12 +28,12 @@
 
 namespace Facebook
 {
-	class Photo : public Object
+	class Photo : public AuthorizedObject
 	{
-		typedef Object inherited;
+		typedef AuthorizedObject inherited;
 
 	public: // ctor and ~()
-		Photo() { }
+		Photo(const std::tr1::shared_ptr<HttpRequest>& request) : inherited(request), from_(request) { }
 		virtual ~Photo() { }
 
 	public: // public interface

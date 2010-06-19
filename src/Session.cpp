@@ -47,4 +47,10 @@ namespace Facebook
 
 		return oss.str();
 	}
+
+	Session* Session::Authenticate(std::string redirectedURL)
+	{	
+		
+		return NULL;
+	}
 }

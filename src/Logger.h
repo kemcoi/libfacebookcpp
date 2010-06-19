@@ -24,6 +24,7 @@
 
 #include "Common.h"
 
+
 namespace Facebook
 {
 	class Logger
@@ -34,8 +35,36 @@ namespace Facebook
 		~Logger();
 		//----------------------------------------------
 		//TODO: hardcore overload this
-		static void FacebookLog(LogType type, int lineNumber, const char* file, char* logString);
+		template<typename T>
+		static void FacebookLog(T type, int lineNumber, const char* file, char* logString)
+		{}
+		
+		template<>
+		static void FacebookLog<LogType>(LogType type, int lineNumber, const char* file, char* logString)
+		{
+			std::string f = file;
+			std::string l = logString;
+			switch(type)
+			{
+			case FB_Error:
+				std::cout<< "Error: " << " @ " << f  << "Line: " << lineNumber;
+				break;
+			case FB_Debug:
+				std::cout<< "Debug: "<< " @ " << f  << "Line: " << lineNumber;
+				break;
+			case FB_Info:
+				std::cout<< "Info: ";
+				break;
+			case FB_Warn:
+				std::cout<< "Warn: ";
+				break;
+			case FB_Message:
+				std::cout<< "Message: ";
+				break;
+			}
 
+			std::cout << "--" << l << std::endl;
+		}
 	private:
 		int instance_;
 	};

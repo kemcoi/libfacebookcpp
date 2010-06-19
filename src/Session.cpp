@@ -62,9 +62,9 @@ namespace Facebook
 		HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
 
 		// Hardcode this for now
-		Uri::QueryParamMap::const_iterator it = redirectedParams->query_params.find("code");
+		Uri::QueryParamMap::const_iterator it = redirectedParams.query_params.find("code");
 
-		if(!redirectedParams->query_params.front().second.empty())
+		if(it == redirectedParams.query_params.end())
 		{
 			// no access token
 			Logger::FacebookLog(FB_Warn, LOG_PARAMS, "No access_token found");
@@ -75,7 +75,7 @@ namespace Facebook
 		else
 		{
 			Logger::FacebookLog(FB_Info, LOG_PARAMS, "Found Access Token");
-			return new Facebook::Session(redirectedParams->query_params.front().second);
+			return new Facebook::Session(it->second);
 		}	
 	}
 

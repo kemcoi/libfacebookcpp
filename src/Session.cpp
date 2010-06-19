@@ -45,6 +45,7 @@ namespace Facebook
 				oss<< "&display=" << curlpp::escape(display);
 			}
 
+			std::cout << std::endl << oss.str() << std::endl;
 		return oss.str();
 	}
 

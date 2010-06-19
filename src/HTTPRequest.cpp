@@ -39,7 +39,49 @@ namespace Facebook
 		return oss.str();
 	}
 
-	std::auto_ptr<Json::Value> HttpRequest::GetResponse(const Uri& uri)
+	namespace HttpUtils
+	{
+		void DecomposeUri(const std::string& str, Uri& uri)
+		{
+			uri.Clear();
+
+			std::string::size_type lastPos = str.find('?');
+
+			if(std::string::npos == lastPos)
+			{
+				uri.base_uri = str;
+			}
+			else
+			{
+				uri.base_uri = str.substr(0, lastPos);
+
+				// XXX: This is an inefficient algorithm. Need to speed it up
+
+				std::list<std::string> list;
+
+				++lastPos;
+				std::string::size_type pos = str.find_first_of("&=", lastPos);
+
+				while (std::string::npos != pos || std::string::npos != lastPos)
+				{
+					list.push_back(str.substr(lastPos, pos - lastPos));
+					lastPos = str.find_first_not_of("&=", pos);
+					pos = str.find_first_of("&=", lastPos);
+				}
+
+				assert(list.size() % 2 == 0);
+
+				for(std::list<std::string>::const_iterator it = list.begin(); it != list.end();)
+				{
+					std::string str1 = *it++;
+					std::string str2 = *it++;
+					uri.query_params.push_back(std::pair<std::string, std::string>(curlpp::unescape(str1), curlpp::unescape(str2)));
+				}
+			}
+		}
+	}
+
+	void HttpRequest::GetResponse(const Uri& uri, Json::Value &value)
 	{
 		// First build the final url
 
@@ -53,10 +95,7 @@ namespace Facebook
 		// This performs the request and dumps the output to the stringstream
 		oss << curl;
 
-		std::auto_ptr<Json::Value> value(new Json::Value);
 		Json::Reader reader;
-		reader.parse(oss, *value);
-
-		return value;
+		reader.parse(oss, value);
 	}
 }

@@ -26,23 +26,25 @@
 
 namespace Facebook
 {
+	struct Uri
+	{
+		typedef std::list<std::pair<std::string, std::string>> QueryParamList;
+
+		std::string base_uri;
+		QueryParamList query_params;
+
+		std::string GetUri() const;
+	};
+
 	class HttpRequest
 	{
 	public: // public types
 		typedef std::list<std::pair<std::string, std::string>> QueryParamList;
 
 	public: // public interface
-		void SetUrl(const std::string& str) { str_ = str; }
-		const std::string GetUrl() const { return str_; }
-
-		QueryParamList& GetQueryParams() { return query_params_; } 
-		const QueryParamList& GetQueryParams() const { return query_params_; }
-
-		std::auto_ptr<Json::Value> GetResponse();
+		std::auto_ptr<Json::Value> GetResponse(const Uri& uri);
 
 	private: // member variables
-		std::string str_;
-		QueryParamList query_params_;
 	};
 }
 

@@ -92,11 +92,12 @@ namespace Facebook
 
 		userLink.base_uri = "https://graph.facebook.com/me/";
 		userLink.query_params["access_token"] = HttpHandler_->access_token_;
-
+		
 		Json::Value userValues;
 
 		HttpHandler_->GetResponse(userLink, userValues);
 		newUser->Deserialize(userValues);
+
 		
 		// let's keep a copy on our sesion object
 		if( NULL != cachedUser_)

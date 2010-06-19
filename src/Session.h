@@ -25,6 +25,7 @@
 // Aggregate include's here
 #include "Common.h"
 #include "From.h"
+#include "User.h"
 #include "Albums.h"
 #include "Photo.h"
 #include "Logger.h"
@@ -52,6 +53,7 @@ namespace Facebook
 
 		//----------------------------------------------
 		// Getters
+		const Facebook::User* getCurrentUser();
 
 
 
@@ -63,6 +65,7 @@ namespace Facebook
 		Facebook::Logger* logger_;
 		HttpRequest* HtppHandler_;
 
+		Facebook::User* cachedUser_;
 	};
 }
 

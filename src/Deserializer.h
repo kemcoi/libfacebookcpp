@@ -36,10 +36,11 @@ namespace Facebook
 			if(!json_.isObject())
 				throw InvalidArgument("json");
 
-			const Json::Value& value = json_["error"];
-
-			if(value.isObject())
-				throw FacebookException(json_["type"].asString(), json_["message"].asString());
+			if(json_.isMember("error"))
+			{
+				const Json::Value& value = json_["error"];
+				throw FacebookException(value["type"].asString(), value["message"].asString());
+			}
 		}
 
 	public: // public interface

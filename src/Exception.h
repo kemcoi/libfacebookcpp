@@ -22,6 +22,7 @@
 #ifndef FACEBOOK_EXCEPTION_H_
 #define FACEBOOK_EXCEPTION_H_
 
+#include "Logger.h"
 #include <curlpp/Exception.hpp>
 
 namespace Facebook
@@ -30,28 +31,51 @@ namespace Facebook
 	{
 	public:
 		typedef std::invalid_argument inherited;
-		InvalidArgument(const std::string& message) : inherited(message) { }
+		InvalidArgument(const std::string& message) : inherited(message)
+		{
+			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(message.c_str()));
+			// XXX: Check this doesn't throw!
+			// XXX: remove const_cast
+		}
 	};
 
 	class FacebookException : public std::runtime_error
 	{
 	public:
 		typedef std::runtime_error inherited;
-		FacebookException(const std::string &type, const std::string &message) : inherited(message) { _UNUSED(type); }
+		FacebookException(const std::string &type, const std::string &message) : inherited(message)
+		{
+			_UNUSED(type);
+
+			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(type.c_str()));
+			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(message.c_str()));
+			// XXX: Check this doesn't throw!
+			// XXX: remove const_cast
+		}
 	};
 
 	class NotSupportedException : public std::logic_error
 	{
 	public:
 		typedef std::logic_error inherited;
-		NotSupportedException(const std::string& message) : inherited(message) { }
+		NotSupportedException(const std::string& message) : inherited(message)
+		{
+			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(message.c_str()));
+			// XXX: Check this doesn't throw!
+			// XXX: remove const_cast
+		}
 	};
 
 	class UnexpectedException : public std::logic_error
 	{
 	public:
 		typedef std::logic_error inherited;
-		UnexpectedException(const std::string& message) : inherited(message) { }
+		UnexpectedException(const std::string& message) : inherited(message)
+		{
+			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(message.c_str()));
+			// XXX: Check this doesn't throw!
+			// XXX: remove const_cast
+		}
 	};
 }
 

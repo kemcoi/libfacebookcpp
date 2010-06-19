@@ -42,11 +42,11 @@ int main()
 // 	session;
 
 	// let's use this for now
-	std::string	clientid = "121632984524183";
+	std::string	clientid = "232486072316";
 	std::string redirectURI = "http://www.facebook.com/connect/login_success.html";
 	std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, std::string(), std::string());
 
-	std::string redirectURL = "http://www.facebook.com/connect/login_success.html?code=2.7rIDBtTeRUF_N2FwP_mCww__.3600.1276927200-100001264840744|Mm5qJx-1YmfTHv10r_4mG6gzmew.";
+	std::string redirectURL = "http://www.facebook.com/connect/login_success.html?code=2.sU5pVytL4Pz3DCy0h9i3kw__.86400.1277056800-100000189955997|7DCCiMAJR75W_KgzwoFs406S2SQ.";
 	Facebook::Session::Authenticate(redirectURL);
 
 	system("pause"); // VS Debug

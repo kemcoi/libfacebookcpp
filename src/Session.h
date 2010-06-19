@@ -57,10 +57,11 @@ namespace Facebook
 
 
 	private:
-		Session();
+		Session(std::string accessToken);
 		~Session();
 
 		Facebook::Logger* logger_;
+		HttpRequest* HtppHandler_;
 
 	};
 }

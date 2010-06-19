@@ -1,18 +1,21 @@
 #include "sstream"
 #include "Common.h"
 #include "Session.h"
+#include "HTTPRequest.h"
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 
+
 namespace Facebook
 {
 	//----------------------------------------------
 	// Constructor
-	Session::Session()
+	Session::Session(std::string redirectedURL)
 	{
 		logger_ = new Facebook::Logger();
+		HtppHandler_ = new HttpRequest(redirectedURL);
 	}
 	//----------------------------------------------
 	void Session::Destroy()
@@ -45,13 +48,26 @@ namespace Facebook
 				oss<< "&display=" << curlpp::escape(display);
 			}
 
-			std::cout << std::endl << oss.str() << std::endl;
 		return oss.str();
 	}
 
 	Session* Session::Authenticate(std::string redirectedURL)
 	{	
-		
+		Facebook::Uri * redirectedParams = new Facebook::Uri;
+		HttpUtils::DecomposeUri(redirectedURL, *redirectedParams); // THANK YOU ALY
+
+		// Hardcode this for now
+		//TODO: Iterate through list to look for .first = "code"
+		if(!redirectedParams->query_params.front().second.empty())
+		{
+			// successfully recieved an access_token
+			// create a new session
+			Logger::FacebookLog(FB_Info, LOG_PARAMS, "Found Access Token");
+			return new Facebook::Session(redirectedParams->query_params.front().second);
+		}
+
+		// no access token
+		Logger::FacebookLog(FB_Warn, LOG_PARAMS, "No access_token found");
 		return NULL;
 	}
 }

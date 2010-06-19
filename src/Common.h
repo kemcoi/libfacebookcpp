@@ -35,12 +35,12 @@
 // what this logger needs to be able to do
 // Also make it so that users can't just create a 
 // string themselves to pass in
-#define LogType const char* const
-const char* const FB_Warn = "Warning: ";
-const char* const FB_Error = "Error: ";
-const char* const FB_Message = "Message: ";
-const char* const FB_Debug = "Debug: ";
-const char* const FB_Info = "Info: ";
+#define LogType const char*
+#define FB_Warn "Warning: ", __LINE__, __FILE__
+#define FB_Error "Error: ", __LINE__, __FILE__ 
+#define FB_Message "Message: ", __LINE__ , __FILE__
+#define FB_Debug "Debug: ", __LINE__, __FILE__
+#define FB_Info "Info: ", __LINE__, __FILE__
 
 
 #endif // FACEBOOK_COMMON_H_

@@ -10,7 +10,7 @@ namespace Facebook
 	Logger::Logger()
 	{
 		instance_ = logInstances; logInstances++; // ghetto instancing
-		FacebookLog(FB_Info, "Initializing Logger ");
+		FacebookLog(FB_Debug, "Initializing Logger");
 	}
 
 	Logger::~Logger()
@@ -19,8 +19,9 @@ namespace Facebook
 	}
 
 	// Make this va_list?
-	void Logger::FacebookLog( LogType type, char* logString )
+	void Logger::FacebookLog(LogType type, int lineNumber, const char* file, char* logString)
 	{
-		std::cout<< type << logString << std::endl;
+		file;
+		std::cout<< "Line:" << lineNumber<< " " << type << logString << std::endl;
 	}
 }

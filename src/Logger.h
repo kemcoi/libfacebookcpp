@@ -34,7 +34,7 @@ namespace Facebook
 		~Logger();
 		//----------------------------------------------
 		//TODO: hardcore overload this
-		static void FacebookLog(LogType type, char* logString);
+		static void FacebookLog(LogType type, int lineNumber, const char* file, char* logString);
 
 	private:
 		int instance_;

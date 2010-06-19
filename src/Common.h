@@ -46,4 +46,6 @@ enum LogType {FB_Warn,
       FB_Debug,
 	  FB_Info};
 
+typedef std::map<std::string, std::string> QueryParamMap;
+
 #endif // FACEBOOK_COMMON_H_

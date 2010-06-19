@@ -46,7 +46,7 @@ namespace Facebook
 
 		//----------------------------------------------
 		// 
-		static Session* Authenticate();
+		static Session* Authenticate(std::string redirectedURL);
 		//----------------------------------------------
 		void Destroy();
 

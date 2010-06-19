@@ -28,10 +28,6 @@
 
 namespace Facebook
 {
-	// TODO: The compiler complains that it can't generate an assignment operator for this object (on /W4)
-	// We shut it up for now. This needs to be fixed
-#pragma warning(push)
-#pragma warning(disable: 4512)
 	class Deserializer
 	{
 	public: // public ctor
@@ -39,6 +35,11 @@ namespace Facebook
 		{
 			if(!json_.isObject())
 				throw InvalidArgument("json");
+
+			const Json::Value& value = json_["error"];
+
+			if(value.isObject())
+				throw FacebookException(json_["type"].asString(), json_["message"].asString());
 		}
 
 	public: // public interface
@@ -87,10 +88,16 @@ namespace Facebook
 			*uint = value.asUInt();
 		}
 
+	private: // assignment operator
+		Deserializer& operator = (const Deserializer& rhs)
+		{
+			_UNUSED(rhs);
+			throw NotSupportedException("Deserializer is not copyable");
+		}
+
 	private: // private members
 		const Json::Value &json_;
 	};
-#pragma warning(pop)
 }
 
 #endif // FACEBOOK_DESERIALIZER_H_

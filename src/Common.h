@@ -25,6 +25,8 @@
 #define INTERFACE struct __declspec(novtable)
 #define OVERRIDE override
 
+#define _UNUSED(x) ((void)x)
+
 #include <cassert>
 #include <string>
 #include <json/json.h>
@@ -43,5 +45,7 @@ enum LogType {FB_Warn,
 	  FB_Message,
       FB_Debug,
 	  FB_Info};
+
+typedef std::map<std::string, std::string> QueryParamMap;
 
 #endif // FACEBOOK_COMMON_H_

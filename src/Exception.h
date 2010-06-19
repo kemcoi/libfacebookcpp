@@ -33,6 +33,20 @@ namespace Facebook
 		InvalidArgument(const std::string& message) : inherited(message) { }
 	};
 
+	class FacebookException : public std::runtime_error
+	{
+	public:
+		typedef std::runtime_error inherited;
+		FacebookException(const std::string &type, const std::string &message) : inherited(message) { _UNUSED(type); }
+	};
+
+	class NotSupportedException : public std::logic_error
+	{
+	public:
+		typedef std::logic_error inherited;
+		NotSupportedException(const std::string& message) : inherited(message) { }
+	};
+
 	class UnexpectedException : public std::logic_error
 	{
 	public:

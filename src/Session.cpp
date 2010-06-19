@@ -14,8 +14,13 @@ namespace Facebook
 	// Constructor
 	Session::Session(std::string redirectedURL)
 	{
+		Logger::FacebookLog(FB_Info, LOG_PARAMS, "Initializing Session");
 		logger_ = new Facebook::Logger();
 		HtppHandler_ = new HttpRequest(redirectedURL);
+
+		// Yes, I'm going to abuse the const_cast here temporarily.
+		Logger::FacebookLog(FB_Info, LOG_PARAMS, const_cast<char*>(redirectedURL.c_str()));
+		
 	}
 	//----------------------------------------------
 	void Session::Destroy()
@@ -53,21 +58,27 @@ namespace Facebook
 
 	Session* Session::Authenticate(std::string redirectedURL)
 	{	
-		Facebook::Uri * redirectedParams = new Facebook::Uri;
-		HttpUtils::DecomposeUri(redirectedURL, *redirectedParams); // THANK YOU ALY
+		Facebook::Uri redirectedParams;
+		HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
 
 		// Hardcode this for now
 		//TODO: Iterate through list to look for .first = "code"
-		if(!redirectedParams->query_params.front().second.empty())
+		if(!redirectedParams.query_params.front().second.empty())
 		{
 			// successfully recieved an access_token
 			// create a new session
 			Logger::FacebookLog(FB_Info, LOG_PARAMS, "Found Access Token");
-			return new Facebook::Session(redirectedParams->query_params.front().second);
+			return new Facebook::Session(redirectedParams.query_params.front().second);
 		}
 
 		// no access token
 		Logger::FacebookLog(FB_Warn, LOG_PARAMS, "No access_token found");
+		return NULL;
+	}
+
+	const Facebook::User* Session::getCurrentUser()
+	{
+	
 		return NULL;
 	}
 }

@@ -62,7 +62,7 @@ namespace Facebook
 		HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
 
 		// Hardcode this for now
-		Uri::QueryParamMap::const_iterator it = redirectedParams.query_params.find("code");
+		QueryParamMap::const_iterator it = redirectedParams.query_params.find("code");
 
 		if(it == redirectedParams.query_params.end())
 		{

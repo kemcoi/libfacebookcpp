@@ -219,6 +219,10 @@
 				RelativePath=".\Status.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\User.cpp"
+				>
+			</File>
 			<Filter
 				Name="curlpp"
 				>
@@ -323,6 +327,10 @@
 			</File>
 			<File
 				RelativePath=".\Status.h"
+				>
+			</File>
+			<File
+				RelativePath=".\User.h"
 				>
 			</File>
 		</Filter>

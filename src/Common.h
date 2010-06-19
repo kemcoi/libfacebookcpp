@@ -25,6 +25,8 @@
 #define INTERFACE struct __declspec(novtable)
 #define OVERRIDE override
 
+#define _UNUSED(x) ((void)x)
+
 #include <cassert>
 #include <string>
 #include <json/json.h>

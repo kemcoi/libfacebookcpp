@@ -1,4 +1,5 @@
 .*\.ncb
+.*\.orig
 .*\.user
 .*\.suo
 Debug/

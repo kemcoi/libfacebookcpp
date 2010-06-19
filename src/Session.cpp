@@ -60,11 +60,14 @@ namespace Facebook
 	//----------------------------------------------
 	Session* Session::Authenticate(std::string redirectedURL)
 	{	
+		// XXX: Hack
+		redirectedURL[redirectedURL.find_first_of('#')] = '?';
+
 		Facebook::Uri redirectedParams;
 		HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
 
 		// Hardcode this for now
-		QueryParamMap::const_iterator it = redirectedParams.query_params.find("code");
+		QueryParamMap::const_iterator it = redirectedParams.query_params.find("access_token");
 
 		if(it == redirectedParams.query_params.end())
 		{

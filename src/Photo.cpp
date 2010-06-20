@@ -29,16 +29,16 @@ namespace Facebook
 	{
 		Deserializer deserializer(json);
 
-		deserializer.Deserialize("id", &id_);
-		deserializer.Deserialize("from", &from_);
-		deserializer.Deserialize("name", &name_);
-		deserializer.Deserialize("picture", &picture_);
-		deserializer.Deserialize("source", &source_);
-		deserializer.Deserialize("height", &height_);
-		deserializer.Deserialize("width", &width_);
-		deserializer.Deserialize("link", &link_);
-		deserializer.Deserialize("icon", &icon_);
-		deserializer.Deserialize("created_time", &created_time_);
-		deserializer.Deserialize("updated_time", &updated_time_);
+		deserializer.Deserialize("id", false, &id_);
+		deserializer.Deserialize("from", false, &from_);
+		deserializer.Deserialize("name", false, &name_);
+		deserializer.Deserialize("picture", false, &picture_);
+		deserializer.Deserialize("source", false, &source_);
+		deserializer.Deserialize("height", false, &height_);
+		deserializer.Deserialize("width", false, &width_);
+		deserializer.Deserialize("link", false, &link_);
+		deserializer.Deserialize("icon", false, &icon_);
+		deserializer.Deserialize("created_time", false, &created_time_);
+		deserializer.Deserialize("updated_time", false, &updated_time_);
 	}
 }

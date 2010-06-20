@@ -2,6 +2,7 @@
 #include "Common.h"
 #include "Session.h"
 #include "HTTPRequest.h"
+#include "Exception.h"
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
@@ -71,11 +72,8 @@ namespace Facebook
 
 		if(it == redirectedParams.query_params.end())
 		{
-			// no access token
 			Logger::FacebookLog(FB_Warn, LOG_PARAMS, "No access_token found");
-
-			// XXX: Throw an exception here?
-			return NULL;
+			throw UnexpectedException("Unable to find access token from redirected URL");
 		}
 		else
 		{

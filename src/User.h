@@ -55,7 +55,7 @@ namespace Facebook
 		const std::string& getEducation() const { return education_; }
 		const std::string& getEmail() const { return email_; }
 		const std::string& getWebsite() const { return website_; }
-		const std::string& getHometown() const { return hometown_; }
+		// const std::string& getHometown() const { return hometown_; }
 		const std::string& getGender() const { return gender_; }
 		const std::string& getInterestedIn() const { return interested_in_; }
 		const std::string& getMeetingFor() const { return meeting_for_; }
@@ -79,7 +79,7 @@ namespace Facebook
 		std::string education_;
 		std::string email_;
 		std::string website_;
-		std::string hometown_;
+		// std::string hometown_;
 		std::string gender_;
 		std::string interested_in_;
 		std::string meeting_for_;

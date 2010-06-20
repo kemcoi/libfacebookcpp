@@ -9,9 +9,9 @@ namespace Facebook
 	{
 		Deserializer deserializer(json);
 
-		deserializer.Deserialize("id", &id_);
-		deserializer.Deserialize("message", &message_);
-		deserializer.Deserialize("updated_time", &updated_time_);
+		deserializer.Deserialize("id", false, &id_);
+		deserializer.Deserialize("message", false, &message_);
+		deserializer.Deserialize("updated_time", false, &updated_time_);
 
 	}
 }

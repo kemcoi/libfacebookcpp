@@ -50,11 +50,10 @@ namespace Facebook
 			assert(tag);
 			assert(t);
 
-			const Json::Value &value = json_[tag];
-			if(value.isNull())
-				throw UnexpectedException("json_[tag].isNull()");
+			if(!json_.isMember(tag))
+				throw UnexpectedException("json_[tag] is missing");
 
-			t->Deserialize(value);
+			t->Deserialize(json_[tag]);
 		}
 
 		template<>
@@ -63,9 +62,10 @@ namespace Facebook
 			assert(tag);
 			assert(str);
 
+			if(!json_.isMember(tag))
+				throw UnexpectedException("json_[tag] is missing");
+
 			const Json::Value &value = json_[tag];
-			if(value.isNull())
-				throw UnexpectedException("json_[tag].isNull()");
 
 			if(!value.isConvertibleTo(Json::stringValue))
 				throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
@@ -79,9 +79,10 @@ namespace Facebook
 			assert(tag);
 			assert(uint);
 
+			if(!json_.isMember(tag))
+				throw UnexpectedException("json_[tag] is missing");
+
 			const Json::Value &value = json_[tag];
-			if(value.isNull())
-				throw UnexpectedException("value.isNull()");
 
 			if(!value.isConvertibleTo(Json::uintValue))
 				throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");

@@ -8,8 +8,8 @@ namespace Facebook
 	{
 		Deserializer deserializer(json);
 
-		deserializer.Deserialize("name", &name_);
-		deserializer.Deserialize("category", &category_);
-		deserializer.Deserialize("id", &id_);
+		deserializer.Deserialize("name", false, &name_);
+		deserializer.Deserialize("category", false, &category_);
+		deserializer.Deserialize("id", false, &id_);
 	}
 }

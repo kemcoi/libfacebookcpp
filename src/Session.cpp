@@ -15,12 +15,10 @@ namespace Facebook
 	// Constructor
 	Session::Session(std::string accessToken): cachedUser_(NULL)
 	{
-		Logger::FacebookLog(FB_Info, LOG_PARAMS, "Initializing Session");
+		GetInfoLog() << "Initializing Session";
 		logger_ = new Facebook::Logger();
 		HttpHandler_ = std::tr1::shared_ptr<HttpRequest>(new HttpRequest(accessToken));
-
-		// Yes, I'm going to abuse the const_cast here temporarily.
-		Logger::FacebookLog(FB_Info, LOG_PARAMS, accessToken.c_str());
+		GetInfoLog() << accessToken.c_str();
 		
 	}
 	//----------------------------------------------
@@ -39,22 +37,23 @@ namespace Facebook
 	//----------------------------------------------
 	const std::string Session::GetAuthenticationURL(const std::string clientID, const std::string redirectURI, const std::string type, const std::string display)
 	{
-		Logger::FacebookLog<LogType>(FB_Info, LOG_PARAMS,  "Creating Authentication URL");
+		GetInfoLog() << "Creating Authentication URL";
+		
 		static const char *authorization_uri = "https://graph.facebook.com/oauth/authorize";
 		std::stringstream oss;
 
 		oss << authorization_uri << "?client_id=" << curlpp::escape(clientID) << "&redirect_uri=" <<
 			curlpp::escape(redirectURI); 
-			
-			if(!type.empty())
-			{	
-				oss << "&type=" << curlpp::escape(type) ;
-			}
 
-			if(!display.empty())
-			{
-				oss<< "&display=" << curlpp::escape(display);
-			}
+		if(!type.empty())
+		{	
+			oss << "&type=" << curlpp::escape(type) ;
+		}
+
+		if(!display.empty())
+		{
+			oss<< "&display=" << curlpp::escape(display);
+		}
 
 		return oss.str();
 	}
@@ -73,12 +72,12 @@ namespace Facebook
 
 		if(it == redirectedParams.query_params.end())
 		{
-			Logger::FacebookLog(FB_Warn, LOG_PARAMS, "No access_token found");
+			GetWarnLog() << "No access_token found";
 			throw UnexpectedException("Unable to find access token from redirected URL");
 		}
 		else
 		{
-			Logger::FacebookLog(FB_Info, LOG_PARAMS, "Found Access Token");
+			GetInfoLog() << "Found Access Token";
 			return new Facebook::Session(it->second);
 		}	
 	}
@@ -98,7 +97,7 @@ namespace Facebook
 		newUser->Deserialize(userValues);
 
 		
-		// let's keep a copy on our sesion object
+		// let's keep a copy on our session object
 		if( NULL != cachedUser_)
 		{
 			cachedUser_ = newUser->clone();

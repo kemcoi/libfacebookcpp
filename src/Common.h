@@ -27,6 +27,17 @@
 
 #define _UNUSED(x) ((void)x)
 
+#define OLD_ASSERT(x) assert(x)
+#undef assert
+#define assert(x) OLD_ASSERT(x); __assume(x)
+
+// XXX: TODO
+#define CASSERT(x)
+#define DASSERT(x) ASSERT(x)
+
+// XXX: TODO: Break on non-arrays
+#define NUMELMS(x) sizeof(x) / sizeof(x[0])
+
 #include <cassert>
 #include <string>
 #include <json/json.h>
@@ -40,11 +51,10 @@
 
 #define LOG_PARAMS __LINE__, __FILE__
 
-enum LogType {FB_Warn, 
-	  FB_Error, 
-	  FB_Message,
-      FB_Debug,
-	  FB_Info};
+#define GetErrorLog() logInstance.GetLog(Logger::FB_LOGLEVEL_ERROR, LOG_PARAMS)
+#define GetWarnLog()  logInstance.GetLog(Logger::FB_LOGLEVEL_WARN,  LOG_PARAMS)
+#define GetInfoLog()  logInstance.GetLog(Logger::FB_LOGLEVEL_INFO,  LOG_PARAMS)
+#define GetDebugLog() logInstance.GetLog(Logger::FB_LOGLEVEL_DEBUG, LOG_PARAMS)
 
 typedef std::map<std::string, std::string> QueryParamMap;
 

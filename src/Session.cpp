@@ -39,10 +39,10 @@ namespace Facebook
 	const std::string Session::GetAuthenticationURL(const std::string clientID, const std::string redirectURI, const std::string type, const std::string display)
 	{
 		Logger::FacebookLog<LogType>(FB_Info, LOG_PARAMS,  "Creating Authentication URL");
-		static const std:: string s_authorization_uri = "https://graph.facebook.com/oauth/authorize";
+		static const char *authorization_uri = "https://graph.facebook.com/oauth/authorize";
 		std::stringstream oss;
 
-		oss << s_authorization_uri << "?client_id=" << curlpp::escape(clientID) << "&redirect_uri=" <<
+		oss << authorization_uri << "?client_id=" << curlpp::escape(clientID) << "&redirect_uri=" <<
 			curlpp::escape(redirectURI); 
 			
 			if(!type.empty())

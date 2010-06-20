@@ -204,6 +204,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MemoryTracker.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Object.cpp"
 				>
 			</File>
@@ -311,6 +315,10 @@
 			</File>
 			<File
 				RelativePath=".\Logger.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MemoryTracker.h"
 				>
 			</File>
 			<File

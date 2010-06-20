@@ -21,6 +21,7 @@
 
 #include "Session.h"
 #include "HTTPRequest.h"
+#include "MemoryTracker.h"
 
 #include <iostream>
 
@@ -37,21 +38,29 @@ int main()
 
 	delete photo;*/
 
-	// let's use this for now
-	std::string	clientid = "232486072316";
-	std::string redirectURI = "http://www.facebook.com/connect/login_success.html";
-	std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, "user_agent", std::string());
+	BeginMemoryTracker();
 
-	std::cout << "PASTE THIS INTO YOUR BROWSER TO ACCEPT" << std::endl;
-	std::cout<<std::endl << url << std::endl;
-	std::string redirectURL;
-	system("pause"); // VS Debug
+	{
+		// let's use this for now
+		std::string	clientid = "232486072316";
+		std::string redirectURI = "http://www.facebook.com/connect/login_success.html";
+		std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, "user_agent", std::string());
 
-	std::cout << "COPY THE REDIRECTED URL INTO HERE";
-	std::cin >> redirectURL;
-	Facebook::Session* session_ = Facebook::Session::Authenticate(redirectURL);
+		std::cout << "PASTE THIS INTO YOUR BROWSER TO ACCEPT" << std::endl;
+		std::cout<<std::endl << url << std::endl;
+		std::string redirectURL;
+		system("pause"); // VS Debug
 
-	session_->getCurrentUser();
-	system("pause"); // VS Debug
+		std::cout << "COPY THE REDIRECTED URL INTO HERE";
+		std::cin >> redirectURL;
+
+		std::auto_ptr<Facebook::Session> session_(Facebook::Session::Authenticate(redirectURL));
+		std::auto_ptr<const Facebook::User> user_(session_->getCurrentUser());
+
+		system("pause"); // VS Debug
+	}
+
+	EndMemoryTracker();
+
 	return 0;
 }

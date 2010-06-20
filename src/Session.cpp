@@ -32,6 +32,7 @@ namespace Facebook
 	//----------------------------------------------
 	Facebook::Session::~Session()
 	{
+		delete cachedUser_; cachedUser_ = NULL;
 		delete logger_; logger_ = NULL;
 	}
 

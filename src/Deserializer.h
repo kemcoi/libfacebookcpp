@@ -45,49 +45,64 @@ namespace Facebook
 
 	public: // public interface
 		template<class TType>
-		void Deserialize(const char *tag, TType *t)
+		void Deserialize(const char *tag, bool required, TType *t)
 		{
 			assert(tag);
 			assert(t);
 
 			if(!json_.isMember(tag))
-				throw UnexpectedException("json_[tag] is missing");
-
-			t->Deserialize(json_[tag]);
+			{
+				if(required)
+					throw UnexpectedException("json_[tag] is missing");
+			}
+			else
+			{
+				t->Deserialize(json_[tag]);
+			}
 		}
 
 		template<>
-		void Deserialize(const char *tag, std::string *str)
+		void Deserialize(const char *tag, bool required, std::string *str)
 		{
 			assert(tag);
 			assert(str);
 
 			if(!json_.isMember(tag))
-				throw UnexpectedException("json_[tag] is missing");
+			{
+				if(required)
+					throw UnexpectedException("json_[tag] is missing");
+			}
+			else
+			{
+				const Json::Value &value = json_[tag];
 
-			const Json::Value &value = json_[tag];
+				if(!value.isConvertibleTo(Json::stringValue))
+					throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
 
-			if(!value.isConvertibleTo(Json::stringValue))
-				throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
-
-			*str = value.asString();
+				*str = value.asString();
+			}
 		}
 
 		template<>
-		void Deserialize(const char *tag, unsigned int *uint)
+		void Deserialize(const char *tag, bool required, unsigned int *uint)
 		{
 			assert(tag);
 			assert(uint);
 
 			if(!json_.isMember(tag))
-				throw UnexpectedException("json_[tag] is missing");
+			{
+				if(required)
+					throw UnexpectedException("json_[tag] is missing");
+			}
+			else
+			{
+				const Json::Value &value = json_[tag];
 
-			const Json::Value &value = json_[tag];
+				if(!value.isConvertibleTo(Json::uintValue))
+					throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");
 
-			if(!value.isConvertibleTo(Json::uintValue))
-				throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");
-
-			*uint = value.asUInt();
+				*uint = value.asUInt();
+			}
 		}
 
 	private: // assignment operator

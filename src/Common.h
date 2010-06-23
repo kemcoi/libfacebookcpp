@@ -27,9 +27,8 @@
 
 #define _UNUSED(x) ((void)x)
 
-#define OLD_ASSERT(x) assert(x)
-#undef assert
-#define assert(x) OLD_ASSERT(x); __assume(x)
+#include <cassert>
+#define ASSERT(x) assert(x); __assume(x); __analysis_assume(x)
 
 // XXX: TODO
 #define CASSERT(x)
@@ -38,7 +37,6 @@
 // XXX: TODO: Break on non-arrays
 #define NUMELMS(x) sizeof(x) / sizeof(x[0])
 
-#include <cassert>
 #include <string>
 #include <json/json.h>
 

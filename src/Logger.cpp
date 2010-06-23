@@ -16,7 +16,7 @@ namespace Facebook
 
 	std::ostream& Logger::GetLog( FB_LOGLEVEL level, int lineNumber, const char* file )
 	{
-		assert(level >= FB_LOGLEVEL_ERROR && level < FB_LOGLEVEL_COUNT);
+		ASSERT(level >= FB_LOGLEVEL_ERROR && level < FB_LOGLEVEL_COUNT);
 
 		static const char *s_level[] = {
 			"Error: ", "Warning: ", "Info: ", "Debug: "

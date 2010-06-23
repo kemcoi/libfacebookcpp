@@ -47,8 +47,8 @@ namespace Facebook
 		template<class TType>
 		void Deserialize(const char *tag, bool required, TType *t)
 		{
-			assert(tag);
-			assert(t);
+			ASSERT(tag);
+			ASSERT(t);
 
 			if(!json_.isMember(tag))
 			{
@@ -64,8 +64,8 @@ namespace Facebook
 		template<>
 		void Deserialize(const char *tag, bool required, std::string *str)
 		{
-			assert(tag);
-			assert(str);
+			ASSERT(tag);
+			ASSERT(str);
 
 			if(!json_.isMember(tag))
 			{
@@ -86,8 +86,8 @@ namespace Facebook
 		template<>
 		void Deserialize(const char *tag, bool required, unsigned int *uint)
 		{
-			assert(tag);
-			assert(uint);
+			ASSERT(tag);
+			ASSERT(uint);
 
 			if(!json_.isMember(tag))
 			{

@@ -40,7 +40,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions="/wd4251 /wd4275 /wd4481 /wd4512"
+				AdditionalOptions="/wd4251 /wd4275 /wd4481 /wd4512 /analyze /analyze:WX-"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\external-libs\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;JSON_DLL;"

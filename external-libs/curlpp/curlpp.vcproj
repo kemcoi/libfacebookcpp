@@ -87,6 +87,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="xcopy ..\*.dll ..\..\Debug\ /y"
 			/>
 		</Configuration>
 		<Configuration

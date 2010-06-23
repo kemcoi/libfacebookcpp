@@ -43,13 +43,12 @@
 				AdditionalOptions="/wd4481"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\external-libs\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;JSON_DLL;CURLPP_STATICLIB;BUILDING_CURLPP"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;JSON_DLL;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
-				WarnAsError="true"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -63,7 +62,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="..\external-libs\libcurl_imp.lib"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -223,58 +221,6 @@
 				RelativePath=".\User.cpp"
 				>
 			</File>
-			<Filter
-				Name="curlpp"
-				>
-				<File
-					RelativePath=".\curlpp\internal\CurlHandle.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\cURLpp.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\Easy.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\Exception.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\Form.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\Info.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\Multi.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\OptionBase.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\internal\OptionList.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\Options.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\internal\OptionSetter.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\curlpp\internal\SList.cpp"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"

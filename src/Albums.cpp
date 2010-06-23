@@ -8,14 +8,14 @@ namespace Facebook
 	{
 		Deserializer d(json);
 
-		d.Deserialize("id", &id_ );
-		d.Deserialize("name", &name_);
-		d.Deserialize("description", &description_);
-		d.Deserialize("location", &location_);
-		d.Deserialize("link", &link_);
-		d.Deserialize("count", &count_);
-		d.Deserialize("created_time", &created_time_);
-		d.Deserialize("updated_time", &updated_time_);
+		d.Deserialize("id", false,&id_ );
+		d.Deserialize("name", false, &name_);
+		d.Deserialize("description", false, &description_);
+		d.Deserialize("location", false, &location_);
+		d.Deserialize("link", false, &link_);
+		d.Deserialize("count", false, &count_);
+		d.Deserialize("created_time", false, &created_time_);
+		d.Deserialize("updated_time", false, &updated_time_);
 	}
 
 	std::list<Facebook::Photo*>* Album::getPhotoList() const

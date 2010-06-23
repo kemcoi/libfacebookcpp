@@ -33,9 +33,7 @@ namespace Facebook
 		typedef std::invalid_argument inherited;
 		InvalidArgument(const std::string& message) : inherited(message)
 		{
-			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(message.c_str()));
-			// XXX: Check this doesn't throw!
-			// XXX: remove const_cast
+			GetErrorLog() << message;
 		}
 	};
 
@@ -45,12 +43,7 @@ namespace Facebook
 		typedef std::runtime_error inherited;
 		FacebookException(const std::string &type, const std::string &message) : inherited(message)
 		{
-			_UNUSED(type);
-
-			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(type.c_str()));
-			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(message.c_str()));
-			// XXX: Check this doesn't throw!
-			// XXX: remove const_cast
+			GetErrorLog() << type << std::endl << message;
 		}
 	};
 
@@ -60,9 +53,7 @@ namespace Facebook
 		typedef std::logic_error inherited;
 		NotSupportedException(const std::string& message) : inherited(message)
 		{
-			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(message.c_str()));
-			// XXX: Check this doesn't throw!
-			// XXX: remove const_cast
+			GetErrorLog() << message;
 		}
 	};
 
@@ -72,9 +63,7 @@ namespace Facebook
 		typedef std::logic_error inherited;
 		UnexpectedException(const std::string& message) : inherited(message)
 		{
-			Logger::FacebookLog(FB_Error, LOG_PARAMS, const_cast<char*>(message.c_str()));
-			// XXX: Check this doesn't throw!
-			// XXX: remove const_cast
+			GetErrorLog() << message;
 		}
 	};
 }

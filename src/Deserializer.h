@@ -36,56 +36,73 @@ namespace Facebook
 			if(!json_.isObject())
 				throw InvalidArgument("json");
 
-			const Json::Value& value = json_["error"];
-
-			if(value.isObject())
-				throw FacebookException(json_["type"].asString(), json_["message"].asString());
+			if(json_.isMember("error"))
+			{
+				const Json::Value& value = json_["error"];
+				throw FacebookException(value["type"].asString(), value["message"].asString());
+			}
 		}
 
 	public: // public interface
 		template<class TType>
-		void Deserialize(const char *tag, TType *t)
+		void Deserialize(const char *tag, bool required, TType *t)
 		{
 			assert(tag);
 			assert(t);
 
-			const Json::Value &value = json_[tag];
-			if(value.isNull())
-				throw UnexpectedException("json_[tag].isNull()");
-
-			t->Deserialize(value);
+			if(!json_.isMember(tag))
+			{
+				if(required)
+					throw UnexpectedException("json_[tag] is missing");
+			}
+			else
+			{
+				t->Deserialize(json_[tag]);
+			}
 		}
 
 		template<>
-		void Deserialize(const char *tag, std::string *str)
+		void Deserialize(const char *tag, bool required, std::string *str)
 		{
 			assert(tag);
 			assert(str);
 
-			const Json::Value &value = json_[tag];
-			if(value.isNull())
-				throw UnexpectedException("json_[tag].isNull()");
+			if(!json_.isMember(tag))
+			{
+				if(required)
+					throw UnexpectedException("json_[tag] is missing");
+			}
+			else
+			{
+				const Json::Value &value = json_[tag];
 
-			if(!value.isConvertibleTo(Json::stringValue))
-				throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
+				if(!value.isConvertibleTo(Json::stringValue))
+					throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
 
-			*str = value.asString();
+				*str = value.asString();
+			}
 		}
 
 		template<>
-		void Deserialize(const char *tag, unsigned int *uint)
+		void Deserialize(const char *tag, bool required, unsigned int *uint)
 		{
 			assert(tag);
 			assert(uint);
 
-			const Json::Value &value = json_[tag];
-			if(value.isNull())
-				throw UnexpectedException("value.isNull()");
+			if(!json_.isMember(tag))
+			{
+				if(required)
+					throw UnexpectedException("json_[tag] is missing");
+			}
+			else
+			{
+				const Json::Value &value = json_[tag];
 
-			if(!value.isConvertibleTo(Json::uintValue))
-				throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");
+				if(!value.isConvertibleTo(Json::uintValue))
+					throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");
 
-			*uint = value.asUInt();
+				*uint = value.asUInt();
+			}
 		}
 
 	private: // assignment operator

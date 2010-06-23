@@ -86,6 +86,7 @@ namespace Facebook
 		// First build the final url
 
 		curlpp::Easy curl;
+		GetDebugLog() << uri.GetUri();
 		curl.setOpt(curlpp::options::Url(uri.GetUri()));
 		// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
 		curl.setOpt(curlpp::options::SslVerifyPeer(false));

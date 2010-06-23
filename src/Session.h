@@ -36,6 +36,9 @@ namespace Facebook
 {
 	class Session
 	{
+	public: // ~()
+		~Session();
+
 	public:
 		//----------------------------------------------
 		// You must call this to recieve the authentication URL
@@ -55,19 +58,13 @@ namespace Facebook
 		// Getters
 		const Facebook::User* getCurrentUser();
 
-
-
-
 	private:
 		Session(std::string accessToken);
-		~Session();
 
 		Facebook::Logger* logger_;
-		HttpRequest* HtppHandler_;
+		std::tr1::shared_ptr<HttpRequest> HttpHandler_;
 
 		Facebook::User* cachedUser_;
-	
-
 	};
 }
 

@@ -23,51 +23,44 @@
 #define FACEBOOK_LOGGER_H_
 
 #include "Common.h"
-
+#include <ostream>
 
 namespace Facebook
 {
+	class Logger;
+
+	class LogStream : public std::ostream
+	{
+	private: // private ctor
+		LogStream() : std::ostream(NULL)
+		{
+		}
+
+		friend class Logger;
+	};
+
 	class Logger
 	{
-	public:
-		//----------------------------------------------
-		Logger();
-		~Logger();
-		//----------------------------------------------
-		//TODO: hardcore overload this
-		template<typename T>
-		static void FacebookLog(T type, int lineNumber, const char* file, char* logString)
-		{}
-		
-		template<>
-		static void FacebookLog<LogType>(LogType type, int lineNumber, const char* file, char* logString)
+	public: // public types
+		enum FB_LOGLEVEL
 		{
-			std::string f = file;
-			std::string l = logString;
-			switch(type)
-			{
-			case FB_Error:
-				std::cout<< "Error: " << " @ " << f  << "Line: " << lineNumber;
-				break;
-			case FB_Debug:
-				std::cout<< "Debug: "<< " @ " << f  << "Line: " << lineNumber;
-				break;
-			case FB_Info:
-				std::cout<< "Info: ";
-				break;
-			case FB_Warn:
-				std::cout<< "Warn: ";
-				break;
-			case FB_Message:
-				std::cout<< "Message: ";
-				break;
-			}
+			FB_LOGLEVEL_ERROR,
+			FB_LOGLEVEL_WARN,
+			FB_LOGLEVEL_INFO,
+			FB_LOGLEVEL_DEBUG,
 
-			std::cout << "--" << l << std::endl;
-		}
+			FB_LOGLEVEL_COUNT
+		};
+
+	public: // public interface
+		Logger();
+		std::ostream& GetLog(FB_LOGLEVEL level, int lineNumber, const char* file);
+
 	private:
-		int instance_;
+		LogStream stream_[FB_LOGLEVEL_COUNT];
 	};
+
+	extern Logger logInstance;
 }
 
 #endif

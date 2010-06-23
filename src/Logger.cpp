@@ -1,21 +1,34 @@
-
 #include "Logger.h"
 #include <curlpp/cURLpp.hpp>
 #include <iostream>
 
 namespace Facebook
 {
-	static int logInstances = 1;
+	Logger logInstance;
 
 	Logger::Logger()
 	{
-		instance_ = logInstances; logInstances++; // ghetto instancing
-		FacebookLog<LogType>(FB_Info, LOG_PARAMS, "Initializing Logger");
+		for(size_t ii = 0; ii < NUMELMS(stream_); ++ii)
+		{
+			stream_[ii].rdbuf(std::cout.rdbuf());
+		}
 	}
 
-	Logger::~Logger()
+	std::ostream& Logger::GetLog( FB_LOGLEVEL level, int lineNumber, const char* file )
 	{
-		FacebookLog<LogType>(FB_Info, LOG_PARAMS, "Destroying Logger Instance ");
+		assert(level >= FB_LOGLEVEL_ERROR && level < FB_LOGLEVEL_COUNT);
+
+		static const char *s_level[] = {
+			"Error: ", "Warning: ", "Info: ", "Debug: "
+		};
+
+		CASSERT(NUMELMS(s_level) == FB_LOGLEVEL_COUNT);
+
+		stream_[level] << std::endl << s_level[level];
+
+		if(level <= FB_LOGLEVEL_WARN)
+			stream_[level] << " @ " << file << ":" << lineNumber << std::endl;
+
+		return stream_[level];
 	}
-	
 }

@@ -35,7 +35,10 @@ namespace Facebook
 	}
 
 	//----------------------------------------------
-	const std::string Session::GetAuthenticationURL(const std::string clientID, const std::string redirectURI, const std::string type, const std::string display)
+	const std::string Session::GetAuthenticationURL(const std::string& clientID,
+													const std::string& redirectURI,
+													const std::string& type, 
+													const std::string& display)
 	{
 		GetInfoLog() << "Creating Authentication URL";
 		
@@ -59,7 +62,7 @@ namespace Facebook
 	}
 
 	//----------------------------------------------
-	Session* Session::Authenticate(std::string redirectedURL)
+	Session* Session::Authenticate(std::string& redirectedURL)
 	{	
 		// XXX: Hack
 		redirectedURL[redirectedURL.find_first_of('#')] = '?';
@@ -85,16 +88,8 @@ namespace Facebook
 	//----------------------------------------------
 	const Facebook::User* Session::getCurrentUser()
 	{
-		Facebook::User* newUser = new Facebook::User();
-		Facebook::Uri userLink;
-
-		userLink.base_uri = "https://graph.facebook.com/me/";
-		userLink.query_params["access_token"] = HttpHandler_->access_token_;
-		
-		Json::Value userValues;
-
-		HttpHandler_->GetResponse(userLink, userValues);
-		newUser->Deserialize(userValues);
+		// W00t for ugly code
+		const Facebook::User* newUser = getUserByID(std::string("me"));
 
 		// let's keep a copy on our session object
 		if( NULL == cachedUser_)
@@ -104,5 +99,20 @@ namespace Facebook
  		return newUser;
 	}
 
+	const Facebook::User* Session::getUserByID( const std::string& userID )
+	{
+		Facebook::User* newUser = new Facebook::User();
+		Facebook::Uri userLink;
+
+		userLink.base_uri = "https://graph.facebook.com/" + userID;
+		userLink.query_params["access_token"] = HttpHandler_->access_token_;
+
+		Json::Value userValues;
+
+		HttpHandler_->GetResponse(userLink, userValues);
+		newUser->Deserialize(userValues);
+
+		return newUser;
+	}
 	//----------------------------------------------
 }

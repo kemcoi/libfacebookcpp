@@ -32,8 +32,8 @@ namespace Facebook
 
 	}
 
-	User* User::clone()
-	{
+	User* User::clone() const // probably wont' need this depending how large this object is
+	{ 
 		// do a deep copy
 		std::tr1::shared_ptr<HttpRequest> clonedRequest_ = GetHttpRequest();
 		Facebook::User* clonedUser = new Facebook::User();

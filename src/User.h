@@ -40,7 +40,7 @@ namespace Facebook
 		//----------------------------------------------
 		void Deserialize(const Json::Value &json) OVERRIDE;
 
-		User* clone(); 
+		User* clone() const;
 
 		//----------------------------------------------
 		//Getters

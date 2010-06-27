@@ -16,7 +16,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
 
 #ifndef FACEBOOK_SESSION_H_
@@ -27,7 +26,7 @@ namespace Facebook
 	class User;
 	class HttpRequest;
 
-	class Session
+	class FACEBOOK_API Session
 	{
 	public: // ~()
 		~Session();
@@ -55,7 +54,7 @@ namespace Facebook
 		Session(const std::string& accessToken);
 
 		Facebook::Logger* logger_;
-		std::tr1::shared_ptr<HttpRequest> HttpHandler_;
+		shared_ptr<HttpRequest> HttpHandler_;
 
 		Facebook::User* cachedUser_;
 	};

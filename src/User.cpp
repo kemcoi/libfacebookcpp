@@ -36,7 +36,7 @@ namespace Facebook
 	User* User::clone()
 	{
 		// do a deep copy
-		std::tr1::shared_ptr<HttpRequest> clonedRequest_ = GetHttpRequest();
+		shared_ptr<HttpRequest> clonedRequest_ = GetHttpRequest();
 		Facebook::User* clonedUser = new Facebook::User();
 
 		clonedUser->id_ = id_;

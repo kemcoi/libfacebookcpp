@@ -16,17 +16,16 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
+
 #ifndef FACEBOOK_FROM_H_
 #define FACEBOOK_FROM_H_
 
-#include "Common.h"
 #include "AuthorizedObject.h"
 
 namespace Facebook
 {
-	class From : public AuthorizedObject
+	class FACEBOOK_API From : public AuthorizedObject
 	{
 	public: // public interface
 		typedef AuthorizedObject inherited;

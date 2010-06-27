@@ -16,7 +16,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
 
 #ifndef FACEBOOK_EXCEPTION_H_
@@ -24,7 +23,7 @@
 
 namespace Facebook
 {
-	class InvalidArgument : public std::invalid_argument
+	class FACEBOOK_API InvalidArgument : public std::invalid_argument
 	{
 	public:
 		typedef std::invalid_argument inherited;
@@ -34,7 +33,7 @@ namespace Facebook
 		}
 	};
 
-	class FacebookException : public std::runtime_error
+	class FACEBOOK_API FacebookException : public std::runtime_error
 	{
 	public:
 		typedef std::runtime_error inherited;
@@ -44,7 +43,7 @@ namespace Facebook
 		}
 	};
 
-	class NotSupportedException : public std::logic_error
+	class FACEBOOK_API NotSupportedException : public std::logic_error
 	{
 	public:
 		typedef std::logic_error inherited;
@@ -54,7 +53,7 @@ namespace Facebook
 		}
 	};
 
-	class UnexpectedException : public std::logic_error
+	class FACEBOOK_API UnexpectedException : public std::logic_error
 	{
 	public:
 		typedef std::logic_error inherited;

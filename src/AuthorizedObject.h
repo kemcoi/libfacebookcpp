@@ -28,6 +28,9 @@ namespace Facebook
 {
 	class FACEBOOK_API AuthorizedObject : public Object
 	{
+	public: // interface
+		void SetHttpRequest(const shared_ptr<HttpRequest> &request) { request_ = request; }
+
 	protected: // interface
 		AuthorizedObject() { }
 

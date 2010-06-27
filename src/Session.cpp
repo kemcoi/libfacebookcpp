@@ -98,6 +98,7 @@ namespace Facebook
 	const Facebook::User* Session::getUserByID( const std::string& userID )
 	{
 		Facebook::User* newUser = new Facebook::User();
+		newUser->SetHttpRequest(HttpHandler_);
 		Facebook::Uri userLink;
 
 		userLink.base_uri = "https://graph.facebook.com/" + userID;

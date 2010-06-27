@@ -26,6 +26,9 @@
 #include "Object.h"
 #include "Exception.h"
 
+// XXX: I don't like this. It makes std::list include everywhere
+#include <list>
+
 namespace Facebook
 {
 	class Deserializer
@@ -43,6 +46,79 @@ namespace Facebook
 			}
 		}
 
+	private: // private helper functions
+		template<class TType>
+		static void _DeserializeObject(const Json::Value &json, bool required, TType *t)
+		{
+			ASSERT(t);
+
+			if(!json.isObject())
+			{
+				if(required)
+					throw UnexpectedException("object is missing");
+			}
+			else
+			{
+				t->Deserialize(json);
+			}
+		}
+
+		template<>
+		static void _DeserializeObject(const Json::Value &json, bool required, std::string *str)
+		{
+			ASSERT(str);
+
+			if(!json.isConvertibleTo(Json::stringValue))
+			{
+				if(required)
+					throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
+			}
+			else
+			{
+				*str = json.asString();
+			}
+		}
+
+		template<>
+		static void _DeserializeObject(const Json::Value &json, bool required, unsigned int *uint)
+		{
+			ASSERT(uint);
+
+			if(!json.isConvertibleTo(Json::uintValue))
+			{
+				if(required)
+					throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");
+			}
+			else
+			{
+				*uint = json.asUInt();
+			}
+		}
+
+		// XXX: Update exception comments
+
+		template<class TType>
+		static void _DeserializeObject(const Json::Value &json, bool required, std::list<TType> *list)
+		{
+			ASSERT(list);
+
+			if(!json.isConvertibleTo(Json::arrayValue))
+			{
+				if(required)
+					throw UnexpectedException("!value.isConvertibleTo(Json::arrayValue)");
+			}
+			else
+			{
+				for(Json::UInt ii = 0; ii < json.size(); ++ii)
+				{
+					// XXX: Optimize the Json::Value()
+					TType t;
+					_DeserializeObject(json.get(ii, Json::Value()), required, &t);
+					list->push_back(t);
+				}
+			}
+		}
+
 	public: // public interface
 		template<class TType>
 		void Deserialize(const char *tag, bool required, TType *t)
@@ -57,53 +133,10 @@ namespace Facebook
 			}
 			else
 			{
-				t->Deserialize(json_[tag]);
+				_DeserializeObject(json_[tag], required, t);
 			}
 		}
 
-		template<>
-		void Deserialize(const char *tag, bool required, std::string *str)
-		{
-			ASSERT(tag);
-			ASSERT(str);
-
-			if(!json_.isMember(tag))
-			{
-				if(required)
-					throw UnexpectedException("json_[tag] is missing");
-			}
-			else
-			{
-				const Json::Value &value = json_[tag];
-
-				if(!value.isConvertibleTo(Json::stringValue))
-					throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
-
-				*str = value.asString();
-			}
-		}
-
-		template<>
-		void Deserialize(const char *tag, bool required, unsigned int *uint)
-		{
-			ASSERT(tag);
-			ASSERT(uint);
-
-			if(!json_.isMember(tag))
-			{
-				if(required)
-					throw UnexpectedException("json_[tag] is missing");
-			}
-			else
-			{
-				const Json::Value &value = json_[tag];
-
-				if(!value.isConvertibleTo(Json::uintValue))
-					throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");
-
-				*uint = value.asUInt();
-			}
-		}
 
 	private: // assignment operator
 		Deserializer& operator = (const Deserializer& rhs)

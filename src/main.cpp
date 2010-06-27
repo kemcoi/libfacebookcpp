@@ -56,7 +56,8 @@ int main()
 
 		std::auto_ptr<Facebook::Session> session_(Facebook::Session::Authenticate(redirectURL));
 		std::auto_ptr<const Facebook::User> user_(session_->getCurrentUser());
-
+	
+		std::auto_ptr<const Facebook::User> jonLai(session_->getUserByID(std::string("506828136")));
 		system("pause"); // VS Debug
 	}
 

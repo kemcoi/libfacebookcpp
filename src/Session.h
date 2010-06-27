@@ -39,28 +39,38 @@ namespace Facebook
 		friend class std::auto_ptr<Facebook::Session>;
 	public:
 		//----------------------------------------------
-		// You must call this to recieve the authentication URL
-		// This URL must be accepted to 
-		static const std::string GetAuthenticationURL(const std::string clientID, 
-											   const std::string redirectURI,
-											   const std::string type, 
-											   const std::string display);
+		/*! 
+		// The caller can use this to build the authentication URL.
+		// This URL must be accepted by the user in order to retrieve 
+		// the access token. */
+		static const std::string GetAuthenticationURL(const std::string& clientID, 
+													  const std::string& redirectURI,
+													  const std::string& type, 
+													  const std::string& display);
 
 		//----------------------------------------------
-		// 
-		static Session* Authenticate(std::string redirectedURL);
+		/*!
+		// The caller is given ownership of a Facebook::Session object
+		// based on the access token that is passed in. */
+		static Session* Authenticate(std::string& redirectedURL);
+
 		//----------------------------------------------
+		/*!
+		// This method should be used to destroy Facebook::Session objects*/
 		void Destroy();
 
 		//----------------------------------------------
 		// Getters
+		// TODO: Decide if these returns should be constant
+		// and if we it should be a param instead
 		const Facebook::User* getCurrentUser();
+		const Facebook::User* getUserByID(const std::string& userID);
 
 	private:
 		Session(std::string accessToken);
 		~Session();
 
-
+		//TODO: Disallow copy ctor 
 
 		Facebook::Logger* logger_;
 		std::tr1::shared_ptr<HttpRequest> HttpHandler_;

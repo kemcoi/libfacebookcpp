@@ -13,7 +13,7 @@ namespace Facebook
 	{
 		GetInfoLog() << "Initializing Session";
 		logger_ = new Facebook::Logger();
-		HttpHandler_ = std::tr1::shared_ptr<HttpRequest>(new HttpRequest(accessToken));
+		HttpHandler_ = shared_ptr<HttpRequest>(new HttpRequest(accessToken));
 		GetInfoLog() << accessToken;
 		
 	}

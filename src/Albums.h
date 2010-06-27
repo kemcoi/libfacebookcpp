@@ -16,13 +16,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
 
 #ifndef FACEBOOK_ALBUM_H_
 #define FACEBOOK_ALBUM_H_
 
-#include "Common.h"
 #include "Object.h"
 #include "Photo.h"
 
@@ -30,12 +28,12 @@
 
 namespace Facebook
 {
-	class Album: public AuthorizedObject
+	class FACEBOOK_API Album: public AuthorizedObject
 	{
 	public:
 		//----------------------------------------------
-		Album();
-		virtual ~Album();
+		Album() { }
+		virtual ~Album() { }
 
 		//----------------------------------------------
 		void Deserialize(const Json::Value &json) OVERRIDE;

@@ -16,7 +16,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
 
 #ifndef FACEBOOK_USER_H_
@@ -27,7 +26,7 @@
 
 namespace Facebook
 {
-	class User: public AuthorizedObject
+	class FACEBOOK_API User: public AuthorizedObject
 	{
 		typedef AuthorizedObject inherited;
 	public:

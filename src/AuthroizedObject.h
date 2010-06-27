@@ -31,13 +31,16 @@ namespace Facebook
 	class AuthorizedObject : public Object
 	{
 	protected: // interface
-		AuthorizedObject(const std::tr1::shared_ptr<HttpRequest>& request) : request_(request) { }
+		AuthorizedObject() { }
+
 		const std::tr1::shared_ptr<HttpRequest>& GetHttpRequest() const { return request_; }
 		std::tr1::shared_ptr<HttpRequest>& GetHttpRequest() { return request_; }
 
 	private:
 		// XXX: This makes us thread-safe up to the Session level
 		std::tr1::shared_ptr<HttpRequest> request_;
+
+		friend class Deserializer;
 	};
 }
 

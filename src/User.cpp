@@ -4,6 +4,14 @@
 #include "Deserializer.h"
 namespace Facebook
 {
+	void Facebook::FriendContainer::Deserialize(const Json::Value &json)
+	{
+		Deserializer deserialize(*this, json);
+
+		deserialize.Deserialize("id", false, &id_);
+		deserialize.Deserialize("name", false, &name_);
+	}
+
 
 	void Facebook::User::Deserialize( const Json::Value &json )
 	{
@@ -61,5 +69,21 @@ namespace Facebook
 		clonedUser->timezone_ = timezone_;
 
 		return clonedUser;
+	}
+
+	void Facebook::User::getFriendsList( std::list<FriendContainer>& friendList ) const
+	{
+		Facebook::Uri friendLink;
+
+		friendLink.base_uri = "https://graph.facebook.com/" + id_ + "/friends";
+
+		friendLink.query_params["access_token"] = GetHttpRequest()->getAccessToken();
+
+		Json::Value userValues;
+		Deserializer deserializer(*this, userValues);
+		GetHttpRequest()->GetResponse(friendLink, userValues);
+
+		deserializer.Deserialize("data", false, &friendList);
+
 	}
 }

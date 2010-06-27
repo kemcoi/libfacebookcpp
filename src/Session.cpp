@@ -94,6 +94,7 @@ namespace Facebook
  		return newUser;
 	}
 
+	//----------------------------------------------
 	const Facebook::User* Session::getUserByID( const std::string& userID )
 	{
 		Facebook::User* newUser = new Facebook::User();

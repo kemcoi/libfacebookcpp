@@ -26,6 +26,23 @@
 
 namespace Facebook
 {
+	class FACEBOOK_API FriendContainer: public AuthorizedObject
+	{
+	public:
+		//----------------------------------------------
+		FriendContainer(){};
+
+		//----------------------------------------------
+		void Deserialize(const Json::Value &json) OVERRIDE;
+
+		//----------------------------------------------
+		const std::string& getName();
+		const std::string& getID();
+	private:
+		std::string name_;
+		std::string id_;
+	};
+
 	class FACEBOOK_API User: public AuthorizedObject
 	{
 		typedef AuthorizedObject inherited;
@@ -63,6 +80,10 @@ namespace Facebook
 		const std::string& getVerified() const { return verified_; }
 		const std::string& getSignificantOther() const { return significant_other_; }
 		const std::string& getTimeZone() const { return timezone_; }
+
+		//----------------------------------------------
+		// Connections
+		void getFriendsList(std::list<FriendContainer>& friendList) const;
 
 	protected:
 	private:

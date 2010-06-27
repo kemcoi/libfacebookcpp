@@ -21,10 +21,7 @@
 #ifndef FACEBOOK_ALBUM_H_
 #define FACEBOOK_ALBUM_H_
 
-#include "Object.h"
 #include "Photo.h"
-
-#include <list>
 
 namespace Facebook
 {

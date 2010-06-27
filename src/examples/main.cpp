@@ -11,7 +11,7 @@ int main()
 		std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, "user_agent", std::string());
 
 		std::cout << "PASTE THIS INTO YOUR BROWSER TO ACCEPT" << std::endl;
-		std::cout<<std::endl << url << std::endl;
+		std::cout << std::endl << url << std::endl;
 		std::string redirectURL;
 		system("pause"); // VS Debug
 

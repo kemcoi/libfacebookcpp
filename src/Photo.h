@@ -21,7 +21,6 @@
 #ifndef FACEBOOK_PHOTO_H_
 #define FACEBOOK_PHOTO_H_
 
-#include "Object.h"
 #include "From.h"
 
 namespace Facebook

@@ -21,7 +21,6 @@
 #ifndef FACEBOOK_DESERIALIZER_H_
 #define FACEBOOK_DESERIALIZER_H_
 
-#include "Object.h"
 #include "Exception.h"
 #include "AuthorizedObject.h"
 

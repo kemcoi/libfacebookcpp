@@ -1,3 +1,4 @@
+#include "precompile.h"
 
 #include "User.h"
 #include "Deserializer.h"

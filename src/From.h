@@ -22,7 +22,7 @@
 #define FACEBOOK_FROM_H_
 
 #include "Common.h"
-#include "AuthroizedObject.h"
+#include "AuthorizedObject.h"
 
 namespace Facebook
 {

@@ -1,6 +1,12 @@
-#include "MemoryTracker.h"
+#include "precompile.h"
+#include <cassert>
 #include <crtdbg.h>
 #include "Exception.h"
+
+void _assert(bool x)
+{
+	assert(x);
+}
 
 #ifdef DEBUG
 void BeginMemoryTracker()

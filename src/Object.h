@@ -22,6 +22,8 @@
 #ifndef FACEBOOK_OBJECT_H_
 #define FACEBOOK_OBJECT_H_
 
+#include "precompile.h"
+
 class Object
 {
 public: // public interface

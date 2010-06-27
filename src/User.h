@@ -22,8 +22,7 @@
 #ifndef FACEBOOK_USER_H_
 #define FACEBOOK_USER_H_
 
-#include "Common.h"
-#include "AuthroizedObject.h"
+#include "AuthorizedObject.h"
 
 
 namespace Facebook

@@ -36,9 +36,7 @@ namespace Facebook
 {
 	class Session
 	{
-	public: // ~()
-		~Session();
-
+		friend class std::auto_ptr<Facebook::Session>;
 	public:
 		//----------------------------------------------
 		// You must call this to recieve the authentication URL
@@ -60,6 +58,9 @@ namespace Facebook
 
 	private:
 		Session(std::string accessToken);
+		~Session();
+
+
 
 		Facebook::Logger* logger_;
 		std::tr1::shared_ptr<HttpRequest> HttpHandler_;

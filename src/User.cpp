@@ -1,3 +1,4 @@
+#include "precompile.h"
 
 #include "User.h"
 #include "Deserializer.h"
@@ -35,7 +36,7 @@ namespace Facebook
 	User* User::clone() const // probably wont' need this depending how large this object is
 	{ 
 		// do a deep copy
-		std::tr1::shared_ptr<HttpRequest> clonedRequest_ = GetHttpRequest();
+		shared_ptr<HttpRequest> clonedRequest_ = GetHttpRequest();
 		Facebook::User* clonedUser = new Facebook::User();
 
 		clonedUser->id_ = id_;

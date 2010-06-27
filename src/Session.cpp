@@ -1,24 +1,20 @@
-#include "sstream"
-#include "Common.h"
+#include "precompile.h"
+
 #include "Session.h"
-#include "HTTPRequest.h"
+
+#include "User.h"
 #include "Exception.h"
-
-#include <curlpp/cURLpp.hpp>
-#include <curlpp/Easy.hpp>
-#include <curlpp/Options.hpp>
-
 
 namespace Facebook
 {
 	//----------------------------------------------
 	// Constructor
-	Session::Session(std::string accessToken): cachedUser_(NULL)
+	Session::Session(const std::string& accessToken): cachedUser_(NULL)
 	{
 		GetInfoLog() << "Initializing Session";
 		logger_ = new Facebook::Logger();
-		HttpHandler_ = std::tr1::shared_ptr<HttpRequest>(new HttpRequest(accessToken));
-		GetInfoLog() << accessToken.c_str();
+		HttpHandler_ = shared_ptr<HttpRequest>(new HttpRequest(accessToken));
+		GetInfoLog() << accessToken;
 		
 	}
 	//----------------------------------------------
@@ -70,8 +66,7 @@ namespace Facebook
 		Facebook::Uri redirectedParams;
 		HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
 
-		// Hardcode this for now
-		QueryParamMap::const_iterator it = redirectedParams.query_params.find("access_token");
+		Uri::QueryParamMap::const_iterator it = redirectedParams.query_params.find("access_token");
 
 		if(it == redirectedParams.query_params.end())
 		{

@@ -1,15 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libfacebookcpp", "src\libfacebookcpp.vcproj", "{43C2EBFD-32D9-418C-8BD4-5BD11CBC4D16}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jsoncpp", "external-libs\jsoncpp\jsoncpp.vcproj", "{2BE594F7-6E62-4B8F-97D6-723F29D2716A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "external-libs\curlpp\curlpp.vcproj", "{F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "examples", "src\examples\examples.vcproj", "{EB0E7D50-65A6-4474-879E-98667C9BA364}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FC635166-86D4-4EF0-9DF4-99C2603241F1} = {FC635166-86D4-4EF0-9DF4-99C2603241F1}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libfacebookcpp", "src\libfacebookcpp.vcproj", "{FC635166-86D4-4EF0-9DF4-99C2603241F1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5} = {F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5}
 		{2BE594F7-6E62-4B8F-97D6-723F29D2716A} = {2BE594F7-6E62-4B8F-97D6-723F29D2716A}
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jsoncpp", "external-libs\jsoncpp\jsoncpp.vcproj", "{2BE594F7-6E62-4B8F-97D6-723F29D2716A}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "external-libs\curlpp\curlpp.vcproj", "{F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +22,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{43C2EBFD-32D9-418C-8BD4-5BD11CBC4D16}.Debug|Win32.ActiveCfg = Debug|Win32
-		{43C2EBFD-32D9-418C-8BD4-5BD11CBC4D16}.Debug|Win32.Build.0 = Debug|Win32
-		{43C2EBFD-32D9-418C-8BD4-5BD11CBC4D16}.Release|Win32.ActiveCfg = Release|Win32
-		{43C2EBFD-32D9-418C-8BD4-5BD11CBC4D16}.Release|Win32.Build.0 = Release|Win32
 		{2BE594F7-6E62-4B8F-97D6-723F29D2716A}.Debug|Win32.ActiveCfg = Debug|Win32
 		{2BE594F7-6E62-4B8F-97D6-723F29D2716A}.Debug|Win32.Build.0 = Debug|Win32
 		{2BE594F7-6E62-4B8F-97D6-723F29D2716A}.Release|Win32.ActiveCfg = Release|Win32
@@ -29,6 +30,14 @@ Global
 		{F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5}.Debug|Win32.Build.0 = Debug|Win32
 		{F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5}.Release|Win32.ActiveCfg = Release|Win32
 		{F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5}.Release|Win32.Build.0 = Release|Win32
+		{EB0E7D50-65A6-4474-879E-98667C9BA364}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EB0E7D50-65A6-4474-879E-98667C9BA364}.Debug|Win32.Build.0 = Debug|Win32
+		{EB0E7D50-65A6-4474-879E-98667C9BA364}.Release|Win32.ActiveCfg = Release|Win32
+		{EB0E7D50-65A6-4474-879E-98667C9BA364}.Release|Win32.Build.0 = Release|Win32
+		{FC635166-86D4-4EF0-9DF4-99C2603241F1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FC635166-86D4-4EF0-9DF4-99C2603241F1}.Debug|Win32.Build.0 = Debug|Win32
+		{FC635166-86D4-4EF0-9DF4-99C2603241F1}.Release|Win32.ActiveCfg = Release|Win32
+		{FC635166-86D4-4EF0-9DF4-99C2603241F1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,13 +16,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
 
 #ifndef FACEBOOK_LOGGER_H_
 #define FACEBOOK_LOGGER_H_
 
-#include "Common.h"
 #include <ostream>
 
 namespace Facebook

@@ -16,16 +16,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
 
 #ifndef FACEBOOK_DESERIALIZER_H_
 #define FACEBOOK_DESERIALIZER_H_
 
-#include "Common.h"
 #include "Object.h"
 #include "Exception.h"
-#include "AuthroizedObject.h"
+#include "AuthorizedObject.h"
 
 // XXX: Clean up includes everywhere
 

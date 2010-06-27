@@ -18,15 +18,15 @@
  *
  */
 
-#ifndef FACEBOOK_OBJECT_H_
-#define FACEBOOK_OBJECT_H_
+#ifndef FACEBOOK_FACEBOOK_H_
+#define FACEBOOK_FACEBOOK_H_
 
-#include "precompile.h"
+// Aggregate includes here
+#include "Albums.h"
+#include "From.h"
+#include "Photo.h"
+#include "Session.h"
+#include "Status.h"
+#include "User.h"
 
-class Object
-{
-public: // public interface
-	virtual void Deserialize(const Json::Value &json) = 0;
-};
-
-#endif // FACEBOOK_OBJECT_H_
+#endif // FACEBOOK_FACEBOOK_H_

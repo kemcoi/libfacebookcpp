@@ -16,29 +16,27 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
 
 #ifndef FACEBOOK_AUTHORIZED_OBJECT_H_
 #define FACEBOOK_AUTHORIZED_OBJECT_H_
 
-#include <memory> // std::tr1::shared_ptr
 #include "Object.h"
 #include "HTTPRequest.h"
 
 namespace Facebook
 {
-	class AuthorizedObject : public Object
+	class FACEBOOK_API AuthorizedObject : public Object
 	{
 	protected: // interface
 		AuthorizedObject() { }
 
-		const std::tr1::shared_ptr<HttpRequest>& GetHttpRequest() const { return request_; }
-		std::tr1::shared_ptr<HttpRequest>& GetHttpRequest() { return request_; }
+		const shared_ptr<HttpRequest>& GetHttpRequest() const { return request_; }
+		shared_ptr<HttpRequest>& GetHttpRequest() { return request_; }
 
 	private:
 		// XXX: This makes us thread-safe up to the Session level
-		std::tr1::shared_ptr<HttpRequest> request_;
+		shared_ptr<HttpRequest> request_;
 
 		friend class Deserializer;
 	};

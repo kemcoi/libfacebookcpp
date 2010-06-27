@@ -1,10 +1,8 @@
-#include "Common.h"
+#include "precompile.h"
+
 #include "HTTPRequest.h"
 
 #include <sstream>
-#include <curlpp/cURLpp.hpp>
-#include <curlpp/Easy.hpp>
-#include <curlpp/Options.hpp>
 #include "Exception.h"
 
 namespace Facebook

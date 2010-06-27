@@ -16,23 +16,22 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
+
 #ifndef FACEBOOK_STATUS_H_
 #define FACEBOOK_STATUS_H_
 
-#include "Common.h"
 #include "Object.h"
 #include "From.h"
 
 namespace Facebook
 {
-	class Status : public AuthorizedObject
+	class FACEBOOK_API Status : public AuthorizedObject
 	{
 	public:
 		//----------------------------------------------
-		Status();
-		virtual ~Status();
+		Status() { }
+		virtual ~Status() { }
 
 		//----------------------------------------------
 		void Deserialize(const Json::Value &json) OVERRIDE;

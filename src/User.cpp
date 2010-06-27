@@ -92,7 +92,8 @@ namespace Facebook
 		Deserializer deserializer(*this, userValues);
 		GetHttpRequest()->GetResponse(friendLink, userValues);
 
-		deserializer.Deserialize("data", false, &friendList);
+		// Should always be able to get friend id and names
+		deserializer.Deserialize("data", true, &friendList); 
 
 	}
 }

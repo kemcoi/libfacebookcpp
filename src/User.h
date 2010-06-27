@@ -38,6 +38,7 @@ namespace Facebook
 		//----------------------------------------------
 		const std::string& getName();
 		const std::string& getID();
+
 	private:
 		std::string name_;
 		std::string id_;

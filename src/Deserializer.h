@@ -25,6 +25,9 @@
 #include "Common.h"
 #include "Object.h"
 #include "Exception.h"
+#include "AuthroizedObject.h"
+
+// XXX: Clean up includes everywhere
 
 // XXX: I don't like this. It makes std::list include everywhere
 #include <list>
@@ -34,7 +37,7 @@ namespace Facebook
 	class Deserializer
 	{
 	public: // public ctor
-		Deserializer(const Json::Value &json) : json_(json)
+		Deserializer(const AuthorizedObject &obj, const Json::Value &json) : json_(json), obj_(obj)
 		{
 			if(!json_.isObject())
 				throw InvalidArgument("json");
@@ -48,7 +51,7 @@ namespace Facebook
 
 	private: // private helper functions
 		template<class TType>
-		static void _DeserializeObject(const Json::Value &json, bool required, TType *t)
+		void _DeserializeObject(const Json::Value &json, bool required, TType *t)
 		{
 			ASSERT(t);
 
@@ -60,11 +63,12 @@ namespace Facebook
 			else
 			{
 				t->Deserialize(json);
+				t->request_ = obj_.request_;
 			}
 		}
 
 		template<>
-		static void _DeserializeObject(const Json::Value &json, bool required, std::string *str)
+		void _DeserializeObject(const Json::Value &json, bool required, std::string *str)
 		{
 			ASSERT(str);
 
@@ -80,7 +84,7 @@ namespace Facebook
 		}
 
 		template<>
-		static void _DeserializeObject(const Json::Value &json, bool required, unsigned int *uint)
+		void _DeserializeObject(const Json::Value &json, bool required, unsigned int *uint)
 		{
 			ASSERT(uint);
 
@@ -98,7 +102,7 @@ namespace Facebook
 		// XXX: Update exception comments
 
 		template<class TType>
-		static void _DeserializeObject(const Json::Value &json, bool required, std::list<TType> *list)
+		void _DeserializeObject(const Json::Value &json, bool required, std::list<TType> *list)
 		{
 			ASSERT(list);
 
@@ -111,9 +115,8 @@ namespace Facebook
 			{
 				for(Json::UInt ii = 0; ii < json.size(); ++ii)
 				{
-					// XXX: Optimize the Json::Value()
 					TType t;
-					_DeserializeObject(json.get(ii, Json::Value()), required, &t);
+					_DeserializeObject(json[ii], required, &t);
 					list->push_back(t);
 				}
 			}
@@ -147,6 +150,7 @@ namespace Facebook
 
 	private: // private members
 		const Json::Value &json_;
+		const AuthorizedObject &obj_;
 	};
 }
 

@@ -33,13 +33,12 @@ namespace Facebook
 		typedef AuthorizedObject inherited;
 
 	public: // ctor and ~()
-		Photo(const std::tr1::shared_ptr<HttpRequest>& request) : inherited(request), from_(request) { }
+		Photo() { }
 		virtual ~Photo() { }
 
 	public: // public interface
 		void Deserialize(const Json::Value &json) OVERRIDE;
 
-		//TODO: Accessors for From class
 		const std::string& GetId() const { return id_; }
 		const From& GetFrom() const { return from_; }
 		const std::string& GetName() const { return name_; }

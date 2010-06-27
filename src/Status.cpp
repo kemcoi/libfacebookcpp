@@ -7,7 +7,7 @@ namespace Facebook
 	//-----------------------------------------------------------
 	void Status::Deserialize( const Json::Value &json )
 	{
-		Deserializer deserializer(json);
+		Deserializer deserializer(*this, json);
 
 		deserializer.Deserialize("id", false, &id_);
 		deserializer.Deserialize("message", false, &message_);

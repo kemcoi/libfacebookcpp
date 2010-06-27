@@ -33,7 +33,7 @@ namespace Facebook
 		typedef AuthorizedObject inherited;
 	public:
 		//----------------------------------------------
-		User(const std::tr1::shared_ptr<HttpRequest>& request) : inherited(request){ }
+		User() { }
 		virtual ~User() { }
 		//----------------------------------------------
 

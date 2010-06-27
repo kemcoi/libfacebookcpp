@@ -27,10 +27,10 @@ namespace Facebook
 {
 	void Photo::Deserialize(const Json::Value &json)
 	{
-		Deserializer deserializer(json);
+		Deserializer deserializer(*this, json);
 
 		deserializer.Deserialize("id", false, &id_);
-		deserializer.Deserialize("from", false, &from_);
+		// deserializer.Deserialize("from", false, &from_);
 		deserializer.Deserialize("name", false, &name_);
 		deserializer.Deserialize("picture", false, &picture_);
 		deserializer.Deserialize("source", false, &source_);

@@ -85,7 +85,7 @@ namespace Facebook
 	//----------------------------------------------
 	const Facebook::User* Session::getCurrentUser()
 	{
-		Facebook::User* newUser = new Facebook::User(HttpHandler_);
+		Facebook::User* newUser = new Facebook::User();
 		Facebook::Uri userLink;
 
 		userLink.base_uri = "https://graph.facebook.com/me/";
@@ -96,9 +96,8 @@ namespace Facebook
 		HttpHandler_->GetResponse(userLink, userValues);
 		newUser->Deserialize(userValues);
 
-		
 		// let's keep a copy on our session object
-		if( NULL != cachedUser_)
+		if( NULL == cachedUser_)
 		{
 			cachedUser_ = newUser->clone();
 		}

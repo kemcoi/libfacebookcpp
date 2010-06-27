@@ -27,9 +27,6 @@
 
 // XXX: Clean up includes everywhere
 
-// XXX: I don't like this. It makes std::list include everywhere
-#include <list>
-
 namespace Facebook
 {
 	class Deserializer
@@ -111,6 +108,29 @@ namespace Facebook
 			}
 			else
 			{
+				for(Json::UInt ii = 0; ii < json.size(); ++ii)
+				{
+					TType t;
+					_DeserializeObject(json[ii], required, &t);
+					list->push_back(t);
+				}
+			}
+		}
+
+		template<class TType>
+		void _DeserializeObject(const Json::Value &json, bool required, std::vector<TType> *vector)
+		{
+			ASSERT(vector);
+
+			if(!json.isConvertibleTo(Json::arrayValue))
+			{
+				if(required)
+					throw UnexpectedException("!value.isConvertibleTo(Json::arrayValue)");
+			}
+			else
+			{
+				vector->reserve(json.size());
+
 				for(Json::UInt ii = 0; ii < json.size(); ++ii)
 				{
 					TType t;

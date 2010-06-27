@@ -93,11 +93,19 @@ namespace Facebook
 		return clonedUser;
 	}
 
-	void Facebook::User::getFriendsList( std::list<FriendContainer>& friendList ) const
+	void Facebook::User::getFriendsList(int offset, int limit, std::list<FriendContainer>& friendList ) const
 	{
+		if(0 == limit)
+		{
+			throw InvalidArgument("Limit is set to 0");
+		}
+
 		Facebook::Uri friendLink;
 
 		friendLink.base_uri = "https://graph.facebook.com/" + id_ + "/friends";
+
+		friendLink.query_params["limit"] = convertToString(offset);
+		friendLink.query_params["offset"] = convertToString(limit);
 
 		friendLink.query_params["access_token"] = GetHttpRequest()->getAccessToken();
 
@@ -105,7 +113,9 @@ namespace Facebook
 		Deserializer deserializer(*this, userValues);
 		GetHttpRequest()->GetResponse(friendLink, userValues);
 
-		deserializer.Deserialize("data", false, &friendList);
+		// Should always be able to get friend id and names
+		deserializer.Deserialize("data", true, &friendList); 
 
 	}
 }
+

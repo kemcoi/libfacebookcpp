@@ -71,4 +71,15 @@ using std::tr1::shared_ptr;
 
 #include "Logger.h"
 
+//------------------------------------------
+// Let's place this here temporarily
+template <typename T>
+inline std::string convertToString(T val)
+{
+	std::stringstream ss;
+	ss << val;
+	return ss.str();
+}
+
+//------------------------------------------
 #endif // FACEBOOK_PRECOMPILE_H_

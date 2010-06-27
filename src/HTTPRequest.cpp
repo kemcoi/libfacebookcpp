@@ -49,6 +49,7 @@ namespace Facebook
 
 			while(it != query_params.end())
 			{
+				oss << '&';
 				oss << curlpp::escape(it->first) << "=" << curlpp::escape(it->second);
 				++it;
 			}

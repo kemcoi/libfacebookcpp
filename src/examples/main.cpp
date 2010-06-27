@@ -22,7 +22,7 @@ int main()
 		std::auto_ptr<const Facebook::User> user_(session_->getCurrentUser());
 		std::list<Facebook::FriendContainer> list_;
 
-		user_->getFriendsList(list_);
+		user_->getFriendsList(5, 100, list_);
 
 		std::auto_ptr<const Facebook::User> jonLai(session_->getUserByID(std::string("506828136")));
 		system("pause"); // VS Debug

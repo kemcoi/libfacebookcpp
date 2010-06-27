@@ -83,7 +83,7 @@ namespace Facebook
 
 		//----------------------------------------------
 		// Connections
-		void getFriendsList(std::list<FriendContainer>& friendList) const;
+		void getFriendsList(int offSet, int limit, std::list<FriendContainer>& friendList) const;
 
 	protected:
 	private:

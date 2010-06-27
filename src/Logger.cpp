@@ -1,3 +1,4 @@
+#include "precompile.h"
 #include "Logger.h"
 #include <curlpp/cURLpp.hpp>
 #include <iostream>

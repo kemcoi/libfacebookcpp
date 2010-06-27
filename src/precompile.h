@@ -16,29 +16,32 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- *
  */
 
-#ifndef FACEBOOK_COMMON_H_
-#define FACEBOOK_COMMON_H_
+#ifndef FACEBOOK_PRECOMPILE_H_
+#define FACEBOOK_PRECOMPILE_H_
+
+// XXX: TODO: Static lib
+
+#ifdef LIBFACEBOOKCPP_EXPORTS
+#define FACEBOOK_API __declspec(dllexport)
+#else // LIBFACEBOOKCPP_EXPORTS
+#define FACEBOOK_API __declspec(dllimport)
+#endif // LIBFACEBOOKCPP_EXPORTS
 
 #define INTERFACE struct __declspec(novtable)
 #define OVERRIDE override
 
 #define _UNUSED(x) ((void)x)
 
-#include <cassert>
 #define ASSERT(x) assert(x); __assume(x); __analysis_assume(x)
 
-// XXX: TODO
-#define CASSERT(x)
+#define CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
+// XXX: 
 #define DASSERT(x) ASSERT(x)
 
 // XXX: TODO: Break on non-arrays
 #define NUMELMS(x) sizeof(x) / sizeof(x[0])
-
-#include <string>
-#include <json/json.h>
 
 // This is probably not the best way to do it.
 // Leaving it like this for now
@@ -54,6 +57,18 @@
 #define GetInfoLog()  logInstance.GetLog(Logger::FB_LOGLEVEL_INFO,  LOG_PARAMS)
 #define GetDebugLog() logInstance.GetLog(Logger::FB_LOGLEVEL_DEBUG, LOG_PARAMS)
 
-typedef std::map<std::string, std::string> QueryParamMap;
+#include <json/json.h>
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Easy.hpp>
+#include <curlpp/Options.hpp>
 
-#endif // FACEBOOK_COMMON_H_
+#include <map>
+#include <list>
+#include <sstream>
+#include <memory>
+
+using std::tr1::shared_ptr;
+
+#include "Logger.h"
+
+#endif // FACEBOOK_PRECOMPILE_H_

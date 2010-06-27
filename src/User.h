@@ -38,6 +38,7 @@ namespace Facebook
 		//----------------------------------------------
 		const std::string& getName();
 		const std::string& getID();
+
 	private:
 		std::string name_;
 		std::string id_;
@@ -83,7 +84,7 @@ namespace Facebook
 
 		//----------------------------------------------
 		// Connections
-		void getFriendsList(std::list<FriendContainer>& friendList) const;
+		void getFriendsList(int offSet, int limit, std::list<FriendContainer>& friendList) const;
 
 	protected:
 	private:

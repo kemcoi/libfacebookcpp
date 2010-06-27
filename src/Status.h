@@ -21,7 +21,6 @@
 #ifndef FACEBOOK_STATUS_H_
 #define FACEBOOK_STATUS_H_
 
-#include "Object.h"
 #include "From.h"
 
 namespace Facebook

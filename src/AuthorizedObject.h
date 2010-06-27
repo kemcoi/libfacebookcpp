@@ -21,15 +21,14 @@
 #ifndef FACEBOOK_AUTHORIZED_OBJECT_H_
 #define FACEBOOK_AUTHORIZED_OBJECT_H_
 
-#include "Object.h"
-#include "HTTPRequest.h"
-
 namespace Facebook
 {
-	class FACEBOOK_API AuthorizedObject : public Object
+	class HttpRequest;
+
+	class FACEBOOK_API AuthorizedObject
 	{
-	public: // interface
-		void SetHttpRequest(const shared_ptr<HttpRequest> &request) { request_ = request; }
+	public:
+		virtual void Deserialize(const Json::Value &json) = 0;
 
 	protected: // interface
 		AuthorizedObject() { }

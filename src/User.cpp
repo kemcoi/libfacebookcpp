@@ -6,8 +6,9 @@ namespace Facebook
 
 	void Facebook::User::Deserialize( const Json::Value &json )
 	{
-		Deserializer deserialize(json);
+		Deserializer deserialize(*this, json);
 
+		// XXX: Fix the commented fields
 		deserialize.Deserialize("id", false, &id_);
 		deserialize.Deserialize("first_name", false, &first_name_);
 		deserialize.Deserialize("last_name", false, &last_name_);
@@ -35,7 +36,7 @@ namespace Facebook
 	{
 		// do a deep copy
 		std::tr1::shared_ptr<HttpRequest> clonedRequest_ = GetHttpRequest();
-		Facebook::User* clonedUser = new Facebook::User(clonedRequest_);
+		Facebook::User* clonedUser = new Facebook::User();
 
 		clonedUser->id_ = id_;
 		clonedUser->first_name_ =first_name_;

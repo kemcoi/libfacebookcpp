@@ -6,7 +6,7 @@ namespace Facebook
 {
 	void From::Deserialize(const Json::Value &json)
 	{
-		Deserializer deserializer(json);
+		Deserializer deserializer(*this, json);
 
 		deserializer.Deserialize("name", false, &name_);
 		deserializer.Deserialize("category", false, &category_);

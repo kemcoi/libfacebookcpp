@@ -22,9 +22,6 @@
 #ifndef FACEBOOK_EXCEPTION_H_
 #define FACEBOOK_EXCEPTION_H_
 
-#include "Logger.h"
-#include <curlpp/Exception.hpp>
-
 namespace Facebook
 {
 	class InvalidArgument : public std::invalid_argument

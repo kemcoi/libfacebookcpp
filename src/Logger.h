@@ -22,7 +22,6 @@
 #ifndef FACEBOOK_LOGGER_H_
 #define FACEBOOK_LOGGER_H_
 
-#include "Common.h"
 #include <ostream>
 
 namespace Facebook

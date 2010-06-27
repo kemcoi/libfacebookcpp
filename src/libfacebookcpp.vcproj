@@ -183,10 +183,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\DebugUtils.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Deserializer.cpp"
 				>
 			</File>
@@ -241,14 +237,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Common.h"
-				>
-			</File>
-			<File
-				RelativePath=".\DebugUtils.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Deserializer.h"
 				>
 			</File>
@@ -257,15 +245,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Facebook.h"
+				>
+			</File>
+			<File
 				RelativePath=".\From.h"
 				>
 			</File>
 			<File
 				RelativePath=".\HTTPRequest.h"
-				>
-			</File>
-			<File
-				RelativePath=".\libfacebookcpp.h"
 				>
 			</File>
 			<File

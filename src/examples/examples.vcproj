@@ -40,7 +40,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/wd4251 /wd4275 /wd4481 /wd4512"
 				Optimization="0"
+				AdditionalIncludeDirectories="..\;..\..\external-libs\include\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"

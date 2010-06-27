@@ -30,7 +30,7 @@ namespace Facebook
 	{
 	public: // public interface
 		typedef AuthorizedObject inherited;
-		From(const std::tr1::shared_ptr<HttpRequest> request) : inherited(request) { }
+		From() { }
 
 		//----------------------------------------------
 		void Deserialize(const Json::Value &json) OVERRIDE;

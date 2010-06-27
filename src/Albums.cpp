@@ -6,7 +6,7 @@ namespace Facebook
 {
 	void Album::Deserialize( const Json::Value &json )
 	{
-		Deserializer d(json);
+		Deserializer d(*this, json);
 
 		d.Deserialize("id", false,&id_ );
 		d.Deserialize("name", false, &name_);

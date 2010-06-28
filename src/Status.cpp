@@ -26,9 +26,9 @@
 namespace Facebook
 {
 	//-----------------------------------------------------------
-	void Status::Deserialize( const Json::Value &json )
+	void Status::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
 	{
-		Deserializer deserializer(*this, json);
+		Deserializer deserializer(parent_obj, this, json);
 
 		deserializer.Deserialize("id", false, &id_);
 		deserializer.Deserialize("message", false, &message_);

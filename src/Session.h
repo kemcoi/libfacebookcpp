@@ -21,18 +21,20 @@
 #ifndef FACEBOOK_SESSION_H_
 #define FACEBOOK_SESSION_H_
 
+#include "AuthorizedObject.h"
+
 namespace Facebook
 {
 	class User;
 	class HttpRequest;
 
-	class FACEBOOK_API Session
+	class FACEBOOK_API Session : public AuthorizedObject
 	{
 		friend class std::auto_ptr<Facebook::Session>;
 	public:
 		//----------------------------------------------
 		/*! 
-		// You must call this to recieve the authentication URL
+		// You must call this to receive the authentication URL
 		// This URL must be accepted by the user in order to retrieve 
 		// the access token. */
 		static const std::string GetAuthenticationURL(const std::string& clientID, 
@@ -65,7 +67,6 @@ namespace Facebook
 		//TODO: Disallow copy ctor 
 
 		Facebook::Logger* logger_;
-		shared_ptr<HttpRequest> HttpHandler_;
 
 		Facebook::User* cachedUser_;
 	};

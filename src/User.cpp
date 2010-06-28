@@ -26,18 +26,18 @@
 
 namespace Facebook
 {
-	void Facebook::FriendContainer::Deserialize(const Json::Value &json)
+	void Facebook::FriendContainer::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 	{
-		Deserializer deserialize(*this, json);
+		Deserializer deserialize(parent_obj, this, json);
 
 		deserialize.Deserialize("id", false, &id_);
 		deserialize.Deserialize("name", false, &name_);
 	}
 
 
-	void Facebook::User::Deserialize( const Json::Value &json )
+	void Facebook::User::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
 	{
-		Deserializer deserialize(*this, json);
+		Deserializer deserialize(parent_obj, this, json);
 
 		// XXX: Fix the commented fields
 		deserialize.Deserialize("id", false, &id_);
@@ -110,9 +110,9 @@ namespace Facebook
 		friendLink.query_params["access_token"] = GetHttpRequest()->getAccessToken();
 
 		Json::Value userValues;
-		Deserializer deserializer(*this, userValues);
 		GetHttpRequest()->GetResponse(friendLink, userValues);
 
+		Deserializer deserializer(*this, userValues);
 		// Should always be able to get friend id and names
 		deserializer.Deserialize("data", true, &friendList); 
 

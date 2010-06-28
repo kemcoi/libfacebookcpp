@@ -33,7 +33,7 @@ namespace Facebook
 		virtual ~Status() { }
 
 		//----------------------------------------------
-		void Deserialize(const Json::Value &json) OVERRIDE;
+		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) OVERRIDE;
 
 		//----------------------------------------------
 		// Accessors

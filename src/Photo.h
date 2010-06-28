@@ -34,7 +34,7 @@ namespace Facebook
 		virtual ~Photo() { }
 
 	public: // public interface
-		void Deserialize(const Json::Value &json) OVERRIDE;
+		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) OVERRIDE;
 
 		const std::string& GetId() const { return id_; }
 		const From& GetFrom() const { return from_; }

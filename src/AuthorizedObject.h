@@ -28,7 +28,8 @@ namespace Facebook
 	class FACEBOOK_API AuthorizedObject
 	{
 	public:
-		virtual void Deserialize(const Json::Value &json) = 0;
+		// TODO: PURE it without creating a havoc
+		virtual void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) { _UNUSED(parent_obj); _UNUSED(json); } // = 0;
 
 	protected: // interface
 		AuthorizedObject() { }
@@ -41,6 +42,7 @@ namespace Facebook
 		shared_ptr<HttpRequest> request_;
 
 		friend class Deserializer;
+		friend class Session;
 	};
 }
 

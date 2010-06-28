@@ -31,6 +31,22 @@ namespace Facebook
 	class Deserializer
 	{
 	public: // public ctor
+		Deserializer(const AuthorizedObject &parent_obj, AuthorizedObject *obj, const Json::Value &json) : json_(json), obj_(parent_obj)
+		{
+			ASSERT(obj);
+
+			if(!json_.isObject())
+				throw InvalidArgument("json");
+
+			if(json_.isMember("error"))
+			{
+				const Json::Value& value = json_["error"];
+				throw FacebookException(value["type"].asString(), value["message"].asString());
+			}
+
+			obj->request_ = parent_obj.request_;
+		}
+
 		Deserializer(const AuthorizedObject &obj, const Json::Value &json) : json_(json), obj_(obj)
 		{
 			if(!json_.isObject())
@@ -56,7 +72,7 @@ namespace Facebook
 			}
 			else
 			{
-				t->Deserialize(json);
+				t->Deserialize(obj_, json);
 				t->request_ = obj_.request_;
 			}
 		}

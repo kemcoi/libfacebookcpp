@@ -24,9 +24,9 @@
 
 namespace Facebook
 {
-	void Album::Deserialize( const Json::Value &json )
+	void Album::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
 	{
-		Deserializer d(*this, json);
+		Deserializer d(parent_obj, this, json);
 
 		d.Deserialize("id", false,&id_ );
 		d.Deserialize("name", false, &name_);

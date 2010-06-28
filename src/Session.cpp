@@ -34,7 +34,7 @@ namespace Facebook
 	{
 		GetInfoLog() << "Initializing Session";
 		logger_ = new Facebook::Logger();
-		HttpHandler_ = shared_ptr<HttpRequest>(new HttpRequest(accessToken));
+		request_ = shared_ptr<HttpRequest>(new HttpRequest(accessToken));
 		GetInfoLog() << accessToken;
 		
 	}
@@ -105,7 +105,7 @@ namespace Facebook
 	const Facebook::User* Session::getCurrentUser()
 	{
 		// W00t for ugly code
-		const Facebook::User* newUser = getUserByID(std::string("me"));
+		const Facebook::User* newUser = getUserByID("me");
 
 		// let's keep a copy on our session object
 		if( NULL == cachedUser_)
@@ -122,12 +122,12 @@ namespace Facebook
 		Facebook::Uri userLink;
 
 		userLink.base_uri = "https://graph.facebook.com/" + userID;
-		userLink.query_params["access_token"] = HttpHandler_->access_token_;
+		userLink.query_params["access_token"] = GetHttpRequest()->access_token_;
 
 		Json::Value userValues;
 
-		HttpHandler_->GetResponse(userLink, userValues);
-		newUser->Deserialize(userValues);
+		GetHttpRequest()->GetResponse(userLink, userValues);
+		newUser->Deserialize(*this, userValues);
 
 		return newUser;
 	}

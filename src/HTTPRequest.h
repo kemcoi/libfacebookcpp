@@ -21,9 +21,6 @@
 #ifndef FACEBOOK_HTTPREQUEST_H_
 #define FACEBOOK_HTTPREQUEST_H_
 
-#include <map>
-#include <list>
-
 namespace Facebook
 {
 	struct Uri

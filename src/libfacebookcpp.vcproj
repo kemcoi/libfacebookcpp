@@ -191,7 +191,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\HTTPRequest.cpp"
+				RelativePath=".\HttpRequest.cpp"
 				>
 			</File>
 			<File
@@ -216,6 +216,10 @@
 			</File>
 			<File
 				RelativePath=".\User.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Utils.cpp"
 				>
 			</File>
 		</Filter>
@@ -249,7 +253,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\HTTPRequest.h"
+				RelativePath=".\HttpRequest.h"
 				>
 			</File>
 			<File
@@ -274,6 +278,10 @@
 			</File>
 			<File
 				RelativePath=".\User.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Utils.h"
 				>
 			</File>
 		</Filter>

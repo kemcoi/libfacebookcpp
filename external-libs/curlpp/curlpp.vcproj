@@ -42,7 +42,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/wd4251 /wd4275 /wd4512 /wd4661 /wd4996"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\include"
+				AdditionalIncludeDirectories="..\include\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;BUILDING_CURLPP"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -118,10 +118,10 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CURLPP_EXPORTS"
+				AdditionalIncludeDirectories="..\include\"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;BUILDING_CURLPP"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -136,7 +136,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="libcurl_imp.lib"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"

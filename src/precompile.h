@@ -66,20 +66,12 @@
 #include <list>
 #include <sstream>
 #include <memory>
+#include <ostream>
 
 using std::tr1::shared_ptr;
 
 #include "Logger.h"
-
-//------------------------------------------
-// Let's place this here temporarily
-template <typename T>
-inline std::string convertToString(T val)
-{
-	std::stringstream ss;
-	ss << val;
-	return ss.str();
-}
+#include "Utils.h"
 
 //------------------------------------------
 #endif // FACEBOOK_PRECOMPILE_H_

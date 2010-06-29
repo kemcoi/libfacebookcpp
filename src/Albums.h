@@ -21,10 +21,13 @@
 #ifndef FACEBOOK_ALBUM_H_
 #define FACEBOOK_ALBUM_H_
 
-#include "Photo.h"
+#include "AuthorizedObject.h"
+#include "From.h"
 
 namespace Facebook
 {
+	class Photo;
+
 	class FACEBOOK_API Album: public AuthorizedObject
 	{
 	public:

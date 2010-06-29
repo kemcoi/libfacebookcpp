@@ -23,7 +23,6 @@
 
 #include "AuthorizedObject.h"
 
-
 namespace Facebook
 {
 	class FACEBOOK_API FriendContainer: public AuthorizedObject

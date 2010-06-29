@@ -21,8 +21,6 @@
 #ifndef FACEBOOK_LOGGER_H_
 #define FACEBOOK_LOGGER_H_
 
-#include <ostream>
-
 namespace Facebook
 {
 	class Logger;

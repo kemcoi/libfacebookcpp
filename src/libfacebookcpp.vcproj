@@ -205,6 +205,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\precompile.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Session.cpp"
 				>
 			</File>

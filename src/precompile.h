@@ -73,5 +73,4 @@ using std::tr1::shared_ptr;
 #include "Logger.h"
 #include "Utils.h"
 
-//------------------------------------------
 #endif // FACEBOOK_PRECOMPILE_H_

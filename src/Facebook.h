@@ -21,8 +21,7 @@
 #ifndef FACEBOOK_FACEBOOK_H_
 #define FACEBOOK_FACEBOOK_H_
 
-// XXX: I HATE THIS STUPID FUCKING PIECE OF SHIT
-#include "precompile.h"
+#include "Common.h"
 
 // Aggregate includes here
 #include "Albums.h"

@@ -33,7 +33,7 @@ namespace Facebook
 	Session::Session(const std::string& accessToken): cachedUser_(NULL)
 	{
 		GetInfoLog() << "Initializing Session";
-		logger_ = new Facebook::Logger();
+		// logger_ = new Facebook::Logger();
 		request_ = shared_ptr<HttpRequest>(new HttpRequest(accessToken));
 		GetInfoLog() << accessToken;
 		
@@ -48,7 +48,7 @@ namespace Facebook
 	Facebook::Session::~Session()
 	{
 		delete cachedUser_; cachedUser_ = NULL;
-		delete logger_; logger_ = NULL;
+		// delete logger_; logger_ = NULL;
 	}
 
 	//----------------------------------------------

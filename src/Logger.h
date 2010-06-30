@@ -21,6 +21,21 @@
 #ifndef FACEBOOK_LOGGER_H_
 #define FACEBOOK_LOGGER_H_
 
+// This is probably not the best way to do it.
+// Leaving it like this for now
+// Change it if to we have to once we know more of
+// what this logger needs to be able to do
+// Also make it so that users can't just create a 
+// string themselves to pass in
+
+#define LOG_PARAMS __LINE__, __FILE__
+#define GetLog(x) logInstance.GetStream(Logger::x, LOG_PARAMS)
+
+#define GetErrorLog() GetLog(FB_LOGLEVEL_ERROR)
+#define GetWarnLog()  GetLog(FB_LOGLEVEL_WARN)
+#define GetDebugLog() GetLog(FB_LOGLEVEL_DEBUG)
+#define GetInfoLog()  GetLog(FB_LOGLEVEL_INFO)
+
 namespace Facebook
 {
 	class Logger;
@@ -50,7 +65,7 @@ namespace Facebook
 
 	public: // public interface
 		Logger();
-		std::ostream& GetLog(FB_LOGLEVEL level, int lineNumber, const char* file);
+		std::ostream& GetStream(FB_LOGLEVEL level, int lineNumber, const char* file);
 
 	private:
 		LogStream stream_[FB_LOGLEVEL_COUNT];

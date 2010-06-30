@@ -32,7 +32,7 @@ namespace Facebook
 		FriendContainer(){};
 
 		//----------------------------------------------
-		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) OVERRIDE;
+		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 		//----------------------------------------------
 		const std::string& getName();
@@ -53,7 +53,7 @@ namespace Facebook
 		//----------------------------------------------
 
 		//----------------------------------------------
-		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) OVERRIDE;
+		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 		User* clone() const;
 

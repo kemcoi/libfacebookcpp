@@ -239,6 +239,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Common.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Deserializer.h"
 				>
 			</File>

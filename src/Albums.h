@@ -36,7 +36,7 @@ namespace Facebook
 		virtual ~Album() { }
 
 		//----------------------------------------------
-		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) OVERRIDE;
+		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 		//----------------------------------------------
 		std::list<Facebook::Photo*>* getPhotoList() const;

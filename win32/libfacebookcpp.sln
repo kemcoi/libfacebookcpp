@@ -5,12 +5,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jsoncpp", "external-libs\js
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "external-libs\curlpp\curlpp.vcproj", "{F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "examples", "src\examples\examples.vcproj", "{EB0E7D50-65A6-4474-879E-98667C9BA364}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "examples", "..\src\examples\examples.vcproj", "{EB0E7D50-65A6-4474-879E-98667C9BA364}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FC635166-86D4-4EF0-9DF4-99C2603241F1} = {FC635166-86D4-4EF0-9DF4-99C2603241F1}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libfacebookcpp", "src\libfacebookcpp.vcproj", "{FC635166-86D4-4EF0-9DF4-99C2603241F1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libfacebookcpp", "..\src\libfacebookcpp.vcproj", "{FC635166-86D4-4EF0-9DF4-99C2603241F1}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5} = {F5AAAB7C-FD7F-4A6D-851B-BE7AA532C2A5}
 		{2BE594F7-6E62-4B8F-97D6-723F29D2716A} = {2BE594F7-6E62-4B8F-97D6-723F29D2716A}

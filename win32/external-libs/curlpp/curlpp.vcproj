@@ -18,7 +18,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin\$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -88,12 +88,12 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy ..\*.dll ..\..\$(ConfigurationName)\ /y"
+				CommandLine="xcopy ..\*.dll ..\..\..\bin\$(ConfigurationName)\ /y"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			OutputDirectory="$(SolutionDir)..\bin\$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
@@ -165,7 +165,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy ..\*.dll ..\..\$(ConfigurationName)\ /y"
+				CommandLine="xcopy ..\*.dll ..\..\..\bin\$(ConfigurationName)\ /y"
 			/>
 		</Configuration>
 	</Configurations>

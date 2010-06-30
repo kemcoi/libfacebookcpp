@@ -66,7 +66,7 @@ namespace Facebook
 
 		//TODO: Disallow copy ctor 
 
-		Facebook::Logger* logger_;
+		// Facebook::Logger* logger_;
 
 		Facebook::User* cachedUser_;
 	};

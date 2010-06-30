@@ -29,7 +29,7 @@ namespace Facebook
 	{
 	public:
 		// TODO: PURE it without creating a havoc
-		virtual void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) { _UNUSED(parent_obj); _UNUSED(json); } // = 0;
+		virtual void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
 	protected: // interface
 		AuthorizedObject() { }

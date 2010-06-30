@@ -31,7 +31,7 @@ namespace Facebook
 	public: // public ctor
 		Deserializer(const AuthorizedObject &parent_obj, AuthorizedObject *obj, const Json::Value &json) : json_(json), obj_(parent_obj)
 		{
-			ASSERT(obj);
+			FACEBOOK_ASSERT(obj);
 
 			if(!json_.isObject())
 				throw InvalidArgument("json");
@@ -61,7 +61,7 @@ namespace Facebook
 		template<class TType>
 		void _DeserializeObject(const Json::Value &json, bool required, TType *t)
 		{
-			ASSERT(t);
+			FACEBOOK_ASSERT(t);
 
 			if(!json.isObject())
 			{
@@ -78,7 +78,7 @@ namespace Facebook
 		template<>
 		void _DeserializeObject(const Json::Value &json, bool required, std::string *str)
 		{
-			ASSERT(str);
+			FACEBOOK_ASSERT(str);
 
 			if(!json.isConvertibleTo(Json::stringValue))
 			{
@@ -94,7 +94,7 @@ namespace Facebook
 		template<>
 		void _DeserializeObject(const Json::Value &json, bool required, unsigned int *uint)
 		{
-			ASSERT(uint);
+			FACEBOOK_ASSERT(uint);
 
 			if(!json.isConvertibleTo(Json::uintValue))
 			{
@@ -112,7 +112,7 @@ namespace Facebook
 		template<class TType>
 		void _DeserializeObject(const Json::Value &json, bool required, std::list<TType> *list)
 		{
-			ASSERT(list);
+			FACEBOOK_ASSERT(list);
 
 			if(!json.isConvertibleTo(Json::arrayValue))
 			{
@@ -133,7 +133,7 @@ namespace Facebook
 		template<class TType>
 		void _DeserializeObject(const Json::Value &json, bool required, std::vector<TType> *vector)
 		{
-			ASSERT(vector);
+			FACEBOOK_ASSERT(vector);
 
 			if(!json.isConvertibleTo(Json::arrayValue))
 			{
@@ -157,8 +157,8 @@ namespace Facebook
 		template<class TType>
 		void Deserialize(const char *tag, bool required, TType *t)
 		{
-			ASSERT(tag);
-			ASSERT(t);
+			FACEBOOK_ASSERT(tag);
+			FACEBOOK_ASSERT(t);
 
 			if(!json_.isMember(tag))
 			{
@@ -175,7 +175,7 @@ namespace Facebook
 	private: // assignment operator
 		Deserializer& operator = (const Deserializer& rhs)
 		{
-			_UNUSED(rhs);
+			FACEBOOK_UNUSED(rhs);
 			throw NotSupportedException("Deserializer is not copyable");
 		}
 

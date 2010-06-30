@@ -25,7 +25,7 @@ namespace Facebook
 {
 	class HttpRequest;
 
-	class FACEBOOK_API AuthorizedObject
+	class AuthorizedObject
 	{
 	public:
 		// TODO: PURE it without creating a havoc

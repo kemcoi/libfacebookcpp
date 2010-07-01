@@ -29,6 +29,7 @@ class HttpRequest;
 class AuthorizedObject
 {
 public:
+	void Init(const AuthorizedObject &obj);
 	// TODO: PURE it without creating a havoc
 	virtual void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 

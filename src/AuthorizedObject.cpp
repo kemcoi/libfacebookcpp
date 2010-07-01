@@ -24,6 +24,11 @@
 namespace Facebook
 {
 
+void AuthorizedObject::Init(const AuthorizedObject &obj)
+{
+	request_ = obj.request_;
+}
+
 void AuthorizedObject::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 {
 	FACEBOOK_UNUSED(parent_obj);

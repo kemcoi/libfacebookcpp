@@ -24,7 +24,7 @@
 #include "Common.h"
 
 // Aggregate includes here
-#include "Albums.h"
+#include "Album.h"
 #include "From.h"
 #include "Photo.h"
 #include "Session.h"

@@ -26,6 +26,7 @@
 namespace Facebook
 {
 
+class Album;
 class Photo;
 struct PagingInfo;
 
@@ -98,7 +99,7 @@ public:
 	const std::string& getPolitical() const { return political_; }
 	const std::string& getVerified() const { return verified_; }
 	const std::string& getSignificantOther() const { return significant_other_; }
-	const std::string& getTimeZone() const { return timezone_; }
+	int getTimeZone() const { return timezone_; }
 
 	//----------------------------------------------
 	// Connections
@@ -116,7 +117,7 @@ public:
 	// TODO: /television
 	// TODO: /likes
 	void getPhotosList(std::list<Photo> *photoList, const PagingInfo *paging = NULL) const;
-	// TODO: /albums
+	void getAlbumsList(std::list<Album> *albumList, const PagingInfo *paging = NULL) const;
 	// TODO: /videos
 	// TODO: /groups
 	// TODO: /statuses
@@ -151,7 +152,7 @@ private:
 	std::string political_;
 	std::string verified_;
 	std::string significant_other_;
-	std::string timezone_;
+	int timezone_;
 };
 
 } // namespace Facebook

@@ -25,6 +25,7 @@
 #include "HTTPRequest.h"
 #include "PagingInfo.h"
 #include "Photo.h"
+#include "Album.h"
 
 namespace Facebook
 {
@@ -73,42 +74,17 @@ void User::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &j
 
 void User::getFriendsList(std::list<FriendContainer>* friendList, const PagingInfo *paging /* = NULL */) const
 {
-	if(paging && !paging->IsValid())
-		throw InvalidArgument("!paging->IsValid()");
-
-	Facebook::Uri friendLink;
-	GetHttpRequest()->GetUri(&friendLink);
-
-	friendLink.base_uri = "https://graph.facebook.com/" + id_ + "/friends";
-
-	if(paging)
-		paging->GetUri(&friendLink);
-
-	Json::Value userValues;
-	GetHttpRequest()->GetResponse(friendLink, &userValues);
-
-	Deserializer deserializer(*this, userValues);
-	// Should always be able to get friend id and names
-	deserializer.Deserialize("data", true, friendList);
+	GetConnection("https://graph.facebook.com/" + id_ + "/friends", friendList, paging);
 }
 
 void User::getPhotosList(std::list<Photo> *photoList, const PagingInfo *paging /* = NULL */) const
 {
-	FACEBOOK_ASSERT(photoList);
+	GetConnection("https://graph.facebook.com/" + id_ + "/photos", photoList, paging);
+}
 
-	Uri uri;
-	GetHttpRequest()->GetUri(&uri);
-
-	uri.base_uri = "https://graph.facebook.com/" + id_ + "/photos";
-
-	if(paging)
-		paging->GetUri(&uri);
-
-	Json::Value value;
-	GetHttpRequest()->GetResponse(uri, &value);
-
-	Deserializer deserializer(*this, value);
-	deserializer.Deserialize("data", true, photoList);
+void User::getAlbumsList(std::list<Album> *albumList, const PagingInfo *paging /* = NULL */) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/albums", albumList, paging);
 }
 
 } // namespace Facebook

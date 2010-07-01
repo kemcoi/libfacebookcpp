@@ -19,11 +19,11 @@ int main()
 
 		std::auto_ptr<Facebook::Session> session_(Facebook::Session::Authenticate(redirectURL));
 		std::auto_ptr<const Facebook::User> user_(session_->getCurrentUser());
-		std::list<Facebook::FriendContainer> list_;
 
-//		user_->getFriendsList(5, 20, list_);
+		std::list<Facebook::Album> albumList;
 
-		std::auto_ptr<const Facebook::User> jonLai(session_->getUserByID(std::string("506828136")));
+		user_->getAlbumsList(&albumList);
+
 		system("pause"); // VS Debug
 	}
 

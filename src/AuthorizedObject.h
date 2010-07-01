@@ -25,6 +25,7 @@ namespace Facebook
 {
 
 class HttpRequest;
+struct PagingInfo;
 
 class AuthorizedObject
 {
@@ -36,6 +37,26 @@ public:
 
 protected: // interface
 	AuthorizedObject() { }
+
+	template<class TType>
+	void GetConnection(const std::string &base_uri, std::list<TType> *list, const PagingInfo *paging) const
+	{
+		FACEBOOK_ASSERT(list);
+
+		Uri uri;
+		GetHttpRequest()->GetUri(&uri);
+
+		uri.base_uri = base_uri;
+
+		if(paging)
+			paging->GetUri(&uri);
+
+		Json::Value value;
+		GetHttpRequest()->GetResponse(uri, &value);
+
+		Deserializer deserializer(*this, value);
+		deserializer.Deserialize("data", true, list);
+	}
 
 	const shared_ptr<HttpRequest>& GetHttpRequest() const { return request_; }
 	shared_ptr<HttpRequest>& GetHttpRequest() { return request_; }

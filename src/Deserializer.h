@@ -93,6 +93,22 @@ private: // private helper functions
 	}
 
 	template<>
+	void _DeserializeObject(const Json::Value &json, bool required, int *value)
+	{
+		FACEBOOK_ASSERT(value);
+
+		if(!json.isConvertibleTo(Json::intValue))
+		{
+			if(required)
+				throw UnexpectedException("!value.isConvertibleTo(Json::intValue)");
+		}
+		else
+		{
+			*value = json.asInt();
+		}
+	}
+
+	template<>
 	void _DeserializeObject(const Json::Value &json, bool required, unsigned int *uint)
 	{
 		FACEBOOK_ASSERT(uint);

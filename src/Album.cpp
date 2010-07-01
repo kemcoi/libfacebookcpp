@@ -20,7 +20,7 @@
 
 #include "precompile.h"
 #include "Deserializer.h"
-#include "Albums.h"
+#include "Album.h"
 
 namespace Facebook
 {

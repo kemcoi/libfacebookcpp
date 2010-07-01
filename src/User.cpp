@@ -87,4 +87,14 @@ void User::getAlbumsList(std::list<Album> *albumList, const PagingInfo *paging /
 	GetConnection("https://graph.facebook.com/" + id_ + "/albums", albumList, paging);
 }
 
+void User::getVideosList(std::list<Video> *videoList, const PagingInfo *paging /* = NULL */) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/videos", videoList, paging);
+}
+
+void User::getStatusList(std::list<Status> *statusList, const PagingInfo *paging /* = NULL */) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/statuses", statusList, paging);
+}
+
 } // namespace Facebook

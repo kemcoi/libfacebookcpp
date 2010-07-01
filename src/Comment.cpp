@@ -18,19 +18,6 @@
  *
  */
 
-#ifndef FACEBOOK_FACEBOOK_H_
-#define FACEBOOK_FACEBOOK_H_
-
-#include "Common.h"
-
-// Aggregate includes here
-#include "Album.h"
+#include "precompile.h"
 #include "Comment.h"
-#include "From.h"
-#include "Photo.h"
-#include "Session.h"
-#include "Status.h"
-#include "User.h"
-#include "Video.h"
 
-#endif // FACEBOOK_FACEBOOK_H_

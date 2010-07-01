@@ -120,4 +120,11 @@ void HttpRequest::GetResponse(const Uri& uri, Json::Value &value)
 	reader.parse(oss, value);
 }
 
+void HttpRequest::GetUri(Uri *uri) const
+{
+	FACEBOOK_ASSERT(uri);
+
+	uri->query_params.insert(std::pair<std::string, std::string>("access_token", access_token_));
+}
+
 } // namespace Facebook

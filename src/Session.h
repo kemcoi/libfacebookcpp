@@ -25,52 +25,54 @@
 
 namespace Facebook
 {
-	class User;
-	class HttpRequest;
 
-	class FACEBOOK_API Session : public AuthorizedObject
-	{
-		friend class std::auto_ptr<Facebook::Session>;
-	public:
-		//----------------------------------------------
-		/*! 
-		// You must call this to receive the authentication URL
-		// This URL must be accepted by the user in order to retrieve 
-		// the access token. */
-		static const std::string GetAuthenticationURL(const std::string& clientID, 
-													  const std::string& redirectURI,
-													  const std::string& type, 
-													  const std::string& display);
+class User;
+class HttpRequest;
 
-		//----------------------------------------------
-		/*!
-		// The caller is given ownership of a Facebook::Session object
-		// based on the access token that is passed in. */
-		static Session* Authenticate(std::string& redirectedURL);
+class FACEBOOK_API Session : public AuthorizedObject
+{
+	friend class std::auto_ptr<Facebook::Session>;
+public:
+	//----------------------------------------------
+	/*! 
+	// You must call this to receive the authentication URL
+	// This URL must be accepted by the user in order to retrieve 
+	// the access token. */
+	static const std::string GetAuthenticationURL(const std::string& clientID, 
+												  const std::string& redirectURI,
+												  const std::string& type, 
+												  const std::string& display);
 
-		//----------------------------------------------
-		/*!
-		// This method should be used to destroy Facebook::Session objects*/
-		void Destroy();
+	//----------------------------------------------
+	/*!
+	// The caller is given ownership of a Facebook::Session object
+	// based on the access token that is passed in. */
+	static Session* Authenticate(std::string& redirectedURL);
 
-		//----------------------------------------------
-		// Getters
-		// TODO: Decide if these returns should be constant
-		// and if we it should be a param instead
-		const Facebook::User* getCurrentUser();
-		const Facebook::User* getUserByID(const std::string& userID);
+	//----------------------------------------------
+	/*!
+	// This method should be used to destroy Facebook::Session objects*/
+	void Destroy();
 
-	private:
-		Session(const std::string& accessToken);
-		~Session();
+	//----------------------------------------------
+	// Getters
+	// TODO: Decide if these returns should be constant
+	// and if we it should be a param instead
+	const Facebook::User* getCurrentUser();
+	const Facebook::User* getUserByID(const std::string& userID);
 
-		//TODO: Disallow copy ctor 
+private:
+	Session(const std::string& accessToken);
+	~Session();
 
-		// Facebook::Logger* logger_;
+	// Facebook::Logger* logger_;
 
-		Facebook::User* cachedUser_;
-	};
-}
+	Facebook::User* cachedUser_;
+
+	DISALLOW_COPY_AND_ASSIGN(Session);
+};
+
+} // namespace Facebook
 
 #endif
 

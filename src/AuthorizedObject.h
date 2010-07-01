@@ -23,27 +23,29 @@
 
 namespace Facebook
 {
-	class HttpRequest;
 
-	class AuthorizedObject
-	{
-	public:
-		// TODO: PURE it without creating a havoc
-		virtual void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
+class HttpRequest;
 
-	protected: // interface
-		AuthorizedObject() { }
+class AuthorizedObject
+{
+public:
+	// TODO: PURE it without creating a havoc
+	virtual void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
-		const shared_ptr<HttpRequest>& GetHttpRequest() const { return request_; }
-		shared_ptr<HttpRequest>& GetHttpRequest() { return request_; }
+protected: // interface
+	AuthorizedObject() { }
 
-	private:
-		// XXX: This makes us thread-safe up to the Session level
-		shared_ptr<HttpRequest> request_;
+	const shared_ptr<HttpRequest>& GetHttpRequest() const { return request_; }
+	shared_ptr<HttpRequest>& GetHttpRequest() { return request_; }
 
-		friend class Deserializer;
-		friend class Session;
-	};
-}
+private:
+	// XXX: This makes us thread-safe up to the Session level
+	shared_ptr<HttpRequest> request_;
+
+	friend class Deserializer;
+	friend class Session;
+};
+
+} // namespace Facebook
 
 #endif // FACEBOOK_AUTHORIZED_OBJECT_H_

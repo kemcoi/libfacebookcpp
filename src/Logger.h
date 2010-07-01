@@ -38,40 +38,42 @@
 
 namespace Facebook
 {
-	class Logger;
 
-	class LogStream : public std::ostream
+class Logger;
+
+class LogStream : public std::ostream
+{
+private: // private ctor
+	LogStream() : std::ostream(NULL)
 	{
-	private: // private ctor
-		LogStream() : std::ostream(NULL)
-		{
-		}
+	}
 
-		friend class Logger;
+	friend class Logger;
+};
+
+class Logger
+{
+public: // public types
+	enum FB_LOGLEVEL
+	{
+		FB_LOGLEVEL_ERROR,
+		FB_LOGLEVEL_WARN,
+		FB_LOGLEVEL_INFO,
+		FB_LOGLEVEL_DEBUG,
+
+		FB_LOGLEVEL_COUNT
 	};
 
-	class Logger
-	{
-	public: // public types
-		enum FB_LOGLEVEL
-		{
-			FB_LOGLEVEL_ERROR,
-			FB_LOGLEVEL_WARN,
-			FB_LOGLEVEL_INFO,
-			FB_LOGLEVEL_DEBUG,
+public: // public interface
+	Logger();
+	std::ostream& GetStream(FB_LOGLEVEL level, int lineNumber, const char* file);
 
-			FB_LOGLEVEL_COUNT
-		};
+private:
+	LogStream stream_[FB_LOGLEVEL_COUNT];
+};
 
-	public: // public interface
-		Logger();
-		std::ostream& GetStream(FB_LOGLEVEL level, int lineNumber, const char* file);
+extern Logger logInstance;
 
-	private:
-		LogStream stream_[FB_LOGLEVEL_COUNT];
-	};
-
-	extern Logger logInstance;
-}
+} // namespace Facebook
 
 #endif

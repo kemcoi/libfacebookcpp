@@ -25,26 +25,28 @@
 
 namespace Facebook
 {
-	class FACEBOOK_API From : public AuthorizedObject
-	{
-	public: // public interface
-		typedef AuthorizedObject inherited;
-		From() { }
 
-		//----------------------------------------------
-		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+class FACEBOOK_API From : public AuthorizedObject
+{
+public: // public interface
+	typedef AuthorizedObject inherited;
+	From() { }
 
-		//----------------------------------------------
-		// Accessors
-		const std::string& GetName() const { return name_; }
-		const std::string& GetCategory() const { return category_; }
-		const std::string& GetId() const { return id_; }
+	//----------------------------------------------
+	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
-	private: // private members
-		std::string name_;
-		std::string category_;
-		std::string id_;
-	};
-}
+	//----------------------------------------------
+	// Accessors
+	const std::string& GetName() const { return name_; }
+	const std::string& GetCategory() const { return category_; }
+	const std::string& GetId() const { return id_; }
+
+private: // private members
+	std::string name_;
+	std::string category_;
+	std::string id_;
+};
+
+} // namespace Facebook
 
 #endif

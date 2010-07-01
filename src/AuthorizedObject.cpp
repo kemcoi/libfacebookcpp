@@ -23,9 +23,11 @@
 
 namespace Facebook
 {
-	void AuthorizedObject::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
-	{
-		FACEBOOK_UNUSED(parent_obj);
-		FACEBOOK_UNUSED(json);
-	}
+
+void AuthorizedObject::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+{
+	FACEBOOK_UNUSED(parent_obj);
+	FACEBOOK_UNUSED(json);
 }
+
+} // namespace Facebook

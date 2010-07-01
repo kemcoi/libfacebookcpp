@@ -25,14 +25,16 @@
 
 namespace Facebook
 {
-	//-----------------------------------------------------------
-	void Status::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
-	{
-		Deserializer deserializer(parent_obj, this, json);
 
-		deserializer.Deserialize("id", false, &id_);
-		deserializer.Deserialize("message", false, &message_);
-		deserializer.Deserialize("updated_time", false, &updated_time_);
+//-----------------------------------------------------------
+void Status::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
+{
+	Deserializer deserializer(parent_obj, this, json);
 
-	}
+	deserializer.Deserialize("id", false, &id_);
+	deserializer.Deserialize("message", false, &message_);
+	deserializer.Deserialize("updated_time", false, &updated_time_);
+
 }
+
+} // namespace Facebook

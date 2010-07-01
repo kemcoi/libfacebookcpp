@@ -26,11 +26,30 @@
 namespace Facebook
 {
 
+class Photo;
+struct PagingInfo;
+
+class FACEBOOK_API Location : public AuthorizedObject
+{
+public: // public interface
+	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+
+public: // accessors
+	const std::string& GetId() const   { return id_; }
+	const std::string& GetName() const { return name_; }
+
+private: // member variables
+	std::string id_;
+	std::string name_;
+};
+
 class FACEBOOK_API FriendContainer: public AuthorizedObject
 {
 public:
 	//----------------------------------------------
 	FriendContainer(){};
+
+	// XXX: Make this private, somehow
 
 	//----------------------------------------------
 	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
@@ -56,8 +75,6 @@ public:
 	//----------------------------------------------
 	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
-	User* clone() const;
-
 	//----------------------------------------------
 	//Getters
 	const std::string& getId() const { return id_; }
@@ -71,9 +88,10 @@ public:
 	const std::string& getEducation() const { return education_; }
 	const std::string& getEmail() const { return email_; }
 	const std::string& getWebsite() const { return website_; }
-	// const std::string& getHometown() const { return hometown_; }
+	const Location& getHomeTown() const { return hometown_; }
+	const Location& getLocation() const { return location_; }
 	const std::string& getGender() const { return gender_; }
-	const std::string& getInterestedIn() const { return interested_in_; }
+	const std::list<std::string>& getInterestedIn() const { return interested_in_; }
 	const std::string& getMeetingFor() const { return meeting_for_; }
 	const std::string& getRelationshipStatus() const { return relationship_status_; }
 	const std::string& getReligion() const { return religion_; }
@@ -84,7 +102,31 @@ public:
 
 	//----------------------------------------------
 	// Connections
-	void getFriendsList(int offSet, int limit, std::list<FriendContainer>& friendList) const;
+	// TODO: /home
+	// TODO: /feed
+	void getTaggedList(std::list<Photo> *photoList, const PagingInfo *paging = NULL) const;
+	// TODO: /posts
+	// TODO: /picture
+	void getFriendsList(std::list<FriendContainer>* friendList, const PagingInfo *paging = NULL) const;
+	// TODO: /activities
+	// TODO: /interests
+	// TODO: /music
+	// TODO: /books
+	// TODO: /movies
+	// TODO: /television
+	// TODO: /likes
+	void getPhotosList(std::list<Photo> *photoList, const PagingInfo *paging = NULL) const;
+	// TODO: /albums
+	// TODO: /videos
+	// TODO: /groups
+	// TODO: /statuses
+	// TODO: /links
+	// TODO: /notes
+	// TODO: /events
+	// TODO: /inbox
+	// TODO: /outbox
+	// TODO: /updates
+	// TODO: /accounts
 
 protected:
 private:
@@ -99,9 +141,10 @@ private:
 	std::string education_;
 	std::string email_;
 	std::string website_;
-	// std::string hometown_;
+	Location hometown_;
+	Location location_;
 	std::string gender_;
-	std::string interested_in_;
+	std::list<std::string> interested_in_;
 	std::string meeting_for_;
 	std::string relationship_status_;
 	std::string religion_;

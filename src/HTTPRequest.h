@@ -48,7 +48,7 @@ private: // private ctor
 	HttpRequest(const std::string &access_token) : access_token_(access_token) { }
 
 public: // public interface
-	void GetResponse(const Uri& uri, Json::Value &value);
+	void GetResponse(const Uri& uri, Json::Value *value);
 	void GetUri(Uri *uri) const;
 
 private: // member variables

@@ -101,8 +101,10 @@ void DecomposeUri(const std::string& str, Uri& uri)
 
 } // namespace HttpUtils
 
-void HttpRequest::GetResponse(const Uri& uri, Json::Value &value)
+void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
 {
+	FACEBOOK_ASSERT(value);
+
 	// First build the final url
 
 	curlpp::Easy curl;
@@ -117,7 +119,7 @@ void HttpRequest::GetResponse(const Uri& uri, Json::Value &value)
 	oss << curl;
 
 	Json::Reader reader;
-	reader.parse(oss, value);
+	reader.parse(oss, *value);
 }
 
 void HttpRequest::GetUri(Uri *uri) const

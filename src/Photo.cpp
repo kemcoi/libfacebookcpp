@@ -24,20 +24,22 @@
 
 namespace Facebook
 {
-	void Photo::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
-	{
-		Deserializer deserializer(parent_obj, this, json);
 
-		deserializer.Deserialize("id", false, &id_);
-		// deserializer.Deserialize("from", false, &from_);
-		deserializer.Deserialize("name", false, &name_);
-		deserializer.Deserialize("picture", false, &picture_);
-		deserializer.Deserialize("source", false, &source_);
-		deserializer.Deserialize("height", false, &height_);
-		deserializer.Deserialize("width", false, &width_);
-		deserializer.Deserialize("link", false, &link_);
-		deserializer.Deserialize("icon", false, &icon_);
-		deserializer.Deserialize("created_time", false, &created_time_);
-		deserializer.Deserialize("updated_time", false, &updated_time_);
-	}
+void Photo::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+{
+	Deserializer deserializer(parent_obj, this, json);
+
+	deserializer.Deserialize("id", false, &id_);
+	// deserializer.Deserialize("from", false, &from_);
+	deserializer.Deserialize("name", false, &name_);
+	deserializer.Deserialize("picture", false, &picture_);
+	deserializer.Deserialize("source", false, &source_);
+	deserializer.Deserialize("height", false, &height_);
+	deserializer.Deserialize("width", false, &width_);
+	deserializer.Deserialize("link", false, &link_);
+	deserializer.Deserialize("icon", false, &icon_);
+	deserializer.Deserialize("created_time", false, &created_time_);
+	deserializer.Deserialize("updated_time", false, &updated_time_);
 }
+
+} // namespace Facebook

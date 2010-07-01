@@ -24,12 +24,14 @@
 
 namespace Facebook
 {
-	void From::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
-	{
-		Deserializer deserializer(parent_obj, this, json);
 
-		deserializer.Deserialize("name", false, &name_);
-		deserializer.Deserialize("category", false, &category_);
-		deserializer.Deserialize("id", false, &id_);
-	}
+void From::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+{
+	Deserializer deserializer(parent_obj, this, json);
+
+	deserializer.Deserialize("name", false, &name_);
+	deserializer.Deserialize("category", false, &category_);
+	deserializer.Deserialize("id", false, &id_);
 }
+
+} // namespace Facebook

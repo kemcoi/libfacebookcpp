@@ -59,6 +59,10 @@
 #define FACEBOOK_ASSERT(x)
 #endif // LIBFACEBOOKCPP_EXPORTS
 
+#define DISALLOW_COPY_AND_ASSIGN(TypeName)   \
+	TypeName(const TypeName&);               \
+	void operator=(const TypeName&)
+
 // XXX: This will fail with VS pre-2008
 using std::tr1::shared_ptr;
 

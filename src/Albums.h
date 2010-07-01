@@ -26,45 +26,47 @@
 
 namespace Facebook
 {
-	class Photo;
 
-	class FACEBOOK_API Album: public AuthorizedObject
-	{
-	public:
-		//----------------------------------------------
-		Album() { }
-		virtual ~Album() { }
+class Photo;
 
-		//----------------------------------------------
-		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+class FACEBOOK_API Album: public AuthorizedObject
+{
+public:
+	//----------------------------------------------
+	Album() { }
+	virtual ~Album() { }
 
-		//----------------------------------------------
-		std::list<Facebook::Photo*>* getPhotoList() const;
+	//----------------------------------------------
+	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
-		//----------------------------------------------
-		// Accessors
-		//TODO: Accessors for From class
-		const std::string& getId() const { return id_; }
-		const From& GetFrom() const { return from_; }
-		const std::string& getName() const { return name_; }
-		const std::string& getDescription() const { return description_; }
-		const std::string& getLocation() const { return location_; }
-		const std::string& getLink() const { return link_; }
-		const unsigned int& getCount() const { return count_; }
-		const std::string& getCreatedTime() const { return created_time_;}
-		const std::string& getUpdatedTime_() const { return updated_time_; }
+	//----------------------------------------------
+	std::list<Facebook::Photo*>* getPhotoList() const;
 
-	private:
-		std::string id_;
-		From from_;
-		std::string name_;
-		std::string description_;
-		std::string location_;
-		std::string link_;
-		unsigned int count_;
-		std::string created_time_;
-		std::string updated_time_;
-	};
-}
+	//----------------------------------------------
+	// Accessors
+	//TODO: Accessors for From class
+	const std::string& getId() const { return id_; }
+	const From& GetFrom() const { return from_; }
+	const std::string& getName() const { return name_; }
+	const std::string& getDescription() const { return description_; }
+	const std::string& getLocation() const { return location_; }
+	const std::string& getLink() const { return link_; }
+	const unsigned int& getCount() const { return count_; }
+	const std::string& getCreatedTime() const { return created_time_;}
+	const std::string& getUpdatedTime_() const { return updated_time_; }
+
+private:
+	std::string id_;
+	From from_;
+	std::string name_;
+	std::string description_;
+	std::string location_;
+	std::string link_;
+	unsigned int count_;
+	std::string created_time_;
+	std::string updated_time_;
+};
+
+} // namespace Facebook
 
 #endif

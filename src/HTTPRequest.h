@@ -23,36 +23,40 @@
 
 namespace Facebook
 {
-	struct Uri
-	{
-		typedef std::map<std::string, std::string> QueryParamMap;
 
-		std::string base_uri;
-		QueryParamMap query_params;
+struct Uri
+{
+	typedef std::map<std::string, std::string> QueryParamMap;
 
-		std::string GetUri() const;
-		void Clear() { base_uri.clear(); query_params.clear(); }
-	};
+	std::string base_uri;
+	QueryParamMap query_params;
 
-	namespace HttpUtils
-	{
-		void DecomposeUri(const std::string& str, Uri& uri);
-	};
+	std::string GetUri() const;
+	void Clear() { base_uri.clear(); query_params.clear(); }
+};
 
-	class HttpRequest
-	{
-	private: // private ctor
-		HttpRequest(const std::string &access_token) : access_token_(access_token) { }
+namespace HttpUtils
+{
 
-	public: // public interface
-		void GetResponse(const Uri& uri, Json::Value &value);
-		std::string getAccessToken(){ return access_token_; }
+void DecomposeUri(const std::string& str, Uri& uri);
 
-	private: // member variables
-		std::string access_token_;
+} // namespace Facebook
 
-		friend class Session;
-	};
-}
+class HttpRequest
+{
+private: // private ctor
+	HttpRequest(const std::string &access_token) : access_token_(access_token) { }
+
+public: // public interface
+	void GetResponse(const Uri& uri, Json::Value &value);
+	std::string getAccessToken(){ return access_token_; }
+
+private: // member variables
+	std::string access_token_;
+
+	friend class Session;
+};
+
+} // namespace Facebook
 
 #endif // FACEBOOK_HTTPREQUEST_H_

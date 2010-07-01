@@ -25,13 +25,14 @@
 #include "HTTPRequest.h"
 #include "User.h"
 #include "Exception.h"
+#include "Photo.h"
 
 namespace Facebook
 {
 
 //----------------------------------------------
 // Constructor
-Session::Session(const std::string& accessToken): cachedUser_(NULL)
+Session::Session(const std::string& accessToken)
 {
 	GetInfoLog() << "Initializing Session";
 	// logger_ = new Facebook::Logger();
@@ -48,8 +49,6 @@ void Session::Destroy()
 //----------------------------------------------
 Facebook::Session::~Session()
 {
-	delete cachedUser_; cachedUser_ = NULL;
-	// delete logger_; logger_ = NULL;
 }
 
 //----------------------------------------------
@@ -108,11 +107,7 @@ const Facebook::User* Session::getCurrentUser()
 	// W00t for ugly code
 	const Facebook::User* newUser = getUserByID("me");
 
-	// let's keep a copy on our session object
-	if( NULL == cachedUser_)
-	{
-		cachedUser_ = newUser->clone();
-	}
+	// TODO: Keep a cached copy on our session object
 	return newUser;
 }
 
@@ -127,7 +122,7 @@ const Facebook::User* Session::getUserByID( const std::string& userID )
 
 	Json::Value userValues;
 
-	GetHttpRequest()->GetResponse(userLink, userValues);
+	GetHttpRequest()->GetResponse(userLink, &userValues);
 	newUser->Deserialize(*this, userValues);
 
 	return newUser;

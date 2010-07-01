@@ -267,6 +267,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PagingInfo.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Photo.h"
 				>
 			</File>

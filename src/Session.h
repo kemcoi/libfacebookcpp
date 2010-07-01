@@ -65,10 +65,6 @@ private:
 	Session(const std::string& accessToken);
 	~Session();
 
-	// Facebook::Logger* logger_;
-
-	Facebook::User* cachedUser_;
-
 	DISALLOW_COPY_AND_ASSIGN(Session);
 };
 

@@ -121,9 +121,9 @@ const Facebook::User* Session::getUserByID( const std::string& userID )
 {
 	Facebook::User* newUser = new Facebook::User();
 	Facebook::Uri userLink;
+	GetHttpRequest()->GetUri(&userLink);
 
 	userLink.base_uri = "https://graph.facebook.com/" + userID;
-	userLink.query_params["access_token"] = GetHttpRequest()->access_token_;
 
 	Json::Value userValues;
 

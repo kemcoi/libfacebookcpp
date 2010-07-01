@@ -118,7 +118,7 @@ public:
 	// TODO: /likes
 	void getPhotosList(std::list<Photo> *photoList, const PagingInfo *paging = NULL) const;
 	void getAlbumsList(std::list<Album> *albumList, const PagingInfo *paging = NULL) const;
-	// TODO: /videos
+	void getVideosList(std::list<Video> *videoList, const PagingInfo *paging = NULL) const;
 	// TODO: /groups
 	// TODO: /statuses
 	// TODO: /links

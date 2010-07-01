@@ -26,6 +26,7 @@ namespace Facebook
 
 class HttpRequest;
 struct PagingInfo;
+struct Uri;
 
 class AuthorizedObject
 {

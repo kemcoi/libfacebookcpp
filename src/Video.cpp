@@ -18,19 +18,19 @@
  *
  */
 
-#ifndef FACEBOOK_FACEBOOK_H_
-#define FACEBOOK_FACEBOOK_H_
-
-#include "Common.h"
-
-// Aggregate includes here
-#include "Album.h"
-#include "Comment.h"
-#include "From.h"
-#include "Photo.h"
-#include "Session.h"
-#include "Status.h"
-#include "User.h"
+#include "precompile.h"
 #include "Video.h"
+#include "HttpRequest.h"
+#include "PagingInfo.h"
+#include "Comment.h"
+#include "Deserializer.h"
 
-#endif // FACEBOOK_FACEBOOK_H_
+namespace Facebook
+{
+
+void Video::GetComments(std::list<Comment> *list, const PagingInfo *paging /* = NULL */) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/comments", list, paging);
+}
+
+} // namespace Facebook

@@ -18,19 +18,25 @@
  *
  */
 
-#ifndef FACEBOOK_FACEBOOK_H_
-#define FACEBOOK_FACEBOOK_H_
-
-#include "Common.h"
-
-// Aggregate includes here
-#include "Album.h"
-#include "Comment.h"
+#include "AuthorizedObject.h"
 #include "From.h"
-#include "Photo.h"
-#include "Session.h"
-#include "Status.h"
-#include "User.h"
-#include "Video.h"
 
-#endif // FACEBOOK_FACEBOOK_H_
+namespace Facebook
+{
+
+class FACEBOOK_API Comment : public AuthorizedObject
+{
+public: // accessors
+	const std::string& GetId() const { return id_; }
+	const From& GetFrom() const { return from_; }
+	const std::string& GetMessage() const { return message_; }
+	const std::string& GetCreatedTime() const { return created_time_; }
+
+private: // member variables
+	std::string id_;
+	From from_;
+	std::string message_;
+	std::string created_time_;
+};
+
+} // namespace Facebook

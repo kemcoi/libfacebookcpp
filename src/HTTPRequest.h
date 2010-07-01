@@ -49,7 +49,7 @@ private: // private ctor
 
 public: // public interface
 	void GetResponse(const Uri& uri, Json::Value &value);
-	std::string getAccessToken(){ return access_token_; }
+	void GetUri(Uri *uri) const;
 
 private: // member variables
 	std::string access_token_;

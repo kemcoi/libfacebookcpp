@@ -102,21 +102,18 @@ void Facebook::User::getFriendsList(int offset, int limit, std::list<FriendConta
 	}
 
 	Facebook::Uri friendLink;
+	GetHttpRequest()->GetUri(&friendLink);
 
 	friendLink.base_uri = "https://graph.facebook.com/" + id_ + "/friends";
-
 	friendLink.query_params["limit"] = convertToString(offset);
 	friendLink.query_params["offset"] = convertToString(limit);
-
-	friendLink.query_params["access_token"] = GetHttpRequest()->getAccessToken();
 
 	Json::Value userValues;
 	GetHttpRequest()->GetResponse(friendLink, userValues);
 
 	Deserializer deserializer(*this, userValues);
 	// Should always be able to get friend id and names
-	deserializer.Deserialize("data", true, &friendList); 
-
+	deserializer.Deserialize("data", true, &friendList);
 }
 
 } // namespace Facebook

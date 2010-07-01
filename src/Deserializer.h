@@ -43,7 +43,7 @@ public: // public ctor
 			throw FacebookException(value["type"].asString(), value["message"].asString());
 		}
 
-		obj->request_ = parent_obj.request_;
+		obj->Init(parent_obj);
 	}
 
 	Deserializer(const AuthorizedObject &obj, const Json::Value &json) : json_(json), obj_(obj)
@@ -71,8 +71,8 @@ private: // private helper functions
 		}
 		else
 		{
+			t->Init(obj_);
 			t->Deserialize(obj_, json);
-			t->request_ = obj_.request_;
 		}
 	}
 

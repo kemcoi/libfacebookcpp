@@ -24,6 +24,11 @@
 namespace Facebook
 {
 
+void AuthorizedObject::Init(const shared_ptr<HttpRequest>& request)
+{
+	request_ = request;
+}
+
 void AuthorizedObject::Init(const AuthorizedObject &obj)
 {
 	request_ = obj.request_;

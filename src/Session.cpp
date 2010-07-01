@@ -35,7 +35,7 @@ Session::Session(const std::string& accessToken): cachedUser_(NULL)
 {
 	GetInfoLog() << "Initializing Session";
 	// logger_ = new Facebook::Logger();
-	request_ = shared_ptr<HttpRequest>(new HttpRequest(accessToken));
+	Init(shared_ptr<HttpRequest>(new HttpRequest(accessToken)));
 	GetInfoLog() << accessToken;
 	
 }

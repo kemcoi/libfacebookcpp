@@ -40,12 +40,28 @@ protected: // interface
 	AuthorizedObject() { }
 
 	template<class TType>
+	void GetConnection(const std::string &base_uri, TType *t) const
+	{
+		FACEBOOK_ASSERT(t);
+
+		Uri uri;
+		request_->GetUri(&uri);
+
+		uri.base_uri = base_uri;
+
+		Json::Value value;
+		request_->GetResponse(uri, &value);
+
+		t->Deserialize(*this, value);
+	}
+
+	template<class TType>
 	void GetConnection(const std::string &base_uri, std::list<TType> *list, const PagingInfo *paging) const
 	{
 		FACEBOOK_ASSERT(list);
 
 		Uri uri;
-		GetHttpRequest()->GetUri(&uri);
+		request_->GetUri(&uri);
 
 		uri.base_uri = base_uri;
 
@@ -53,14 +69,11 @@ protected: // interface
 			paging->GetUri(&uri);
 
 		Json::Value value;
-		GetHttpRequest()->GetResponse(uri, &value);
+		request_->GetResponse(uri, &value);
 
 		Deserializer deserializer(*this, value);
 		deserializer.Deserialize("data", true, list);
 	}
-
-	const shared_ptr<HttpRequest>& GetHttpRequest() const { return request_; }
-	shared_ptr<HttpRequest>& GetHttpRequest() { return request_; }
 
 private:
 	// XXX: This makes us thread-safe up to the Session level

@@ -39,10 +39,4 @@ void Album::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &
 	d.Deserialize("updated_time", false, &updated_time_);
 }
 
-std::list<Facebook::Photo*>* Album::getPhotoList() const
-{
-	// TODO: Implement this
-	return NULL;
-}
-
 } // namespace Facebook

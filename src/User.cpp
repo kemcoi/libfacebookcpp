@@ -26,6 +26,8 @@
 #include "PagingInfo.h"
 #include "Photo.h"
 #include "Album.h"
+#include "Video.h"
+#include "Status.h"
 
 namespace Facebook
 {

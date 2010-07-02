@@ -102,30 +102,16 @@ Session* Session::Authenticate(std::string& redirectedURL)
 }
 
 //----------------------------------------------
-const Facebook::User* Session::getCurrentUser()
+void Session::GetCurrentUser(User *user)
 {
-	// W00t for ugly code
-	const Facebook::User* newUser = getUserByID("me");
-
-	// TODO: Keep a cached copy on our session object
-	return newUser;
+	GetConnection("https://graph.facebook.com/me", user);
 }
 
 //----------------------------------------------
-const Facebook::User* Session::getUserByID( const std::string& userID )
+void Session::GetUserById(const std::string& userID, User *user)
 {
-	Facebook::User* newUser = new Facebook::User();
-	Facebook::Uri userLink;
-	GetHttpRequest()->GetUri(&userLink);
-
-	userLink.base_uri = "https://graph.facebook.com/" + userID;
-
-	Json::Value userValues;
-
-	GetHttpRequest()->GetResponse(userLink, &userValues);
-	newUser->Deserialize(*this, userValues);
-
-	return newUser;
+	// XXX: URL Encode userid
+	GetConnection("https://graph.facebook.com/" + userID, user);
 }
 //----------------------------------------------
 

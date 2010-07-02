@@ -38,7 +38,7 @@ public: // ctor and ~()
 public: // public interface
 	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
-	const std::string& GetId() const { return id_; }
+	const std::string& Id() const { return id_; }
 	const From& GetFrom() const { return from_; }
 	const std::string& GetName() const { return name_; }
 	const std::string& GetPicture() const { return picture_; }

@@ -185,6 +185,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Blob.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Comment.cpp"
 				>
 			</File>
@@ -243,7 +247,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Application.h"
+				>
+			</File>
+			<File
 				RelativePath=".\AuthorizedObject.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Blob.h"
 				>
 			</File>
 			<File

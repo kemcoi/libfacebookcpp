@@ -40,24 +40,21 @@ public:
 	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 	//----------------------------------------------
-	std::list<Facebook::Photo*>* getPhotoList() const;
-
-	//----------------------------------------------
 	// Accessors
 	//TODO: Accessors for From class
-	const std::string& getId() const { return id_; }
-	const From& GetFrom() const { return from_; }
-	const std::string& getName() const { return name_; }
-	const std::string& getDescription() const { return description_; }
-	const std::string& getLocation() const { return location_; }
-	const std::string& getLink() const { return link_; }
-	const unsigned int& getCount() const { return count_; }
-	const std::string& getCreatedTime() const { return created_time_;}
-	const std::string& getUpdatedTime_() const { return updated_time_; }
+	const std::string& Id() const { return id_; }
+	const From& From() const { return from_; }
+	const std::string& Name() const { return name_; }
+	const std::string& Description() const { return description_; }
+	const std::string& Location() const { return location_; }
+	const std::string& Link() const { return link_; }
+	const unsigned int& Count() const { return count_; }
+	const std::string& CreatedTime() const { return created_time_;}
+	const std::string& UpdatedTime() const { return updated_time_; }
 
 private:
 	std::string id_;
-	From from_;
+	Facebook::From from_;
 	std::string name_;
 	std::string description_;
 	std::string location_;

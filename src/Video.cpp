@@ -28,6 +28,19 @@
 namespace Facebook
 {
 
+void Video::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+{
+	Deserializer d(parent_obj, this, json);
+
+	d.Deserialize("id", true, &id_);
+	d.Deserialize("from", false, &from_);
+	d.Deserialize("message", false, &message_);
+	d.Deserialize("description", false, &description_);
+	d.Deserialize("length", false, &length_);
+	d.Deserialize("created_time", false, &created_time_);
+	d.Deserialize("updated_time", false, &updated_time_);
+}
+
 void Video::GetComments(std::list<Comment> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/comments", list, paging);

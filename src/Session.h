@@ -61,6 +61,8 @@ public:
 	void GetCurrentUser(User *user);
 	void GetUserById(const std::string& userID, User *user);
 
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
+
 private:
 	Session(const std::string& accessToken);
 	~Session();

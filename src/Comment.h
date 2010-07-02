@@ -32,6 +32,9 @@ public: // accessors
 	const std::string& GetMessage() const { return message_; }
 	const std::string& GetCreatedTime() const { return created_time_; }
 
+public: // interface
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+
 private: // member variables
 	std::string id_;
 	From from_;

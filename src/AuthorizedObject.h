@@ -21,23 +21,29 @@
 #ifndef FACEBOOK_AUTHORIZED_OBJECT_H_
 #define FACEBOOK_AUTHORIZED_OBJECT_H_
 
+#include "HttpRequest.h"
+
 namespace Facebook
 {
 
+class Blob;
 class HttpRequest;
 struct PagingInfo;
 struct Uri;
 
 class AuthorizedObject
 {
-public:
+protected:
 	void Init(const AuthorizedObject &obj);
 	void Init(const shared_ptr<HttpRequest>& request);
-	// TODO: PURE it without creating a havoc
-	virtual void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
+
+private:
+	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
 protected: // interface
 	AuthorizedObject() { }
+
+	virtual void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) = 0;
 
 	template<class TType>
 	void GetConnection(const std::string &base_uri, TType *t) const
@@ -53,6 +59,19 @@ protected: // interface
 		request_->GetResponse(uri, &value);
 
 		t->Deserialize(*this, value);
+	}
+
+	template<>
+	void GetConnection(const std::string &base_uri, Blob *blob) const
+	{
+		FACEBOOK_ASSERT(blob);
+
+		Uri uri;
+		request_->GetUri(&uri);
+
+		uri.base_uri = base_uri;
+		
+		request_->GetResponse(uri, blob);
 	}
 
 	template<class TType>

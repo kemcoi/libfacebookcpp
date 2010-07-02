@@ -25,7 +25,7 @@
 namespace Facebook
 {
 
-void Photo::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+void Photo::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 {
 	Deserializer deserializer(parent_obj, this, json);
 

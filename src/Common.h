@@ -27,6 +27,7 @@
 #include <sstream>
 #include <memory>
 #include <ostream>
+#include <set>
 
 // External libraries
 #include <json/json.h>

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <Facebook.h>
 
 int main()
@@ -21,6 +22,13 @@ int main()
 
 		Facebook::User user;
 		session_->GetCurrentUser(&user);
+
+		Facebook::Blob blob;
+		user.GetPicture(&blob);
+
+		std::ofstream of("C:\\Users\\Aly Hirani\\Desktop\\a.jpg");
+		of.write((const char*)blob.GetData(), blob.GetLength());
+		of.close();
 
 		std::list<Facebook::Album> albumList;
 

@@ -44,6 +44,9 @@ public: // accessors
 public: // connections
 	void GetComments(std::list<Comment> *list, const PagingInfo *paging = NULL) const;
 
+protected:
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+
 private: // member variables
 	std::string id_;
 	Facebook::From from_;

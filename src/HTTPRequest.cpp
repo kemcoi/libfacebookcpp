@@ -22,6 +22,7 @@
 
 #include "HTTPRequest.h"
 #include "Exception.h"
+#include "Blob.h"
 
 namespace Facebook
 {
@@ -101,6 +102,39 @@ void DecomposeUri(const std::string& str, Uri& uri)
 
 } // namespace HttpUtils
 
+int HttpRequest::CurlDebugFunction(int, char *data, size_t size)
+{
+	GetDebugLog().write(data, size);
+	return size;
+}
+
+void HttpRequest::GetResponse(const Uri& uri, Blob *blob)
+{
+	FACEBOOK_ASSERT(blob);
+
+	// First build the final url
+
+	curlpp::Easy curl;
+	GetDebugLog() << uri.GetUri();
+	curl.setOpt(curlpp::options::Url(uri.GetUri()));
+	curl.setOpt(curlpp::Options::Verbose(true));
+	curl.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::CurlDebugFunction)));
+	// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
+	curl.setOpt(curlpp::options::SslVerifyPeer(false));
+
+	std::stringstream oss(std::stringstream::in | std::stringstream::out | std::stringstream::binary);
+
+	// This performs the request and dumps the output to the stringstream
+	oss << curl;
+
+	// XXX: This is inefficient
+	oss.seekg(0, std::ios::end);
+	blob->Realloc(oss.tellg());
+	oss.seekg(0, std::ios::beg);
+
+	oss.read((char*)blob->GetData(), blob->GetLength());
+}
+
 void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
 {
 	FACEBOOK_ASSERT(value);
@@ -110,6 +144,8 @@ void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
 	curlpp::Easy curl;
 	GetDebugLog() << uri.GetUri();
 	curl.setOpt(curlpp::options::Url(uri.GetUri()));
+	curl.setOpt(curlpp::Options::Verbose(true));
+	curl.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::CurlDebugFunction)));
 	// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
 	curl.setOpt(curlpp::options::SslVerifyPeer(false));
 

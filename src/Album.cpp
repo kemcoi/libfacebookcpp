@@ -25,7 +25,7 @@
 namespace Facebook
 {
 
-void Album::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
+void Album::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
 {
 	Deserializer d(parent_obj, this, json);
 

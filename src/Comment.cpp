@@ -20,4 +20,19 @@
 
 #include "precompile.h"
 #include "Comment.h"
+#include "Deserializer.h"
 
+namespace Facebook
+{
+
+void Comment::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+{
+	Deserializer d(parent_obj, this, json);
+
+	d.Deserialize("id", true, &id_);
+	d.Deserialize("from", false, &from_);
+	d.Deserialize("message", false, &message_);
+	d.Deserialize("created_time", false, &created_time_);
+}
+
+} // namespace Facebook

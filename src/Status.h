@@ -35,7 +35,7 @@ public:
 	virtual ~Status() { }
 
 	//----------------------------------------------
-	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 	//----------------------------------------------
 	// Accessors

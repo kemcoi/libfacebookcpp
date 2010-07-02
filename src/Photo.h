@@ -36,23 +36,23 @@ public: // ctor and ~()
 	virtual ~Photo() { }
 
 public: // public interface
-	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 	const std::string& Id() const { return id_; }
-	const From& GetFrom() const { return from_; }
-	const std::string& GetName() const { return name_; }
-	const std::string& GetPicture() const { return picture_; }
-	const std::string& GetSource() const { return source_; }
-	unsigned int GetHeight() const { return height_; }
-	unsigned int GetWidth() const { return width_; }
-	const std::string& GetLink() const { return link_; }
-	const std::string& GetIcon() const { return icon_; }
-	const std::string& GetCreatedTime() const { return created_time_; }
-	const std::string& GetUpdatedTime() const { return updated_time_; }
+	const From& From() const { return from_; }
+	const std::string& Name() const { return name_; }
+	const std::string& Picture() const { return picture_; }
+	const std::string& Source() const { return source_; }
+	unsigned int Height() const { return height_; }
+	unsigned int Width() const { return width_; }
+	const std::string& Link() const { return link_; }
+	const std::string& Icon() const { return icon_; }
+	const std::string& CreatedTime() const { return created_time_; }
+	const std::string& UpdatedTime() const { return updated_time_; }
 
 private: // private members
 	std::string id_;
-	From from_;
+	Facebook::From from_;
 	std::string name_;
 	std::string picture_;
 	std::string source_;

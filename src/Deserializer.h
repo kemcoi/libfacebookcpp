@@ -29,7 +29,7 @@ namespace Facebook
 
 class Deserializer
 {
-public: // public ctor
+public: // public ctor and ~()
 	Deserializer(const AuthorizedObject &parent_obj, AuthorizedObject *obj, const Json::Value &json) : json_(json), obj_(parent_obj)
 	{
 		FACEBOOK_ASSERT(obj);
@@ -44,6 +44,15 @@ public: // public ctor
 		}
 
 		obj->Init(parent_obj);
+
+#ifdef _DEBUG
+		std::vector<std::string> members = json.getMemberNames();
+
+		for(std::vector<std::string>::const_iterator it = members.begin(); it != members.end(); ++it)
+		{
+			tags_.insert(std::pair<std::string, int>(*it, 0));
+		}
+#endif // _DEBUG
 	}
 
 	Deserializer(const AuthorizedObject &obj, const Json::Value &json) : json_(json), obj_(obj)
@@ -56,6 +65,28 @@ public: // public ctor
 			const Json::Value& value = json_["error"];
 			throw FacebookException(value["type"].asString(), value["message"].asString());
 		}
+
+#ifdef _DEBUG
+		std::vector<std::string> members = json.getMemberNames();
+
+		for(std::vector<std::string>::const_iterator it = members.begin(); it != members.end(); ++it)
+		{
+			tags_.insert(std::pair<std::string, int>(*it, 0));
+		}
+#endif // _DEBUG
+	}
+
+	~Deserializer()
+	{
+#ifdef _DEBUG
+		for(std::map<std::string, int>::const_iterator it = tags_.begin(); it != tags_.end(); ++it)
+		{
+			if(it->second != 1)
+			{
+				GetInfoLog() << "Tag " << it->first << " had an access count of " << it->second;
+			}
+		}
+#endif // _DEBUG
 	}
 
 private: // private helper functions
@@ -184,21 +215,35 @@ public: // public interface
 		}
 		else
 		{
+#ifdef _DEBUG
+			std::map<std::string, int>::iterator it = tags_.find(tag);
+
+			if(it == tags_.end())
+			{
+				GetInfoLog() << "Unable to find " << tag << " in the list of members!";
+			}
+			else if(it->second != 0)
+			{
+				GetInfoLog() << "You are trying to access " << tag << " but it has been already deserialized!";
+			}
+			else
+			{
+				++(it->second);
+			}
+#endif // _DEBUG
 			_DeserializeObject(json_[tag], required, t);
 		}
 	}
 
-
 private: // assignment operator
-	Deserializer& operator = (const Deserializer& rhs)
-	{
-		FACEBOOK_UNUSED(rhs);
-		throw NotSupportedException("Deserializer is not copyable");
-	}
+	DISALLOW_COPY_AND_ASSIGN(Deserializer);
 
 private: // private members
 	const Json::Value &json_;
 	const AuthorizedObject &obj_;
+#ifdef _DEBUG
+	std::map<std::string, int> tags_;
+#endif // _DEBUG
 };
 
 } // namespace Facebook

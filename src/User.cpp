@@ -21,18 +21,19 @@
 #include "precompile.h"
 
 #include "User.h"
-#include "Deserializer.h"
 #include "HTTPRequest.h"
+#include "Deserializer.h"
 #include "PagingInfo.h"
 #include "Photo.h"
 #include "Album.h"
 #include "Video.h"
 #include "Status.h"
+#include "Blob.h"
 
 namespace Facebook
 {
 
-void Location::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+void Location::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 {
 	Deserializer d(parent_obj, this, json);
 
@@ -40,7 +41,7 @@ void Location::Deserialize(const AuthorizedObject &parent_obj, const Json::Value
 	d.Deserialize("name", false, &name_);
 }
 
-void FriendContainer::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+void FriendContainer::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 {
 	Deserializer deserialize(parent_obj, this, json);
 
@@ -48,7 +49,7 @@ void FriendContainer::Deserialize(const AuthorizedObject &parent_obj, const Json
 	deserialize.Deserialize("name", false, &name_);
 }
 
-void User::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
+void User::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
 {
 	Deserializer deserialize(parent_obj, this, json);
 
@@ -72,6 +73,11 @@ void User::Deserialize( const AuthorizedObject &parent_obj, const Json::Value &j
 	deserialize.Deserialize("verified", false, &verified_);
 	deserialize.Deserialize("significant_other", false, &significant_other_);
 	deserialize.Deserialize("timezone", false, &timezone_);
+}
+
+void User::GetPicture(Blob *blob) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/picture", blob);
 }
 
 void User::getFriendsList(std::list<FriendContainer>* friendList, const PagingInfo *paging /* = NULL */) const

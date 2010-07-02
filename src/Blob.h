@@ -18,10 +18,13 @@ public: // ctor and ~()
 public: // public interface
 	const void* GetData() const { return data_; }
 	void* GetData() { return data_; }
-	size_t GetBytes() const { return bytes_; }
+	size_t GetLength() const { return bytes_; }
 
-	void Alloc(size_t bytes)
+	void Realloc(size_t bytes)
 	{
+		FACEBOOK_ASSERT(bytes >= 0);
+
+		// realloc(NULL, bytes) makes realloc work like malloc
 		void *new_data = realloc(data_, bytes);
 
 		if(!new_data)

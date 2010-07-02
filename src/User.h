@@ -26,6 +26,7 @@
 namespace Facebook
 {
 
+class Blob;
 class Video;
 class Album;
 class Photo;
@@ -35,11 +36,11 @@ struct PagingInfo;
 class FACEBOOK_API Location : public AuthorizedObject
 {
 public: // public interface
-	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 public: // accessors
-	const std::string& GetId() const   { return id_; }
-	const std::string& GetName() const { return name_; }
+	const std::string& Id() const   { return id_; }
+	const std::string& Name() const { return name_; }
 
 private: // member variables
 	std::string id_;
@@ -52,14 +53,14 @@ public:
 	//----------------------------------------------
 	FriendContainer(){};
 
-	// XXX: Make this private, somehow
+	// XXX: make all _deserialize private
 
 	//----------------------------------------------
-	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 	//----------------------------------------------
-	const std::string& getName();
-	const std::string& getID();
+	const std::string& Name() const { return name_; }
+	const std::string& Id() const { return id_; }
 
 private:
 	std::string name_;
@@ -76,32 +77,33 @@ public:
 	//----------------------------------------------
 
 	//----------------------------------------------
-	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 	//----------------------------------------------
 	//Getters
-	const std::string& getId() const { return id_; }
-	const std::string& getFirstName() const { return first_name_; }
-	const std::string& getLastName() const { return last_name_; }
-	const std::string& getName() const { return name_; }
-	const std::string& getLink() const { return link_; }
-	const std::string& getAbout() const { return about_; }
-	const std::string& getBirthday() const { return birthday_; }
-	const std::string& getWork() const { return work_; }
-	const std::string& getEducation() const { return education_; }
-	const std::string& getEmail() const { return email_; }
-	const std::string& getWebsite() const { return website_; }
-	const Location& getHomeTown() const { return hometown_; }
-	const Location& getLocation() const { return location_; }
-	const std::string& getGender() const { return gender_; }
-	const std::list<std::string>& getInterestedIn() const { return interested_in_; }
-	const std::string& getMeetingFor() const { return meeting_for_; }
-	const std::string& getRelationshipStatus() const { return relationship_status_; }
-	const std::string& getReligion() const { return religion_; }
-	const std::string& getPolitical() const { return political_; }
-	const std::string& getVerified() const { return verified_; }
-	const std::string& getSignificantOther() const { return significant_other_; }
-	int getTimeZone() const { return timezone_; }
+	const std::string& Id() const { return id_; }
+	const std::string& FirstName() const { return first_name_; }
+	const std::string& LastName() const { return last_name_; }
+	const std::string& Name() const { return name_; }
+	const std::string& Link() const { return link_; }
+	const std::string& About() const { return about_; }
+	const std::string& Birthday() const { return birthday_; }
+	const std::string& Work() const { return work_; }
+	const std::string& Education() const { return education_; }
+	const std::string& Email() const { return email_; }
+	const std::string& Website() const { return website_; }
+	const Location& Hometown() const { return hometown_; }
+	const Location& Location() const { return location_; }
+	const std::string& Gender() const { return gender_; }
+	const std::list<std::string>& InterestedIn() const { return interested_in_; }
+	const std::string& MeetingFor() const { return meeting_for_; }
+	const std::string& RelationshipStatus() const { return relationship_status_; }
+	const std::string& Religion() const { return religion_; }
+	const std::string& Political() const { return political_; }
+	const std::string& Verified() const { return verified_; }
+	const std::string& SignificantOther() const { return significant_other_; }
+	// XXX: Timezone should probably be in decimal as opposed to int
+	int Timezone() const { return timezone_; }
 
 	//----------------------------------------------
 	// Connections
@@ -109,6 +111,7 @@ public:
 	// TODO: /feed
 	void getTaggedList(std::list<Photo> *photoList, const PagingInfo *paging = NULL) const;
 	// TODO: /posts
+	void GetPicture(Blob *blob) const;
 	// TODO: /picture
 	void getFriendsList(std::list<FriendContainer>* friendList, const PagingInfo *paging = NULL) const;
 	// TODO: /activities
@@ -144,8 +147,8 @@ private:
 	std::string education_;
 	std::string email_;
 	std::string website_;
-	Location hometown_;
-	Location location_;
+	Facebook::Location hometown_;
+	Facebook::Location location_;
 	std::string gender_;
 	std::list<std::string> interested_in_;
 	std::string meeting_for_;

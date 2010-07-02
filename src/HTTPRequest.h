@@ -42,12 +42,18 @@ void DecomposeUri(const std::string& str, Uri& uri);
 
 } // namespace Facebook
 
+class Blob;
+
 class HttpRequest
 {
 private: // private ctor
 	HttpRequest(const std::string &access_token) : access_token_(access_token) { }
 
+private: // private helper functions
+	int CurlDebugFunction(int, char *data, size_t size);
+
 public: // public interface
+	void HttpRequest::GetResponse(const Uri& uri, Blob *blob);
 	void GetResponse(const Uri& uri, Json::Value *value);
 	void GetUri(Uri *uri) const;
 

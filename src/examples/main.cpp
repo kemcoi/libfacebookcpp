@@ -18,11 +18,11 @@ int main()
 		std::cin >> redirectURL;
 
 		std::auto_ptr<Facebook::Session> session_(Facebook::Session::Authenticate(redirectURL));
-		std::auto_ptr<const Facebook::User> user_(session_->getCurrentUser());
+
+		Facebook::User user;
+		session_->GetCurrentUser(&user);
 
 		std::list<Facebook::Album> albumList;
-
-		user_->getAlbumsList(&albumList);
 
 		system("pause"); // VS Debug
 	}

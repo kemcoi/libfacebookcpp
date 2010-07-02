@@ -40,11 +40,11 @@ public:
 	//----------------------------------------------
 	// Accessors
 	//TODO: Accessors for From class
-	const std::string& getId() const { return id_; }
-	const From& GetFrom() const { return from_; }
+	const std::string& Id() const { return id_; }
+	const From& From() const { return from_; }
 private:
 	std::string id_;
-	From from_;
+	Facebook::From from_;
 	std::string message_;
 	std::string updated_time_;
 };
@@ -52,4 +52,3 @@ private:
 } // namespace Facebook
 
 #endif
-

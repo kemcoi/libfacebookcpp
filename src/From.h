@@ -37,9 +37,9 @@ public: // public interface
 
 	//----------------------------------------------
 	// Accessors
-	const std::string& GetName() const { return name_; }
-	const std::string& GetCategory() const { return category_; }
-	const std::string& GetId() const { return id_; }
+	const std::string& Name() const { return name_; }
+	const std::string& Category() const { return category_; }
+	const std::string& Id() const { return id_; }
 
 private: // private members
 	std::string name_;

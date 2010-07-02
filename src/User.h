@@ -26,8 +26,10 @@
 namespace Facebook
 {
 
+class Video;
 class Album;
 class Photo;
+class Status;
 struct PagingInfo;
 
 class FACEBOOK_API Location : public AuthorizedObject
@@ -120,7 +122,7 @@ public:
 	void getAlbumsList(std::list<Album> *albumList, const PagingInfo *paging = NULL) const;
 	void getVideosList(std::list<Video> *videoList, const PagingInfo *paging = NULL) const;
 	// TODO: /groups
-	// TODO: /statuses
+	void getStatusList(std::list<Status> *statusList, const PagingInfo *paging = NULL) const;
 	// TODO: /links
 	// TODO: /notes
 	// TODO: /events

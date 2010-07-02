@@ -58,8 +58,8 @@ public:
 	// Getters
 	// TODO: Decide if these returns should be constant
 	// and if we it should be a param instead
-	const Facebook::User* getCurrentUser();
-	const Facebook::User* getUserByID(const std::string& userID);
+	void GetCurrentUser(User *user);
+	void GetUserById(const std::string& userID, User *user);
 
 private:
 	Session(const std::string& accessToken);

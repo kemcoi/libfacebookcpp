@@ -55,6 +55,7 @@ private: // private helper classes
 	public: // ctor and ~()
 		HttpRequestBlob(Blob *blob) : blob_(blob) { }
 
+		size_t HeaderFunction(char *data, size_t size, size_t nmemb);
 		size_t WriteFunction(char *data, size_t size, size_t nmemb);
 
 	private:

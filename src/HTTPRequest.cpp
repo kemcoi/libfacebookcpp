@@ -110,6 +110,15 @@ int HttpRequest::CurlDebugFunction(curl_infotype type, char *data, size_t size)
 	return 0;
 }
 
+size_t HttpRequest::HttpRequestBlob::HeaderFunction(char * /* data */, size_t size, size_t nmemb)
+{
+	FACEBOOK_ASSERT(blob_);
+
+	// XXX: Implement content-type and content-length here
+	
+	return size * nmemb;
+}
+
 size_t HttpRequest::HttpRequestBlob::WriteFunction(char *data, size_t size, size_t nmemb)
 {
 	// TODO: In batch
@@ -136,6 +145,7 @@ void HttpRequest::GetResponse(const Uri& uri, Blob *blob)
 	curl.setOpt(curlpp::Options::Verbose(true));
 	curl.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::CurlDebugFunction)));
 	curl.setOpt(curlpp::Options::WriteFunction(curlpp::types::WriteFunctionFunctor(&reqBlob, &HttpRequestBlob::WriteFunction)));
+	curl.setOpt(curlpp::Options::HeaderFunction(curlpp::types::WriteFunctionFunctor(&reqBlob, &HttpRequestBlob::HeaderFunction)));
 	curl.setOpt(curlpp::Options::FollowLocation(true));
 	// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
 	curl.setOpt(curlpp::options::SslVerifyPeer(false));

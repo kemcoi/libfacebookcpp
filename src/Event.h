@@ -21,6 +21,7 @@
 #include "AuthorizedObject.h"
 #include "FriendContainer.h"
 #include "Venue.h"
+#include "DateTime.h"
 
 namespace Facebook
 {
@@ -34,12 +35,12 @@ public: // accessors
 	const FriendContainer& GetOwner() const { return owner_; }
 	const std::string& GetName() const { return name_; }
 	const std::string& GetDescription() const { return description_; }
-	const std::string& GetStartTime() const { return startTime_; }
-	const std::string& GetEndTime() const { return endTime_; }
+	const DateTime& GetStartTime() const { return startTime_; }
+	const DateTime& GetEndTime() const { return endTime_; }
 	const std::string& GetLocation() const { return location_; }
 	const Venue& GetVenue() const { return venue_; }
 	const std::string& GetPrivacy() const { return privacy_; }
-	const std::string& GetUpdatedTime() const { return updatedTime_; }
+	const DateTime& GetUpdatedTime() const { return updatedTime_; }
 
 public: // connections
 	// TODO: feed
@@ -59,12 +60,12 @@ private: // member variables
 	FriendContainer owner_;
 	std::string name_;
 	std::string description_;
-	std::string startTime_;
-	std::string endTime_;
+	DateTime startTime_;
+	DateTime endTime_;
 	std::string location_;
 	Venue venue_;
 	std::string privacy_;
-	std::string updatedTime_;
+	DateTime updatedTime_;
 };
 
 } // namespace Facebook

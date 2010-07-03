@@ -193,6 +193,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DateTime.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Deserializer.cpp"
 				>
 			</File>
@@ -292,6 +296,10 @@
 			</File>
 			<File
 				RelativePath=".\Common.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DateTime.h"
 				>
 			</File>
 			<File

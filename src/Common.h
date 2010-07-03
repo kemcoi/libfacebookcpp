@@ -28,6 +28,7 @@
 #include <memory>
 #include <ostream>
 #include <set>
+#include <ctime>
 
 // External libraries
 #include <json/json.h>

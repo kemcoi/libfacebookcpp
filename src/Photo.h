@@ -23,6 +23,7 @@
 
 #include "AuthorizedObject.h"
 #include "From.h"
+#include "DateTime.h"
 
 namespace Facebook
 {
@@ -47,8 +48,8 @@ public: // public interface
 	unsigned int Width() const { return width_; }
 	const std::string& Link() const { return link_; }
 	const std::string& Icon() const { return icon_; }
-	const std::string& CreatedTime() const { return created_time_; }
-	const std::string& UpdatedTime() const { return updated_time_; }
+	const DateTime& CreatedTime() const { return created_time_; }
+	const DateTime& UpdatedTime() const { return updated_time_; }
 
 private: // private members
 	std::string id_;
@@ -60,8 +61,8 @@ private: // private members
 	unsigned int width_;
 	std::string link_;
 	std::string icon_;
-	std::string created_time_;
-	std::string updated_time_;
+	DateTime created_time_;
+	DateTime updated_time_;
 };
 
 } // namespace Facebook

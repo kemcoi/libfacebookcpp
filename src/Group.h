@@ -27,6 +27,7 @@
 #include "AuthorizedObject.h"
 #include "FriendContainer.h"
 #include "Venue.h"
+#include "DateTime.h"
 
 // XXX: Clean up the includes everywhere
 // XXX: Clean up forward references everywhere
@@ -46,7 +47,7 @@ public: // accessors
 	const std::string& Link() const { return link_; }
 	const Venue& Venue() const { return venue_; }
 	const std::string& Privacy() const { return privacy_; }
-	const std::string& UpdatedTime() const { return updated_time_; }
+	const DateTime& UpdatedTime() const { return updated_time_; }
 
 public: // connections
 	// TODO: Feed
@@ -67,7 +68,7 @@ private: // member variables
 	// TODO: Enum?
 	std::string privacy_;
 	// XXX: Need a timestamp class
-	std::string updated_time_;
+	DateTime updated_time_;
 };
 
 } // namespace Facebook

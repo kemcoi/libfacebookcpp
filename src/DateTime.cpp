@@ -18,25 +18,31 @@
  *
  */
 
-#ifndef FACEBOOK_PRECOMPILE_H_
-#define FACEBOOK_PRECOMPILE_H_
+#include "precompile.h"
+#include "DateTime.h"
+#include "Exception.h"
 
-#ifdef _WIN32
-// Workaround for Windows retardness
-#define _CRT_NONSTDC_NO_DEPRECATE
-#define _CRT_SECURE_NO_WARNINGS
-#endif // _WIN32
+namespace Facebook
+{
 
-#include "Common.h"
+void DateTime::Parse(const std::string &str)
+{
+	// Sample: "created_time": "2010-07-02T18:00:37+0000"
 
-// Internal utilities
-#include "Logger.h"
-#include "Utils.h"
+	char tz;
+	int rt = sscanf(str.c_str(), "%d-%d-%dT%d:%d:%d%c%d", &year, &month, &date, &hour, &minute, &second, &tz, &offset);
 
-#define goto _USE_OF_GOTO_IS_NOT_ALLOWED_
-#define const_cast _USE_OF_CONST_CAST_IS_NOT_ALLOWED_
-#define FACEBOOK_CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
-// XXX: TODO: Break on non-arrays
-#define FACEBOOK_NUMELMS(x) sizeof(x) / sizeof(x[0])
+	if(rt != 8 || (tz !='+' && tz != '-'))
+	{
+		memset(this, 0, sizeof(*this));
+		throw InvalidArgument("str");
+	}
 
-#endif // FACEBOOK_PRECOMPILE_H_
+	// offset is in HHMM. Convert it to fully minutes
+	offset = offset % 100 + offset / 100 * 60;
+
+	if(tz == '-')
+		offset = -offset;
+}
+
+} // namespace Facebook

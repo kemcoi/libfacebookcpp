@@ -33,8 +33,8 @@ public: // accessors
 	const Facebook::From& From() const { return from_; }
 	const std::string& Subject() const { return subject_; }
 	const std::string& Message() const { return message_; }
-	const std::string& CreatedTime() const { return created_time_; }
-	const std::string& UpdatedTime() const { return updated_time_; }
+	const DateTime& CreatedTime() const { return created_time_; }
+	const DateTime& UpdatedTime() const { return updated_time_; }
 
 	void GetComments(std::list<Comment> *list, const PagingInfo *paging = NULL);
 
@@ -46,8 +46,8 @@ private: // member variables
 	Facebook::From from_;
 	std::string subject_;
 	std::string message_;
-	std::string created_time_;
-	std::string updated_time_;
+	DateTime created_time_;
+	DateTime updated_time_;
 };
 
 }

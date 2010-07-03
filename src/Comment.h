@@ -20,6 +20,7 @@
 
 #include "AuthorizedObject.h"
 #include "From.h"
+#include "DateTime.h"
 
 namespace Facebook
 {
@@ -30,7 +31,7 @@ public: // accessors
 	const std::string& GetId() const { return id_; }
 	const From& GetFrom() const { return from_; }
 	const std::string& GetMessage() const { return message_; }
-	const std::string& GetCreatedTime() const { return created_time_; }
+	const DateTime& GetCreatedTime() const { return created_time_; }
 
 public: // interface
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
@@ -39,7 +40,7 @@ private: // member variables
 	std::string id_;
 	From from_;
 	std::string message_;
-	std::string created_time_;
+	DateTime created_time_;
 };
 
 } // namespace Facebook

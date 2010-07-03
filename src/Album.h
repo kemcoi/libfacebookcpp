@@ -23,6 +23,7 @@
 
 #include "AuthorizedObject.h"
 #include "From.h"
+#include "DateTime.h"
 
 namespace Facebook
 {
@@ -49,8 +50,8 @@ public:
 	const std::string& Location() const { return location_; }
 	const std::string& Link() const { return link_; }
 	const unsigned int& Count() const { return count_; }
-	const std::string& CreatedTime() const { return created_time_;}
-	const std::string& UpdatedTime() const { return updated_time_; }
+	const DateTime& CreatedTime() const { return created_time_;}
+	const DateTime& UpdatedTime() const { return updated_time_; }
 
 private:
 	std::string id_;
@@ -60,8 +61,8 @@ private:
 	std::string location_;
 	std::string link_;
 	unsigned int count_;
-	std::string created_time_;
-	std::string updated_time_;
+	DateTime created_time_;
+	DateTime updated_time_;
 };
 
 } // namespace Facebook

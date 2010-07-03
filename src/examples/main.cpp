@@ -31,12 +31,13 @@ int main()
 		Facebook::Blob blob;
 		user.GetPicture(&blob);
 
-		HANDLE handle = CreateFile(TEXT("C:\\Users\\Aly Hirani\\Desktop\\a.jpg"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_ARCHIVE, NULL);
-		DWORD dw = 0;
-		WriteFile(handle, blob.GetData(), blob.GetLength(), &dw, NULL);
-		CloseHandle(handle);
+		//HANDLE handle = CreateFile(TEXT("C:\\Users\\Aly Hirani\\Desktop\\a.jpg"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_ARCHIVE, NULL);
+		//DWORD dw = 0;
+		//WriteFile(handle, blob.GetData(), blob.GetLength(), &dw, NULL);
+		//CloseHandle(handle);
 
 		std::list<Facebook::Album> albumList;
+		user.GetAlbums(&albumList);
 
 		system("pause"); // VS Debug
 	}

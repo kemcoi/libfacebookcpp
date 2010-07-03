@@ -21,6 +21,7 @@
 #include "precompile.h"
 #include "Deserializer.h"
 #include "Album.h"
+#include "DateTime.h"
 
 namespace Facebook
 {
@@ -29,7 +30,8 @@ void Album::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value 
 {
 	Deserializer d(parent_obj, this, json);
 
-	d.Deserialize("id", false,&id_ );
+	d.Deserialize("id", true, &id_ );
+	d.Deserialize("from", false, &from_);
 	d.Deserialize("name", false, &name_);
 	d.Deserialize("description", false, &description_);
 	d.Deserialize("location", false, &location_);

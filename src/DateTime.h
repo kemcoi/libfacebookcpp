@@ -18,25 +18,31 @@
  *
  */
 
-#ifndef FACEBOOK_PRECOMPILE_H_
-#define FACEBOOK_PRECOMPILE_H_
+#ifndef FACEBOOK_DATETIME_H_
+#define FACEBOOK_DATETIME_H_
 
-#ifdef _WIN32
-// Workaround for Windows retardness
-#define _CRT_NONSTDC_NO_DEPRECATE
-#define _CRT_SECURE_NO_WARNINGS
-#endif // _WIN32
+namespace Facebook
+{
 
-#include "Common.h"
+// This is just a simple wrapper around tm
+struct FACEBOOK_API DateTime
+{
+public: // ctor
+	DateTime() { memset(this, 0, sizeof(*this)); }
 
-// Internal utilities
-#include "Logger.h"
-#include "Utils.h"
+public: // interface
+	void Parse(const std::string &str);
 
-#define goto _USE_OF_GOTO_IS_NOT_ALLOWED_
-#define const_cast _USE_OF_CONST_CAST_IS_NOT_ALLOWED_
-#define FACEBOOK_CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
-// XXX: TODO: Break on non-arrays
-#define FACEBOOK_NUMELMS(x) sizeof(x) / sizeof(x[0])
+private: // member variables
+	int year;
+	int month;
+	int date;
+	int hour;
+	int minute;
+	int second;
+	int offset;
+};
 
-#endif // FACEBOOK_PRECOMPILE_H_
+} // namespace Facebook
+
+#endif // FACEBOOK_DATETIME_H_

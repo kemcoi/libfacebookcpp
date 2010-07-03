@@ -23,6 +23,7 @@
 
 #include "AuthorizedObject.h"
 #include "Exception.h"
+#include "DateTime.h"
 
 namespace Facebook
 {
@@ -168,6 +169,22 @@ private: // private helper functions
 		else
 		{
 			*f = (float)json.asDouble();
+		}
+	}
+
+	template<>
+	void _DeserializeObject(const Json::Value &json, bool required, DateTime *dt)
+	{
+		FACEBOOK_ASSERT(dt);
+
+		if(!json.isConvertibleTo(Json::stringValue))
+		{
+			if(required)
+				throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
+		}
+		else
+		{
+			dt->Parse(json.asString());
 		}
 	}
 

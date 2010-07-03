@@ -20,6 +20,7 @@
 
 #include "AuthorizedObject.h"
 #include "From.h"
+#include "DateTime.h"
 
 namespace Facebook
 {
@@ -43,8 +44,8 @@ public: // accessors
 	const std::string& Attribution() const { return attribution_; }
 	const std::list<std::string>& Actions() const { return actions_; }
 	unsigned int Likes() const { return likes_; }
-	const std::string& CreatedTime() const { return created_time_; }
-	const std::string& UpdatedTime() const { return updated_time_; }
+	const DateTime& CreatedTime() const { return created_time_; }
+	const DateTime& UpdatedTime() const { return updated_time_; }
 
 public: // connections
 	void GetComments(std::list<Comment> *list, const PagingInfo *paging = NULL);
@@ -68,8 +69,8 @@ private: // member variables
 	std::list<std::string> actions_;
 	// XXX: uint64
 	unsigned int likes_;
-	std::string created_time_;
-	std::string updated_time_;
+	DateTime created_time_;
+	DateTime updated_time_;
 };
 
 } // namespace Facebook

@@ -46,7 +46,7 @@ private:
 	std::string id_;
 	Facebook::From from_;
 	std::string message_;
-	std::string updated_time_;
+	DateTime updated_time_;
 };
 
 } // namespace Facebook

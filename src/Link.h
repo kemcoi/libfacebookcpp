@@ -3,6 +3,7 @@
 
 #include "AuthorizedObject.h"
 #include "FriendContainer.h"
+#include "DateTime.h"
 
 namespace Facebook
 {
@@ -20,7 +21,7 @@ public: // accessors
 	const std::string& Caption() const { return caption_; }
 	const std::string& Description() const { return description_; }
 	const std::string& Message() const { return message_; }
-	const std::string& UpdatedTime() const { return updated_time_; }
+	const DateTime& UpdatedTime() const { return updated_time_; }
 
 public: // connection
 	// XXX: Make sure all connections are const
@@ -38,7 +39,7 @@ private: // member variables
 	std::string caption_;
 	std::string description_;
 	std::string message_;
-	std::string updated_time_;
+	DateTime updated_time_;
 };
 
 } // namespace Facebook

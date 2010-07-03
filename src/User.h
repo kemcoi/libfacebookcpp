@@ -33,6 +33,7 @@ class Video;
 class Album;
 class Photo;
 class Status;
+class Note;
 struct PagingInfo;
 
 class FACEBOOK_API Location : public AuthorizedObject
@@ -127,7 +128,7 @@ public:
 	void GetVideos(std::list<Video> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /groups
 	void GetStatuses(std::list<Status> *list, const PagingInfo *paging = NULL) const;
-	// TODO: /links
+	void GetNote(std::list<Note> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /notes
 	// TODO: /events
 	// TODO: /inbox

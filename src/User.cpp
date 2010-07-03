@@ -31,6 +31,7 @@
 #include "Blob.h"
 #include "Post.h"
 #include "From.h"
+#include "Note.h"
 
 namespace Facebook
 {
@@ -152,4 +153,8 @@ void User::GetStatuses(std::list<Status> *list, const PagingInfo *paging /* = NU
 	GetConnection("https://graph.facebook.com/" + id_ + "/statuses", list, paging);
 }
 
+void User::GetNote(std::list<Note> *list, const PagingInfo *paging) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/notes", list, paging);
+}
 } // namespace Facebook

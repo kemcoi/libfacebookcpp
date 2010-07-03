@@ -49,6 +49,18 @@ class HttpRequest
 private: // private ctor
 	HttpRequest(const std::string &access_token) : access_token_(access_token) { }
 
+private: // private helper classes
+	class HttpRequestBlob
+	{
+	public: // ctor and ~()
+		HttpRequestBlob(Blob *blob) : blob_(blob) { }
+
+		size_t WriteFunction(char *data, size_t size, size_t nmemb);
+
+	private:
+		Blob *blob_;
+	};
+
 private: // private helper functions
 	int CurlDebugFunction(int, char *data, size_t size);
 

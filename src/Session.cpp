@@ -59,35 +59,39 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 												const std::list<std::string>& scope)
 {
 	GetInfoLog() << "Creating Authentication URL";
-	
-	static const char *authorization_uri = "https://graph.facebook.com/oauth/authorize";
-	std::stringstream oss;
+	Facebook::Uri authenticationURL;
+	authenticationURL.base_uri = "https://graph.facebook.com/oauth/authorize";
 
-	oss << authorization_uri << "?client_id=" << curlpp::escape(clientID) << "&redirect_uri=" <<
-		curlpp::escape(redirectURI); 
+	authenticationURL.query_params["client_id"] = clientID;
+	authenticationURL.query_params["redirect_uri"] = redirectURI;
 
 	if(!type.empty())
 	{	
-		oss << "&type=" << curlpp::escape(type) ;
+		authenticationURL.query_params["type"] = type;
 	}
 
 	if(!display.empty())
 	{
-		oss<< "&display=" << curlpp::escape(display);
+		authenticationURL.query_params["display"] = display;
 	}
 
-	//TODO make this better-- maybe a class to handle the extended permissions
-	// Having the user pass in permissions is a pain
-	if(scope.size())
+	// TODO: Make this easier
+	std::stringstream oss;
+	for(std::list<std::string>::const_iterator iter = scope.begin();iter != scope.end(); iter++)
 	{
-		oss<< "&scope=" << curlpp::escape(scope.front());
-	}
-	for(std::list<std::string>::const_iterator iter = ++scope.begin();iter != scope.end(); iter++)
-	{
-		oss<< ',' << curlpp::escape(*iter);
+		oss<<*iter;
+		if(iter != (--scope.end()))
+		{
+			 oss << ',';
+		}
 	}
 
-	return oss.str();
+	if(!scope.empty())
+	{
+		authenticationURL.query_params["scope"] = oss.str();
+	}
+
+	return authenticationURL.GetUri();
 }
 
 //----------------------------------------------

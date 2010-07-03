@@ -221,6 +221,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Note.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Photo.cpp"
 				>
 			</File>
@@ -316,6 +320,10 @@
 			</File>
 			<File
 				RelativePath=".\Logger.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Note.h"
 				>
 			</File>
 			<File

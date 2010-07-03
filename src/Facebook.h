@@ -33,5 +33,5 @@
 #include "Status.h"
 #include "User.h"
 #include "Video.h"
-
+#include "Note.h"
 #endif // FACEBOOK_FACEBOOK_H_

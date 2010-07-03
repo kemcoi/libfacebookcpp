@@ -126,11 +126,8 @@ void Session::GetUserById(const std::string& userID, User *user)
 	GetConnection("https://graph.facebook.com/" + userID, user);
 }
 
-void Session::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
+void Session::_Deserialize(const AuthorizedObject & /* parent_obj */, const Json::Value & /* json */)
 {
-	FACEBOOK_UNUSED(parent_obj);
-	FACEBOOK_UNUSED(json);
-
 	throw UnexpectedException("Session::_Deserialize");
 }
 //----------------------------------------------

@@ -197,11 +197,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FriendContainer.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\From.cpp"
 				>
 			</File>
 			<File
+				RelativePath=".\Group.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\HttpRequest.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Link.cpp"
 				>
 			</File>
 			<File
@@ -283,11 +295,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FriendContainer.h"
+				>
+			</File>
+			<File
 				RelativePath=".\From.h"
 				>
 			</File>
 			<File
+				RelativePath=".\Group.h"
+				>
+			</File>
+			<File
 				RelativePath=".\HttpRequest.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Link.h"
 				>
 			</File>
 			<File

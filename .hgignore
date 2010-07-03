@@ -1,0 +1,7 @@
+.*\.ncb
+.*\.orig
+.*\.user
+.*\.suo
+Debug/
+Release/
+docs/

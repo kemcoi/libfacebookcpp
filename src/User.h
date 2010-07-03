@@ -26,11 +26,14 @@
 namespace Facebook
 {
 
+class Group;
+class FriendContainer;
 class Post;
 class From;
 class Blob;
 class Video;
 class Album;
+class Link;
 class Photo;
 class Status;
 struct PagingInfo;
@@ -47,26 +50,6 @@ public: // accessors
 private: // member variables
 	std::string id_;
 	std::string name_;
-};
-
-class FACEBOOK_API FriendContainer: public AuthorizedObject
-{
-public:
-	//----------------------------------------------
-	FriendContainer(){};
-
-	// XXX: make all _deserialize private
-
-	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
-
-	//----------------------------------------------
-	const std::string& Name() const { return name_; }
-	const std::string& Id() const { return id_; }
-
-private:
-	std::string name_;
-	std::string id_;
 };
 
 class FACEBOOK_API User: public AuthorizedObject
@@ -125,9 +108,9 @@ public:
 	void GetPhotos(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
 	void GetAlbums(std::list<Album> *list, const PagingInfo *paging = NULL) const;
 	void GetVideos(std::list<Video> *list, const PagingInfo *paging = NULL) const;
-	// TODO: /groups
+	void GetGroups(std::list<Group> *list, const PagingInfo *paging = NULL) const;
 	void GetStatuses(std::list<Status> *list, const PagingInfo *paging = NULL) const;
-	// TODO: /links
+	void GetLinks(std::list<Facebook::Link> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /notes
 	// TODO: /events
 	// TODO: /inbox

@@ -41,7 +41,8 @@ public:
 	static const std::string GetAuthenticationURL(const std::string& clientID, 
 												  const std::string& redirectURI,
 												  const std::string& type, 
-												  const std::string& display);
+												  const std::string& display,
+												  const std::list<std::string>& scope);
 
 	//----------------------------------------------
 	/*!

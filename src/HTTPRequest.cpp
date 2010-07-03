@@ -102,10 +102,12 @@ void DecomposeUri(const std::string& str, Uri& uri)
 
 } // namespace HttpUtils
 
-int HttpRequest::CurlDebugFunction(int, char *data, size_t size)
+int HttpRequest::CurlDebugFunction(curl_infotype type, char *data, size_t size)
 {
-	GetDebugLog().write(data, size);
-	return size;
+	// Fix for issue #28: Only print to the debug log if we are text-based data
+	if(CURLINFO_TEXT == type)
+		GetDebugLog().write(data, size);
+	return 0;
 }
 
 size_t HttpRequest::HttpRequestBlob::WriteFunction(char *data, size_t size, size_t nmemb)

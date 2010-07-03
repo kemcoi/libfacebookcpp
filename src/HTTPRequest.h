@@ -62,7 +62,7 @@ private: // private helper classes
 	};
 
 private: // private helper functions
-	int CurlDebugFunction(int, char *data, size_t size);
+	int CurlDebugFunction(curl_infotype type, char *data, size_t size);
 
 public: // public interface
 	void GetResponse(const Uri& uri, Blob *blob);

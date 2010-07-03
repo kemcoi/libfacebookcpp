@@ -31,6 +31,7 @@
 
 // External libraries
 #include <json/json.h>
+#include <curl/curl.h>
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>

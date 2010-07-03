@@ -112,7 +112,6 @@ public:
 	void getTaggedList(std::list<Photo> *photoList, const PagingInfo *paging = NULL) const;
 	// TODO: /posts
 	void GetPicture(Blob *blob) const;
-	// TODO: /picture
 	void getFriendsList(std::list<FriendContainer>* friendList, const PagingInfo *paging = NULL) const;
 	// TODO: /activities
 	// TODO: /interests

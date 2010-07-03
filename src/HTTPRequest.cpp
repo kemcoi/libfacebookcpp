@@ -108,31 +108,39 @@ int HttpRequest::CurlDebugFunction(int, char *data, size_t size)
 	return size;
 }
 
+size_t HttpRequest::HttpRequestBlob::WriteFunction(char *data, size_t size, size_t nmemb)
+{
+	// TODO: In batch
+	// XXX; Make blob have a content type
+
+	FACEBOOK_ASSERT(blob_);
+	FACEBOOK_ASSERT(data);
+
+	size_t old_length = blob_->GetLength();
+	blob_->Realloc(old_length + size * nmemb);
+	memcpy((char*)blob_->GetData() + old_length, data, size * nmemb);
+	return size * nmemb;
+}
+
 void HttpRequest::GetResponse(const Uri& uri, Blob *blob)
 {
 	FACEBOOK_ASSERT(blob);
 
 	// First build the final url
 
+	HttpRequestBlob reqBlob(blob);
 	curlpp::Easy curl;
+
 	GetDebugLog() << uri.GetUri();
 	curl.setOpt(curlpp::options::Url(uri.GetUri()));
 	curl.setOpt(curlpp::Options::Verbose(true));
 	curl.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::CurlDebugFunction)));
+	curl.setOpt(curlpp::Options::WriteFunction(curlpp::types::WriteFunctionFunctor(&reqBlob, &HttpRequestBlob::WriteFunction)));
+	curl.setOpt(curlpp::Options::FollowLocation(true));
 	// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
 	curl.setOpt(curlpp::options::SslVerifyPeer(false));
 
-	std::stringstream oss(std::stringstream::in | std::stringstream::out | std::stringstream::binary);
-
-	// This performs the request and dumps the output to the stringstream
-	oss << curl;
-
-	// XXX: This is inefficient
-	oss.seekg(0, std::ios::end);
-	blob->Realloc(oss.tellg());
-	oss.seekg(0, std::ios::beg);
-
-	oss.read((char*)blob->GetData(), blob->GetLength());
+	curl.perform();
 }
 
 void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)

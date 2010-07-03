@@ -241,6 +241,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PolymorphicObject.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Post.cpp"
 				>
 			</File>
@@ -364,6 +368,10 @@
 			</File>
 			<File
 				RelativePath=".\Photo.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PolymorphicObject.h"
 				>
 			</File>
 			<File

@@ -35,6 +35,7 @@
 namespace Facebook
 {
 
+class PolymorphicObject;
 class FriendContainer;
 
 class FACEBOOK_API Group : public AuthorizedObject
@@ -50,7 +51,7 @@ public: // accessors
 	const DateTime& UpdatedTime() const { return updated_time_; }
 
 public: // connections
-	// TODO: Feed
+	void GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	void GetMembers(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
 	void GetPicture(Blob *blob) const;
 

@@ -44,4 +44,6 @@
 #include "Group.h"
 #include "Post.h"
 #include "Event.h"
+#include "PolymorphicObject.h"
+
 #endif // FACEBOOK_FACEBOOK_H_

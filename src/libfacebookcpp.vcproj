@@ -197,6 +197,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Event.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\FriendContainer.cpp"
 				>
 			</File>
@@ -253,6 +257,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Venue.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Video.cpp"
 				>
 			</File>
@@ -288,6 +296,10 @@
 			</File>
 			<File
 				RelativePath=".\Deserializer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Event.h"
 				>
 			</File>
 			<File
@@ -356,6 +368,10 @@
 			</File>
 			<File
 				RelativePath=".\Utils.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Venue.h"
 				>
 			</File>
 			<File

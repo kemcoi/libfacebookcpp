@@ -21,6 +21,9 @@
 #include "AuthorizedObject.h"
 #include "From.h"
 
+#ifndef FACEBOOK_NOTE_H
+#define FACEBOOK_NOTE_H
+
 namespace Facebook
 {
 
@@ -51,3 +54,5 @@ private: // member variables
 };
 
 }
+
+#endif

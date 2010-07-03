@@ -38,6 +38,7 @@ class Photo;
 class Status;
 struct PagingInfo;
 class Note;
+class Message;
 
 class FACEBOOK_API Location : public AuthorizedObject
 {
@@ -114,8 +115,8 @@ public:
 	void GetLinks(std::list<Facebook::Link> *list, const PagingInfo *paging = NULL) const;
 	void GetNote(std::list<Note> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /events
-	// TODO: /inbox
-	// TODO: /outbox
+	void GetInbox(std::list<Message> *list, const PagingInfo *paging = NULL) const;
+	void GetOutbox(std::list<Message> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /updates
 	// TODO: /accounts
 

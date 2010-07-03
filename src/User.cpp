@@ -34,6 +34,7 @@
 #include "FriendContainer.h"
 #include "Group.h"
 #include "Link.h"
+#include "Note.h"
 
 namespace Facebook
 {
@@ -157,4 +158,8 @@ void User::GetLinks(std::list<Facebook::Link> *list, const PagingInfo *paging /*
 	GetConnection("https://graph.facebook.com/" + id_ + "/links", list, paging);
 }
 
+void User::GetNote(std::list<Note> *list, const PagingInfo *paging) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/notes", list, paging);
+}
 } // namespace Facebook

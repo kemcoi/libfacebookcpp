@@ -27,6 +27,8 @@
 #include "Logger.h"
 #include "Utils.h"
 
+#define goto _USE_OF_GOTO_IS_NOT_ALLOWED_
+#define const_cast _USE_OF_CONST_CAST_IS_NOT_ALLOWED_
 #define FACEBOOK_UNUSED(x) ((void)x)
 #define FACEBOOK_CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
 // XXX: TODO: Break on non-arrays

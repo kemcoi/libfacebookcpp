@@ -18,30 +18,22 @@
  *
  */
 
-#ifndef FACEBOOK_FACEBOOK_H_
-#define FACEBOOK_FACEBOOK_H_
-
-#include "Common.h"
-
-// Aggregate includes here
-#include "Blob.h"
-#include "Album.h"
-#include "Comment.h"
-#include "From.h"
-#include "Photo.h"
-#include "Session.h"
-#include "Status.h"
-#include "User.h"
-#include "Video.h"
-#include "Note.h"
-#include "Video.h"
-#include "Venue.h"
-#include "To.h"
-#include "Application.h"
+#include "precompile.h"
+#include "Deserializer.h"
 #include "Message.h"
-#include "Link.h"
 #include "FriendContainer.h"
-#include "Group.h"
-#include "Post.h"
-#include "Event.h"
-#endif // FACEBOOK_FACEBOOK_H_
+
+namespace Facebook
+{
+	void Message::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
+	{
+		Deserializer d(parent_obj, this, json);
+
+		d.Deserialize("id", true, &id_);
+		d.Deserialize("to", true, &to_);
+		d.Deserialize("from", false, &from_);
+		d.Deserialize("message", false, &message_);
+		d.Deserialize("updated_time", false, &updated_time_);
+	}
+
+}

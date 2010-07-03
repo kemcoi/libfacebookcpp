@@ -229,6 +229,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Message.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Note.cpp"
 				>
 			</File>
@@ -250,6 +254,10 @@
 			</File>
 			<File
 				RelativePath=".\Status.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\To.cpp"
 				>
 			</File>
 			<File
@@ -343,6 +351,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Message.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Note.h"
 				>
 			</File>
@@ -368,6 +380,10 @@
 			</File>
 			<File
 				RelativePath=".\Status.h"
+				>
+			</File>
+			<File
+				RelativePath=".\To.h"
 				>
 			</File>
 			<File

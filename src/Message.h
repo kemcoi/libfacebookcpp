@@ -18,39 +18,37 @@
  *
  */
 
-#include "AuthorizedObject.h"
-#include "From.h"
 
-#ifndef FACEBOOK_NOTE_H
-#define FACEBOOK_NOTE_H
+#ifndef FACEBOOK_MESSAGE_H
+#define FACEBOOK_MESSAGE_H
+
+#include "AuthorizedObject.h"
+#include "To.h"
+#include "From.h"
 
 namespace Facebook
 {
 
-class Comment;
-
-class FACEBOOK_API Note: public AuthorizedObject
+class FACEBOOK_API Message: public AuthorizedObject
 {
+
 public: // accessors
 	const std::string& Id() const { return id_; }
-	const Facebook::From& From() const { return from_; }
-	const std::string& Subject() const { return subject_; }
-	const std::string& Message() const { return message_; }
-	const DateTime& CreatedTime() const { return created_time_; }
-	const DateTime& UpdatedTime() const { return updated_time_; }
-
-	void GetComments(std::list<Comment> *list, const PagingInfo *paging = NULL);
+	const From& From() const { return from_; }
+	const To& To() const {return to_; }
+	const std::string& MessageContents() const { return message_; }
+	const std::string& UpdatedTime() const { return updated_time_; }
 
 protected:
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
-private: // member variables
+private: // member variables 
 	std::string id_;
 	Facebook::From from_;
-	std::string subject_;
+	Facebook::To to_;
 	std::string message_;
-	DateTime created_time_;
-	DateTime updated_time_;
+	std::string updated_time_;
+
 };
 
 }

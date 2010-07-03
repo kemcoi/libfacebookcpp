@@ -10,9 +10,9 @@ int main()
 		std::string	clientid = "232486072316";
 		std::string redirectURI = "http://www.facebook.com/connect/login_success.html";
 		std::list<std::string>scopeList;
-		scopeList.push_front("read_mailbox");
 		scopeList.push_front("user_photos");
 		scopeList.push_front("user_videos");
+		scopeList.push_front("publish_stream");
 		std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, "user_agent", std::string(), scopeList);
 
 		std::cout << "PASTE THIS INTO YOUR BROWSER TO ACCEPT" << std::endl;

@@ -40,6 +40,7 @@ class Status;
 struct PagingInfo;
 class Note;
 class Message;
+class PolymorphicObject;
 
 class FACEBOOK_API Location : public AuthorizedObject
 {
@@ -95,7 +96,7 @@ public:
 
 	//----------------------------------------------
 	// Connections
-	// TODO: /home
+	void GetHome(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /feed
 	void GetTagged(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
 	void GetPosts(std::list<Post> *list, const PagingInfo *paging = NULL) const;

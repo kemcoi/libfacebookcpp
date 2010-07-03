@@ -38,6 +38,7 @@
 #include "To.h"
 #include "Message.h"
 #include "Event.h"
+#include "PolymorphicObject.h"
 
 namespace Facebook
 {
@@ -74,6 +75,11 @@ void User::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &
 	deserialize.Deserialize("verified", false, &verified_);
 	deserialize.Deserialize("significant_other", false, &significant_other_);
 	deserialize.Deserialize("timezone", false, &timezone_);
+}
+
+void User::GetHome(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/home", list, paging);
 }
 
 void User::GetTagged(std::list<Photo> *list, const PagingInfo *paging /*= NULL*/) const

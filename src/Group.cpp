@@ -22,9 +22,15 @@
 #include "Group.h"
 #include "Deserializer.h"
 #include "PagingInfo.h"
+#include "PolymorphicObject.h"
 
 namespace Facebook
 {
+
+void Group::GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/feed", list, paging);
+}
 
 void Group::GetMembers(std::list<FriendContainer> *list, const PagingInfo *paging /*= NULL*/) const
 {

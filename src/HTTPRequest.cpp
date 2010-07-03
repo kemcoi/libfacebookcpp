@@ -126,10 +126,8 @@ void HttpRequest::GetResponse(const Uri& uri, Blob *blob)
 {
 	FACEBOOK_ASSERT(blob);
 
-	// First build the final url
-
-	HttpRequestBlob reqBlob(blob);
 	curlpp::Easy curl;
+	HttpRequestBlob reqBlob(blob);
 
 	GetDebugLog() << uri.GetUri();
 	curl.setOpt(curlpp::options::Url(uri.GetUri()));
@@ -147,23 +145,11 @@ void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
 {
 	FACEBOOK_ASSERT(value);
 
-	// First build the final url
-
-	curlpp::Easy curl;
-	GetDebugLog() << uri.GetUri();
-	curl.setOpt(curlpp::options::Url(uri.GetUri()));
-	curl.setOpt(curlpp::Options::Verbose(true));
-	curl.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::CurlDebugFunction)));
-	// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
-	curl.setOpt(curlpp::options::SslVerifyPeer(false));
-
-	std::stringstream oss;
-
-	// This performs the request and dumps the output to the stringstream
-	oss << curl;
+	Blob blob;
+	GetResponse(uri, &blob);
 
 	Json::Reader reader;
-	reader.parse(oss, *value);
+	reader.parse((char*)blob.GetData(), (char*)blob.GetData() + blob.GetLength(), *value);
 }
 
 void HttpRequest::GetUri(Uri *uri) const

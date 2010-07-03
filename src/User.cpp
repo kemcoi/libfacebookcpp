@@ -31,7 +31,9 @@
 #include "Blob.h"
 #include "Post.h"
 #include "From.h"
-#include "Note.h"
+#include "FriendContainer.h"
+#include "Group.h"
+#include "Link.h"
 
 namespace Facebook
 {
@@ -42,14 +44,6 @@ void Location::_Deserialize(const AuthorizedObject &parent_obj, const Json::Valu
 
 	d.Deserialize("id", false, &id_);
 	d.Deserialize("name", false, &name_);
-}
-
-void FriendContainer::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
-{
-	Deserializer deserialize(parent_obj, this, json);
-
-	deserialize.Deserialize("id", false, &id_);
-	deserialize.Deserialize("name", false, &name_);
 }
 
 void User::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
@@ -148,13 +142,19 @@ void User::GetVideos(std::list<Video> *list, const PagingInfo *paging /* = NULL 
 	GetConnection("https://graph.facebook.com/" + id_ + "/videos", list, paging);
 }
 
+void User::GetGroups(std::list<Group> *list, const PagingInfo *paging /* = NULL */) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/groups", list, paging);
+}
+
 void User::GetStatuses(std::list<Status> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/statuses", list, paging);
 }
 
-void User::GetNote(std::list<Note> *list, const PagingInfo *paging) const
+void User::GetLinks(std::list<Facebook::Link> *list, const PagingInfo *paging /* = NULL */) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/notes", list, paging);
+	GetConnection("https://graph.facebook.com/" + id_ + "/links", list, paging);
 }
+
 } // namespace Facebook

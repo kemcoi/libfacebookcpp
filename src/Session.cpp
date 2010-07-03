@@ -55,7 +55,8 @@ Facebook::Session::~Session()
 const std::string Session::GetAuthenticationURL(const std::string& clientID,
 												const std::string& redirectURI,
 												const std::string& type, 
-												const std::string& display)
+												const std::string& display,
+												const std::list<std::string>& scope)
 {
 	GetInfoLog() << "Creating Authentication URL";
 	
@@ -73,6 +74,17 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 	if(!display.empty())
 	{
 		oss<< "&display=" << curlpp::escape(display);
+	}
+
+	//TODO make this better-- maybe a class to handle the extended permissions
+	// Having the user pass in permissions is a pain
+	if(scope.size())
+	{
+		oss<< "&scope=" << curlpp::escape(scope.front());
+	}
+	for(std::list<std::string>::const_iterator iter = ++scope.begin();iter != scope.end(); iter++)
+	{
+		oss<< ',' << curlpp::escape(*iter);
 	}
 
 	return oss.str();

@@ -26,6 +26,8 @@
 namespace Facebook
 {
 
+class Post;
+class From;
 class Blob;
 class Video;
 class Album;
@@ -109,22 +111,22 @@ public:
 	// Connections
 	// TODO: /home
 	// TODO: /feed
-	void getTaggedList(std::list<Photo> *photoList, const PagingInfo *paging = NULL) const;
-	// TODO: /posts
+	void GetTagged(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetPosts(std::list<Post> *list, const PagingInfo *paging = NULL) const;
 	void GetPicture(Blob *blob) const;
-	void getFriendsList(std::list<FriendContainer>* friendList, const PagingInfo *paging = NULL) const;
-	// TODO: /activities
-	// TODO: /interests
-	// TODO: /music
-	// TODO: /books
-	// TODO: /movies
-	// TODO: /television
-	// TODO: /likes
-	void getPhotosList(std::list<Photo> *photoList, const PagingInfo *paging = NULL) const;
-	void getAlbumsList(std::list<Album> *albumList, const PagingInfo *paging = NULL) const;
-	void getVideosList(std::list<Video> *videoList, const PagingInfo *paging = NULL) const;
+	void GetFriends(std::list<FriendContainer>* list, const PagingInfo *paging = NULL) const;
+	void GetActivities(std::list<From> *list, const PagingInfo *paging = NULL) const;
+	void GetInterests(std::list<From> *list, const PagingInfo *paging = NULL) const;
+	void GetMusic(std::list<From> *list, const PagingInfo *paging = NULL) const;
+	void GetBooks(std::list<From> *list, const PagingInfo *paging = NULL) const;
+	void GetMovies(std::list<From> *list, const PagingInfo *paging = NULL) const;
+	void GetTelevision(std::list<From> *list, const PagingInfo *paging = NULL) const;
+	void GetLikes(std::list<From> *list, const PagingInfo *paging = NULL) const;
+	void GetPhotos(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetAlbums(std::list<Album> *list, const PagingInfo *paging = NULL) const;
+	void GetVideos(std::list<Video> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /groups
-	void getStatusList(std::list<Status> *statusList, const PagingInfo *paging = NULL) const;
+	void GetStatuses(std::list<Status> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /links
 	// TODO: /notes
 	// TODO: /events

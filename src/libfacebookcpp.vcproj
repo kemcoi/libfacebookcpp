@@ -213,6 +213,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Post.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\precompile.cpp"
 				>
 			</File>
@@ -296,6 +300,10 @@
 			</File>
 			<File
 				RelativePath=".\Photo.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Post.h"
 				>
 			</File>
 			<File

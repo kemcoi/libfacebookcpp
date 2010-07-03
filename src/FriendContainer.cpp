@@ -18,20 +18,21 @@
  *
  */
 
-#ifndef FACEBOOK_PRECOMPILE_H_
-#define FACEBOOK_PRECOMPILE_H_
+// XXX: GetPicture() size
 
-#include "Common.h"
+#include "precompile.h"
+#include "FriendContainer.h"
+#include "Deserializer.h"
 
-// Internal utilities
-#include "Logger.h"
-#include "Utils.h"
+namespace Facebook
+{
 
-#define goto _USE_OF_GOTO_IS_NOT_ALLOWED_
-#define const_cast _USE_OF_CONST_CAST_IS_NOT_ALLOWED_
-#define FACEBOOK_UNUSED(x) ((void)x)
-#define FACEBOOK_CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
-// XXX: TODO: Break on non-arrays
-#define FACEBOOK_NUMELMS(x) sizeof(x) / sizeof(x[0])
+void FriendContainer::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+{
+	Deserializer deserialize(parent_obj, this, json);
 
-#endif // FACEBOOK_PRECOMPILE_H_
+	deserialize.Deserialize("id", false, &id_);
+	deserialize.Deserialize("name", false, &name_);
+}
+
+} // namespace Facebook

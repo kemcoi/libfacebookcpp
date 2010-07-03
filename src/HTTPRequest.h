@@ -65,7 +65,7 @@ private: // private helper functions
 	int CurlDebugFunction(int, char *data, size_t size);
 
 public: // public interface
-	void HttpRequest::GetResponse(const Uri& uri, Blob *blob);
+	void GetResponse(const Uri& uri, Blob *blob);
 	void GetResponse(const Uri& uri, Json::Value *value);
 	void GetUri(Uri *uri) const;
 

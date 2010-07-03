@@ -31,6 +31,7 @@ class FriendContainer;
 class Post;
 class From;
 class Blob;
+class Event;
 class Video;
 class Album;
 class Link;
@@ -114,7 +115,7 @@ public:
 	void GetStatuses(std::list<Status> *list, const PagingInfo *paging = NULL) const;
 	void GetLinks(std::list<Facebook::Link> *list, const PagingInfo *paging = NULL) const;
 	void GetNote(std::list<Note> *list, const PagingInfo *paging = NULL) const;
-	// TODO: /events
+	void GetEvents(std::list<Event> *list, const PagingInfo *paging = NULL) const;
 	void GetInbox(std::list<Message> *list, const PagingInfo *paging = NULL) const;
 	void GetOutbox(std::list<Message> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /updates

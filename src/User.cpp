@@ -37,6 +37,7 @@
 #include "Note.h"
 #include "To.h"
 #include "Message.h"
+#include "Event.h"
 
 namespace Facebook
 {
@@ -163,6 +164,11 @@ void User::GetLinks(std::list<Facebook::Link> *list, const PagingInfo *paging /*
 void User::GetNote(std::list<Note> *list, const PagingInfo *paging) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/notes", list, paging);
+}
+
+void User::GetEvents(std::list<Event> *list, const PagingInfo *paging /* = NULL */) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/events", list, paging);
 }
 
 void User::GetInbox( std::list<Message> *list, const PagingInfo *paging /*= NULL*/ ) const

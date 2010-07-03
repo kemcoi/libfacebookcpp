@@ -45,6 +45,7 @@ void Group::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &
 	d.Deserialize("name", false, &name_);
 	d.Deserialize("description", false, &description_);
 	d.Deserialize("link", false, &link_);
+	d.Deserialize("venue", false, &venue_);
 	d.Deserialize("privacy", false, &privacy_);
 	d.Deserialize("updated_time", false, &updated_time_);
 }

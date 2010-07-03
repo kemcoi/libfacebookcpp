@@ -155,6 +155,22 @@ private: // private helper functions
 		}
 	}
 
+	template<>
+	void _DeserializeObject(const Json::Value &json, bool required, float *f)
+	{
+		FACEBOOK_ASSERT(f);
+
+		if(!json.isConvertibleTo(Json::realValue))
+		{
+			if(required)
+				throw UnexpectedException("!value.isConvertibleTo(Json::realValue)");
+		}
+		else
+		{
+			*f = (float)json.asDouble();
+		}
+	}
+
 	// XXX: Update exception comments
 
 	template<class TType>

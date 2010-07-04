@@ -89,7 +89,7 @@ void DecomposeUri(const std::string& str, Uri& uri)
 			pos = str.find_first_of("&=", lastPos);
 		}
 
-		assert(list.size() % 2 == 0);
+		FACEBOOK_ASSERT(list.size() % 2 == 0);
 
 		for(std::list<std::string>::const_iterator it = list.begin(); it != list.end();)
 		{
@@ -102,17 +102,15 @@ void DecomposeUri(const std::string& str, Uri& uri)
 
 } // namespace HttpUtils
 
-int HttpRequest::CurlDebugFunction(curl_infotype type, char *data, size_t size)
+size_t HttpRequest::DebugFunction(curl_infotype type, char *data, size_t size)
 {
 	// Fix for issue #28: Only print to the debug log if we are text-based data
 	if(CURLINFO_TEXT == type)
-		//GetDebugLog().write(data, size);
-	size;
-	data;
+		GetDebugLog().write(data, size);
 	return 0;
 }
 
-size_t HttpRequest::HttpRequestBlob::HeaderFunction(char * /* data */, size_t size, size_t nmemb)
+size_t HttpRequest::HeaderFunction(char * /* data */, size_t size, size_t nmemb)
 {
 	FACEBOOK_ASSERT(blob_);
 
@@ -121,10 +119,10 @@ size_t HttpRequest::HttpRequestBlob::HeaderFunction(char * /* data */, size_t si
 	return size * nmemb;
 }
 
-size_t HttpRequest::HttpRequestBlob::WriteFunction(char *data, size_t size, size_t nmemb)
+size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb)
 {
-	// TODO: In batch
-	// XXX; Make blob have a content type
+	// TODO: This is a little inefficient. We should be allocating in larger chunks and reusing
+	// the chunks
 
 	FACEBOOK_ASSERT(blob_);
 	FACEBOOK_ASSERT(data);
@@ -138,21 +136,15 @@ size_t HttpRequest::HttpRequestBlob::WriteFunction(char *data, size_t size, size
 void HttpRequest::GetResponse(const Uri& uri, Blob *blob)
 {
 	FACEBOOK_ASSERT(blob);
+	FACEBOOK_ASSERT(!blob_); // This object isn't thread-safe!
 
-	curlpp::Easy curl;
-	HttpRequestBlob reqBlob(blob);
+	blob_ = blob;
 
-	//GetDebugLog() << uri.GetUri();
-	curl.setOpt(curlpp::options::Url(uri.GetUri()));
-	curl.setOpt(curlpp::Options::Verbose(true));
-	curl.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::CurlDebugFunction)));
-	curl.setOpt(curlpp::Options::WriteFunction(curlpp::types::WriteFunctionFunctor(&reqBlob, &HttpRequestBlob::WriteFunction)));
-	curl.setOpt(curlpp::Options::HeaderFunction(curlpp::types::WriteFunctionFunctor(&reqBlob, &HttpRequestBlob::HeaderFunction)));
-	curl.setOpt(curlpp::Options::FollowLocation(true));
-	// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
-	curl.setOpt(curlpp::options::SslVerifyPeer(false));
+	GetDebugLog() << uri.GetUri();
+	curl_.setOpt(curlpp::options::Url(uri.GetUri()));
+	curl_.perform();
 
-	curl.perform();
+	blob_ = NULL;
 }
 
 void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
@@ -173,4 +165,14 @@ void HttpRequest::GetUri(Uri *uri) const
 	uri->query_params.insert(std::pair<std::string, std::string>("access_token", access_token_));
 }
 
+HttpRequest::HttpRequest(const std::string &access_token) : access_token_(access_token), blob_(NULL)
+{
+	curl_.setOpt(curlpp::Options::Verbose(true));
+	curl_.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::DebugFunction)));
+	curl_.setOpt(curlpp::Options::WriteFunction(curlpp::types::WriteFunctionFunctor(this, &HttpRequest::WriteFunction)));
+	curl_.setOpt(curlpp::Options::HeaderFunction(curlpp::types::WriteFunctionFunctor(this, &HttpRequest::HeaderFunction)));
+	curl_.setOpt(curlpp::Options::FollowLocation(true));
+	// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
+	curl_.setOpt(curlpp::options::SslVerifyPeer(false));
+}
 } // namespace Facebook

@@ -82,6 +82,11 @@ void User::GetHome(std::list<PolymorphicObject> *list, const PagingInfo *paging 
 	GetConnection("https://graph.facebook.com/" + id_ + "/home", list, paging);
 }
 
+void User::GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/feed", list, paging);
+}
+
 void User::GetTagged(std::list<Photo> *list, const PagingInfo *paging /*= NULL*/) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/tagged", list, paging);

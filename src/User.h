@@ -97,7 +97,7 @@ public:
 	//----------------------------------------------
 	// Connections
 	void GetHome(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	// TODO: /feed
+	void GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	void GetTagged(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
 	void GetPosts(std::list<Post> *list, const PagingInfo *paging = NULL) const;
 	void GetPicture(Blob *blob) const;
@@ -119,7 +119,7 @@ public:
 	void GetEvents(std::list<Event> *list, const PagingInfo *paging = NULL) const;
 	void GetInbox(std::list<Message> *list, const PagingInfo *paging = NULL) const;
 	void GetOutbox(std::list<Message> *list, const PagingInfo *paging = NULL) const;
-	// TODO: /updates
+	void GetUpdates(std::list<Message> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /accounts
 
 protected:

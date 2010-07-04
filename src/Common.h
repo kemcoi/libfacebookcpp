@@ -29,6 +29,7 @@
 #include <ostream>
 #include <set>
 #include <ctime>
+#include <regex>
 
 // External libraries
 #include <json/json.h>
@@ -68,5 +69,7 @@
 
 // XXX: This will fail with VS pre-2008
 using std::tr1::shared_ptr;
+using std::tr1::regex;
+using std::tr1::cmatch;
 
 #endif // FACEBOOK_BUILD_CONFIG_H_

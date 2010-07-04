@@ -110,9 +110,29 @@ size_t HttpRequest::DebugFunction(curl_infotype /* type */, char * /* data */, s
 	return 0;
 }
 
-size_t HttpRequest::HeaderFunction(char * /* data */, size_t size, size_t nmemb)
+size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 {
 	FACEBOOK_ASSERT(blob_);
+
+	// This is inefficient, but required. The data given to us by curl can be non-NULL terminated
+	// But, the regex_search only looks for NULL-terminated data
+	std::string str(data, size * nmemb);
+	cmatch result;
+	// TODO: This is inefficient
+	regex rx("(\\s)*([^:]+)(\\s)*:(\\s)*(.+)(\\s)*");
+
+	if(regex_search(str.c_str(), result, rx))
+	{
+		std::string header = result[2].str();
+		if(strcmpi(header.c_str(), "Content-Type") == 0)
+		{
+			GetDebugLog() << "Got content-type of " << result[5] << std::endl;
+		}
+		else if(strcmpi(header.c_str(), "Content-Length") == 0)
+		{
+			GetDebugLog() << "Got content-length of " << result[5] << std::endl;
+		}
+	}
 
 	// XXX: Implement content-type and content-length here
 	

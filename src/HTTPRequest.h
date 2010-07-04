@@ -47,23 +47,12 @@ class Blob;
 class HttpRequest
 {
 private: // private ctor
-	HttpRequest(const std::string &access_token) : access_token_(access_token) { }
-
-private: // private helper classes
-	class HttpRequestBlob
-	{
-	public: // ctor and ~()
-		HttpRequestBlob(Blob *blob) : blob_(blob) { }
-
-		size_t HeaderFunction(char *data, size_t size, size_t nmemb);
-		size_t WriteFunction(char *data, size_t size, size_t nmemb);
-
-	private:
-		Blob *blob_;
-	};
+	HttpRequest(const std::string &access_token);
 
 private: // private helper functions
-	int CurlDebugFunction(curl_infotype type, char *data, size_t size);
+	size_t HeaderFunction(char *data, size_t size, size_t nmemb);
+	size_t WriteFunction(char *data, size_t size, size_t nmemb);
+	size_t DebugFunction(curl_infotype type, char *data, size_t size);
 
 public: // public interface
 	void GetResponse(const Uri& uri, Blob *blob);
@@ -71,6 +60,8 @@ public: // public interface
 	void GetUri(Uri *uri) const;
 
 private: // member variables
+	Blob *blob_;
+	curlpp::Easy curl_;
 	std::string access_token_;
 
 	friend class Session;

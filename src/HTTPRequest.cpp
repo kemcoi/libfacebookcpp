@@ -106,7 +106,9 @@ int HttpRequest::CurlDebugFunction(curl_infotype type, char *data, size_t size)
 {
 	// Fix for issue #28: Only print to the debug log if we are text-based data
 	if(CURLINFO_TEXT == type)
-		GetDebugLog().write(data, size);
+		//GetDebugLog().write(data, size);
+	size;
+	data;
 	return 0;
 }
 
@@ -140,7 +142,7 @@ void HttpRequest::GetResponse(const Uri& uri, Blob *blob)
 	curlpp::Easy curl;
 	HttpRequestBlob reqBlob(blob);
 
-	GetDebugLog() << uri.GetUri();
+	//GetDebugLog() << uri.GetUri();
 	curl.setOpt(curlpp::options::Url(uri.GetUri()));
 	curl.setOpt(curlpp::Options::Verbose(true));
 	curl.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::CurlDebugFunction)));

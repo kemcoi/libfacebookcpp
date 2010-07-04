@@ -22,6 +22,7 @@
 #define FACEBOOK_SESSION_H_
 
 #include "AuthorizedObject.h"
+//#include "ExtendedPermissions.h"
 
 namespace Facebook
 {
@@ -57,14 +58,14 @@ public:
 
 	//----------------------------------------------
 	// Getters
-	// TODO: Decide if these returns should be constant
-	// and if we it should be a param instead
+
 	void GetCurrentUser(User *user);
 	void GetUserById(const std::string& userID, User *user);
 
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
-
 private:
+
+	// stick this as private to avoid being called
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 	Session(const std::string& accessToken);
 	~Session();
 

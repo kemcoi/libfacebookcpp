@@ -84,7 +84,7 @@ public: // public ctor and ~()
 		{
 			if(it->second != 1)
 			{
-				GetInfoLog() << "Tag " << it->first << " had an access count of " << it->second;
+				//GetInfoLog() << "Tag " << it->first << " had an access count of " << it->second << std::endl;
 			}
 		}
 #endif // _DEBUG

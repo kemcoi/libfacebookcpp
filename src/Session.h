@@ -22,6 +22,7 @@
 #define FACEBOOK_SESSION_H_
 
 #include "AuthorizedObject.h"
+//#include "ExtendedPermissions.h"
 
 namespace Facebook
 {

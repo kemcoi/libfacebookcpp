@@ -38,6 +38,8 @@ int main()
 
 		std::list<Facebook::Album> albumList;
 		user.GetAlbums(&albumList);
+		std::list<Facebook::Message> messageInbox;
+		user.GetInbox(&messageInbox);
 
 		system("pause"); // VS Debug
 	}

@@ -236,6 +236,12 @@ private: // private helper functions
 
 public: // public interface
 	template<class TType>
+	void DeserializeObject(bool required, TType *t)
+	{
+		_DeserializeObject(json_, required, t);
+	}
+
+	template<class TType>
 	void Deserialize(const char *tag, bool required, TType *t)
 	{
 		FACEBOOK_ASSERT(tag);

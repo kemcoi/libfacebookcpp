@@ -32,6 +32,7 @@ void Status::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value
 	Deserializer deserializer(parent_obj, this, json);
 
 	deserializer.Deserialize("id", false, &id_);
+	deserializer.Deserialize("from", false, &from_);
 	deserializer.Deserialize("message", false, &message_);
 	deserializer.Deserialize("updated_time", false, &updated_time_);
 

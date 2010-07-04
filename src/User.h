@@ -31,6 +31,7 @@ class FriendContainer;
 class Post;
 class From;
 class Blob;
+class Event;
 class Video;
 class Album;
 class Link;
@@ -39,6 +40,7 @@ class Status;
 struct PagingInfo;
 class Note;
 class Message;
+class PolymorphicObject;
 
 class FACEBOOK_API Location : public AuthorizedObject
 {
@@ -94,7 +96,7 @@ public:
 
 	//----------------------------------------------
 	// Connections
-	// TODO: /home
+	void GetHome(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /feed
 	void GetTagged(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
 	void GetPosts(std::list<Post> *list, const PagingInfo *paging = NULL) const;
@@ -114,7 +116,7 @@ public:
 	void GetStatuses(std::list<Status> *list, const PagingInfo *paging = NULL) const;
 	void GetLinks(std::list<Facebook::Link> *list, const PagingInfo *paging = NULL) const;
 	void GetNote(std::list<Note> *list, const PagingInfo *paging = NULL) const;
-	// TODO: /events
+	void GetEvents(std::list<Event> *list, const PagingInfo *paging = NULL) const;
 	void GetInbox(std::list<Message> *list, const PagingInfo *paging = NULL) const;
 	void GetOutbox(std::list<Message> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /updates

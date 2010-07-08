@@ -30,7 +30,7 @@ Logger::Logger()
 {
 	for(size_t ii = 0; ii < FACEBOOK_NUMELMS(stream_); ++ii)
 	{
-		stream_[ii].rdbuf(std::cout.rdbuf());
+		stream_[ii].rdbuf(std::clog.rdbuf());
 	}
 }
 

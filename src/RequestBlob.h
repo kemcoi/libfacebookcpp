@@ -21,41 +21,22 @@
 namespace Facebook
 {
 
-class RequestBlob
+class FACEBOOK_API RequestBlob
 {
 public: // ctor and ~()
-	RequestBlob() : data_(NULL), bytes_(0)
-	{
-	}
-
-	~RequestBlob()
-	{
-		free(data_);
-		data_ = NULL;
-		bytes_ = 0;
-	}
+	RequestBlob();
+	~RequestBlob();
 
 public: // public interface
 	const void* GetData() const { return data_; }
 	void* GetData() { return data_; }
+
 	size_t GetLength() const { return bytes_; }
+
 	const std::string& GetContentType() const { return content_type_; }
 	void SetContentType(const std::string& content_type) { content_type_ = content_type; }
 
-	void Realloc(size_t bytes)
-	{
-		FACEBOOK_ASSERT(bytes >= 0);
-
-		// realloc(NULL, bytes) makes realloc work like malloc
-		void *new_data = realloc(data_, bytes);
-
-		if(!new_data)
-			// Exception for out of memory
-			throw std::exception();
-
-		data_ = new_data;
-		bytes_= bytes;
-	}
+	void Realloc(size_t bytes);
 
 private: // member variables
 	void *data_;

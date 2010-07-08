@@ -20,3 +20,35 @@
 
 #include "precompile.h"
 #include "RequestBlob.h"
+
+namespace Facebook
+{
+
+RequestBlob::RequestBlob() : data_(NULL), bytes_(0)
+{
+
+}
+
+RequestBlob::~RequestBlob()
+{
+	free(data_);
+	data_ = NULL;
+	bytes_ = 0;
+}
+
+void RequestBlob::Realloc(size_t bytes)
+{
+	FACEBOOK_ASSERT(bytes >= 0);
+
+	// realloc(NULL, bytes) makes realloc work like malloc
+	void *new_data = realloc(data_, bytes);
+
+	if(!new_data)
+		// Exception for out of memory
+		throw std::exception();
+
+	data_ = new_data;
+	bytes_= bytes;
+}
+
+} // namespace Facebook

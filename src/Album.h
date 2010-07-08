@@ -29,6 +29,7 @@ namespace Facebook
 {
 
 class Photo;
+class Comment;
 
 class FACEBOOK_API Album: public AuthorizedObject
 {
@@ -38,24 +39,30 @@ public:
 	virtual ~Album() { }
 
 	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	// Accessors
+	const std::string& GetId() const { return id_; }
+	const From& GetFrom() const { return from_; }
+	const std::string& GetName() const { return name_; }
+	const std::string& GetDescription() const { return description_; }
+	const std::string& GetLocation() const { return location_; }
+	const std::string& GetLink() const { return link_; }
+	const unsigned int& GetCount() const { return count_; }
+	const DateTime& GetCreatedTime() const { return created_time_;}
+	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 	//----------------------------------------------
-	// Accessors
-	//TODO: Accessors for From class
-	const std::string& Id() const { return id_; }
-	const From& From() const { return from_; }
-	const std::string& Name() const { return name_; }
-	const std::string& Description() const { return description_; }
-	const std::string& Location() const { return location_; }
-	const std::string& Link() const { return link_; }
-	const unsigned int& Count() const { return count_; }
-	const DateTime& CreatedTime() const { return created_time_;}
-	const DateTime& UpdatedTime() const { return updated_time_; }
+	// Connections
+	void GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetCommentsConnection(std::list<Comment> *list, const PagingInfo *paging = NULL) const;
+
+protected:
+	//----------------------------------------------
+	// Callbacks
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
 
 private:
 	std::string id_;
-	Facebook::From from_;
+	From from_;
 	std::string name_;
 	std::string description_;
 	std::string location_;

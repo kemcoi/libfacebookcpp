@@ -22,9 +22,22 @@
 #include "Deserializer.h"
 #include "Album.h"
 #include "DateTime.h"
+#include "PagingInfo.h"
+#include "Comment.h"
+#include "Photo.h"
 
 namespace Facebook
 {
+
+void Album::GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging /*= NULL*/) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/photos", list, paging);
+}
+
+void Album::GetCommentsConnection( std::list<Comment> *list, const PagingInfo *paging /*= NULL*/ ) const
+{
+	GetConnection("https://graph.facebook.com/" + id_ + "/comments", list, paging);
+}
 
 void Album::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
 {

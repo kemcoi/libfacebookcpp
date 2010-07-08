@@ -29,10 +29,10 @@ int main()
 		session_->GetCurrentUser(&user);
 
 		Facebook::Blob blob;
-		user.GetPicture(&blob);
+		user.GetPictureConnection(&blob);
 
 		std::list<Facebook::PolymorphicObject> homeList;
-		user.GetHome(&homeList);
+		user.GetHomeConnection(&homeList);
 
 		//HANDLE handle = CreateFile(TEXT("C:\\Users\\Aly Hirani\\Desktop\\a.jpg"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_ARCHIVE, NULL);
 		//DWORD dw = 0;
@@ -40,9 +40,9 @@ int main()
 		//CloseHandle(handle);
 
 		std::list<Facebook::Album> albumList;
-		user.GetAlbums(&albumList);
+		user.GetAlbumsConnection(&albumList);
 		std::list<Facebook::Message> messageInbox;
-		user.GetInbox(&messageInbox);
+		user.GetInboxConnection(&messageInbox);
 
 		system("pause"); // VS Debug
 	}

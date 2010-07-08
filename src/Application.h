@@ -24,15 +24,26 @@ namespace Facebook
 class FACEBOOK_API Application : public AuthorizedObject
 {
 public: // accessors
-	const std::string& Id() const { return id_; }
-	const std::string& Name() const { return name_; }
-	const std::string& Description() const { return description_; }
-	const std::string& Category() const { return category_; }
-	const std::string& Link() const { return link_; }
+	const std::string& GetId() const { return id_; }
+	const std::string& GetName() const { return name_; }
+	const std::string& GetDescription() const { return description_; }
+	const std::string& GetCategory() const { return category_; }
+	const std::string& GetLink() const { return link_; }
 
 public: // connections
-	// TODO: feed
-	// TODO: posts
+	void GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
+	void GetPostsConnection(std::list<Post> *list, const PagingInfo *paging = NULL) const;
+	void GetPictureConnection(Blob *blob) const;
+	void GetTaggedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
+	void GetLinksConnection(std::list<Link> *list, const PagingInfo *paging = NULL) const;
+	void GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetAlbumsConnection(std::list<Album> *list, const PagingInfo *paging = NULL) const;
+	void GetStatusesConnection(std::list<Status> *list, const PagingInfo *paging = NULL) const;
+	void GetVideosConnection(std::list<Video> *list, const PagingInfo *paging = NULL) const;
+	void GetNotesConnection(std::list<Note> *list, const PagingInfo *paging = NULL) const;
+	void GetEventsConnection(std::list<Event> *list, const PagingInfo *paging = NULL) const;
+	// TODO: subscriptions
+	// TODO: insights
 
 private: // member variables
 	std::string id_;

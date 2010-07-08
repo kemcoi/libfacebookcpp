@@ -77,117 +77,117 @@ void User::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &
 	deserialize.Deserialize("timezone", false, &timezone_);
 }
 
-void User::GetHome(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetHomeConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/home", list, paging);
 }
 
-void User::GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/feed", list, paging);
 }
 
-void User::GetTagged(std::list<Photo> *list, const PagingInfo *paging /*= NULL*/) const
+void User::GetTaggedConnection(std::list<Photo> *list, const PagingInfo *paging /*= NULL*/) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/tagged", list, paging);
 }
 
-void User::GetPosts(std::list<Post> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetPostsConnection(std::list<Post> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/posts", list, paging);
 }
 
-void User::GetPicture(Blob *blob) const
+void User::GetPictureConnection(Blob *blob) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/picture", blob);
 }
 
-void User::GetFriends(std::list<FriendContainer>* list, const PagingInfo *paging /* = NULL */) const
+void User::GetFriendsConnection(std::list<FriendContainer>* list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/friends", list, paging);
 }
 
-void User::GetActivities(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetActivitiesConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/activities", list, paging);
 }
 
-void User::GetInterests(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetInterestsConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/interests", list, paging);
 }
 
-void User::GetMusic(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetMusicConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/music", list, paging);
 }
 
-void User::GetBooks(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetBooksConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/books", list, paging);
 }
 
-void User::GetMovies(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetMoviesConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/movies", list, paging);
 }
 
-void User::GetTelevision(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetTelevisionConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/television", list, paging);
 }
 
-void User::GetLikes(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetLikesConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/likes", list, paging);
 }
 
-void User::GetPhotos(std::list<Photo> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/photos", list, paging);
 }
 
-void User::GetAlbums(std::list<Album> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetAlbumsConnection(std::list<Album> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/albums", list, paging);
 }
 
-void User::GetVideos(std::list<Video> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetVideosConnection(std::list<Video> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/videos", list, paging);
 }
 
-void User::GetGroups(std::list<Group> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetGroupsConnection(std::list<Group> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/groups", list, paging);
 }
 
-void User::GetStatuses(std::list<Status> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetStatusesConnection(std::list<Status> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/statuses", list, paging);
 }
 
-void User::GetLinks(std::list<Facebook::Link> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetLinksConnection(std::list<Facebook::Link> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/links", list, paging);
 }
 
-void User::GetNote(std::list<Note> *list, const PagingInfo *paging) const
+void User::GetNoteConnection(std::list<Note> *list, const PagingInfo *paging) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/notes", list, paging);
 }
 
-void User::GetEvents(std::list<Event> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetEventsConnection(std::list<Event> *list, const PagingInfo *paging /* = NULL */) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/events", list, paging);
 }
 
-void User::GetInbox( std::list<Message> *list, const PagingInfo *paging /*= NULL*/ ) const
+void User::GetInboxConnection(std::list<Message> *list, const PagingInfo *paging /*= NULL*/) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/inbox", list, paging);
 }
 
-void User::GetOutbox( std::list<Message> *list, const PagingInfo *paging /*= NULL*/ ) const
+void User::GetOutboxConnection(std::list<Message> *list, const PagingInfo *paging /*= NULL*/) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/outbox", list, paging);
 }

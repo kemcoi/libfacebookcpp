@@ -49,7 +49,7 @@ public: // connections
 	void GetInvitedConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
 	void GetAttendingConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
 	void GetDeclinedConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetPictureConnection(Blob *blob);
+	void GetPictureConnection(RequestBlob *blob);
 
 protected: // callback functions
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);

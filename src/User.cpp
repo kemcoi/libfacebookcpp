@@ -28,7 +28,7 @@
 #include "Album.h"
 #include "Video.h"
 #include "Status.h"
-#include "Blob.h"
+#include "RequestBlob.h"
 #include "Post.h"
 #include "From.h"
 #include "FriendContainer.h"
@@ -97,7 +97,7 @@ void User::GetPostsConnection(std::list<Post> *list, const PagingInfo *paging /*
 	GetConnection("https://graph.facebook.com/" + id_ + "/posts", list, paging);
 }
 
-void User::GetPictureConnection(Blob *blob) const
+void User::GetPictureConnection(RequestBlob *blob) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/picture", blob);
 }

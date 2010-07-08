@@ -33,7 +33,7 @@ public: // accessors
 public: // connections
 	void GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	void GetPostsConnection(std::list<Post> *list, const PagingInfo *paging = NULL) const;
-	void GetPictureConnection(Blob *blob) const;
+	void GetPictureConnection(RequestBlob *blob) const;
 	void GetTaggedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	void GetLinksConnection(std::list<Link> *list, const PagingInfo *paging = NULL) const;
 	void GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;

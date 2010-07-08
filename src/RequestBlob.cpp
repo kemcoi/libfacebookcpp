@@ -19,4 +19,4 @@
  */
 
 #include "precompile.h"
-#include "Blob.h"
+#include "RequestBlob.h"

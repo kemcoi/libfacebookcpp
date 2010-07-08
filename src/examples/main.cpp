@@ -28,7 +28,7 @@ int main()
 		Facebook::User user;
 		session_->GetCurrentUser(&user);
 
-		Facebook::Blob blob;
+		Facebook::RequestBlob blob;
 		user.GetPictureConnection(&blob);
 
 		std::list<Facebook::PolymorphicObject> homeList;

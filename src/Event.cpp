@@ -51,7 +51,7 @@ void Event::GetDeclinedConnection(std::list<FriendContainer> *list, const Paging
 	GetConnection("https://graph.facebook.com/" + id_ + "/declined", list, paging);
 }
 
-void Event::GetPictureConnection(Blob *blob)
+void Event::GetPictureConnection(RequestBlob *blob)
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/picture", blob);
 }

@@ -24,7 +24,7 @@
 #include "Common.h"
 
 // Aggregate includes here
-#include "Blob.h"
+#include "RequestBlob.h"
 #include "Album.h"
 #include "Comment.h"
 #include "From.h"

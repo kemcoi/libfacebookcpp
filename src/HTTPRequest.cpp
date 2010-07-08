@@ -22,7 +22,7 @@
 
 #include "HTTPRequest.h"
 #include "Exception.h"
-#include "Blob.h"
+#include "RequestBlob.h"
 
 namespace Facebook
 {
@@ -153,7 +153,7 @@ size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb)
 	return size * nmemb;
 }
 
-void HttpRequest::GetResponse(const Uri& uri, Blob *blob)
+void HttpRequest::GetResponse(const Uri& uri, RequestBlob *blob)
 {
 	FACEBOOK_ASSERT(blob);
 	FACEBOOK_ASSERT(!blob_); // This object isn't thread-safe!
@@ -171,7 +171,7 @@ void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
 {
 	FACEBOOK_ASSERT(value);
 
-	Blob blob;
+	RequestBlob blob;
 	GetResponse(uri, &blob);
 
 	Json::Reader reader;

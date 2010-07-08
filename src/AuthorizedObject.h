@@ -26,7 +26,7 @@
 namespace Facebook
 {
 
-class Blob;
+class RequestBlob;
 class HttpRequest;
 struct PagingInfo;
 struct Uri;
@@ -62,7 +62,7 @@ protected: // interface
 	}
 
 	template<>
-	void GetConnection(const std::string &base_uri, Blob *blob) const
+	void GetConnection(const std::string &base_uri, RequestBlob *blob) const
 	{
 		FACEBOOK_ASSERT(blob);
 

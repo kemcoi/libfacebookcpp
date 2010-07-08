@@ -21,14 +21,14 @@
 namespace Facebook
 {
 
-class Blob
+class RequestBlob
 {
 public: // ctor and ~()
-	Blob() : data_(NULL), bytes_(0)
+	RequestBlob() : data_(NULL), bytes_(0)
 	{
 	}
 
-	~Blob()
+	~RequestBlob()
 	{
 		free(data_);
 		data_ = NULL;

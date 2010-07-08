@@ -37,7 +37,7 @@ void Group::GetMembers(std::list<FriendContainer> *list, const PagingInfo *pagin
 	GetConnection("https://graph.facebook.com/" + id_ + "/members", list, paging);
 }
 
-void Group::GetPicture(Blob *blob) const
+void Group::GetPicture(RequestBlob *blob) const
 {
 	GetConnection("https://graph.facebook.com/" + id_ + "/picture", blob);
 }

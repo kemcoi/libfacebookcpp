@@ -30,7 +30,7 @@ class Group;
 class FriendContainer;
 class Post;
 class From;
-class Blob;
+class RequestBlob;
 class Event;
 class Video;
 class Album;
@@ -99,7 +99,7 @@ public:
 	void GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	void GetTaggedConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
 	void GetPostsConnection(std::list<Post> *list, const PagingInfo *paging = NULL) const;
-	void GetPictureConnection(Blob *blob) const;
+	void GetPictureConnection(RequestBlob *blob) const;
 	void GetFriendsConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
 	void GetActivitiesConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
 	void GetInterestsConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;

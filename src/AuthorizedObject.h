@@ -26,7 +26,7 @@
 namespace Facebook
 {
 
-class RequestBlob;
+class ResponseBlob;
 class HttpRequest;
 struct PagingInfo;
 struct Uri;
@@ -74,7 +74,7 @@ protected: // interface
 		t->Deserialize(*this, value);
 	}
 
-	void _GetPictureConnection(const std::string &id, FACEBOOK_PICTURE_SIZE size, RequestBlob *blob) const;
+	void _GetPictureConnection(const std::string &id, FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const;
 
 	template<class TType>
 	void _GetConnection(const std::string &id, const std::string &page, std::list<TType> *list, const PagingInfo *paging) const

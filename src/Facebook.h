@@ -24,7 +24,7 @@
 #include "Common.h"
 
 // Aggregate includes here
-#include "RequestBlob.h"
+#include "ResponseBlob.h"
 #include "Album.h"
 #include "Comment.h"
 #include "From.h"
@@ -37,7 +37,6 @@
 #include "Video.h"
 #include "Venue.h"
 #include "To.h"
-#include "Application.h"
 #include "Message.h"
 #include "Link.h"
 #include "FriendContainer.h"

@@ -18,32 +18,37 @@
  *
  */
 
+#include "precompile.h"
+#include "ResponseBlob.h"
+
 namespace Facebook
 {
 
-// XXX: This should be more like responseblob
-
-class FACEBOOK_API RequestBlob
+ResponseBlob::ResponseBlob() : data_(NULL), bytes_(0)
 {
-public: // ctor and ~()
-	RequestBlob();
-	~RequestBlob();
 
-public: // public interface
-	const void* GetData() const { return data_; }
-	void* GetData() { return data_; }
+}
 
-	size_t GetLength() const { return bytes_; }
+ResponseBlob::~ResponseBlob()
+{
+	free(data_);
+	data_ = NULL;
+	bytes_ = 0;
+}
 
-	const std::string& GetContentType() const { return content_type_; }
-	void SetContentType(const std::string& content_type) { content_type_ = content_type; }
+void ResponseBlob::Realloc(size_t bytes)
+{
+	FACEBOOK_ASSERT(bytes >= 0);
 
-	void Realloc(size_t bytes);
+	// realloc(NULL, bytes) makes realloc work like malloc
+	void *new_data = realloc(data_, bytes);
 
-private: // member variables
-	void *data_;
-	size_t bytes_;
-	std::string content_type_;
-};
+	if(!new_data)
+		// Exception for out of memory
+		throw std::exception();
+
+	data_ = new_data;
+	bytes_= bytes;
+}
 
 } // namespace Facebook

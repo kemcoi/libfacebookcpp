@@ -28,7 +28,7 @@ int main()
 		Facebook::User user;
 		session_->GetCurrentUser(&user);
 
-		Facebook::RequestBlob blob;
+		Facebook::ResponseBlob blob;
 		user.GetPictureConnection(Facebook::FPS_LARGE, &blob);
 
 		std::list<Facebook::PolymorphicObject> homeList;

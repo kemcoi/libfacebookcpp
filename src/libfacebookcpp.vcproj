@@ -405,7 +405,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\RequestBlob.cpp"
+				RelativePath=".\ResponseBlob.cpp"
 				>
 			</File>
 			<File
@@ -531,7 +531,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\RequestBlob.h"
+				RelativePath=".\ResponseBlob.h"
 				>
 			</File>
 			<File

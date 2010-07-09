@@ -37,7 +37,7 @@ void Group::GetMembers(std::list<FriendContainer> *list, const PagingInfo *pagin
 	_GetConnection(id_, "/members", list, paging);
 }
 
-void Group::GetPicture(FACEBOOK_PICTURE_SIZE size, RequestBlob *blob) const
+void Group::GetPicture(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const
 {
 	_GetPictureConnection(id_, size, blob);
 }

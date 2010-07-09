@@ -28,7 +28,7 @@
 #include "Album.h"
 #include "Video.h"
 #include "Status.h"
-#include "RequestBlob.h"
+#include "ResponseBlob.h"
 #include "Post.h"
 #include "From.h"
 #include "FriendContainer.h"
@@ -97,7 +97,7 @@ void User::GetPostsConnection(std::list<Post> *list, const PagingInfo *paging /*
 	_GetConnection(id_, "/posts", list, paging);
 }
 
-void User::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, RequestBlob *blob) const
+void User::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const
 {
 	_GetPictureConnection(id_, size, blob);
 }

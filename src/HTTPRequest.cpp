@@ -114,18 +114,18 @@ size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 {
 	FACEBOOK_ASSERT(blob_);
 
-	// This is inefficient, but required. The data given to us by curl can be non-NULL terminated
-	// But, the regex_search only looks for NULL-terminated data
-	std::string str(data, size * nmemb);
 	cmatch result;
-	// TODO: This is inefficient
+	// TODO: This is inefficient, but making it static makes us leak memory. We need a global ->Init(); call
+	// which initializes this regex, etc.
 	regex rx("(\\s)*([^:]+)(\\s)*:(\\s)*(.+)(\\s)*");
 
-	if(regex_search(str.c_str(), result, rx))
+	if(regex_search((const char*)data, (const char*)data + size * nmemb, result, rx))
 	{
+		// regex really only allows us to get a .str() out of the matches
 		std::string header = result[2].str();
 		if(strcmpi(header.c_str(), "Content-Type") == 0)
 		{
+			blob_->SetContentType(result[5].str());
 			GetDebugLog() << "Got content-type of " << result[5] << std::endl;
 		}
 		else if(strcmpi(header.c_str(), "Content-Length") == 0)
@@ -134,8 +134,6 @@ size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 		}
 	}
 
-	// XXX: Implement content-type and content-length here
-	
 	return size * nmemb;
 }
 

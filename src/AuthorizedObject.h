@@ -57,8 +57,9 @@ protected: // interface
 	virtual void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) = 0;
 
 	template<class TType>
-	void _GetConnection(const std::string &id, const std::string &page, TType *t) const
+	void _GetConnection(const std::string &id, const char *page, TType *t) const
 	{
+		FACEBOOK_ASSERT(page);
 		FACEBOOK_ASSERT(t);
 
 		Uri uri;
@@ -77,8 +78,9 @@ protected: // interface
 	void _GetPictureConnection(const std::string &id, FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const;
 
 	template<class TType>
-	void _GetConnection(const std::string &id, const std::string &page, std::list<TType> *list, const PagingInfo *paging) const
+	void _GetConnection(const std::string &id, const char *page, std::list<TType> *list, const PagingInfo *paging) const
 	{
+		FACEBOOK_ASSERT(page);
 		FACEBOOK_ASSERT(list);
 
 		Uri uri;

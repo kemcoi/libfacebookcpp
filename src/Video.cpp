@@ -43,7 +43,7 @@ void Video::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &
 
 void Video::GetComments(std::list<Comment> *list, const PagingInfo *paging /* = NULL */) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/comments", list, paging);
+	_GetConnection(id_, "/comments", list, paging);
 }
 
 } // namespace Facebook

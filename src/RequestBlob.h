@@ -21,6 +21,8 @@
 namespace Facebook
 {
 
+// XXX: This should be more like responseblob
+
 class FACEBOOK_API RequestBlob
 {
 public: // ctor and ~()

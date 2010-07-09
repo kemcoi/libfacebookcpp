@@ -53,7 +53,8 @@ public: // accessors
 public: // connections
 	void GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	void GetMembers(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetPicture(RequestBlob *blob) const;
+	// XXX: make sure all connections are const
+	void GetPicture(FACEBOOK_PICTURE_SIZE size, RequestBlob *blob) const;
 
 protected:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);

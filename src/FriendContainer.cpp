@@ -18,8 +18,6 @@
  *
  */
 
-// XXX: GetPicture() size
-
 #include "precompile.h"
 #include "FriendContainer.h"
 #include "Deserializer.h"

@@ -121,14 +121,13 @@ Session* Session::Authenticate(std::string& redirectedURL)
 //----------------------------------------------
 void Session::GetCurrentUser(User *user)
 {
-	GetConnection("https://graph.facebook.com/me", user);
+	_GetConnection("me", "", user);
 }
 
 //----------------------------------------------
 void Session::GetUserById(const std::string& userID, User *user)
 {
-	// XXX: URL Encode userid
-	GetConnection("https://graph.facebook.com/" + userID, user);
+	_GetConnection(userID, "", user);
 }
 
 void Session::_Deserialize(const AuthorizedObject & /* parent_obj */, const Json::Value & /* json */)

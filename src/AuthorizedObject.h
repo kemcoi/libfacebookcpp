@@ -31,6 +31,17 @@ class HttpRequest;
 struct PagingInfo;
 struct Uri;
 
+// XXX: Move this elsewhere
+enum FACEBOOK_API FACEBOOK_PICTURE_SIZE
+{
+	FPS_SQUARE,
+	FPS_SMALL,
+	FPS_LARGE,
+
+	FPS_COUNT
+};
+
+
 class AuthorizedObject
 {
 protected:
@@ -46,14 +57,16 @@ protected: // interface
 	virtual void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) = 0;
 
 	template<class TType>
-	void GetConnection(const std::string &base_uri, TType *t) const
+	void _GetConnection(const std::string &id, const std::string &page, TType *t) const
 	{
 		FACEBOOK_ASSERT(t);
 
 		Uri uri;
 		request_->GetUri(&uri);
 
-		uri.base_uri = base_uri;
+		std::ostringstream base_uri;
+		base_uri << "https://graph.facebook.com/" << curlpp::escape(id) << "/" << curlpp::escape(page);
+		uri.base_uri = base_uri.str();
 
 		Json::Value value;
 		request_->GetResponse(uri, &value);
@@ -61,28 +74,19 @@ protected: // interface
 		t->Deserialize(*this, value);
 	}
 
-	template<>
-	void GetConnection(const std::string &base_uri, RequestBlob *blob) const
-	{
-		FACEBOOK_ASSERT(blob);
-
-		Uri uri;
-		request_->GetUri(&uri);
-
-		uri.base_uri = base_uri;
-		
-		request_->GetResponse(uri, blob);
-	}
+	void _GetPictureConnection(const std::string &id, FACEBOOK_PICTURE_SIZE size, RequestBlob *blob) const;
 
 	template<class TType>
-	void GetConnection(const std::string &base_uri, std::list<TType> *list, const PagingInfo *paging) const
+	void _GetConnection(const std::string &id, const std::string &page, std::list<TType> *list, const PagingInfo *paging) const
 	{
 		FACEBOOK_ASSERT(list);
 
 		Uri uri;
 		request_->GetUri(&uri);
 
-		uri.base_uri = base_uri;
+		std::ostringstream base_uri;
+		base_uri << "https://graph.facebook.com/" << curlpp::escape(id) << "/" << curlpp::escape(page);
+		uri.base_uri = base_uri.str();
 
 		if(paging)
 			paging->GetUri(&uri);
@@ -95,7 +99,6 @@ protected: // interface
 	}
 
 private:
-	// XXX: This makes us thread-safe up to the Session level
 	shared_ptr<HttpRequest> request_;
 
 	friend class Deserializer;

@@ -28,32 +28,32 @@ namespace Facebook
 
 void Event::GetNoReplyConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/noreply", list, paging);
+	_GetConnection(id_, "/noreply", list, paging);
 }
 
 void Event::GetMaybeConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/maybe", list, paging);
+	_GetConnection(id_, "/maybe", list, paging);
 }
 
 void Event::GetInvitedConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/invited", list, paging);
+	_GetConnection(id_, "/invited", list, paging);
 }
 
 void Event::GetAttendingConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/attending", list, paging);
+	_GetConnection(id_, "/attending", list, paging);
 }
 
 void Event::GetDeclinedConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/declined", list, paging);
+	_GetConnection(id_, "/declined", list, paging);
 }
 
-void Event::GetPictureConnection(RequestBlob *blob)
+void Event::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, RequestBlob *blob)
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/picture", blob);
+	_GetPictureConnection(id_, size, blob);
 }
 
 void Event::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)

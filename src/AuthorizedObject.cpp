@@ -39,4 +39,31 @@ void AuthorizedObject::Deserialize(const AuthorizedObject &parent_obj, const Jso
 	_Deserialize(parent_obj, json);
 }
 
+void AuthorizedObject::_GetPictureConnection(const std::string &id, FACEBOOK_PICTURE_SIZE size, RequestBlob *blob) const
+{
+	FACEBOOK_ASSERT(size >= FPS_SQUARE && size <= FPS_LARGE);
+	FACEBOOK_ASSERT(blob);
+
+	FACEBOOK_CASSERT(FPS_SQUARE == 0 && FPS_LARGE == FPS_COUNT - 1);
+
+	Uri uri;
+	request_->GetUri(&uri);
+
+	std::ostringstream base_uri;
+	base_uri << "https://graph.facebook.com/" << curlpp::escape(id) << "/picture";
+	uri.base_uri = base_uri.str();
+
+	static const char *s_sizeType[] = {
+		{ "square"}, // FPS_SQUARE
+		{ "small" }, // FPS_SMALL
+		{ "large" }, // FPS_LARGE
+	};
+
+	FACEBOOK_CASSERT(FACEBOOK_NUMELMS(s_sizeType) == FPS_COUNT);
+
+	uri.query_params["type"] = s_sizeType[size];
+
+	request_->GetResponse(uri, blob);
+}
+
 } // namespace Facebook

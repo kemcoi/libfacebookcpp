@@ -29,17 +29,17 @@ namespace Facebook
 
 void Group::GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/feed", list, paging);
+	_GetConnection(id_, "/feed", list, paging);
 }
 
 void Group::GetMembers(std::list<FriendContainer> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/members", list, paging);
+	_GetConnection(id_, "/members", list, paging);
 }
 
-void Group::GetPicture(RequestBlob *blob) const
+void Group::GetPicture(FACEBOOK_PICTURE_SIZE size, RequestBlob *blob) const
 {
-	GetConnection("https://graph.facebook.com/" + id_ + "/picture", blob);
+	_GetPictureConnection(id_, size, blob);
 }
 
 void Group::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)

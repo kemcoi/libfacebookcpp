@@ -28,19 +28,16 @@ struct Uri
 {
 	typedef std::map<std::string, std::string> QueryParamMap;
 
+	Uri() { }
+	explicit Uri(const std::string &str);
+
 	std::string base_uri;
 	QueryParamMap query_params;
+	std::string anchor;
 
 	std::string GetUri() const;
-	void Clear() { base_uri.clear(); query_params.clear(); }
+	void Clear() { *this = Uri(); }
 };
-
-namespace HttpUtils
-{
-
-void DecomposeUri(const std::string& str, Uri& uri);
-
-} // namespace Facebook
 
 class ResponseBlob;
 

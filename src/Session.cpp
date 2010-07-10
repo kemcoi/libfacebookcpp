@@ -101,8 +101,7 @@ Session* Session::Authenticate(std::string& redirectedURL)
 	// XXX: Hack
 	redirectedURL[redirectedURL.find_first_of('#')] = '?';
 
-	Facebook::Uri redirectedParams;
-	HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
+	Facebook::Uri redirectedParams(redirectedURL);
 
 	Uri::QueryParamMap::const_iterator it = redirectedParams.query_params.find("access_token");
 

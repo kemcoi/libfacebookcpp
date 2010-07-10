@@ -22,7 +22,7 @@
 #include "Venue.h"
 #include "Deserializer.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void Venue::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
@@ -38,4 +38,4 @@ void Venue::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &
 	d.Deserialize("longitude", false, &longitude_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

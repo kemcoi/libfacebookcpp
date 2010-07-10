@@ -21,7 +21,7 @@
 #include "precompile.h"
 #include "AuthorizedObject.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void AuthorizedObject::Init(const shared_ptr<HttpRequest>& request)
@@ -41,8 +41,8 @@ void AuthorizedObject::Deserialize(const AuthorizedObject &parent_obj, const Jso
 
 void AuthorizedObject::_GetPictureConnection(const std::string &id, FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const
 {
-	FACEBOOK_ASSERT(size >= FPS_SQUARE && size <= FPS_LARGE);
-	FACEBOOK_ASSERT(blob);
+	LIBFACEBOOKCPP_ASSERT(size >= FPS_SQUARE && size <= FPS_LARGE);
+	LIBFACEBOOKCPP_ASSERT(blob);
 
 	FACEBOOK_CASSERT(FPS_SQUARE == 0 && FPS_LARGE == FPS_COUNT - 1);
 
@@ -66,4 +66,4 @@ void AuthorizedObject::_GetPictureConnection(const std::string &id, FACEBOOK_PIC
 	request_->GetResponse(uri, blob);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

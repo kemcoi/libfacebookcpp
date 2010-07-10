@@ -1,9 +1,9 @@
 #include "AuthorizedObject.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API PolymorphicObject : public AuthorizedObject
+class LIBFACEBOOKCPP_API PolymorphicObject : public AuthorizedObject
 {
 public: // interface
 	const shared_ptr<AuthorizedObject>& GetPtr() const { return ptr_; }
@@ -20,4 +20,4 @@ private: // member variables
 	shared_ptr<AuthorizedObject> ptr_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

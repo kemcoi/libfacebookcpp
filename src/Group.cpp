@@ -24,7 +24,7 @@
 #include "PagingInfo.h"
 #include "PolymorphicObject.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void Group::GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
@@ -56,4 +56,4 @@ void Group::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &
 	d.Deserialize("updated_time", false, &updated_time_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

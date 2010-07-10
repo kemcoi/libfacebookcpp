@@ -25,10 +25,10 @@
 #include "From.h"
 #include "DateTime.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API Photo : public AuthorizedObject
+class LIBFACEBOOKCPP_API Photo : public AuthorizedObject
 {
 	typedef AuthorizedObject inherited;
 
@@ -37,23 +37,23 @@ public: // ctor and ~()
 	virtual ~Photo() { }
 
 public: // public interface
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
-	const std::string& Id() const { return id_; }
-	const From& From() const { return from_; }
-	const std::string& Name() const { return name_; }
-	const std::string& Picture() const { return picture_; }
-	const std::string& Source() const { return source_; }
-	unsigned int Height() const { return height_; }
-	unsigned int Width() const { return width_; }
-	const std::string& Link() const { return link_; }
-	const std::string& Icon() const { return icon_; }
-	const DateTime& CreatedTime() const { return created_time_; }
-	const DateTime& UpdatedTime() const { return updated_time_; }
+	const std::string& GetId() const { return id_; }
+	const From& GetFrom() const { return from_; }
+	const std::string& GetName() const { return name_; }
+	const std::string& GetPicture() const { return picture_; }
+	const std::string& GetSource() const { return source_; }
+	unsigned int GetHeight() const { return height_; }
+	unsigned int GetWidth() const { return width_; }
+	const std::string& GetLink() const { return link_; }
+	const std::string& GetIcon() const { return icon_; }
+	const DateTime& GetCreatedTime() const { return created_time_; }
+	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 private: // private members
 	std::string id_;
-	Facebook::From from_;
+	From from_;
 	std::string name_;
 	std::string picture_;
 	std::string source_;
@@ -65,6 +65,6 @@ private: // private members
 	DateTime updated_time_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif // FACEBOOK_PHOTO_H_

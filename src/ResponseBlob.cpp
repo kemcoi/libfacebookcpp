@@ -21,7 +21,7 @@
 #include "precompile.h"
 #include "ResponseBlob.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 ResponseBlob::ResponseBlob() : data_(NULL), bytes_(0)
@@ -38,7 +38,7 @@ ResponseBlob::~ResponseBlob()
 
 void ResponseBlob::Realloc(size_t bytes)
 {
-	FACEBOOK_ASSERT(bytes >= 0);
+	LIBFACEBOOKCPP_ASSERT(bytes >= 0);
 
 	// Early-out
 	if(bytes_ == bytes)
@@ -54,4 +54,4 @@ void ResponseBlob::Realloc(size_t bytes)
 	bytes_= bytes;
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

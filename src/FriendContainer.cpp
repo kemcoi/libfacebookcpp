@@ -22,7 +22,7 @@
 #include "FriendContainer.h"
 #include "Deserializer.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void FriendContainer::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
@@ -33,4 +33,4 @@ void FriendContainer::_Deserialize(const AuthorizedObject &parent_obj, const Jso
 	deserialize.Deserialize("name", false, &name_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

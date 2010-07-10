@@ -22,7 +22,7 @@
 #include "Deserializer.h"
 #include "Photo.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void Photo::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
@@ -42,4 +42,4 @@ void Photo::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &
 	deserializer.Deserialize("updated_time", false, &updated_time_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

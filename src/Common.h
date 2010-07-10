@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_BUILD_CONFIG_H_
-#define FACEBOOK_BUILD_CONFIG_H_
+#ifndef LIBFACEBOOKCPP_COMMON_H_
+#define LIBFACEBOOKCPP_COMMON_H_
 
 // STL headers
 #include <map>
@@ -40,27 +40,27 @@
 
 // XXX: TODO: Static lib
 #ifdef LIBFACEBOOKCPP_EXPORTS
-#define FACEBOOK_API __declspec(dllexport)
+#define LIBFACEBOOKCPP_API __declspec(dllexport)
 // Only if we are building libfacebookcpp that we need to worry about enforcing these macros
 // Compiler specific defines
 #if defined(_MSC_VER)
 // Visual C++
-#define FACEBOOK_INTERFACE struct __declspec(novtable)
-#define FACEBOOK_OVERRIDE override
-#define FACEBOOK_ASSERT(x) assert(x); __assume(x); __analysis_assume(x)
+#define LIBFACEBOOKCPP_INTERFACE struct __declspec(novtable)
+#define LIBFACEBOOKCPP_OVERRIDE override
+#define LIBFACEBOOKCPP_ASSERT(x) assert(x); __assume(x); __analysis_assume(x)
 #else // defined(_MSC_VER)
 // Other compilers
 #define FACEBOOK_INTERFACE struct
-#define FACEBOOK_OVERRIDE
-#define FACEBOOK_ASSERT(x) assert(x)
+#define LIBFACEBOOKCPP_OVERRIDE
+#define LIBFACEBOOKCPP_ASSERT(x) assert(x)
 // XXX:
 #error "We need to include shared_ptr"
 #endif // defined(_MSC_VER)
 #else // LIBFACEBOOKCPP_EXPORTS
-#define FACEBOOK_API __declspec(dllimport)
+#define LIBFACEBOOKCPP_API __declspec(dllimport)
 #define FACEBOOK_INTERFACE
-#define FACEBOOK_OVERRIDE
-#define FACEBOOK_ASSERT(x)
+#define LIBFACEBOOKCPP_OVERRIDE
+#define LIBFACEBOOKCPP_ASSERT(x)
 #endif // LIBFACEBOOKCPP_EXPORTS
 
 #define DISALLOW_COPY_AND_ASSIGN(TypeName)   \
@@ -72,4 +72,4 @@ using std::tr1::shared_ptr;
 using std::tr1::regex;
 using std::tr1::cmatch;
 
-#endif // FACEBOOK_BUILD_CONFIG_H_
+#endif // LIBFACEBOOKCPP_COMMON_H_

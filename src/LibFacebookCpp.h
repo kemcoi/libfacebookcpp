@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_FACEBOOK_H_
-#define FACEBOOK_FACEBOOK_H_
+#ifndef LIBFACEBOOKCPP_H_
+#define LIBFACEBOOKCPP_H_
 
 #include "Common.h"
 
@@ -45,4 +45,4 @@
 #include "Event.h"
 #include "PolymorphicObject.h"
 
-#endif // FACEBOOK_FACEBOOK_H_
+#endif // LIBFACEBOOKCPP_H_

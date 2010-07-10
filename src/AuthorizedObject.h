@@ -23,7 +23,7 @@
 
 #include "HttpRequest.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class ResponseBlob;
@@ -31,7 +31,7 @@ class HttpRequest;
 struct PagingInfo;
 struct Uri;
 
-enum FACEBOOK_API FACEBOOK_PICTURE_SIZE
+enum LIBFACEBOOKCPP_API FACEBOOK_PICTURE_SIZE
 {
 	FPS_SQUARE,
 	FPS_SMALL,
@@ -57,8 +57,8 @@ protected: // interface
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, TType *t) const
 	{
-		FACEBOOK_ASSERT(page);
-		FACEBOOK_ASSERT(t);
+		LIBFACEBOOKCPP_ASSERT(page);
+		LIBFACEBOOKCPP_ASSERT(t);
 
 		Uri uri;
 		request_->GetUri(&uri);
@@ -78,8 +78,8 @@ protected: // interface
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, std::list<TType> *list, const PagingInfo *paging) const
 	{
-		FACEBOOK_ASSERT(page);
-		FACEBOOK_ASSERT(list);
+		LIBFACEBOOKCPP_ASSERT(page);
+		LIBFACEBOOKCPP_ASSERT(list);
 
 		Uri uri;
 		request_->GetUri(&uri);
@@ -104,6 +104,6 @@ private:
 	friend class Deserializer;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif // FACEBOOK_AUTHORIZED_OBJECT_H_

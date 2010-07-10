@@ -1,5 +1,7 @@
 #include <iostream>
-#include <Facebook.h>
+#include <LibFacebookCpp.h>
+
+namespace Facebook = LibFacebookCpp;
 
 #include <Windows.h>
 

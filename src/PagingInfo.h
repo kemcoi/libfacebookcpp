@@ -21,7 +21,7 @@
 #ifndef FACEBOOK_PAGING_INFO_H_
 #define FACEBOOK_PAGING_INFO_H_
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 struct PagingInfo
@@ -31,7 +31,7 @@ struct PagingInfo
 	bool IsValid() const { return 0 != limit; }
 	void GetUri(Uri *uri) const
 	{
-		FACEBOOK_ASSERT(uri);
+		LIBFACEBOOKCPP_ASSERT(uri);
 		uri->query_params["limit"] = toString(offset);
 		uri->query_params["offset"] = toString(limit);
 	}
@@ -40,6 +40,6 @@ struct PagingInfo
 	unsigned int limit;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif // FACEBOOK_PAGING_INFO_H_

@@ -21,12 +21,22 @@
 #ifndef FACEBOOK_UTILS_H_
 #define FACEBOOK_UTILS_H_
 
-template<class T>
-inline std::string convertToString(const T& t)
+template<class TData>
+inline std::string toString(const TData &t)
 {
 	std::ostringstream oss;
 	oss << t;
 	return oss.str();
+}
+
+template<class TData, class TStr>
+inline TData fromString(const TStr &str)
+{
+	std::stringstream oss;
+	oss << str;
+	TData t;
+	oss >> t;
+	return t;
 }
 
 #endif // FACEBOOK_UTILS_H_

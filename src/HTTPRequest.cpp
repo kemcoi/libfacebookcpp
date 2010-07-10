@@ -130,6 +130,7 @@ size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 		}
 		else if(strcmpi(header.c_str(), "Content-Length") == 0)
 		{
+			blob_->Realloc(fromString<size_t>(result[5].str()));
 			GetDebugLog() << "Got content-length of " << result[5] << std::endl;
 		}
 	}
@@ -139,15 +140,18 @@ size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 
 size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb)
 {
-	// TODO: This is a little inefficient. We should be allocating in larger chunks and reusing
-	// the chunks
-
 	FACEBOOK_ASSERT(blob_);
 	FACEBOOK_ASSERT(data);
 
-	size_t old_length = blob_->GetLength();
-	blob_->Realloc(old_length + size * nmemb);
-	memcpy((char*)blob_->GetData() + old_length, data, size * nmemb);
+	if(blobDataSize_ + size * nmemb > blob_->GetLength())
+	{
+		// Extend the buffer by 4k
+		static const size_t s_bufferExtension = 4096;
+		blob_->Realloc(blobDataSize_ + size * nmemb + s_bufferExtension);
+	}
+
+	memcpy((char*)blob_->GetData() + blobDataSize_, data, size * nmemb);
+	blobDataSize_ += size * nmemb;
 	return size * nmemb;
 }
 
@@ -155,14 +159,19 @@ void HttpRequest::GetResponse(const Uri& uri, ResponseBlob *blob)
 {
 	FACEBOOK_ASSERT(blob);
 	FACEBOOK_ASSERT(!blob_); // This object isn't thread-safe!
+	FACEBOOK_ASSERT(blobDataSize_ == 0);
 
 	blob_ = blob;
+	blobDataSize_ = 0;
 
 	// GetDebugLog() << uri.GetUri();
 	curl_.setOpt(curlpp::options::Url(uri.GetUri()));
 	curl_.perform();
 
+	blob_->Realloc(blobDataSize_);
+
 	blob_ = NULL;
+	blobDataSize_ = 0;
 }
 
 void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
@@ -183,7 +192,7 @@ void HttpRequest::GetUri(Uri *uri) const
 	uri->query_params.insert(std::pair<std::string, std::string>("access_token", access_token_));
 }
 
-HttpRequest::HttpRequest(const std::string &access_token) : access_token_(access_token), blob_(NULL)
+HttpRequest::HttpRequest(const std::string &access_token) : access_token_(access_token), blob_(NULL), blobDataSize_(0)
 {
 	curl_.setOpt(curlpp::Options::Verbose(true));
 	curl_.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::DebugFunction)));

@@ -40,11 +40,15 @@ void ResponseBlob::Realloc(size_t bytes)
 {
 	FACEBOOK_ASSERT(bytes >= 0);
 
+	// Early-out
+	if(bytes_ == bytes)
+		return;
+
 	// realloc(NULL, bytes) makes realloc work like malloc
 	void *new_data = realloc(data_, bytes);
 
 	if(!new_data)
-		// Exception for out of memory
+		// TODO: Exception for out of memory
 		throw std::exception();
 
 	data_ = new_data;

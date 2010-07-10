@@ -246,7 +246,6 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="ws2_32.lib wldap32.lib libeay32MDd.lib ssleay32MDd.lib"
-				OutputFile="DLL-Debug/libcurld.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\openssl\dynamic"

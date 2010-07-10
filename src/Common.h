@@ -70,9 +70,9 @@
 namespace LibFacebookCpp
 {
 
-typedef std::tr1::shared_ptr shared_ptr;
-typedef std::tr1::regex regex;
-typedef std::tr1::cmatch cmatch;
+using std::tr1::shared_ptr;
+using std::tr1::regex;
+using std::tr1::cmatch;
 
 } // namespace LibFacebookCpp
 

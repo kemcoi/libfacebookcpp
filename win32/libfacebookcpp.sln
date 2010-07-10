@@ -20,11 +20,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libfacebookcpp", "..\src\li
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcurl", "lib\libcurl\libcurl.vcproj", "{DB2B185A-E07C-41D2-A97C-B6FAEBB3362A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA} = {EED6DD16-939A-4E49-AED8-930E10C15FEA}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openssl", "lib\openssl\openssl.vcproj", "{EED6DD16-939A-4E49-AED8-930E10C15FEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,22 +113,6 @@ Global
 		{DB2B185A-E07C-41D2-A97C-B6FAEBB3362A}.LIB Release|Win32.Build.0 = LIB Release|Win32
 		{DB2B185A-E07C-41D2-A97C-B6FAEBB3362A}.LIB Release|x64.ActiveCfg = LIB Release|x64
 		{DB2B185A-E07C-41D2-A97C-B6FAEBB3362A}.LIB Release|x64.Build.0 = LIB Release|x64
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.DLL Debug|Win32.ActiveCfg = DLL Debug|Win32
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.DLL Debug|Win32.Build.0 = DLL Debug|Win32
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.DLL Debug|x64.ActiveCfg = DLL Debug|x64
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.DLL Debug|x64.Build.0 = DLL Debug|x64
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.DLL Release|Win32.ActiveCfg = DLL Release|Win32
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.DLL Release|Win32.Build.0 = DLL Release|Win32
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.DLL Release|x64.ActiveCfg = DLL Release|x64
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.DLL Release|x64.Build.0 = DLL Release|x64
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.LIB Debug|Win32.ActiveCfg = LIB Debug|Win32
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.LIB Debug|Win32.Build.0 = LIB Debug|Win32
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.LIB Debug|x64.ActiveCfg = LIB Debug|x64
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.LIB Debug|x64.Build.0 = LIB Debug|x64
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.LIB Release|Win32.ActiveCfg = LIB Release|Win32
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.LIB Release|Win32.Build.0 = LIB Release|Win32
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.LIB Release|x64.ActiveCfg = LIB Release|x64
-		{EED6DD16-939A-4E49-AED8-930E10C15FEA}.LIB Release|x64.Build.0 = LIB Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

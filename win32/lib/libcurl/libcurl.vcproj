@@ -280,6 +280,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="xcopy ..\openssl\dynamic\*.dll &quot;$(OutDir)\&quot; /y"
 			/>
 		</Configuration>
 		<Configuration

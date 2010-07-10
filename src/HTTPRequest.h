@@ -61,6 +61,7 @@ public: // public interface
 
 private: // member variables
 	ResponseBlob *blob_;
+	size_t blobDataSize_;
 	curlpp::Easy curl_;
 	std::string access_token_;
 

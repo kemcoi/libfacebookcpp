@@ -32,8 +32,8 @@ struct PagingInfo
 	void GetUri(Uri *uri) const
 	{
 		FACEBOOK_ASSERT(uri);
-		uri->query_params["limit"] = convertToString(offset);
-		uri->query_params["offset"] = convertToString(limit);
+		uri->query_params["limit"] = toString(offset);
+		uri->query_params["offset"] = toString(limit);
 	}
 
 	unsigned int offset;

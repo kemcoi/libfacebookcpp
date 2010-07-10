@@ -79,22 +79,22 @@ void User::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &
 
 void User::GetHomeConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/home", list, paging);
+	_GetConnection(id_, "home", list, paging);
 }
 
 void User::GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/feed", list, paging);
+	_GetConnection(id_, "feed", list, paging);
 }
 
 void User::GetTaggedConnection(std::list<Photo> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "/tagged", list, paging);
+	_GetConnection(id_, "tagged", list, paging);
 }
 
 void User::GetPostsConnection(std::list<Post> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/posts", list, paging);
+	_GetConnection(id_, "posts", list, paging);
 }
 
 void User::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const
@@ -104,91 +104,91 @@ void User::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) 
 
 void User::GetFriendsConnection(std::list<FriendContainer>* list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/friends", list, paging);
+	_GetConnection(id_, "friends", list, paging);
 }
 
 void User::GetActivitiesConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/activities", list, paging);
+	_GetConnection(id_, "activities", list, paging);
 }
 
 void User::GetInterestsConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/interests", list, paging);
+	_GetConnection(id_, "interests", list, paging);
 }
 
 void User::GetMusicConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/music", list, paging);
+	_GetConnection(id_, "music", list, paging);
 }
 
 void User::GetBooksConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/books", list, paging);
+	_GetConnection(id_, "books", list, paging);
 }
 
 void User::GetMoviesConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/movies", list, paging);
+	_GetConnection(id_, "movies", list, paging);
 }
 
 void User::GetTelevisionConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/television", list, paging);
+	_GetConnection(id_, "television", list, paging);
 }
 
 void User::GetLikesConnection(std::list<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/likes", list, paging);
+	_GetConnection(id_, "likes", list, paging);
 }
 
 void User::GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/photos", list, paging);
+	_GetConnection(id_, "photos", list, paging);
 }
 
 void User::GetAlbumsConnection(std::list<Album> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/albums", list, paging);
+	_GetConnection(id_, "albums", list, paging);
 }
 
 void User::GetVideosConnection(std::list<Video> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/videos", list, paging);
+	_GetConnection(id_, "videos", list, paging);
 }
 
 void User::GetGroupsConnection(std::list<Group> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/groups", list, paging);
+	_GetConnection(id_, "groups", list, paging);
 }
 
 void User::GetStatusesConnection(std::list<Status> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/statuses", list, paging);
+	_GetConnection(id_, "statuses", list, paging);
 }
 
 void User::GetLinksConnection(std::list<Facebook::Link> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/links", list, paging);
+	_GetConnection(id_, "links", list, paging);
 }
 
 void User::GetNoteConnection(std::list<Note> *list, const PagingInfo *paging) const
 {
-	_GetConnection(id_, "/notes", list, paging);
+	_GetConnection(id_, "notes", list, paging);
 }
 
 void User::GetEventsConnection(std::list<Event> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/events", list, paging);
+	_GetConnection(id_, "events", list, paging);
 }
 
 void User::GetInboxConnection(std::list<Message> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "/inbox", list, paging);
+	_GetConnection(id_, "inbox", list, paging);
 }
 
 void User::GetOutboxConnection(std::list<Message> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "/outbox", list, paging);
+	_GetConnection(id_, "outbox", list, paging);
 }
 } // namespace Facebook

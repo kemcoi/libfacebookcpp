@@ -10,7 +10,7 @@ namespace Facebook
 
 void Link::GetComments(std::list<Comment> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "/comments", list, paging);
+	_GetConnection(id_, "comments", list, paging);
 }
 
 void Facebook::Link::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)

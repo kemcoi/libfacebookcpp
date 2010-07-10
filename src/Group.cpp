@@ -29,12 +29,12 @@ namespace Facebook
 
 void Group::GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "/feed", list, paging);
+	_GetConnection(id_, "feed", list, paging);
 }
 
 void Group::GetMembers(std::list<FriendContainer> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "/members", list, paging);
+	_GetConnection(id_, "members", list, paging);
 }
 
 void Group::GetPicture(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const

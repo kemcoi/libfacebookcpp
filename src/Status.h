@@ -39,12 +39,14 @@ public:
 
 	//----------------------------------------------
 	// Accessors
-	//TODO: Accessors for From class
-	const std::string& Id() const { return id_; }
-	const From& From() const { return from_; }
+	const std::string& GetId() const { return id_; }
+	const From& GetFrom() const { return from_; }
+	const std::string& GetMessage() const { return message_; }
+	const DateTime& GetUpdatedTime() const { return updated_time_; }
+
 private:
 	std::string id_;
-	Facebook::From from_;
+	From from_;
 	std::string message_;
 	DateTime updated_time_;
 };

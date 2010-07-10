@@ -46,7 +46,7 @@ public:
 	const std::string& GetDescription() const { return description_; }
 	const std::string& GetLocation() const { return location_; }
 	const std::string& GetLink() const { return link_; }
-	const unsigned int& GetCount() const { return count_; }
+	unsigned int GetCount() const { return count_; }
 	const DateTime& GetCreatedTime() const { return created_time_;}
 	const DateTime& GetUpdatedTime() const { return updated_time_; }
 

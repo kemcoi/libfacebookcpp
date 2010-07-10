@@ -31,7 +31,6 @@ class HttpRequest;
 struct PagingInfo;
 struct Uri;
 
-// XXX: Move this elsewhere
 enum FACEBOOK_API FACEBOOK_PICTURE_SIZE
 {
 	FPS_SQUARE,
@@ -40,7 +39,6 @@ enum FACEBOOK_API FACEBOOK_PICTURE_SIZE
 
 	FPS_COUNT
 };
-
 
 class AuthorizedObject
 {

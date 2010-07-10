@@ -67,9 +67,13 @@
 	TypeName(const TypeName&);               \
 	void operator=(const TypeName&)
 
-// XXX: This will fail with VS pre-2008
-using std::tr1::shared_ptr;
-using std::tr1::regex;
-using std::tr1::cmatch;
+namespace LibFacebookCpp
+{
+
+typedef std::tr1::shared_ptr shared_ptr;
+typedef std::tr1::regex regex;
+typedef std::tr1::cmatch cmatch;
+
+} // namespace LibFacebookCpp
 
 #endif // LIBFACEBOOKCPP_COMMON_H_

@@ -24,10 +24,10 @@
 #include "AuthorizedObject.h"
 #include "From.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API Status : public AuthorizedObject
+class LIBFACEBOOKCPP_API Status : public AuthorizedObject
 {
 public:
 	//----------------------------------------------
@@ -35,7 +35,7 @@ public:
 	virtual ~Status() { }
 
 	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 	//----------------------------------------------
 	// Accessors
@@ -51,6 +51,6 @@ private:
 	DateTime updated_time_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif

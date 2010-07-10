@@ -36,7 +36,7 @@
 #define GetDebugLog() GetLog(FB_LOGLEVEL_DEBUG)
 #define GetInfoLog()  GetLog(FB_LOGLEVEL_INFO)
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class Logger;
@@ -74,6 +74,6 @@ private:
 
 extern Logger logInstance;
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif

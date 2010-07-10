@@ -23,13 +23,13 @@
 #include "Venue.h"
 #include "DateTime.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class PolymorphicObject;
 class Venue;
 
-class FACEBOOK_API Event : public AuthorizedObject
+class LIBFACEBOOKCPP_API Event : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }
@@ -69,4 +69,4 @@ private: // member variables
 	DateTime updatedTime_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

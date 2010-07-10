@@ -23,10 +23,10 @@
 
 #include "AuthorizedObject.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API From : public AuthorizedObject
+class LIBFACEBOOKCPP_API From : public AuthorizedObject
 {
 public: // public interface
 	typedef AuthorizedObject inherited;
@@ -35,7 +35,7 @@ public: // public interface
 protected:
 	//----------------------------------------------
 	// Callbacks
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 	//----------------------------------------------
 	// Accessors
@@ -49,6 +49,6 @@ private: // private members
 	std::string id_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif

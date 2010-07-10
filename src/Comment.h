@@ -22,10 +22,10 @@
 #include "From.h"
 #include "DateTime.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API Comment : public AuthorizedObject
+class LIBFACEBOOKCPP_API Comment : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }
@@ -34,7 +34,7 @@ public: // accessors
 	const DateTime& GetCreatedTime() const { return created_time_; }
 
 public: // interface
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 private: // member variables
 	std::string id_;
@@ -43,4 +43,4 @@ private: // member variables
 	DateTime created_time_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

@@ -18,10 +18,10 @@
  *
  */
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API ResponseBlob
+class LIBFACEBOOKCPP_API ResponseBlob
 {
 public: // ctor and ~()
 	ResponseBlob();
@@ -44,4 +44,4 @@ private: // member variables
 	std::string content_type_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

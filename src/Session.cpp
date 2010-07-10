@@ -27,7 +27,7 @@
 #include "Exception.h"
 #include "Photo.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 //----------------------------------------------
@@ -47,7 +47,7 @@ void Session::Destroy()
 }
 
 //----------------------------------------------
-Facebook::Session::~Session()
+Session::~Session()
 {
 	GetInfoLog() << "Destroying user session" << std::endl;
 }
@@ -60,7 +60,7 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 												const std::list<std::string>& scope)
 {
 	GetInfoLog() << "Creating Authentication URL" << std::endl;
-	Facebook::Uri authenticationURL;
+	Uri authenticationURL;
 	authenticationURL.base_uri = "https://graph.facebook.com/oauth/authorize";
 
 	authenticationURL.query_params["client_id"] = clientID;
@@ -101,7 +101,7 @@ Session* Session::Authenticate(std::string& redirectedURL)
 	// XXX: Hack
 	redirectedURL[redirectedURL.find_first_of('#')] = '?';
 
-	Facebook::Uri redirectedParams;
+	Uri redirectedParams;
 	HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
 
 	Uri::QueryParamMap::const_iterator it = redirectedParams.query_params.find("access_token");
@@ -114,7 +114,7 @@ Session* Session::Authenticate(std::string& redirectedURL)
 	else
 	{
 		GetInfoLog() << "Found Access Token"  << std::endl;
-		return new Facebook::Session(it->second);
+		return new Session(it->second);
 	}	
 }
 
@@ -136,4 +136,4 @@ void Session::_Deserialize(const AuthorizedObject & /* parent_obj */, const Json
 }
 //----------------------------------------------
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

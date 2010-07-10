@@ -22,7 +22,7 @@
 #define FACEBOOK_TO_H
 
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 	class FriendContainer;
 
@@ -32,7 +32,7 @@ public: // accessors
 	
 	const std::list<FriendContainer>& GetTo(){ return toList; }
 protected:
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 private: // member variables
 	std::list<FriendContainer> toList;
 

@@ -24,7 +24,7 @@
 #include "PagingInfo.h"
 #include "Comment.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void Post::GetComments(std::list<Comment> *list, const PagingInfo *paging /*= NULL*/)
@@ -54,4 +54,4 @@ void Post::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &j
 	d.Deserialize("updated_time", false, &updated_time_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

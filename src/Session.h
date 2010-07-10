@@ -24,15 +24,15 @@
 #include "AuthorizedObject.h"
 //#include "ExtendedPermissions.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class User;
 class HttpRequest;
 
-class FACEBOOK_API Session : public AuthorizedObject
+class LIBFACEBOOKCPP_API Session : public AuthorizedObject
 {
-	friend class std::auto_ptr<Facebook::Session>;
+	friend class std::auto_ptr<Session>;
 public:
 	//----------------------------------------------
 	/*! 
@@ -72,7 +72,7 @@ private:
 	DISALLOW_COPY_AND_ASSIGN(Session);
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif
 

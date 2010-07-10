@@ -23,7 +23,7 @@
 #include "Message.h"
 #include "FriendContainer.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 	void Message::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
 	{

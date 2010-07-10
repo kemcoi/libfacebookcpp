@@ -21,7 +21,7 @@
 #include "precompile.h"
 #include "Logger.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 Logger logInstance;
@@ -36,7 +36,7 @@ Logger::Logger()
 
 std::ostream& Logger::GetStream( FB_LOGLEVEL level, int lineNumber, const char* file )
 {
-	FACEBOOK_ASSERT(level >= FB_LOGLEVEL_ERROR && level < FB_LOGLEVEL_COUNT);
+	LIBFACEBOOKCPP_ASSERT(level >= FB_LOGLEVEL_ERROR && level < FB_LOGLEVEL_COUNT);
 
 	static const char *s_level[] = {
 		"Error: ", "Warning: ", "Info: ", "Debug: "
@@ -52,4 +52,4 @@ std::ostream& Logger::GetStream( FB_LOGLEVEL level, int lineNumber, const char* 
 	return stream_[level];
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

@@ -475,10 +475,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Facebook.h"
-				>
-			</File>
-			<File
 				RelativePath=".\FriendContainer.h"
 				>
 			</File>
@@ -492,6 +488,10 @@
 			</File>
 			<File
 				RelativePath=".\HttpRequest.h"
+				>
+			</File>
+			<File
+				RelativePath=".\LibFacebookCpp.h"
 				>
 			</File>
 			<File

@@ -23,10 +23,10 @@
 
 #include "AuthorizedObject.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API Venue : public AuthorizedObject
+class LIBFACEBOOKCPP_API Venue : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetStreet() const { return street_; }
@@ -50,6 +50,6 @@ private: // member variables
 	float longitude_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif // FACEBOOK_VENUE_H_

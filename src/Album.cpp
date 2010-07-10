@@ -26,7 +26,7 @@
 #include "Comment.h"
 #include "Photo.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void Album::GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging /*= NULL*/) const
@@ -54,4 +54,4 @@ void Album::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value 
 	d.Deserialize("updated_time", false, &updated_time_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

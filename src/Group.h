@@ -32,23 +32,23 @@
 // XXX: Clean up the includes everywhere
 // XXX: Clean up forward references everywhere
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class PolymorphicObject;
 class FriendContainer;
 
-class FACEBOOK_API Group : public AuthorizedObject
+class LIBFACEBOOKCPP_API Group : public AuthorizedObject
 {
 public: // accessors
-	const std::string& Id() const { return id_; }
-	const Facebook::FriendContainer& Owner() const { return owner_; }
-	const std::string& Name() const { return name_; }
-	const std::string& Description() const { return description_; }
-	const std::string& Link() const { return link_; }
-	const Venue& Venue() const { return venue_; }
-	const std::string& Privacy() const { return privacy_; }
-	const DateTime& UpdatedTime() const { return updated_time_; }
+	const std::string& GetId() const { return id_; }
+	const FriendContainer& GetOwner() const { return owner_; }
+	const std::string& GetName() const { return name_; }
+	const std::string& GetDescription() const { return description_; }
+	const std::string& GetLink() const { return link_; }
+	const Venue& GetVenue() const { return venue_; }
+	const std::string& GetPrivacy() const { return privacy_; }
+	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 public: // connections
 	void GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
@@ -62,17 +62,17 @@ protected:
 private: // member variables
 	std::string id_;
 	// XXX: Rename this
-	Facebook::FriendContainer owner_;
+	FriendContainer owner_;
 	std::string name_;
 	std::string description_;
 	std::string link_;
-	Facebook::Venue venue_;
+	Venue venue_;
 	// TODO: Enum?
 	std::string privacy_;
 	// XXX: Need a timestamp class
 	DateTime updated_time_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif // FACEBOOK_GROUP_H_

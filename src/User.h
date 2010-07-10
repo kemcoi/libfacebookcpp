@@ -23,7 +23,7 @@
 
 #include "AuthorizedObject.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class Group;
@@ -42,10 +42,10 @@ class Note;
 class Message;
 class PolymorphicObject;
 
-class FACEBOOK_API Location : public AuthorizedObject
+class LIBFACEBOOKCPP_API Location : public AuthorizedObject
 {
 public: // public interface
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 public: // accessors
 	const std::string& Id() const   { return id_; }
@@ -56,7 +56,7 @@ private: // member variables
 	std::string name_;
 };
 
-class FACEBOOK_API User: public AuthorizedObject
+class LIBFACEBOOKCPP_API User: public AuthorizedObject
 {
 	typedef AuthorizedObject inherited;
 public:
@@ -66,7 +66,7 @@ public:
 	//----------------------------------------------
 
 	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 	//----------------------------------------------
 	//Getters
@@ -113,7 +113,7 @@ public:
 	void GetVideosConnection(std::list<Video> *list, const PagingInfo *paging = NULL) const;
 	void GetGroupsConnection(std::list<Group> *list, const PagingInfo *paging = NULL) const;
 	void GetStatusesConnection(std::list<Status> *list, const PagingInfo *paging = NULL) const;
-	void GetLinksConnection(std::list<Facebook::Link> *list, const PagingInfo *paging = NULL) const;
+	void GetLinksConnection(std::list<Link> *list, const PagingInfo *paging = NULL) const;
 	void GetNoteConnection(std::list<Note> *list, const PagingInfo *paging = NULL) const;
 	void GetEventsConnection(std::list<Event> *list, const PagingInfo *paging = NULL) const;
 	void GetInboxConnection(std::list<Message> *list, const PagingInfo *paging = NULL) const;
@@ -147,6 +147,6 @@ private:
 	float timezone_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif

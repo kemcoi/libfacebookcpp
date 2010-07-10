@@ -48,8 +48,7 @@ void ResponseBlob::Realloc(size_t bytes)
 	void *new_data = realloc(data_, bytes);
 
 	if(!new_data)
-		// TODO: Exception for out of memory
-		throw std::exception();
+		throw std::bad_alloc();
 
 	data_ = new_data;
 	bytes_= bytes;

@@ -26,6 +26,7 @@
 namespace Facebook
 {
 
+class PolymorphicObject;
 class Venue;
 
 class FACEBOOK_API Event : public AuthorizedObject
@@ -43,7 +44,7 @@ public: // accessors
 	const DateTime& GetUpdatedTime() const { return updatedTime_; }
 
 public: // connections
-	// TODO: feed
+	void GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	void GetNoReplyConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
 	void GetMaybeConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
 	void GetInvitedConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;

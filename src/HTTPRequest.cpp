@@ -55,44 +55,52 @@ std::string Uri::GetUri() const
 		}
 	}
 
-	if(anchor.size() > 0)
-	{
-		oss << "#" << anchor;
-	}
-
 	return oss.str();
 }
 
-Uri::Uri(const std::string &str)
+namespace HttpUtils
 {
-	cmatch uriResult;
-	// TODO: This is inefficient but I don't want to declare static objects
-	regex uriRx("^([^\\?#])+\\??([^#]+)?#?(.+)?$");
 
-	if(!regex_search(str.c_str(), uriResult, uriRx))
-		throw UnexpectedException("!regex_search");
+void DecomposeUri(const std::string& str, Uri& uri)
+{
+	uri.Clear();
 
-	base_uri = uriResult[1].str();
-	anchor = uriResult[3].str();
+	std::string::size_type lastPos = str.find('?');
 
-	// For decomposing query params, we have to run a second regex, since the first regex is obfuscated as enough
-	cmatch queryParamsResult;
-	regex queryParamsRx("[^=&]+=[^&]+");
-
-	if(!regex_search(str.c_str(), queryParamsResult, queryParamsRx))
-		throw UnexpectedException("!regex_search");
-
-	FACEBOOK_ASSERT(queryParamsResult.size() % 2 == 0);
-
-	for(cmatch::const_iterator it = queryParamsResult.begin(); it != queryParamsResult.end(); )
+	if(std::string::npos == lastPos)
 	{
-		std::pair<std::string, std::string> pair;
-		pair.first = *(it++);
-		pair.second = *(it++);
+		uri.base_uri = str;
+	}
+	else
+	{
+		uri.base_uri = str.substr(0, lastPos);
 
-		query_params.insert(pair);
+		// XXX: This is an inefficient algorithm. Need to speed it up
+
+		std::list<std::string> list;
+
+		++lastPos;
+		std::string::size_type pos = str.find_first_of("&=", lastPos);
+
+		while (std::string::npos != pos || std::string::npos != lastPos)
+		{
+			list.push_back(str.substr(lastPos, pos - lastPos));
+			lastPos = str.find_first_not_of("&=", pos);
+			pos = str.find_first_of("&=", lastPos);
+		}
+
+		FACEBOOK_ASSERT(list.size() % 2 == 0);
+
+		for(std::list<std::string>::const_iterator it = list.begin(); it != list.end();)
+		{
+			std::string str1 = *it++;
+			std::string str2 = *it++;
+			uri.query_params.insert(std::pair<std::string, std::string>(curlpp::unescape(str1), curlpp::unescape(str2)));
+		}
 	}
 }
+
+} // namespace HttpUtils
 
 size_t HttpRequest::DebugFunction(curl_infotype /* type */, char * /* data */, size_t /* size */)
 {
@@ -109,23 +117,21 @@ size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 	cmatch result;
 	// TODO: This is inefficient, but making it static makes us leak memory. We need a global ->Init(); call
 	// which initializes this regex, etc.
-	regex rx("^(\\s)*([^:]+)(\\s)*:(\\s)*(.+)(\\s)*$");
+	regex rx("(\\s)*([^:]+)(\\s)*:(\\s)*(.+)(\\s)*");
 
 	if(regex_search((const char*)data, (const char*)data + size * nmemb, result, rx))
 	{
-		if(result[2].matched && result[5].matched)
+		// regex really only allows us to get a .str() out of the matches
+		std::string header = result[2].str();
+		if(strcmpi(header.c_str(), "Content-Type") == 0)
 		{
-			std::string header = result[2].str();
-			if(strcmpi(header.c_str(), "Content-Type") == 0)
-			{
-				blob_->SetContentType(result[5].str());
-				GetDebugLog() << "Got content-type of " << result[5] << std::endl;
-			}
-			else if(strcmpi(header.c_str(), "Content-Length") == 0)
-			{
-				blob_->Realloc(fromString<size_t>(result[5].str()));
-				GetDebugLog() << "Got content-length of " << result[5] << std::endl;
-			}
+			blob_->SetContentType(result[5].str());
+			GetDebugLog() << "Got content-type of " << result[5] << std::endl;
+		}
+		else if(strcmpi(header.c_str(), "Content-Length") == 0)
+		{
+			blob_->Realloc(fromString<size_t>(result[5].str()));
+			GetDebugLog() << "Got content-length of " << result[5] << std::endl;
 		}
 	}
 

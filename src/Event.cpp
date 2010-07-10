@@ -22,9 +22,15 @@
 #include "Event.h"
 #include "Deserializer.h"
 #include "PagingInfo.h"
+#include "PolymorphicObject.h"
 
 namespace Facebook
 {
+
+void Event::GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
+{
+	_GetConnection(id_, "feed", list, paging);
+}
 
 void Event::GetNoReplyConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
 {

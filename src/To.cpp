@@ -21,7 +21,7 @@
 #include "precompile.h"
 #include "Deserializer.h"
 #include "To.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 
 namespace LibFacebookCpp
 {

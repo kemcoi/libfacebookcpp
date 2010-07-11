@@ -24,17 +24,17 @@
 
 namespace LibFacebookCpp
 {
-	class FriendContainer;
+	class Friend;
 
 class To: public AuthorizedObject
 {
 public: // accessors
 	
-	const std::list<FriendContainer>& GetTo(){ return toList; }
+	const std::list<Friend>& GetTo(){ return toList; }
 protected:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 private: // member variables
-	std::list<FriendContainer> toList;
+	std::list<Friend> toList;
 
 };
 }

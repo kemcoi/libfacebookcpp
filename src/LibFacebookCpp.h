@@ -39,7 +39,7 @@
 #include "To.h"
 #include "Message.h"
 #include "Link.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 #include "Group.h"
 #include "Post.h"
 #include "Event.h"

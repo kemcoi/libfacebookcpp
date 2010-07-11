@@ -1,7 +1,7 @@
 #include "precompile.h"
 #include "Link.h"
 #include "Deserializer.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 #include "Comment.h"
 #include "PagingInfo.h"
 

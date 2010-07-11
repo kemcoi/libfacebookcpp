@@ -25,7 +25,7 @@
 #define FACEBOOK_GROUP_H_
 
 #include "AuthorizedObject.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 #include "Venue.h"
 #include "DateTime.h"
 
@@ -36,13 +36,13 @@ namespace LibFacebookCpp
 {
 
 class PolymorphicObject;
-class FriendContainer;
+class Friend;
 
 class LIBFACEBOOKCPP_API Group : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }
-	const FriendContainer& GetOwner() const { return owner_; }
+	const Friend& GetOwner() const { return owner_; }
 	const std::string& GetName() const { return name_; }
 	const std::string& GetDescription() const { return description_; }
 	const std::string& GetLink() const { return link_; }
@@ -52,7 +52,7 @@ public: // accessors
 
 public: // connections
 	void GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetMembers(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
+	void GetMembers(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
 	// XXX: make sure all connections are const
 	void GetPicture(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const;
 
@@ -62,7 +62,7 @@ protected:
 private: // member variables
 	std::string id_;
 	// XXX: Rename this
-	FriendContainer owner_;
+	Friend owner_;
 	std::string name_;
 	std::string description_;
 	std::string link_;

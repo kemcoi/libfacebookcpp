@@ -624,7 +624,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\FriendContainer.cpp"
+				RelativePath=".\Friend.cpp"
 				>
 			</File>
 			<File
@@ -742,7 +742,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\FriendContainer.h"
+				RelativePath=".\Friend.h"
 				>
 			</File>
 			<File

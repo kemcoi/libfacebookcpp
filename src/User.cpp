@@ -39,6 +39,7 @@
 #include "Message.h"
 #include "Event.h"
 #include "PolymorphicObject.h"
+#include "List.h"
 
 namespace Facebook
 {
@@ -102,7 +103,7 @@ void User::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) 
 	_GetPictureConnection(id_, size, blob);
 }
 
-void User::GetFriendsConnection(std::list<FriendContainer>* list, const PagingInfo *paging /* = NULL */) const
+void User::GetFriendsConnection(FBList<FriendContainer>* list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "friends", list, paging);
 }

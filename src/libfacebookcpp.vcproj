@@ -507,6 +507,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\List.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Logger.h"
 				>
 			</File>

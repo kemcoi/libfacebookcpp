@@ -41,6 +41,7 @@ struct PagingInfo;
 class Note;
 class Message;
 class PolymorphicObject;
+class FBList;
 
 class FACEBOOK_API Location : public AuthorizedObject
 {
@@ -100,7 +101,7 @@ public:
 	void GetTaggedConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
 	void GetPostsConnection(std::list<Post> *list, const PagingInfo *paging = NULL) const;
 	void GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const;
-	void GetFriendsConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
+	void GetFriendsConnection(FBList<FriendContainer> *list, const PagingInfo *paging = NULL) const;
 	void GetActivitiesConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
 	void GetInterestsConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
 	void GetMusicConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;

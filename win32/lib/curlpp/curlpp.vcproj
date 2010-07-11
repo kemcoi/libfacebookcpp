@@ -243,7 +243,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy ..\*.dll ..\..\..\bin\$(ConfigurationName)\ /y"
+				CommandLine=""
 			/>
 		</Configuration>
 		<Configuration
@@ -395,7 +395,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy ..\*.dll ..\..\..\bin\$(ConfigurationName)\ /y"
+				CommandLine=""
 			/>
 		</Configuration>
 		<Configuration
@@ -548,7 +548,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="xcopy ..\*.dll ..\..\..\bin\$(ConfigurationName)\ /y"
+				CommandLine=""
 			/>
 		</Configuration>
 		<Configuration

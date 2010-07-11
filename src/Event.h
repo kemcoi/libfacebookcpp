@@ -19,7 +19,7 @@
  */
 
 #include "AuthorizedObject.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 #include "Venue.h"
 #include "DateTime.h"
 
@@ -33,7 +33,7 @@ class LIBFACEBOOKCPP_API Event : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }
-	const FriendContainer& GetOwner() const { return owner_; }
+	const Friend& GetOwner() const { return owner_; }
 	const std::string& GetName() const { return name_; }
 	const std::string& GetDescription() const { return description_; }
 	const DateTime& GetStartTime() const { return startTime_; }
@@ -45,11 +45,11 @@ public: // accessors
 
 public: // connections
 	void GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetNoReplyConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetMaybeConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetInvitedConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetAttendingConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetDeclinedConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
+	void GetNoReplyConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetMaybeConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetInvitedConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetAttendingConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetDeclinedConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
 	void GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob);
 
 protected: // callback functions
@@ -57,7 +57,7 @@ protected: // callback functions
 
 private: // member variables
 	std::string id_;
-	FriendContainer owner_;
+	Friend owner_;
 	std::string name_;
 	std::string description_;
 	DateTime startTime_;

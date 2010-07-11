@@ -18,34 +18,19 @@
  *
  */
 
-#ifndef FACEBOOK_FRIEND_CONTAINER_H_
-#define FACEBOOK_FRIEND_CONTAINER_H_
-
-#include "AuthorizedObject.h"
+#include "precompile.h"
+#include "Friend.h"
+#include "Deserializer.h"
 
 namespace LibFacebookCpp
 {
 
-class LIBFACEBOOKCPP_API FriendContainer: public AuthorizedObject
+void Friend::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 {
-public:
-	//----------------------------------------------
-	FriendContainer(){};
+	Deserializer deserialize(parent_obj, this, json);
 
-	// XXX: make all _deserialize private
-
-	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
-
-	//----------------------------------------------
-	const std::string& Name() const { return name_; }
-	const std::string& Id() const { return id_; }
-
-private:
-	std::string name_;
-	std::string id_;
-};
+	deserialize.Deserialize("id", false, &id_);
+	deserialize.Deserialize("name", false, &name_);
+}
 
 } // namespace LibFacebookCpp
-
-#endif // FACEBOOK_FRIEND_CONTAINER_H_

@@ -2,7 +2,7 @@
 #define FACEBOOK_LINK_H_
 
 #include "AuthorizedObject.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 #include "DateTime.h"
 
 namespace LibFacebookCpp
@@ -14,7 +14,7 @@ class LIBFACEBOOKCPP_API Link : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }
-	const FriendContainer& GetFrom() const { return from_; }
+	const Friend& GetFrom() const { return from_; }
 	const std::string& GetLink() const { return link_; }
 	const std::string& GetName() const { return name_; }
 	const std::string& GetCaption() const { return caption_; }
@@ -32,7 +32,7 @@ protected: // callback functions
 
 private: // member variables
 	std::string id_;
-	FriendContainer from_;
+	Friend from_;
 	std::string link_;
 	std::string name_;
 	std::string caption_;

@@ -32,27 +32,27 @@ void Event::GetFeedConnection(std::list<PolymorphicObject> *list, const PagingIn
 	_GetConnection(id_, "feed", list, paging);
 }
 
-void Event::GetNoReplyConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetNoReplyConnection(std::list<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "noreply", list, paging);
 }
 
-void Event::GetMaybeConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetMaybeConnection(std::list<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "maybe", list, paging);
 }
 
-void Event::GetInvitedConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetInvitedConnection(std::list<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "invited", list, paging);
 }
 
-void Event::GetAttendingConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetAttendingConnection(std::list<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "attending", list, paging);
 }
 
-void Event::GetDeclinedConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetDeclinedConnection(std::list<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "declined", list, paging);
 }

@@ -31,7 +31,7 @@
 #include "ResponseBlob.h"
 #include "Post.h"
 #include "From.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 #include "Group.h"
 #include "Link.h"
 #include "Note.h"
@@ -102,7 +102,7 @@ void User::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) 
 	_GetPictureConnection(id_, size, blob);
 }
 
-void User::GetFriendsConnection(std::list<FriendContainer>* list, const PagingInfo *paging /* = NULL */) const
+void User::GetFriendsConnection(std::list<Friend>* list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "friends", list, paging);
 }

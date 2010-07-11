@@ -57,7 +57,7 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 												const std::string& redirectURI,
 												const std::string& type, 
 												const std::string& display,
-												const std::list<std::string>& scope)
+												ExtPermissions scope)
 {
 	GetInfoLog() << "Creating Authentication URL" << std::endl;
 	Uri authenticationURL;
@@ -76,20 +76,9 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 		authenticationURL.query_params["display"] = display;
 	}
 
-	// TODO: Make this easier
-	std::stringstream oss;
-	for(std::list<std::string>::const_iterator iter = scope.begin();iter != scope.end(); iter++)
+	if(scope.permissionsRequested())
 	{
-		oss<<*iter;
-		if(iter != (--scope.end()))
-		{
-			 oss << ',';
-		}
-	}
-
-	if(!scope.empty())
-	{
-		authenticationURL.query_params["scope"] = oss.str();
+		authenticationURL.query_params["scope"]  = scope.getPermissionsString();
 	}
 
 	return authenticationURL.GetUri();

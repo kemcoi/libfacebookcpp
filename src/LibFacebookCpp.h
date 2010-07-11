@@ -22,6 +22,7 @@
 #define LIBFACEBOOKCPP_H_
 
 #include "Common.h"
+#include "ExtendedPermissions.h"
 
 // Aggregate includes here
 #include "ResponseBlob.h"

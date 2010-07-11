@@ -22,7 +22,7 @@
 #define FACEBOOK_SESSION_H_
 
 #include "AuthorizedObject.h"
-//#include "ExtendedPermissions.h"
+#include "ExtendedPermissions.h"
 
 namespace LibFacebookCpp
 {
@@ -43,7 +43,7 @@ public:
 												  const std::string& redirectURI,
 												  const std::string& type, 
 												  const std::string& display,
-												  const std::list<std::string>& scope);
+												  ExtPermissions scope);
 
 	//----------------------------------------------
 	/*!

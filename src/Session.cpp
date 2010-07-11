@@ -35,7 +35,7 @@ namespace LibFacebookCpp
 Session::Session(const std::string& accessToken)
 {
 	GetInfoLog() << "Initializing Session";
-	// logger_ = new Facebook::Logger();
+	// logger_ = new Logger();
 	Init(shared_ptr<HttpRequest>(new HttpRequest(accessToken)));
 	GetInfoLog() << "User session created with access token:" << accessToken << std::endl;
 	

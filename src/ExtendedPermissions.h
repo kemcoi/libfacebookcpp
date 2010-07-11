@@ -22,13 +22,13 @@
 #ifndef FACEBOOK_EXTENDED_PERMISSIONS_H
 #define FACEBOOK_EXTENDED_PERMISSIONS_H
 #include "Common.h"
-namespace Facebook
+namespace LibFacebookCpp
 {
 	
 
 //-------------------------------------------------------------------
 
-enum FACEBOOK_API FBExtPermissions{
+enum LIBFACEBOOKCPP_API FBExtPermissions{
 	FBEP_NO_PERMISSIONS,
 	FBEP_PUBLISH_STREAM, 
 	FBEP_CREATE_EVENT, 
@@ -89,7 +89,7 @@ enum FACEBOOK_API FBExtPermissions{
 
 
 
-struct FACEBOOK_API ExtPermissions
+struct LIBFACEBOOKCPP_API ExtPermissions
 {
 
 public:

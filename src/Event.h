@@ -57,7 +57,6 @@ protected: // callback functions
 
 private: // member variables
 	std::string id_;
-	// XXX: Remove Facebook:: in some temporary position
 	FriendContainer owner_;
 	std::string name_;
 	std::string description_;

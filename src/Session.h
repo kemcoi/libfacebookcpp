@@ -47,13 +47,13 @@ public:
 
 	//----------------------------------------------
 	/*!
-	// The caller is given ownership of a Facebook::Session object
+	// The caller is given ownership of a Session object
 	// based on the access token that is passed in. */
 	static Session* Authenticate(std::string& redirectedURL);
 
 	//----------------------------------------------
 	/*!
-	// This method should be used to destroy Facebook::Session objects*/
+	// This method should be used to destroy Session objects*/
 	void Destroy();
 
 	//----------------------------------------------

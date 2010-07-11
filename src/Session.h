@@ -43,7 +43,7 @@ public:
 												  const std::string& redirectURI,
 												  const std::string& type, 
 												  const std::string& display,
-												  ExtPermissions scope);
+												  ExtPermissions scope = ExtPermissions());
 
 	//----------------------------------------------
 	/*!

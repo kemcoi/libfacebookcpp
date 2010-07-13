@@ -76,4 +76,4 @@ extern Logger logInstance;
 
 } // namespace LibFacebookCpp
 
-#endif
+#endif // FACEBOOK_LOGGER_H_

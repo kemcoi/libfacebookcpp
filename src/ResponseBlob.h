@@ -18,6 +18,9 @@
  *
  */
 
+#ifndef FACEBOOK_RESPONSE_BLOB_H_
+#define FACEBOOK_RESPONSE_BLOB_H_
+
 namespace LibFacebookCpp
 {
 
@@ -45,3 +48,5 @@ private: // member variables
 };
 
 } // namespace LibFacebookCpp
+
+#endif // FACEBOOK_RESPONSE_BLOB_H_

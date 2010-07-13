@@ -50,7 +50,7 @@ public: // connections
 	void GetInvitedConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
 	void GetAttendingConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
 	void GetDeclinedConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
-	void GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob);
+	void GetPictureConnection(PictureSize size, ResponseBlob *blob);
 
 protected: // callback functions
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);

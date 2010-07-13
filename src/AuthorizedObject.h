@@ -31,13 +31,13 @@ class HttpRequest;
 struct PagingInfo;
 struct Uri;
 
-enum LIBFACEBOOKCPP_API FACEBOOK_PICTURE_SIZE
+enum LIBFACEBOOKCPP_API PictureSize
 {
-	FPS_SQUARE,
-	FPS_SMALL,
-	FPS_LARGE,
+	PS_SQUARE,
+	PS_SMALL,
+	PS_LARGE,
 
-	FPS_COUNT
+	PS_COUNT
 };
 
 class AuthorizedObject
@@ -73,7 +73,7 @@ protected: // interface
 		t->Deserialize(*this, value);
 	}
 
-	void _GetPictureConnection(const std::string &id, FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const;
+	void _GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const;
 
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, std::list<TType> *list, const PagingInfo *paging) const

@@ -51,7 +51,7 @@ public: // connections
 	void GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
 	void GetMembers(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
 	// XXX: make sure all connections are const
-	void GetPicture(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const;
+	void GetPicture(PictureSize size, ResponseBlob *blob) const;
 
 protected:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);

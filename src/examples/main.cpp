@@ -32,7 +32,7 @@ int main()
 		session_->GetCurrentUser(&user);
 
 		Facebook::ResponseBlob blob;
-		user.GetPictureConnection(Facebook::FPS_LARGE, &blob);
+		user.GetPictureConnection(Facebook::PS_LARGE, &blob);
 
 		std::list<Facebook::PolymorphicObject> homeList;
 		user.GetHomeConnection(&homeList);

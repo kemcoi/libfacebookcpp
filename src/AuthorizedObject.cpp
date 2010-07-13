@@ -39,7 +39,7 @@ void AuthorizedObject::Deserialize(const AuthorizedObject &parent_obj, const Jso
 	_Deserialize(parent_obj, json);
 }
 
-void AuthorizedObject::_GetPictureConnection(const std::string &id, FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const
+void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const
 {
 	LIBFACEBOOKCPP_ASSERT(size >= FPS_SQUARE && size <= FPS_LARGE);
 	LIBFACEBOOKCPP_ASSERT(blob);

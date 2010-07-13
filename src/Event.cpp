@@ -57,7 +57,7 @@ void Event::GetDeclinedConnection(std::list<Friend> *list, const PagingInfo *pag
 	_GetConnection(id_, "declined", list, paging);
 }
 
-void Event::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob)
+void Event::GetPictureConnection(PictureSize size, ResponseBlob *blob)
 {
 	_GetPictureConnection(id_, size, blob);
 }

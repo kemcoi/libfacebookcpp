@@ -18,6 +18,9 @@
  *
  */
 
+#ifndef FACEBOOK_POST_H_
+#define FACEBOOK_POST_H_
+
 #include "AuthorizedObject.h"
 #include "From.h"
 #include "DateTime.h"
@@ -74,3 +77,5 @@ private: // member variables
 };
 
 } // namespace LibFacebookCpp
+
+#endif // FACEBOOK_POST_H_

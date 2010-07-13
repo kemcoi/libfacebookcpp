@@ -18,7 +18,6 @@
  *
  */
 
-
 #ifndef FACEBOOK_MESSAGE_H
 #define FACEBOOK_MESSAGE_H
 
@@ -51,6 +50,6 @@ private: // member variables
 
 };
 
-}
+} // namespace LibFacebookCpp
 
-#endif
+#endif // FACEBOOK_MESSAGE_H_

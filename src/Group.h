@@ -18,9 +18,6 @@
  *
  */
 
-// XXX: Make sure guards are in all the headers
-
-// XXX: Rename FACEBOOK namespace to LIBFACEBOOKCPP?
 #ifndef FACEBOOK_GROUP_H_
 #define FACEBOOK_GROUP_H_
 

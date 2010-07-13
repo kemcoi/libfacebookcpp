@@ -18,11 +18,11 @@
  *
  */
 
-#include "AuthorizedObject.h"
-#include "From.h"
-
 #ifndef FACEBOOK_NOTE_H
 #define FACEBOOK_NOTE_H
+
+#include "AuthorizedObject.h"
+#include "From.h"
 
 namespace LibFacebookCpp
 {
@@ -53,6 +53,6 @@ private: // member variables
 	DateTime updated_time_;
 };
 
-}
+} // namespace LibFacebookCpp
 
-#endif
+#endif // FACEBOOK_NOTE_H_

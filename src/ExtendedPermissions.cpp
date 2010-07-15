@@ -21,7 +21,7 @@
 #include "precompile.h"
 #include "ExtendedPermissions.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 // ctor
@@ -32,30 +32,31 @@ ExtPermissions::ExtPermissions():requested_(false)
 
 void ExtPermissions::requestPermission(FBExtPermissions permission)
 {
-FACEBOOK_ASSERT(permission >= FBEP_NO_PERMISSIONS && permission <= FBEP_FRIENDS_WORK_HISTORY);
-if(permission == 0)
-{
-	// no permission requested
-	URLString_.clear();
-	requested_ = false;
-	return;
-}
+	LIBFACEBOOKCPP_ASSERT(permission >= FBEP_NO_PERMISSIONS && permission <= FBEP_FRIENDS_WORK_HISTORY);
+	if(permission == 0)
+	{
+		// no permission requested
+		URLString_.clear();
+		requested_ = false;
+		return;
+	}
 
-// 1 here because no permissions requested is listed as a value
-FACEBOOK_CASSERT((FACEBOOK_NUMELMS(permissionStrings)+1) == FBEP_NUMBER_OF_PERMISSIONS);
+	// 1 here because no permissions requested is listed as a value
+	FACEBOOK_CASSERT((FACEBOOK_NUMELMS(permissionStrings)+1) == FBEP_NUMBER_OF_PERMISSIONS);
 
-if(URLString_.size() != 0)
-{
-	URLString_ += ',';
-}
+	if(URLString_.size() != 0)
+	{
+		URLString_ += ',';
+	}
 
-URLString_ += permissionStrings[permission-1];
-requested_ = true;
+	URLString_ += permissionStrings[permission-1];
+	requested_ = true;
 }
 
 const std::string& ExtPermissions::getPermissionsString() const
 {
-	 GetInfoLog() << URLString_ << std::endl; 
-	 return URLString_; 
+	GetInfoLog() << URLString_ << std::endl; 
+	return URLString_; 
 }
+
 }// Extended Permissions 

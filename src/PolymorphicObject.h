@@ -43,6 +43,11 @@ private: // member variables
 	shared_ptr<AuthorizedObject> ptr_;
 };
 
+// XXX: We need a way to regularize this. This is a bug in MSVC++
+#ifdef _WIN32
+template class LIBFACEBOOKCPP_API List<PolymorphicObject>;
+#endif // _WIN32
+
 } // namespace LibFacebookCpp
 
 #endif // LIBFACEBOOKCPP_POLYMORPHIC_OBJECT_H_

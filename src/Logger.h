@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_LOGGER_H_
-#define FACEBOOK_LOGGER_H_
+#ifndef LIBFACEBOOKCPP_LOGGER_H_
+#define LIBFACEBOOKCPP_LOGGER_H_
 
 // This is probably not the best way to do it.
 // Leaving it like this for now
@@ -36,7 +36,7 @@
 #define GetDebugLog() GetLog(FB_LOGLEVEL_DEBUG)
 #define GetInfoLog()  GetLog(FB_LOGLEVEL_INFO)
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class Logger;
@@ -74,6 +74,6 @@ private:
 
 extern Logger logInstance;
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
-#endif
+#endif // LIBFACEBOOKCPP_LOGGER_H_

@@ -18,10 +18,10 @@
  *
  */
 
-#ifndef FACEBOOK_HTTPREQUEST_H_
-#define FACEBOOK_HTTPREQUEST_H_
+#ifndef LIBFACEBOOKCPP_HTTPREQUEST_H_
+#define LIBFACEBOOKCPP_HTTPREQUEST_H_
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 struct Uri
@@ -40,7 +40,7 @@ namespace HttpUtils
 
 void DecomposeUri(const std::string& str, Uri& uri);
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 class ResponseBlob;
 
@@ -68,6 +68,6 @@ private: // member variables
 	friend class Session;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
-#endif // FACEBOOK_HTTPREQUEST_H_
+#endif // LIBFACEBOOKCPP_HTTPREQUEST_H_

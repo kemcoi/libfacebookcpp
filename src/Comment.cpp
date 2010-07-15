@@ -22,7 +22,7 @@
 #include "Comment.h"
 #include "Deserializer.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void Comment::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
@@ -35,4 +35,4 @@ void Comment::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value
 	d.Deserialize("created_time", false, &created_time_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

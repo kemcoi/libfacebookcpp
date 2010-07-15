@@ -21,9 +21,9 @@
 #include "precompile.h"
 #include "Deserializer.h"
 #include "To.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void To::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )

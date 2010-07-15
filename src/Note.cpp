@@ -24,7 +24,7 @@
 #include "PagingInfo.h"
 #include "Comment.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void Note::GetComments(std::list<Comment> *list, const PagingInfo *paging /*= NULL*/)

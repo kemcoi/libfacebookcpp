@@ -25,7 +25,7 @@
 #include "Comment.h"
 #include "Deserializer.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void Video::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
@@ -46,4 +46,4 @@ void Video::GetComments(std::list<Comment> *list, const PagingInfo *paging /* = 
 	_GetConnection(id_, "/comments", list, paging);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

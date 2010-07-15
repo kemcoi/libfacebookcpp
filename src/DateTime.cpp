@@ -22,7 +22,7 @@
 #include "DateTime.h"
 #include "Exception.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void DateTime::Parse(const std::string &str)
@@ -45,4 +45,4 @@ void DateTime::Parse(const std::string &str)
 		offset = -offset;
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

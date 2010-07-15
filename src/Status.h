@@ -18,16 +18,16 @@
  *
  */
 
-#ifndef FACEBOOK_STATUS_H_
-#define FACEBOOK_STATUS_H_
+#ifndef LIBFACEBOOKCPP_STATUS_H_
+#define LIBFACEBOOKCPP_STATUS_H_
 
 #include "AuthorizedObject.h"
 #include "From.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API Status : public AuthorizedObject
+class LIBFACEBOOKCPP_API Status : public AuthorizedObject
 {
 public:
 	//----------------------------------------------
@@ -35,20 +35,22 @@ public:
 	virtual ~Status() { }
 
 	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 	//----------------------------------------------
 	// Accessors
-	//TODO: Accessors for From class
-	const std::string& Id() const { return id_; }
-	const From& From() const { return from_; }
+	const std::string& GetId() const { return id_; }
+	const From& GetFrom() const { return from_; }
+	const std::string& GetMessage() const { return message_; }
+	const DateTime& GetUpdatedTime() const { return updated_time_; }
+
 private:
 	std::string id_;
-	Facebook::From from_;
+	From from_;
 	std::string message_;
 	DateTime updated_time_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif

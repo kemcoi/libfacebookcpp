@@ -24,7 +24,7 @@
 #include "Exception.h"
 #include "ResponseBlob.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 std::string Uri::GetUri() const
@@ -89,7 +89,7 @@ void DecomposeUri(const std::string& str, Uri& uri)
 			pos = str.find_first_of("&=", lastPos);
 		}
 
-		FACEBOOK_ASSERT(list.size() % 2 == 0);
+		LIBFACEBOOKCPP_ASSERT(list.size() % 2 == 0);
 
 		for(std::list<std::string>::const_iterator it = list.begin(); it != list.end();)
 		{
@@ -112,7 +112,7 @@ size_t HttpRequest::DebugFunction(curl_infotype /* type */, char * /* data */, s
 
 size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 {
-	FACEBOOK_ASSERT(blob_);
+	LIBFACEBOOKCPP_ASSERT(blob_);
 
 	cmatch result;
 	// TODO: This is inefficient, but making it static makes us leak memory. We need a global ->Init(); call
@@ -140,8 +140,8 @@ size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 
 size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb)
 {
-	FACEBOOK_ASSERT(blob_);
-	FACEBOOK_ASSERT(data);
+	LIBFACEBOOKCPP_ASSERT(blob_);
+	LIBFACEBOOKCPP_ASSERT(data);
 
 	if(blobDataSize_ + size * nmemb > blob_->GetLength())
 	{
@@ -157,9 +157,9 @@ size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb)
 
 void HttpRequest::GetResponse(const Uri& uri, ResponseBlob *blob)
 {
-	FACEBOOK_ASSERT(blob);
-	FACEBOOK_ASSERT(!blob_); // This object isn't thread-safe!
-	FACEBOOK_ASSERT(blobDataSize_ == 0);
+	LIBFACEBOOKCPP_ASSERT(blob);
+	LIBFACEBOOKCPP_ASSERT(!blob_); // This object isn't thread-safe!
+	LIBFACEBOOKCPP_ASSERT(blobDataSize_ == 0);
 
 	blob_ = blob;
 	blobDataSize_ = 0;
@@ -176,7 +176,7 @@ void HttpRequest::GetResponse(const Uri& uri, ResponseBlob *blob)
 
 void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
 {
-	FACEBOOK_ASSERT(value);
+	LIBFACEBOOKCPP_ASSERT(value);
 
 	ResponseBlob blob;
 	GetResponse(uri, &blob);
@@ -187,7 +187,7 @@ void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
 
 void HttpRequest::GetUri(Uri *uri) const
 {
-	FACEBOOK_ASSERT(uri);
+	LIBFACEBOOKCPP_ASSERT(uri);
 
 	uri->query_params.insert(std::pair<std::string, std::string>("access_token", access_token_));
 }
@@ -202,4 +202,4 @@ HttpRequest::HttpRequest(const std::string &access_token) : access_token_(access
 	// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
 	curl_.setOpt(curlpp::options::SslVerifyPeer(false));
 }
-} // namespace Facebook
+} // namespace LibFacebookCpp

@@ -31,7 +31,7 @@
 #include "ResponseBlob.h"
 #include "Post.h"
 #include "From.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 #include "Group.h"
 #include "Link.h"
 #include "Note.h"
@@ -41,7 +41,7 @@
 #include "PolymorphicObject.h"
 #include "List.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void Location::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
@@ -98,12 +98,12 @@ void User::GetPostsConnection(std::list<Post> *list, const PagingInfo *paging /*
 	_GetConnection(id_, "posts", list, paging);
 }
 
-void User::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const
+void User::GetPictureConnection(PictureSize size, ResponseBlob *blob) const
 {
 	_GetPictureConnection(id_, size, blob);
 }
 
-void User::GetFriendsConnection(FBList<FriendContainer>* list, const PagingInfo *paging /* = NULL */) const
+void User::GetFriendsConnection(std::list<Friend>* list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "friends", list, paging);
 }
@@ -168,7 +168,7 @@ void User::GetStatusesConnection(std::list<Status> *list, const PagingInfo *pagi
 	_GetConnection(id_, "statuses", list, paging);
 }
 
-void User::GetLinksConnection(std::list<Facebook::Link> *list, const PagingInfo *paging /* = NULL */) const
+void User::GetLinksConnection(std::list<Link> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "links", list, paging);
 }
@@ -192,4 +192,4 @@ void User::GetOutboxConnection(std::list<Message> *list, const PagingInfo *pagin
 {
 	_GetConnection(id_, "outbox", list, paging);
 }
-} // namespace Facebook
+} // namespace LibFacebookCpp

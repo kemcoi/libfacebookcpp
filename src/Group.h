@@ -18,43 +18,40 @@
  *
  */
 
-// XXX: Make sure guards are in all the headers
-
-// XXX: Rename FACEBOOK namespace to LIBFACEBOOKCPP?
-#ifndef FACEBOOK_GROUP_H_
-#define FACEBOOK_GROUP_H_
+#ifndef LIBFACEBOOKCPP_GROUP_H_
+#define LIBFACEBOOKCPP_GROUP_H_
 
 #include "AuthorizedObject.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 #include "Venue.h"
 #include "DateTime.h"
 
 // XXX: Clean up the includes everywhere
 // XXX: Clean up forward references everywhere
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class PolymorphicObject;
-class FriendContainer;
+class Friend;
 
-class FACEBOOK_API Group : public AuthorizedObject
+class LIBFACEBOOKCPP_API Group : public AuthorizedObject
 {
 public: // accessors
-	const std::string& Id() const { return id_; }
-	const Facebook::FriendContainer& Owner() const { return owner_; }
-	const std::string& Name() const { return name_; }
-	const std::string& Description() const { return description_; }
-	const std::string& Link() const { return link_; }
-	const Venue& Venue() const { return venue_; }
-	const std::string& Privacy() const { return privacy_; }
-	const DateTime& UpdatedTime() const { return updated_time_; }
+	const std::string& GetId() const { return id_; }
+	const Friend& GetOwner() const { return owner_; }
+	const std::string& GetName() const { return name_; }
+	const std::string& GetDescription() const { return description_; }
+	const std::string& GetLink() const { return link_; }
+	const Venue& GetVenue() const { return venue_; }
+	const std::string& GetPrivacy() const { return privacy_; }
+	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 public: // connections
 	void GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetMembers(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
+	void GetMembers(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
 	// XXX: make sure all connections are const
-	void GetPicture(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const;
+	void GetPicture(PictureSize size, ResponseBlob *blob) const;
 
 protected:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
@@ -62,17 +59,17 @@ protected:
 private: // member variables
 	std::string id_;
 	// XXX: Rename this
-	Facebook::FriendContainer owner_;
+	Friend owner_;
 	std::string name_;
 	std::string description_;
 	std::string link_;
-	Facebook::Venue venue_;
+	Venue venue_;
 	// TODO: Enum?
 	std::string privacy_;
 	// XXX: Need a timestamp class
 	DateTime updated_time_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
-#endif // FACEBOOK_GROUP_H_
+#endif // LIBFACEBOOKCPP_GROUP_H_

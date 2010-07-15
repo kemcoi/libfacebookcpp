@@ -18,39 +18,39 @@
  *
  */
 
-#ifndef FACEBOOK_VIDEO_H_
-#define FACEBOOK_VIDEO_H_
+#ifndef LIBFACEBOOKCPP_VIDEO_H_
+#define LIBFACEBOOKCPP_VIDEO_H_
 
 #include "AuthorizedObject.h"
 #include "From.h"
 #include "DateTime.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class Comment;
 
-class FACEBOOK_API Video : public AuthorizedObject
+class LIBFACEBOOKCPP_API Video : public AuthorizedObject
 {
 public: // accessors
-	const std::string& Id() const { return id_; }
+	const std::string& GetId() const { return id_; }
 	// XXX: Rename from
-	const From& From() const { return from_; }
-	const std::string& Message() const { return message_; }
-	const std::string& Description() const { return description_; }
-	unsigned int Length() const { return length_; }
-	const DateTime& CreatedTime() const { return created_time_; }
-	const DateTime& UpdatedTime() const { return updated_time_; }
+	const From& GetFrom() const { return from_; }
+	const std::string& GetMessage() const { return message_; }
+	const std::string& GetDescription() const { return description_; }
+	unsigned int GetLength() const { return length_; }
+	const DateTime& GetCreatedTime() const { return created_time_; }
+	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 public: // connections
 	void GetComments(std::list<Comment> *list, const PagingInfo *paging = NULL) const;
 
 protected:
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 private: // member variables
 	std::string id_;
-	Facebook::From from_;
+	From from_;
 	std::string message_;
 	std::string description_;
 	// XXX: int64?
@@ -59,6 +59,6 @@ private: // member variables
 	DateTime updated_time_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
-#endif // FACEBOOK_VIDEO_H_
+#endif // LIBFACEBOOKCPP_VIDEO_H_

@@ -18,21 +18,21 @@
  *
  */
 
-#ifndef FACEBOOK_SESSION_H_
-#define FACEBOOK_SESSION_H_
+#ifndef LIBFACEBOOKCPP_SESSION_H_
+#define LIBFACEBOOKCPP_SESSION_H_
 
 #include "AuthorizedObject.h"
 #include "ExtendedPermissions.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class User;
 class HttpRequest;
 
-class FACEBOOK_API Session : public AuthorizedObject
+class LIBFACEBOOKCPP_API Session : public AuthorizedObject
 {
-	friend class std::auto_ptr<Facebook::Session>;
+	friend class std::auto_ptr<Session>;
 public:
 	//----------------------------------------------
 	/*! 
@@ -47,13 +47,13 @@ public:
 
 	//----------------------------------------------
 	/*!
-	// The caller is given ownership of a Facebook::Session object
+	// The caller is given ownership of a Session object
 	// based on the access token that is passed in. */
 	static Session* Authenticate(std::string& redirectedURL);
 
 	//----------------------------------------------
 	/*!
-	// This method should be used to destroy Facebook::Session objects*/
+	// This method should be used to destroy Session objects*/
 	void Destroy();
 
 	//----------------------------------------------
@@ -72,7 +72,7 @@ private:
 	DISALLOW_COPY_AND_ASSIGN(Session);
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif
 

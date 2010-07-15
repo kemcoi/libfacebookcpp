@@ -22,6 +22,7 @@
 #define LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_
 
 #include "HttpRequest.h"
+// XXX: Remove the FB prefix to everything
 
 namespace LibFacebookCpp
 {
@@ -30,6 +31,9 @@ class ResponseBlob;
 class HttpRequest;
 struct PagingInfo;
 struct Uri;
+
+template<class FBType>
+class FBList;
 
 enum LIBFACEBOOKCPP_API PictureSize
 {
@@ -74,6 +78,28 @@ protected: // interface
 	}
 
 	void _GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const;
+
+	template<class TType>
+	void _GetConnection(const std::string &id, const char *page, FBList<TType> *list, const PagingInfo *paging) const
+	{
+		LIBFACEBOOKCPP_ASSERT(page);
+		LIBFACEBOOKCPP_ASSERT(list);
+
+		Uri uri;
+		request_->GetUri(&uri);
+
+		std::ostringstream base_uri;
+		base_uri << "https://graph.facebook.com/" << curlpp::escape(id) << "/" << curlpp::escape(page);
+		uri.base_uri = base_uri.str();
+
+		if(paging)
+			paging->GetUri(&uri);
+
+		Json::Value value;
+		request_->GetResponse(uri, &value);
+
+		list->Deserialize(*this, value);
+	}
 
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, std::list<TType> *list, const PagingInfo *paging) const

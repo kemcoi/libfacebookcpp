@@ -12,9 +12,9 @@ int main()
 		std::string	clientid = "232486072316";
 		std::string redirectURI = "http://www.facebook.com/connect/login_success.html";
 		Facebook::ExtPermissions scope;
-		scope.requestPermission(Facebook::FBEP_EMAIL);
+		// scope.requestPermission(Facebook::FBEP_EMAIL);
 		scope.requestPermission(Facebook::FBEP_USER_PHOTOS);
-		scope.requestPermission(Facebook::FBEP_READ_MAILBOX);
+		// scope.requestPermission(Facebook::FBEP_READ_MAILBOX);
 
 		std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, "user_agent", std::string(), scope);
 

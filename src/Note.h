@@ -39,7 +39,7 @@ public: // accessors
 	const DateTime& GetCreatedTime() const { return created_time_; }
 	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
-	void GetComments(std::list<Comment> *list, const PagingInfo *paging = NULL);
+	void GetComments(List<Comment> *list, const PagingInfo *paging = NULL);
 
 protected:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);

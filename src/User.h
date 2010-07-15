@@ -97,30 +97,30 @@ public:
 
 	//----------------------------------------------
 	// Connections
-	void GetHomeConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetTaggedConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
-	void GetPostsConnection(std::list<Post> *list, const PagingInfo *paging = NULL) const;
+	void GetHomeConnection(List<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
+	void GetFeedConnection(List<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
+	void GetTaggedConnection(List<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetPostsConnection(List<Post> *list, const PagingInfo *paging = NULL) const;
 	void GetPictureConnection(PictureSize size, ResponseBlob *blob) const;
 	void GetFriendsConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
-	void GetActivitiesConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetInterestsConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetMusicConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetBooksConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetMoviesConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetTelevisionConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetLikesConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
-	void GetAlbumsConnection(std::list<Album> *list, const PagingInfo *paging = NULL) const;
-	void GetVideosConnection(std::list<Video> *list, const PagingInfo *paging = NULL) const;
-	void GetGroupsConnection(std::list<Group> *list, const PagingInfo *paging = NULL) const;
-	void GetStatusesConnection(std::list<Status> *list, const PagingInfo *paging = NULL) const;
-	void GetLinksConnection(std::list<Link> *list, const PagingInfo *paging = NULL) const;
-	void GetNoteConnection(std::list<Note> *list, const PagingInfo *paging = NULL) const;
-	void GetEventsConnection(std::list<Event> *list, const PagingInfo *paging = NULL) const;
-	void GetInboxConnection(std::list<Message> *list, const PagingInfo *paging = NULL) const;
-	void GetOutboxConnection(std::list<Message> *list, const PagingInfo *paging = NULL) const;
-	void GetUpdatesConnection(std::list<Message> *list, const PagingInfo *paging = NULL) const;
+	void GetActivitiesConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetInterestsConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetMusicConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetBooksConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetMoviesConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetTelevisionConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetLikesConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetPhotosConnection(List<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetAlbumsConnection(List<Album> *list, const PagingInfo *paging = NULL) const;
+	void GetVideosConnection(List<Video> *list, const PagingInfo *paging = NULL) const;
+	void GetGroupsConnection(List<Group> *list, const PagingInfo *paging = NULL) const;
+	void GetStatusesConnection(List<Status> *list, const PagingInfo *paging = NULL) const;
+	void GetLinksConnection(List<Link> *list, const PagingInfo *paging = NULL) const;
+	void GetNoteConnection(List<Note> *list, const PagingInfo *paging = NULL) const;
+	void GetEventsConnection(List<Event> *list, const PagingInfo *paging = NULL) const;
+	void GetInboxConnection(List<Message> *list, const PagingInfo *paging = NULL) const;
+	void GetOutboxConnection(List<Message> *list, const PagingInfo *paging = NULL) const;
+	void GetUpdatesConnection(List<Message> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /accounts
 
 protected:

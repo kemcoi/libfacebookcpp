@@ -27,7 +27,7 @@
 namespace LibFacebookCpp
 {
 
-void Post::GetComments(std::list<Comment> *list, const PagingInfo *paging /*= NULL*/)
+void Post::GetComments(List<Comment> *list, const PagingInfo *paging /*= NULL*/)
 {
 	_GetConnection(id_, "comments", list, paging);
 }

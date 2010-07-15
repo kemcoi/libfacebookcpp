@@ -34,7 +34,7 @@ int main()
 		Facebook::ResponseBlob blob;
 		user.GetPictureConnection(Facebook::PS_LARGE, &blob);
 
-		std::list<Facebook::PolymorphicObject> homeList;
+		Facebook::List<Facebook::PolymorphicObject> homeList;
 		user.GetHomeConnection(&homeList);
 
 		//HANDLE handle = CreateFile(TEXT("C:\\Users\\Aly Hirani\\Desktop\\a.jpg"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_ARCHIVE, NULL);
@@ -42,9 +42,9 @@ int main()
 		//WriteFile(handle, blob.GetData(), blob.GetLength(), &dw, NULL);
 		//CloseHandle(handle);
 
-		std::list<Facebook::Album> albumList;
+		Facebook::List<Facebook::Album> albumList;
 		user.GetAlbumsConnection(&albumList);
-		std::list<Facebook::Message> messageInbox;
+		Facebook::List<Facebook::Message> messageInbox;
 		user.GetInboxConnection(&messageInbox);
 
 		system("pause"); // VS Debug

@@ -52,8 +52,8 @@ public:
 
 	//----------------------------------------------
 	// Connections
-	void GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
-	void GetCommentsConnection(std::list<Comment> *list, const PagingInfo *paging = NULL) const;
+	void GetPhotosConnection(List<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetCommentsConnection(List<Comment> *list, const PagingInfo *paging = NULL) const;
 
 protected:
 	//----------------------------------------------

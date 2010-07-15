@@ -48,8 +48,8 @@ public: // accessors
 	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 public: // connections
-	void GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetMembers(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetFeed(List<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
+	void GetMembers(List<Friend> *list, const PagingInfo *paging = NULL) const;
 	// XXX: make sure all connections are const
 	void GetPicture(PictureSize size, ResponseBlob *blob) const;
 

@@ -35,7 +35,7 @@ class LIBFACEBOOKCPP_API Post : public AuthorizedObject
 public: // accessors
 	const std::string& GetId() const { return id_; }
 	const From& GetFrom() const { return from_; }
-	const std::list<std::string>& GetTo() const { return to_; }
+	const List<std::string>& GetTo() const { return to_; }
 	const std::string& GetMessage() const { return message_; }
 	const std::string& GetPicture() const { return picture_; }
 	const std::string& GetLink() const { return link_; }
@@ -45,13 +45,13 @@ public: // accessors
 	const std::string& GetSource() const { return source_; }
 	const std::string& GetIcon() const { return icon_; }
 	const std::string& GetAttribution() const { return attribution_; }
-	const std::list<std::string>& GetActions() const { return actions_; }
+	const List<std::string>& GetActions() const { return actions_; }
 	unsigned int GetLikes() const { return likes_; }
 	const DateTime& GetCreatedTime() const { return created_time_; }
 	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 public: // connections
-	void GetComments(std::list<Comment> *list, const PagingInfo *paging = NULL);
+	void GetComments(List<Comment> *list, const PagingInfo *paging = NULL);
 
 protected:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
@@ -59,7 +59,7 @@ protected:
 private: // member variables
 	std::string id_;
 	From from_;
-	std::list<std::string> to_;
+	List<std::string> to_;
 	std::string message_;
 	std::string picture_;
 	std::string link_;
@@ -69,7 +69,7 @@ private: // member variables
 	std::string source_;
 	std::string icon_;
 	std::string attribution_;
-	std::list<std::string> actions_;
+	List<std::string> actions_;
 	// XXX: uint64
 	unsigned int likes_;
 	DateTime created_time_;

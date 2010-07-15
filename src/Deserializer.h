@@ -24,6 +24,8 @@
 #include "AuthorizedObject.h"
 #include "Exception.h"
 #include "DateTime.h"
+// XXX: THIS IS BAD. FIND A WAY TO DO WITHOUT GLOBALLY INCLUDING THIS
+#include "Logger.h"
 
 namespace LibFacebookCpp
 {
@@ -56,6 +58,7 @@ public: // public ctor and ~()
 #endif // _DEBUG
 	}
 
+	/*
 	Deserializer(const AuthorizedObject &obj, const Json::Value &json) : json_(json), obj_(obj)
 	{
 		if(!json_.isObject())
@@ -76,6 +79,7 @@ public: // public ctor and ~()
 		}
 #endif // _DEBUG
 	}
+	*/
 
 	~Deserializer()
 	{

@@ -21,7 +21,7 @@
 #define LIBFACEBOOKCPP_LIST_H_
 
 #include "AuthorizedObject.h"
-#include "precompile.h"
+#include "Deserializer.h"
 
 namespace LibFacebookCpp
 {
@@ -29,8 +29,10 @@ namespace LibFacebookCpp
 template<typename FBType>
 class LIBFACEBOOKCPP_API List : public AuthorizedObject
 {
-public:
-protected:
+public: // interface
+	
+
+protected: // callbacks
 	 void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 	 {
 		 dataList_.clear();
@@ -41,11 +43,10 @@ protected:
 		 deserializer.Deserialize("previous", false, &previous_);
 	 }
 
-private:
+private: // member variables
 	std::list<FBType> dataList_;
 	std::string next_;
 	std::string previous_;
-
 };
 
 }

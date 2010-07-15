@@ -28,7 +28,7 @@ Logger logInstance;
 
 Logger::Logger()
 {
-	for(size_t ii = 0; ii < FACEBOOK_NUMELMS(stream_); ++ii)
+	for(size_t ii = 0; ii < LIBFACEBOOKCPP_NUMELMS(stream_); ++ii)
 	{
 		stream_[ii].rdbuf(std::clog.rdbuf());
 	}
@@ -42,7 +42,7 @@ std::ostream& Logger::GetStream( FB_LOGLEVEL level, int lineNumber, const char* 
 		"Error: ", "Warning: ", "Info: ", "Debug: "
 	};
 
-	FACEBOOK_CASSERT(FACEBOOK_NUMELMS(s_level) == FB_LOGLEVEL_COUNT);
+	LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(s_level) == FB_LOGLEVEL_COUNT);
 
 	stream_[level] << std::endl << s_level[level];
 

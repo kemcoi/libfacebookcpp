@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_TO_H
-#define FACEBOOK_TO_H
+#ifndef LIBFACEBOOKCPP_TO_H
+#define LIBFACEBOOKCPP_TO_H
 
 
 namespace LibFacebookCpp

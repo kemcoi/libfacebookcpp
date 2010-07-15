@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_AUTHORIZED_OBJECT_H_
-#define FACEBOOK_AUTHORIZED_OBJECT_H_
+#ifndef LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_
+#define LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_
 
 #include "HttpRequest.h"
 
@@ -106,4 +106,4 @@ private:
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_AUTHORIZED_OBJECT_H_
+#endif // LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_

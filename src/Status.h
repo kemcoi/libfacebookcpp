@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_STATUS_H_
-#define FACEBOOK_STATUS_H_
+#ifndef LIBFACEBOOKCPP_STATUS_H_
+#define LIBFACEBOOKCPP_STATUS_H_
 
 #include "AuthorizedObject.h"
 #include "From.h"

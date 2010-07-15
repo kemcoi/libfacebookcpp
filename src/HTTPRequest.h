@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_HTTPREQUEST_H_
-#define FACEBOOK_HTTPREQUEST_H_
+#ifndef LIBFACEBOOKCPP_HTTPREQUEST_H_
+#define LIBFACEBOOKCPP_HTTPREQUEST_H_
 
 namespace LibFacebookCpp
 {
@@ -70,4 +70,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_HTTPREQUEST_H_
+#endif // LIBFACEBOOKCPP_HTTPREQUEST_H_

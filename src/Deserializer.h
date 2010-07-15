@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_DESERIALIZER_H_
-#define FACEBOOK_DESERIALIZER_H_
+#ifndef LIBFACEBOOKCPP_DESERIALIZER_H_
+#define LIBFACEBOOKCPP_DESERIALIZER_H_
 
 #include "AuthorizedObject.h"
 #include "Exception.h"
@@ -287,4 +287,4 @@ private: // private members
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_DESERIALIZER_H_
+#endif // LIBFACEBOOKCPP_DESERIALIZER_H_

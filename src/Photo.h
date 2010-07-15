@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_PHOTO_H_
-#define FACEBOOK_PHOTO_H_
+#ifndef LIBFACEBOOKCPP_PHOTO_H_
+#define LIBFACEBOOKCPP_PHOTO_H_
 
 #include "AuthorizedObject.h"
 #include "From.h"
@@ -67,4 +67,4 @@ private: // private members
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_PHOTO_H_
+#endif // LIBFACEBOOKCPP_PHOTO_H_

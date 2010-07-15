@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_FROM_H_
-#define FACEBOOK_FROM_H_
+#ifndef LIBFACEBOOKCPP_FROM_H_
+#define LIBFACEBOOKCPP_FROM_H_
 
 #include "AuthorizedObject.h"
 

@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_UTILS_H_
-#define FACEBOOK_UTILS_H_
+#ifndef LIBFACEBOOKCPP_UTILS_H_
+#define LIBFACEBOOKCPP_UTILS_H_
 
 template<class TData>
 inline std::string toString(const TData &t)
@@ -39,4 +39,4 @@ inline TData fromString(const TStr &str)
 	return t;
 }
 
-#endif // FACEBOOK_UTILS_H_
+#endif // LIBFACEBOOKCPP_UTILS_H_

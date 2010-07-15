@@ -44,8 +44,6 @@ void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize 
 	LIBFACEBOOKCPP_ASSERT(size >= PS_SQUARE && size <= PS_LARGE);
 	LIBFACEBOOKCPP_ASSERT(blob);
 
-	FACEBOOK_CASSERT(PS_SQUARE == 0 && PS_LARGE == PS_COUNT - 1);
-
 	Uri uri;
 	request_->GetUri(&uri);
 
@@ -59,7 +57,8 @@ void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize 
 		{ "large" }, // FPS_LARGE
 	};
 
-	FACEBOOK_CASSERT(FACEBOOK_NUMELMS(s_sizeType) == PS_COUNT);
+	LIBFACEBOOKCPP_CASSERT(PS_SQUARE == 0);
+	LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(s_sizeType) == PS_COUNT);
 
 	uri.query_params["type"] = s_sizeType[size];
 

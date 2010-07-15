@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_POLYMORPHIC_OBJECT_H_
-#define FACEBOOK_POLYMORPHIC_OBJECT_H_
+#ifndef LIBFACEBOOKCPP_POLYMORPHIC_OBJECT_H_
+#define LIBFACEBOOKCPP_POLYMORPHIC_OBJECT_H_
 
 #include "AuthorizedObject.h"
 
@@ -45,4 +45,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_POLYMORPHIC_OBJECT_H_
+#endif // LIBFACEBOOKCPP_POLYMORPHIC_OBJECT_H_

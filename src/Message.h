@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_MESSAGE_H
-#define FACEBOOK_MESSAGE_H
+#ifndef LIBFACEBOOKCPP_MESSAGE_H
+#define LIBFACEBOOKCPP_MESSAGE_H
 
 #include "AuthorizedObject.h"
 #include "To.h"
@@ -52,4 +52,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_MESSAGE_H_
+#endif // LIBFACEBOOKCPP_MESSAGE_H_

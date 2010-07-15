@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_LINK_H_
-#define FACEBOOK_LINK_H_
+#ifndef LIBFACEBOOKCPP_LINK_H_
+#define LIBFACEBOOKCPP_LINK_H_
 
 #include "AuthorizedObject.h"
 #include "Friend.h"
@@ -63,4 +63,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_LINK_H_
+#endif // LIBFACEBOOKCPP_LINK_H_

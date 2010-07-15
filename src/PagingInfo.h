@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_PAGING_INFO_H_
-#define FACEBOOK_PAGING_INFO_H_
+#ifndef LIBFACEBOOKCPP_PAGING_INFO_H_
+#define LIBFACEBOOKCPP_PAGING_INFO_H_
 
 namespace LibFacebookCpp
 {
@@ -42,4 +42,4 @@ struct PagingInfo
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_PAGING_INFO_H_
+#endif // LIBFACEBOOKCPP_PAGING_INFO_H_

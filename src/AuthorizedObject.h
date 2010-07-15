@@ -101,6 +101,7 @@ protected: // interface
 		list->Deserialize(*this, value);
 	}
 
+	/*
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, std::list<TType> *list, const PagingInfo *paging) const
 	{
@@ -123,6 +124,7 @@ protected: // interface
 		Deserializer deserializer(*this, value);
 		deserializer.Deserialize("data", true, list);
 	}
+	*/
 
 private:
 	shared_ptr<HttpRequest> request_;
@@ -131,5 +133,8 @@ private:
 };
 
 } // namespace LibFacebookCpp
+
+// XXX: Hack!
+#include "List.h"
 
 #endif // LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_

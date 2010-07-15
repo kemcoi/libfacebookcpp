@@ -44,12 +44,12 @@ public: // accessors
 	const DateTime& GetUpdatedTime() const { return updatedTime_; }
 
 public: // connections
-	void GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetNoReplyConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
-	void GetMaybeConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
-	void GetInvitedConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
-	void GetAttendingConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
-	void GetDeclinedConnection(std::list<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetFeedConnection(List<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
+	void GetNoReplyConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetMaybeConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetInvitedConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetAttendingConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetDeclinedConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
 	void GetPictureConnection(PictureSize size, ResponseBlob *blob);
 
 protected: // callback functions

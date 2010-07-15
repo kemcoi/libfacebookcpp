@@ -624,6 +624,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Exception.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ExtendedPermissions.cpp"
 				>
 			</File>

@@ -103,7 +103,7 @@ void User::GetPictureConnection(PictureSize size, ResponseBlob *blob) const
 	_GetPictureConnection(id_, size, blob);
 }
 
-void User::GetFriendsConnection(FBList<Friend>* list, const PagingInfo *paging /* = NULL */) const
+void User::GetFriendsConnection(List<Friend>* list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "friends", list, paging);
 }

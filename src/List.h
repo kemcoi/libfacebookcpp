@@ -27,7 +27,7 @@ namespace LibFacebookCpp
 {
 
 template<typename FBType>
-class LIBFACEBOOKCPP_API FBList : public AuthorizedObject
+class LIBFACEBOOKCPP_API List : public AuthorizedObject
 {
 public:
 protected:

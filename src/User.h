@@ -42,7 +42,7 @@ class Note;
 class Message;
 class PolymorphicObject;
 template<class FBType>
-class FBList;
+class List;
 
 class LIBFACEBOOKCPP_API Location : public AuthorizedObject
 {
@@ -102,7 +102,7 @@ public:
 	void GetTaggedConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
 	void GetPostsConnection(std::list<Post> *list, const PagingInfo *paging = NULL) const;
 	void GetPictureConnection(PictureSize size, ResponseBlob *blob) const;
-	void GetFriendsConnection(FBList<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetFriendsConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
 	void GetActivitiesConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
 	void GetInterestsConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
 	void GetMusicConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;

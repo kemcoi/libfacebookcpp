@@ -42,7 +42,7 @@ void ExtPermissions::requestPermission(FBExtPermissions permission)
 	}
 
 	// 1 here because no permissions requested is listed as a value
-	FACEBOOK_CASSERT((FACEBOOK_NUMELMS(permissionStrings)+1) == FBEP_NUMBER_OF_PERMISSIONS);
+	LIBFACEBOOKCPP_CASSERT((LIBFACEBOOKCPP_NUMELMS(permissionStrings)+1) == FBEP_NUMBER_OF_PERMISSIONS);
 
 	if(URLString_.size() != 0)
 	{

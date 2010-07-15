@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_EXCEPTION_H_
-#define FACEBOOK_EXCEPTION_H_
+#ifndef LIBFACEBOOKCPP_EXCEPTION_H_
+#define LIBFACEBOOKCPP_EXCEPTION_H_
 
 namespace LibFacebookCpp
 {
@@ -66,4 +66,4 @@ public:
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_EXCEPTION_H_
+#endif // LIBFACEBOOKCPP_EXCEPTION_H_

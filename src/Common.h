@@ -50,7 +50,7 @@
 #define LIBFACEBOOKCPP_ASSERT(x) assert(x); __assume(x); __analysis_assume(x)
 #else // defined(_MSC_VER)
 // Other compilers
-#define FACEBOOK_INTERFACE struct
+#define LIBFACEBOOKCPP_INTERFACE struct
 #define LIBFACEBOOKCPP_OVERRIDE
 #define LIBFACEBOOKCPP_ASSERT(x) assert(x)
 // XXX:
@@ -58,7 +58,7 @@
 #endif // defined(_MSC_VER)
 #else // LIBFACEBOOKCPP_EXPORTS
 #define LIBFACEBOOKCPP_API __declspec(dllimport)
-#define FACEBOOK_INTERFACE
+#define LIBFACEBOOKCPP_INTERFACE
 #define LIBFACEBOOKCPP_OVERRIDE
 #define LIBFACEBOOKCPP_ASSERT(x)
 #endif // LIBFACEBOOKCPP_EXPORTS

@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_GROUP_H_
-#define FACEBOOK_GROUP_H_
+#ifndef LIBFACEBOOKCPP_GROUP_H_
+#define LIBFACEBOOKCPP_GROUP_H_
 
 #include "AuthorizedObject.h"
 #include "Friend.h"
@@ -72,4 +72,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_GROUP_H_
+#endif // LIBFACEBOOKCPP_GROUP_H_

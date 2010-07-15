@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_VIDEO_H_
-#define FACEBOOK_VIDEO_H_
+#ifndef LIBFACEBOOKCPP_VIDEO_H_
+#define LIBFACEBOOKCPP_VIDEO_H_
 
 #include "AuthorizedObject.h"
 #include "From.h"
@@ -61,4 +61,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_VIDEO_H_
+#endif // LIBFACEBOOKCPP_VIDEO_H_

@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_FRIEND_CONTAINER_H_
-#define FACEBOOK_FRIEND_CONTAINER_H_
+#ifndef LIBFACEBOOKCPP_FRIEND_CONTAINER_H_
+#define LIBFACEBOOKCPP_FRIEND_CONTAINER_H_
 
 #include "AuthorizedObject.h"
 
@@ -48,4 +48,4 @@ private:
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_FRIEND_CONTAINER_H_
+#endif // LIBFACEBOOKCPP_FRIEND_CONTAINER_H_

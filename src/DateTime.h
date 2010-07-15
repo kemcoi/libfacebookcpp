@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_DATETIME_H_
-#define FACEBOOK_DATETIME_H_
+#ifndef LIBFACEBOOKCPP_DATETIME_H_
+#define LIBFACEBOOKCPP_DATETIME_H_
 
 namespace LibFacebookCpp
 {
@@ -45,4 +45,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_DATETIME_H_
+#endif // LIBFACEBOOKCPP_DATETIME_H_

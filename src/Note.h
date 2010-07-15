@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_NOTE_H
-#define FACEBOOK_NOTE_H
+#ifndef LIBFACEBOOKCPP_NOTE_H
+#define LIBFACEBOOKCPP_NOTE_H
 
 #include "AuthorizedObject.h"
 #include "From.h"
@@ -55,4 +55,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_NOTE_H_
+#endif // LIBFACEBOOKCPP_NOTE_H_

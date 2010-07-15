@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_SESSION_H_
-#define FACEBOOK_SESSION_H_
+#ifndef LIBFACEBOOKCPP_SESSION_H_
+#define LIBFACEBOOKCPP_SESSION_H_
 
 #include "AuthorizedObject.h"
 #include "ExtendedPermissions.h"

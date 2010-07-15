@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_VENUE_H_
-#define FACEBOOK_VENUE_H_
+#ifndef LIBFACEBOOKCPP_VENUE_H_
+#define LIBFACEBOOKCPP_VENUE_H_
 
 #include "AuthorizedObject.h"
 
@@ -52,4 +52,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // FACEBOOK_VENUE_H_
+#endif // LIBFACEBOOKCPP_VENUE_H_

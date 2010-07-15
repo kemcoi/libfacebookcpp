@@ -18,34 +18,37 @@
  *
  */
 
+#ifndef LIBFACEBOOKCPP_POST_H_
+#define LIBFACEBOOKCPP_POST_H_
+
 #include "AuthorizedObject.h"
 #include "From.h"
 #include "DateTime.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class Comment;
 
-class FACEBOOK_API Post : public AuthorizedObject
+class LIBFACEBOOKCPP_API Post : public AuthorizedObject
 {
 public: // accessors
-	const std::string& Id() const { return id_; }
-	const Facebook::From& From() const { return from_; }
-	const std::list<std::string>& To() const { return to_; }
-	const std::string& Message() const { return message_; }
-	const std::string& Picture() const { return picture_; }
-	const std::string& Link() const { return link_; }
-	const std::string& Name() const { return name_; }
-	const std::string& Caption() const { return caption_; }
-	const std::string& Description() const { return description_; }
-	const std::string& Source() const { return source_; }
-	const std::string& Icon() const { return icon_; }
-	const std::string& Attribution() const { return attribution_; }
-	const std::list<std::string>& Actions() const { return actions_; }
-	unsigned int Likes() const { return likes_; }
-	const DateTime& CreatedTime() const { return created_time_; }
-	const DateTime& UpdatedTime() const { return updated_time_; }
+	const std::string& GetId() const { return id_; }
+	const From& GetFrom() const { return from_; }
+	const std::list<std::string>& GetTo() const { return to_; }
+	const std::string& GetMessage() const { return message_; }
+	const std::string& GetPicture() const { return picture_; }
+	const std::string& GetLink() const { return link_; }
+	const std::string& GetName() const { return name_; }
+	const std::string& GetCaption() const { return caption_; }
+	const std::string& GetDescription() const { return description_; }
+	const std::string& GetSource() const { return source_; }
+	const std::string& GetIcon() const { return icon_; }
+	const std::string& GetAttribution() const { return attribution_; }
+	const std::list<std::string>& GetActions() const { return actions_; }
+	unsigned int GetLikes() const { return likes_; }
+	const DateTime& GetCreatedTime() const { return created_time_; }
+	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 public: // connections
 	void GetComments(std::list<Comment> *list, const PagingInfo *paging = NULL);
@@ -55,7 +58,7 @@ protected:
 
 private: // member variables
 	std::string id_;
-	Facebook::From from_;
+	From from_;
 	std::list<std::string> to_;
 	std::string message_;
 	std::string picture_;
@@ -73,4 +76,6 @@ private: // member variables
 	DateTime updated_time_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
+
+#endif // LIBFACEBOOKCPP_POST_H_

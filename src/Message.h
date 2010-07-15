@@ -18,39 +18,38 @@
  *
  */
 
-
-#ifndef FACEBOOK_MESSAGE_H
-#define FACEBOOK_MESSAGE_H
+#ifndef LIBFACEBOOKCPP_MESSAGE_H
+#define LIBFACEBOOKCPP_MESSAGE_H
 
 #include "AuthorizedObject.h"
 #include "To.h"
 #include "From.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API Message: public AuthorizedObject
+class LIBFACEBOOKCPP_API Message: public AuthorizedObject
 {
 
 public: // accessors
-	const std::string& Id() const { return id_; }
-	const From& From() const { return from_; }
-	const To& To() const {return to_; }
-	const std::string& MessageContents() const { return message_; }
-	const std::string& UpdatedTime() const { return updated_time_; }
+	const std::string& GetId() const { return id_; }
+	const From& GetFrom() const { return from_; }
+	const To& GetTo() const {return to_; }
+	const std::string& GetMessageContents() const { return message_; }
+	const std::string& GetUpdatedTime() const { return updated_time_; }
 
 protected:
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 private: // member variables 
 	std::string id_;
-	Facebook::From from_;
-	Facebook::To to_;
+	From from_;
+	To to_;
 	std::string message_;
 	std::string updated_time_;
 
 };
 
-}
+} // namespace LibFacebookCpp
 
-#endif
+#endif // LIBFACEBOOKCPP_MESSAGE_H_

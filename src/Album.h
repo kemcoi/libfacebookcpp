@@ -18,20 +18,20 @@
  *
  */
 
-#ifndef FACEBOOK_ALBUM_H_
-#define FACEBOOK_ALBUM_H_
+#ifndef LIBFACEBOOKCPP_ALBUM_H_
+#define LIBFACEBOOKCPP_ALBUM_H_
 
 #include "AuthorizedObject.h"
 #include "From.h"
 #include "DateTime.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class Photo;
 class Comment;
 
-class FACEBOOK_API Album: public AuthorizedObject
+class LIBFACEBOOKCPP_API Album: public AuthorizedObject
 {
 public:
 	//----------------------------------------------
@@ -46,7 +46,7 @@ public:
 	const std::string& GetDescription() const { return description_; }
 	const std::string& GetLocation() const { return location_; }
 	const std::string& GetLink() const { return link_; }
-	const unsigned int& GetCount() const { return count_; }
+	unsigned int GetCount() const { return count_; }
 	const DateTime& GetCreatedTime() const { return created_time_;}
 	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
@@ -58,7 +58,7 @@ public:
 protected:
 	//----------------------------------------------
 	// Callbacks
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 private:
 	std::string id_;
@@ -72,6 +72,6 @@ private:
 	DateTime updated_time_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif

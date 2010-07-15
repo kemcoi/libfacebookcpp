@@ -18,13 +18,13 @@
  *
  */
 
-#ifndef FACEBOOK_EXCEPTION_H_
-#define FACEBOOK_EXCEPTION_H_
+#ifndef LIBFACEBOOKCPP_EXCEPTION_H_
+#define LIBFACEBOOKCPP_EXCEPTION_H_
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-class FACEBOOK_API InvalidArgument : public std::invalid_argument
+class LIBFACEBOOKCPP_API InvalidArgument : public std::invalid_argument
 {
 public:
 	typedef std::invalid_argument inherited;
@@ -34,7 +34,7 @@ public:
 	}
 };
 
-class FACEBOOK_API FacebookException : public std::runtime_error
+class LIBFACEBOOKCPP_API FacebookException : public std::runtime_error
 {
 public:
 	typedef std::runtime_error inherited;
@@ -44,7 +44,7 @@ public:
 	}
 };
 
-class FACEBOOK_API NotSupportedException : public std::logic_error
+class LIBFACEBOOKCPP_API NotSupportedException : public std::logic_error
 {
 public:
 	typedef std::logic_error inherited;
@@ -54,7 +54,7 @@ public:
 	}
 };
 
-class FACEBOOK_API UnexpectedException : public std::logic_error
+class LIBFACEBOOKCPP_API UnexpectedException : public std::logic_error
 {
 public:
 	typedef std::logic_error inherited;
@@ -64,6 +64,6 @@ public:
 	}
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
-#endif // FACEBOOK_EXCEPTION_H_
+#endif // LIBFACEBOOKCPP_EXCEPTION_H_

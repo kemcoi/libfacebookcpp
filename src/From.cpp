@@ -22,7 +22,7 @@
 #include "Deserializer.h"
 #include "From.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 void From::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
@@ -34,4 +34,4 @@ void From::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &j
 	deserializer.Deserialize("id", false, &id_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

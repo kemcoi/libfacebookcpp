@@ -211,29 +211,6 @@ private: // private helper functions
 		}
 	}
 
-	template<class TType>
-	void _DeserializeObject(const Json::Value &json, bool required, std::vector<TType> *vector)
-	{
-		LIBFACEBOOKCPP_ASSERT(vector);
-
-		if(!json.isConvertibleTo(Json::arrayValue))
-		{
-			if(required)
-				throw UnexpectedException("!value.isConvertibleTo(Json::arrayValue)");
-		}
-		else
-		{
-			vector->reserve(json.size());
-
-			for(Json::UInt ii = 0; ii < json.size(); ++ii)
-			{
-				TType t;
-				_DeserializeObject(json[ii], required, &t);
-				list->push_back(t);
-			}
-		}
-	}
-
 public: // public interface
 	template<class TType>
 	void DeserializeObject(bool required, TType *t)

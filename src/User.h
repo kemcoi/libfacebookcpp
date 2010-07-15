@@ -41,6 +41,7 @@ struct PagingInfo;
 class Note;
 class Message;
 class PolymorphicObject;
+template<class FBType>
 class FBList;
 
 class LIBFACEBOOKCPP_API Location : public AuthorizedObject

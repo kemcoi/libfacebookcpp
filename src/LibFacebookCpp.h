@@ -23,6 +23,7 @@
 
 #include "Common.h"
 #include "ExtendedPermissions.h"
+#include "List.h"
 
 // Aggregate includes here
 #include "ResponseBlob.h"

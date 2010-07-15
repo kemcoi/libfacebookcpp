@@ -21,7 +21,7 @@
 
 #ifndef LIBFACEBOOKCPP_EXTENDED_PERMISSIONS_H
 #define LIBFACEBOOKCPP_EXTENDED_PERMISSIONS_H
-#include "Common.h"
+
 namespace LibFacebookCpp
 {
 	

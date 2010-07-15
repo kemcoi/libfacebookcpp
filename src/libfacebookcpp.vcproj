@@ -624,6 +624,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ExtendedPermissions.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Friend.cpp"
 				>
 			</File>
@@ -739,6 +743,10 @@
 			</File>
 			<File
 				RelativePath=".\Exception.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ExtendedPermissions.h"
 				>
 			</File>
 			<File

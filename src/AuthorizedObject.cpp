@@ -41,10 +41,10 @@ void AuthorizedObject::Deserialize(const AuthorizedObject &parent_obj, const Jso
 
 void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const
 {
-	LIBFACEBOOKCPP_ASSERT(size >= FPS_SQUARE && size <= FPS_LARGE);
+	LIBFACEBOOKCPP_ASSERT(size >= PS_SQUARE && size <= PS_LARGE);
 	LIBFACEBOOKCPP_ASSERT(blob);
 
-	FACEBOOK_CASSERT(FPS_SQUARE == 0 && FPS_LARGE == FPS_COUNT - 1);
+	FACEBOOK_CASSERT(PS_SQUARE == 0 && PS_LARGE == PS_COUNT - 1);
 
 	Uri uri;
 	request_->GetUri(&uri);
@@ -59,7 +59,7 @@ void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize 
 		{ "large" }, // FPS_LARGE
 	};
 
-	FACEBOOK_CASSERT(FACEBOOK_NUMELMS(s_sizeType) == FPS_COUNT);
+	FACEBOOK_CASSERT(FACEBOOK_NUMELMS(s_sizeType) == PS_COUNT);
 
 	uri.query_params["type"] = s_sizeType[size];
 

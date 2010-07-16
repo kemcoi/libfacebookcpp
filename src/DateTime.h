@@ -18,14 +18,14 @@
  *
  */
 
-#ifndef FACEBOOK_DATETIME_H_
-#define FACEBOOK_DATETIME_H_
+#ifndef LIBFACEBOOKCPP_DATETIME_H_
+#define LIBFACEBOOKCPP_DATETIME_H_
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 // This is just a simple wrapper around tm
-struct FACEBOOK_API DateTime
+struct LIBFACEBOOKCPP_API DateTime
 {
 public: // ctor
 	DateTime() { memset(this, 0, sizeof(*this)); }
@@ -43,6 +43,6 @@ private: // member variables
 	int offset;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
-#endif // FACEBOOK_DATETIME_H_
+#endif // LIBFACEBOOKCPP_DATETIME_H_

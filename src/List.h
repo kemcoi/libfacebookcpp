@@ -17,39 +17,48 @@
  * Lesser General Public License for more details.
  *
 */
-#ifndef FACEBOOK_LIST_H_
-#define FACEBOOK_LIST_H_
+#ifndef LIBFACEBOOKCPP_LIST_H_
+#define LIBFACEBOOKCPP_LIST_H_
 
 #include "AuthorizedObject.h"
-#include "precompile.h"
+// XXX: UGLY!
+#include "Deserializer.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 template<typename FBType>
-class FACEBOOK_API FBList:public AuthorizedObject
+class LIBFACEBOOKCPP_API List : public AuthorizedObject
 {
-public:
-protected:
-	 void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
-private:
-	std::list<FBType> dataList_;
-	std::string	next_;
+public: // interface
+	operator const std::list<FBType>& () const { return list_; }
+	const std::list<FBType>& GetList() const { return list_; }
+
+	void GetNext(List<FBType> * /* list */) const
+	{
+		// TODO:
+	}
+
+	void GetPrevious(List<FBType> * /* list */) const
+	{
+		// TODO:
+	}
+
+protected: // callbacks
+	 void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+	 {
+		Deserializer deserializer(parent_obj, this, json);
+
+		deserializer.Deserialize("data", true, &list_);
+		deserializer.Deserialize("next", false, &next_);
+		deserializer.Deserialize("previous", false, &previous_);
+	 }
+
+private: // member variables
+	std::list<FBType> list_;
+	std::string next_;
 	std::string previous_;
-
 };
-
-
-void FBList<FBType>::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
-{
-	dataList_.clear();
-	Deserializer deserializer(*this, value);
-
-	deserializer.Deserialize("data", true, dataList_);
-	deserializer.Deserialize("next", false, next_);
-	deserializer.Deserialize("previous", false, previous_);
-}
-
 
 }
 #endif

@@ -24,40 +24,40 @@
 #include "PagingInfo.h"
 #include "PolymorphicObject.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-void Event::GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetFeedConnection(List<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "feed", list, paging);
 }
 
-void Event::GetNoReplyConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetNoReplyConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "noreply", list, paging);
 }
 
-void Event::GetMaybeConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetMaybeConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "maybe", list, paging);
 }
 
-void Event::GetInvitedConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetInvitedConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "invited", list, paging);
 }
 
-void Event::GetAttendingConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetAttendingConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "attending", list, paging);
 }
 
-void Event::GetDeclinedConnection(std::list<FriendContainer> *list, const PagingInfo *paging /* = NULL */) const
+void Event::GetDeclinedConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "declined", list, paging);
 }
 
-void Event::GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob)
+void Event::GetPictureConnection(PictureSize size, ResponseBlob *blob)
 {
 	_GetPictureConnection(id_, size, blob);
 }
@@ -78,4 +78,4 @@ void Event::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &
 	d.Deserialize("updated_time", false, &updatedTime_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

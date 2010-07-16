@@ -18,16 +18,16 @@
  *
  */
 
-#ifndef FACEBOOK_USER_H_
-#define FACEBOOK_USER_H_
+#ifndef LIBFACEBOOKCPP_USER_H_
+#define LIBFACEBOOKCPP_USER_H_
 
 #include "AuthorizedObject.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class Group;
-class FriendContainer;
+class Friend;
 class Post;
 class From;
 class ResponseBlob;
@@ -41,12 +41,13 @@ struct PagingInfo;
 class Note;
 class Message;
 class PolymorphicObject;
-class FBList;
+template<class FBType>
+class List;
 
-class FACEBOOK_API Location : public AuthorizedObject
+class LIBFACEBOOKCPP_API Location : public AuthorizedObject
 {
 public: // public interface
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 public: // accessors
 	const std::string& Id() const   { return id_; }
@@ -57,7 +58,7 @@ private: // member variables
 	std::string name_;
 };
 
-class FACEBOOK_API User: public AuthorizedObject
+class LIBFACEBOOKCPP_API User: public AuthorizedObject
 {
 	typedef AuthorizedObject inherited;
 public:
@@ -67,7 +68,7 @@ public:
 	//----------------------------------------------
 
 	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) FACEBOOK_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 	//----------------------------------------------
 	//Getters
@@ -96,30 +97,30 @@ public:
 
 	//----------------------------------------------
 	// Connections
-	void GetHomeConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetTaggedConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
-	void GetPostsConnection(std::list<Post> *list, const PagingInfo *paging = NULL) const;
-	void GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const;
-	void GetFriendsConnection(FBList<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetActivitiesConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetInterestsConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetMusicConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetBooksConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetMoviesConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetTelevisionConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetLikesConnection(std::list<From> *list, const PagingInfo *paging = NULL) const;
-	void GetPhotosConnection(std::list<Photo> *list, const PagingInfo *paging = NULL) const;
-	void GetAlbumsConnection(std::list<Album> *list, const PagingInfo *paging = NULL) const;
-	void GetVideosConnection(std::list<Video> *list, const PagingInfo *paging = NULL) const;
-	void GetGroupsConnection(std::list<Group> *list, const PagingInfo *paging = NULL) const;
-	void GetStatusesConnection(std::list<Status> *list, const PagingInfo *paging = NULL) const;
-	void GetLinksConnection(std::list<Facebook::Link> *list, const PagingInfo *paging = NULL) const;
-	void GetNoteConnection(std::list<Note> *list, const PagingInfo *paging = NULL) const;
-	void GetEventsConnection(std::list<Event> *list, const PagingInfo *paging = NULL) const;
-	void GetInboxConnection(std::list<Message> *list, const PagingInfo *paging = NULL) const;
-	void GetOutboxConnection(std::list<Message> *list, const PagingInfo *paging = NULL) const;
-	void GetUpdatesConnection(std::list<Message> *list, const PagingInfo *paging = NULL) const;
+	void GetHomeConnection(List<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
+	void GetFeedConnection(List<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
+	void GetTaggedConnection(List<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetPostsConnection(List<Post> *list, const PagingInfo *paging = NULL) const;
+	void GetPictureConnection(PictureSize size, ResponseBlob *blob) const;
+	void GetFriendsConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetActivitiesConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetInterestsConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetMusicConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetBooksConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetMoviesConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetTelevisionConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetLikesConnection(List<From> *list, const PagingInfo *paging = NULL) const;
+	void GetPhotosConnection(List<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetAlbumsConnection(List<Album> *list, const PagingInfo *paging = NULL) const;
+	void GetVideosConnection(List<Video> *list, const PagingInfo *paging = NULL) const;
+	void GetGroupsConnection(List<Group> *list, const PagingInfo *paging = NULL) const;
+	void GetStatusesConnection(List<Status> *list, const PagingInfo *paging = NULL) const;
+	void GetLinksConnection(List<Link> *list, const PagingInfo *paging = NULL) const;
+	void GetNoteConnection(List<Note> *list, const PagingInfo *paging = NULL) const;
+	void GetEventsConnection(List<Event> *list, const PagingInfo *paging = NULL) const;
+	void GetInboxConnection(List<Message> *list, const PagingInfo *paging = NULL) const;
+	void GetOutboxConnection(List<Message> *list, const PagingInfo *paging = NULL) const;
+	void GetUpdatesConnection(List<Message> *list, const PagingInfo *paging = NULL) const;
 	// TODO: /accounts
 
 protected:
@@ -148,6 +149,6 @@ private:
 	float timezone_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp
 
 #endif

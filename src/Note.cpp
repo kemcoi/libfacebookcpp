@@ -24,10 +24,10 @@
 #include "PagingInfo.h"
 #include "Comment.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-void Note::GetComments(std::list<Comment> *list, const PagingInfo *paging /*= NULL*/)
+void Note::GetComments(List<Comment> *list, const PagingInfo *paging /*= NULL*/)
 {
 	_GetConnection(id_, "comments", list, paging);
 }

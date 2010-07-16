@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef FACEBOOK_PRECOMPILE_H_
-#define FACEBOOK_PRECOMPILE_H_
+#ifndef LIBFACEBOOKCPP_PRECOMPILE_H_
+#define LIBFACEBOOKCPP_PRECOMPILE_H_
 
 #ifdef _WIN32
 // Workaround for Windows retardness
@@ -35,8 +35,8 @@
 
 #define goto _USE_OF_GOTO_IS_NOT_ALLOWED_
 #define const_cast _USE_OF_CONST_CAST_IS_NOT_ALLOWED_
-#define FACEBOOK_CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
+#define LIBFACEBOOKCPP_CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
 // XXX: TODO: Break on non-arrays
-#define FACEBOOK_NUMELMS(x) sizeof(x) / sizeof(x[0])
+#define LIBFACEBOOKCPP_NUMELMS(x) sizeof(x) / sizeof(x[0])
 
-#endif // FACEBOOK_PRECOMPILE_H_
+#endif // LIBFACEBOOKCPP_PRECOMPILE_H_

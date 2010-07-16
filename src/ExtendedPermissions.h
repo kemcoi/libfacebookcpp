@@ -22,6 +22,7 @@
 #ifndef FACEBOOK_EXTENDED_PERMISSIONS_H
 #define FACEBOOK_EXTENDED_PERMISSIONS_H
 #include "Common.h"
+#include <bitset>
 namespace Facebook
 {
 	
@@ -29,7 +30,6 @@ namespace Facebook
 //-------------------------------------------------------------------
 
 enum FACEBOOK_API FBExtPermissions{
-	FBEP_NO_PERMISSIONS,
 	FBEP_PUBLISH_STREAM, 
 	FBEP_CREATE_EVENT, 
 	FBEP_RSVP_EVENT,
@@ -84,81 +84,31 @@ enum FACEBOOK_API FBExtPermissions{
 	FBEP_FRIENDS_VIDEOS, 
 	FBEP_FRIENDS_WEBSITE, 
 	FBEP_FRIENDS_WORK_HISTORY,
-	FBEP_NUMBER_OF_PERMISSIONS
+	FBEP_NUMBER_OF_PERMISSIONS,
+	__COUNT
 };
 
 
 
-struct FACEBOOK_API ExtPermissions
+class FACEBOOK_API ExtPermissions
 {
 
 public:
-	ExtPermissions();
+	// ctor and ~()
+	ExtPermissions(){};
+	~ExtPermissions(){};
+
 	void requestPermission(FBExtPermissions permission);
-	bool permissionsRequested()const { return requested_; } 
-	const std::string& getPermissionsString() const;
+	bool permissionsRequested()const { return (0 != permissionFlags_.count()); } 
+	std::string getPermissionsString() const;
+	void clearRequestedPermissions() {permissionFlags_.reset(); }
 
 private:
-	std::string URLString_;
-	bool requested_;
+	std::bitset<__COUNT> permissionFlags_;
+	
 };
 
 
-static const std::string permissionStrings[] = {
-	"publish_stream",
-	"create_event",
-	"rsvp_event",
-	"sms",
-	"offline_access",
-	"manage_pages",
-	"email",
-	"read_insights",
-	"read_stream",
-	"read_mailbox",
-	"ads_management",
-	"xmpp_login",
-	"user_about_me",
-	"user_activities",
-	"user_birthday",
-	"user_education_history",
-	"user_events",
-	"user_groups",
-	"user_hometown",
-	"user_interests",
-	"user_likes",
-	"user_location",
-	"user_notes",
-	"user_online_presence",
-	"user_photo_video_tags",
-	"user_photos",
-	"user_relationships",
-	"user_religion_politics",
-	"user_status",
-	"user_videos",
-	"user_website",
-	"user_work_history",
-	"read_friendlists",
-	"read_requests",
-	"friends_about_me",
-	"friends_activities",
-	"friends_birthday",
-	"friends_education_history",
-	"friends_events",
-	"friends_groups",
-	"friends_hometown",
-	"friends_interests",
-	"friends_likes",
-	"friends_location",
-	"friends_notes",
-	"friends_online_presence",
-	"friends_photo_video_tags",
-	"friends_photos",
-	"friends_relationships",
-	"friends_religion_politics",
-	"friends_status",
-	"friends_videos",
-	"friends_website",
-	"user_work_history"};
 
 }
 

@@ -24,38 +24,88 @@
 namespace Facebook
 {
 
-// ctor
-ExtPermissions::ExtPermissions():requested_(false)
-{
-	URLString_.clear();
-}
+	
+	static const char* permissionStrings[] = {
+		"publish_stream",
+		"create_event",
+		"rsvp_event",
+		"sms",
+		"offline_access",
+		"manage_pages",
+		"email",
+		"read_insights",
+		"read_stream",
+		"read_mailbox",
+		"ads_management",
+		"xmpp_login",
+		"user_about_me",
+		"user_activities",
+		"user_birthday",
+		"user_education_history",
+		"user_events",
+		"user_groups",
+		"user_hometown",
+		"user_interests",
+		"user_likes",
+		"user_location",
+		"user_notes",
+		"user_online_presence",
+		"user_photo_video_tags",
+		"user_photos",
+		"user_relationships",
+		"user_religion_politics",
+		"user_status",
+		"user_videos",
+		"user_website",
+		"user_work_history",
+		"read_friendlists",
+		"read_requests",
+		"friends_about_me",
+		"friends_activities",
+		"friends_birthday",
+		"friends_education_history",
+		"friends_events",
+		"friends_groups",
+		"friends_hometown",
+		"friends_interests",
+		"friends_likes",
+		"friends_location",
+		"friends_notes",
+		"friends_online_presence",
+		"friends_photo_video_tags",
+		"friends_photos",
+		"friends_relationships",
+		"friends_religion_politics",
+		"friends_status",
+		"friends_videos",
+		"friends_website",
+		"user_work_history"};
+
 
 void ExtPermissions::requestPermission(FBExtPermissions permission)
 {
-FACEBOOK_ASSERT(permission >= FBEP_NO_PERMISSIONS && permission <= FBEP_FRIENDS_WORK_HISTORY);
-if(permission == 0)
+	FACEBOOK_ASSERT(permission >= FBEP_PUBLISH_STREAM && permission <= FBEP_FRIENDS_WORK_HISTORY);
+	FACEBOOK_CASSERT((FACEBOOK_NUMELMS(permissionStrings)) == FBEP_NUMBER_OF_PERMISSIONS);
+
+	permissionFlags_[permission] = 1;
+}
+
+std::string ExtPermissions::getPermissionsString() const
 {
-	// no permission requested
-	URLString_.clear();
-	requested_ = false;
-	return;
+	std::ostringstream oss;	
+	bool firstPermission = false;
+	for(int ii = 0; ii < __COUNT; ii++)
+	{
+		if(permissionFlags_[ii])
+		{
+			if(!firstPermission)
+			{
+				oss	<< ',';
+			}
+			oss << permissionStrings[ii];
+		}
+	}
+	return oss.str();
 }
 
-// 1 here because no permissions requested is listed as a value
-FACEBOOK_CASSERT((FACEBOOK_NUMELMS(permissionStrings)+1) == FBEP_NUMBER_OF_PERMISSIONS);
-
-if(URLString_.size() != 0)
-{
-	URLString_ += ',';
-}
-
-URLString_ += permissionStrings[permission-1];
-requested_ = true;
-}
-
-const std::string& ExtPermissions::getPermissionsString() const
-{
-	 GetInfoLog() << URLString_ << std::endl; 
-	 return URLString_; 
-}
 }// Extended Permissions 

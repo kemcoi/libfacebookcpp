@@ -62,7 +62,7 @@ void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize 
 
 	uri.query_params["type"] = s_sizeType[size];
 
-	request_->GetResponse(uri, blob);
+	request_->GetResponse(uri.GetUri(), blob);
 }
 
 } // namespace LibFacebookCpp

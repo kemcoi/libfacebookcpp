@@ -24,20 +24,20 @@
 #include "PagingInfo.h"
 #include "PolymorphicObject.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
-void Group::GetFeed(std::list<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
+void Group::GetFeed(List<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "feed", list, paging);
 }
 
-void Group::GetMembers(std::list<FriendContainer> *list, const PagingInfo *paging /*= NULL*/) const
+void Group::GetMembers(List<Friend> *list, const PagingInfo *paging /*= NULL*/) const
 {
 	_GetConnection(id_, "members", list, paging);
 }
 
-void Group::GetPicture(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob) const
+void Group::GetPicture(PictureSize size, ResponseBlob *blob) const
 {
 	_GetPictureConnection(id_, size, blob);
 }
@@ -56,4 +56,4 @@ void Group::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &
 	d.Deserialize("updated_time", false, &updated_time_);
 }
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

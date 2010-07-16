@@ -19,21 +19,21 @@
  */
 
 #include "AuthorizedObject.h"
-#include "FriendContainer.h"
+#include "Friend.h"
 #include "Venue.h"
 #include "DateTime.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 class PolymorphicObject;
 class Venue;
 
-class FACEBOOK_API Event : public AuthorizedObject
+class LIBFACEBOOKCPP_API Event : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }
-	const FriendContainer& GetOwner() const { return owner_; }
+	const Friend& GetOwner() const { return owner_; }
 	const std::string& GetName() const { return name_; }
 	const std::string& GetDescription() const { return description_; }
 	const DateTime& GetStartTime() const { return startTime_; }
@@ -44,21 +44,20 @@ public: // accessors
 	const DateTime& GetUpdatedTime() const { return updatedTime_; }
 
 public: // connections
-	void GetFeedConnection(std::list<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
-	void GetNoReplyConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetMaybeConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetInvitedConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetAttendingConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetDeclinedConnection(std::list<FriendContainer> *list, const PagingInfo *paging = NULL) const;
-	void GetPictureConnection(FACEBOOK_PICTURE_SIZE size, ResponseBlob *blob);
+	void GetFeedConnection(List<PolymorphicObject> *list, const PagingInfo *paging = NULL) const;
+	void GetNoReplyConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetMaybeConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetInvitedConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetAttendingConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetDeclinedConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
+	void GetPictureConnection(PictureSize size, ResponseBlob *blob);
 
 protected: // callback functions
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
 private: // member variables
 	std::string id_;
-	// XXX: Remove Facebook:: in some temporary position
-	FriendContainer owner_;
+	Friend owner_;
 	std::string name_;
 	std::string description_;
 	DateTime startTime_;
@@ -69,4 +68,4 @@ private: // member variables
 	DateTime updatedTime_;
 };
 
-} // namespace Facebook
+} // namespace LibFacebookCpp

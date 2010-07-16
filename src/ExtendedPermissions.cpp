@@ -21,7 +21,7 @@
 #include "precompile.h"
 #include "ExtendedPermissions.h"
 
-namespace Facebook
+namespace LibFacebookCpp
 {
 
 	
@@ -84,8 +84,8 @@ namespace Facebook
 
 void ExtPermissions::requestPermission(FBExtPermissions permission)
 {
-	FACEBOOK_ASSERT(permission >= FBEP_PUBLISH_STREAM && permission <= FBEP_FRIENDS_WORK_HISTORY);
-	FACEBOOK_CASSERT((FACEBOOK_NUMELMS(permissionStrings)) == FBEP_NUMBER_OF_PERMISSIONS);
+	LIBFACEBOOKCPP_ASSERT(permission >= FBEP_PUBLISH_STREAM && permission <= FBEP_FRIENDS_WORK_HISTORY);
+	LIBFACEBOOKCPP_CASSERT((LIBFACEBOOKCPP_NUMELMS(permissionStrings)) == FBEP_NUMBER_OF_PERMISSIONS);
 
 	permissionFlags_[permission] = 1;
 }

@@ -79,22 +79,22 @@ void User::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &
 
 void User::GetHomeConnection(List<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "home", list, paging);
+	_GetConnection(id_, "home", paging, list);
 }
 
 void User::GetFeedConnection(List<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "feed", list, paging);
+	_GetConnection(id_, "feed", paging, list);
 }
 
 void User::GetTaggedConnection(List<Photo> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "tagged", list, paging);
+	_GetConnection(id_, "tagged", paging, list);
 }
 
 void User::GetPostsConnection(List<Post> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "posts", list, paging);
+	_GetConnection(id_, "posts", paging, list);
 }
 
 void User::GetPictureConnection(PictureSize size, ResponseBlob *blob) const
@@ -104,91 +104,91 @@ void User::GetPictureConnection(PictureSize size, ResponseBlob *blob) const
 
 void User::GetFriendsConnection(List<Friend>* list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "friends", list, paging);
+	_GetConnection(id_, "friends", paging, list);
 }
 
 void User::GetActivitiesConnection(List<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "activities", list, paging);
+	_GetConnection(id_, "activities", paging, list);
 }
 
 void User::GetInterestsConnection(List<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "interests", list, paging);
+	_GetConnection(id_, "interests", paging, list);
 }
 
 void User::GetMusicConnection(List<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "music", list, paging);
+	_GetConnection(id_, "music", paging, list);
 }
 
 void User::GetBooksConnection(List<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "books", list, paging);
+	_GetConnection(id_, "books", paging, list);
 }
 
 void User::GetMoviesConnection(List<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "movies", list, paging);
+	_GetConnection(id_, "movies", paging, list);
 }
 
 void User::GetTelevisionConnection(List<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "television", list, paging);
+	_GetConnection(id_, "television", paging, list);
 }
 
 void User::GetLikesConnection(List<From> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "likes", list, paging);
+	_GetConnection(id_, "likes", paging, list);
 }
 
 void User::GetPhotosConnection(List<Photo> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "photos", list, paging);
+	_GetConnection(id_, "photos", paging, list);
 }
 
 void User::GetAlbumsConnection(List<Album> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "albums", list, paging);
+	_GetConnection(id_, "albums", paging, list);
 }
 
 void User::GetVideosConnection(List<Video> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "videos", list, paging);
+	_GetConnection(id_, "videos", paging, list);
 }
 
 void User::GetGroupsConnection(List<Group> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "groups", list, paging);
+	_GetConnection(id_, "groups", paging, list);
 }
 
 void User::GetStatusesConnection(List<Status> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "statuses", list, paging);
+	_GetConnection(id_, "statuses", paging, list);
 }
 
 void User::GetLinksConnection(List<Link> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "links", list, paging);
+	_GetConnection(id_, "links", paging, list);
 }
 
 void User::GetNoteConnection(List<Note> *list, const PagingInfo *paging) const
 {
-	_GetConnection(id_, "notes", list, paging);
+	_GetConnection(id_, "notes", paging, list);
 }
 
 void User::GetEventsConnection(List<Event> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "events", list, paging);
+	_GetConnection(id_, "events", paging, list);
 }
 
 void User::GetInboxConnection(List<Message> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "inbox", list, paging);
+	_GetConnection(id_, "inbox", paging, list);
 }
 
 void User::GetOutboxConnection(List<Message> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "outbox", list, paging);
+	_GetConnection(id_, "outbox", paging, list);
 }
 } // namespace LibFacebookCpp

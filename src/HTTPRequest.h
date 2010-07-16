@@ -55,8 +55,8 @@ private: // private helper functions
 	size_t DebugFunction(curl_infotype type, char *data, size_t size);
 
 public: // public interface
-	void GetResponse(const Uri& uri, ResponseBlob *blob);
-	void GetResponse(const Uri& uri, Json::Value *value);
+	void GetResponse(const std::string& uri, ResponseBlob *blob);
+	void GetResponse(const std::string& uri, Json::Value *value);
 	void GetUri(Uri *uri) const;
 
 private: // member variables

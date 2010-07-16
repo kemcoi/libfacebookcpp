@@ -31,12 +31,12 @@ namespace LibFacebookCpp
 
 void Album::GetPhotosConnection(List<Photo> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "photos", list, paging);
+	_GetConnection(id_, "photos", paging, list);
 }
 
 void Album::GetCommentsConnection(List<Comment> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "comments", list, paging);
+	_GetConnection(id_, "comments", paging, list);
 }
 
 void Album::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)

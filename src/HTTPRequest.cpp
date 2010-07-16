@@ -155,7 +155,7 @@ size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb)
 	return size * nmemb;
 }
 
-void HttpRequest::GetResponse(const Uri& uri, ResponseBlob *blob)
+void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 {
 	LIBFACEBOOKCPP_ASSERT(blob);
 	LIBFACEBOOKCPP_ASSERT(!blob_); // This object isn't thread-safe!
@@ -165,7 +165,7 @@ void HttpRequest::GetResponse(const Uri& uri, ResponseBlob *blob)
 	blobDataSize_ = 0;
 
 	// GetDebugLog() << uri.GetUri();
-	curl_.setOpt(curlpp::options::Url(uri.GetUri()));
+	curl_.setOpt(curlpp::options::Url(uri));
 	curl_.perform();
 
 	blob_->Realloc(blobDataSize_);
@@ -174,7 +174,7 @@ void HttpRequest::GetResponse(const Uri& uri, ResponseBlob *blob)
 	blobDataSize_ = 0;
 }
 
-void HttpRequest::GetResponse(const Uri& uri, Json::Value *value)
+void HttpRequest::GetResponse(const std::string& uri, Json::Value *value)
 {
 	LIBFACEBOOKCPP_ASSERT(value);
 

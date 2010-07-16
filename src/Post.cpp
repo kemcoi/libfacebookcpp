@@ -29,7 +29,7 @@ namespace LibFacebookCpp
 
 void Post::GetComments(List<Comment> *list, const PagingInfo *paging /*= NULL*/)
 {
-	_GetConnection(id_, "comments", list, paging);
+	_GetConnection(id_, "comments", paging, list);
 }
 
 void Post::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)

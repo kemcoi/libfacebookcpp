@@ -72,7 +72,7 @@ protected: // interface
 		uri.base_uri = base_uri.str();
 
 		Json::Value value;
-		request_->GetResponse(uri, &value);
+		request_->GetResponse(uri.GetUri(), &value);
 
 		t->Deserialize(*this, value);
 	}
@@ -80,7 +80,7 @@ protected: // interface
 	void _GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const;
 
 	template<class TType>
-	void _GetConnection(const std::string &id, const char *page, List<TType> *list, const PagingInfo *paging) const
+	void _GetConnection(const std::string &id, const char *page, const PagingInfo *paging, List<TType> *list) const
 	{
 		LIBFACEBOOKCPP_ASSERT(page);
 		LIBFACEBOOKCPP_ASSERT(list);
@@ -96,7 +96,7 @@ protected: // interface
 			paging->GetUri(&uri);
 
 		Json::Value value;
-		request_->GetResponse(uri, &value);
+		request_->GetResponse(uri.GetUri(), &value);
 
 		list->Deserialize(*this, value);
 	}

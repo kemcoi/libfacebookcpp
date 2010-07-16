@@ -30,7 +30,7 @@ namespace LibFacebookCpp
 
 void Link::GetComments(List<Comment> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "comments", list, paging);
+	_GetConnection(id_, "comments", paging, list);
 }
 
 void Link::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)

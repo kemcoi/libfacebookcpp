@@ -29,12 +29,12 @@ namespace LibFacebookCpp
 
 void Group::GetFeed(List<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "feed", list, paging);
+	_GetConnection(id_, "feed", paging, list);
 }
 
 void Group::GetMembers(List<Friend> *list, const PagingInfo *paging /*= NULL*/) const
 {
-	_GetConnection(id_, "members", list, paging);
+	_GetConnection(id_, "members", paging, list);
 }
 
 void Group::GetPicture(PictureSize size, ResponseBlob *blob) const

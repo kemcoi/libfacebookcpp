@@ -29,32 +29,32 @@ namespace LibFacebookCpp
 
 void Event::GetFeedConnection(List<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "feed", list, paging);
+	_GetConnection(id_, "feed", paging, list);
 }
 
 void Event::GetNoReplyConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "noreply", list, paging);
+	_GetConnection(id_, "noreply", paging, list);
 }
 
 void Event::GetMaybeConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "maybe", list, paging);
+	_GetConnection(id_, "maybe", paging, list);
 }
 
 void Event::GetInvitedConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "invited", list, paging);
+	_GetConnection(id_, "invited", paging, list);
 }
 
 void Event::GetAttendingConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "attending", list, paging);
+	_GetConnection(id_, "attending", paging, list);
 }
 
 void Event::GetDeclinedConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
-	_GetConnection(id_, "declined", list, paging);
+	_GetConnection(id_, "declined", paging, list);
 }
 
 void Event::GetPictureConnection(PictureSize size, ResponseBlob *blob)

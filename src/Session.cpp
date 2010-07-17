@@ -34,16 +34,28 @@ namespace LibFacebookCpp
 // Constructor
 Session::Session(const std::string& accessToken)
 {
-	GetInfoLog() << "Initializing Session";
-	// logger_ = new Logger();
-	Init(shared_ptr<HttpRequest>(new HttpRequest(accessToken)));
-	GetInfoLog() << "User session created with access token:" << accessToken << std::endl;
-	
+	InitializeSession(accessToken);
 }
-//----------------------------------------------
-void Session::Destroy()
+
+Session::Session( std::string& redirectedURL)
 {
-	delete this;
+	redirectedURL[redirectedURL.find_first_of('#')] = '?';
+
+	Uri redirectedParams;
+	HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
+
+	Uri::QueryParamMap::const_iterator it = redirectedParams.query_params.find("access_token");
+
+	if(it == redirectedParams.query_params.end())
+	{
+		GetWarnLog() << "No access_token found" << std::endl;
+		throw UnexpectedException("Unable to find access token from redirected URL");
+	}
+	else
+	{
+		GetInfoLog() << "Found Access Token"  << std::endl;
+		InitializeSession(it->second);
+	}	
 }
 
 //----------------------------------------------
@@ -85,29 +97,6 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 }
 
 //----------------------------------------------
-Session* Session::Authenticate(std::string& redirectedURL)
-{	
-	// XXX: Hack
-	redirectedURL[redirectedURL.find_first_of('#')] = '?';
-
-	Uri redirectedParams;
-	HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
-
-	Uri::QueryParamMap::const_iterator it = redirectedParams.query_params.find("access_token");
-
-	if(it == redirectedParams.query_params.end())
-	{
-		GetWarnLog() << "No access_token found" << std::endl;
-		throw UnexpectedException("Unable to find access token from redirected URL");
-	}
-	else
-	{
-		GetInfoLog() << "Found Access Token"  << std::endl;
-		return new Session(it->second);
-	}	
-}
-
-//----------------------------------------------
 void Session::GetCurrentUser(User *user)
 {
 	_GetConnection("me", "", user);
@@ -122,6 +111,13 @@ void Session::GetUserById(const std::string& userID, User *user)
 void Session::_Deserialize(const AuthorizedObject & /* parent_obj */, const Json::Value & /* json */)
 {
 	throw UnexpectedException("Session::_Deserialize");
+}
+
+void Session::InitializeSession( const std::string& accessToken)
+{
+	GetInfoLog() << "Initializing Session";
+	Init(shared_ptr<HttpRequest>(new HttpRequest(accessToken)));
+	GetInfoLog() << "User session created with access token:" << accessToken << std::endl;
 }
 //----------------------------------------------
 

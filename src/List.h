@@ -69,7 +69,7 @@ protected: // callbacks
 		Deserializer d(parent_obj, this, json);
 
 		d.Deserialize("data", true, &data_);
-		d.Deserialize("paging", true, &paging_);
+		d.Deserialize("paging", false, &paging_);
 	 }
 
 private: // member variables

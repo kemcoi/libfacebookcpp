@@ -37,7 +37,9 @@ int main()
 		Facebook::List<Facebook::PolymorphicObject> homeList;
 		user.GetHomeConnection(&homeList);
 
-		std::cout << homeList.GetList().size() << std::endl;
+		homeList.GetNext();
+
+		std::cout << homeList.GetData().size() << std::endl;
 
 		//HANDLE handle = CreateFile(TEXT("C:\\Users\\Aly Hirani\\Desktop\\a.jpg"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_ARCHIVE, NULL);
 		//DWORD dw = 0;

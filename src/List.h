@@ -30,34 +30,51 @@ namespace LibFacebookCpp
 template<typename FBType>
 class LIBFACEBOOKCPP_API List : public AuthorizedObject
 {
-public: // interface
-	operator const std::list<FBType>& () const { return list_; }
-	const std::list<FBType>& GetList() const { return list_; }
-
-	void GetNext(List<FBType> * /* list */) const
+private: // private classes
+	struct PagingUri
 	{
-		// TODO:
+	public: // public interface
+		void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+		{
+			Deserializer d(parent_obj, json);
+
+			d.Deserialize("previous", true, &previous);
+			d.Deserialize("next", true, &next);
+		}
+
+		std::string previous;
+		std::string next;
+	};
+
+public: // interface
+	const std::list<FBType>& GetData() const { return data_; }
+
+	void GetNext()
+	{
+		LIBFACEBOOKCPP_ASSERT(!paging_.next.empty());
+
+		_GetConnection(paging_.next, this);
 	}
 
-	void GetPrevious(List<FBType> * /* list */) const
+	void GetPrevious()
 	{
-		// TODO:
+		LIBFACEBOOKCPP_ASSERT(!paging_.previous.empty());
+
+		_GetConnection(paging_.previous, this);
 	}
 
 protected: // callbacks
 	 void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 	 {
-		Deserializer deserializer(parent_obj, this, json);
+		Deserializer d(parent_obj, this, json);
 
-		deserializer.Deserialize("data", true, &list_);
-		deserializer.Deserialize("next", false, &next_);
-		deserializer.Deserialize("previous", false, &previous_);
+		d.Deserialize("data", true, &data_);
+		d.Deserialize("paging", true, &paging_);
 	 }
 
 private: // member variables
-	std::list<FBType> list_;
-	std::string next_;
-	std::string previous_;
+	std::list<FBType> data_;
+	PagingUri paging_;
 };
 
 }

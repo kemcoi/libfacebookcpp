@@ -34,6 +34,9 @@ class LIBFACEBOOKCPP_API Session : public AuthorizedObject
 {
 	friend class std::auto_ptr<Session>;
 public:
+	Session(const std::string& accessToken);
+	Session(std::string& redirectedURL);
+	~Session();
 	//----------------------------------------------
 	/*! 
 	// You must call this to receive the authentication URL
@@ -46,17 +49,6 @@ public:
 												  ExtPermissions scope = ExtPermissions());
 
 	//----------------------------------------------
-	/*!
-	// The caller is given ownership of a Session object
-	// based on the access token that is passed in. */
-	static Session* Authenticate(std::string& redirectedURL);
-
-	//----------------------------------------------
-	/*!
-	// This method should be used to destroy Session objects*/
-	void Destroy();
-
-	//----------------------------------------------
 	// Getters
 
 	void GetCurrentUser(User *user);
@@ -66,8 +58,8 @@ private:
 
 	// stick this as private to avoid being called
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
-	Session(const std::string& accessToken);
-	~Session();
+	void InitializeSession(const std::string& accessToken);
+
 
 	DISALLOW_COPY_AND_ASSIGN(Session);
 };

@@ -63,8 +63,8 @@ protected: // interface
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, TType *t) const
 	{
-		LIBFACEBOOKCPP_CHKPTR(page);
-		LIBFACEBOOKCPP_CHKPTR(t);
+		LIBFACEBOOKCPP_ASSERT(page);
+		LIBFACEBOOKCPP_ASSERT(t);
 
 		// XXX: Need to check if we are .Valid() or not
 
@@ -84,7 +84,7 @@ protected: // interface
 	template<class TType>
 	void _GetConnection(const std::string& uri, List<TType> *list) const
 	{
-		LIBFACEBOOKCPP_CHKPTR(list);
+		LIBFACEBOOKCPP_ASSERT(list);
 
 		Json::Value value;
 		request_->GetResponse(uri, &value);
@@ -94,8 +94,8 @@ protected: // interface
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, const PagingInfo *paging, List<TType> *list) const
 	{
-		LIBFACEBOOKCPP_CHKPTR(page);
-		LIBFACEBOOKCPP_CHKPTR(list);
+		LIBFACEBOOKCPP_ASSERT(page);
+		LIBFACEBOOKCPP_ASSERT(list);
 
 		Uri uri;
 		request_->GetUri(&uri);

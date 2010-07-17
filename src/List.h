@@ -49,18 +49,34 @@ private: // private classes
 public: // interface
 	const std::list<FBType>& GetData() const { return data_; }
 
-	void GetNext()
+	bool GetNext()
 	{
-		LIBFACEBOOKCPP_ASSERT(!paging_.next.empty());
-
-		_GetConnection(paging_.next, this);
+		// TODO: FIX THIS
+		// FACEOBOOK RETURNS AN EMPTY DATA{}
+		if(paging_.next.empty())
+		{
+			data_.clear();
+			return false;
+		}
+		else
+		{
+			_GetConnection(paging_.next, this);
+			return true;
+		}
 	}
 
-	void GetPrevious()
+	bool GetPrevious()
 	{
-		LIBFACEBOOKCPP_ASSERT(!paging_.previous.empty());
-
-		_GetConnection(paging_.previous, this);
+		if(paging_.previous.empty())
+		{
+			data_.clear();
+			return false;
+		}
+		else
+		{
+			_GetConnection(paging_.previous, this);
+			return true;
+		}
 	}
 
 protected: // callbacks

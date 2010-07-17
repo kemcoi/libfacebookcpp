@@ -58,7 +58,7 @@ public: // public ctor and ~()
 #endif // _DEBUG
 	}
 
-	/*
+	// Use this constructor ONLY if you are a dumb structure and do not inherit from AuthorizedObject!
 	Deserializer(const AuthorizedObject &obj, const Json::Value &json) : json_(json), obj_(obj)
 	{
 		if(!json_.isObject())
@@ -79,7 +79,6 @@ public: // public ctor and ~()
 		}
 #endif // _DEBUG
 	}
-	*/
 
 	~Deserializer()
 	{
@@ -107,7 +106,6 @@ private: // private helper functions
 		}
 		else
 		{
-			t->Init(obj_);
 			t->Deserialize(obj_, json);
 		}
 	}
@@ -206,6 +204,8 @@ private: // private helper functions
 		}
 		else
 		{
+			list->clear();
+
 			for(Json::UInt ii = 0; ii < json.size(); ++ii)
 			{
 				TType t;

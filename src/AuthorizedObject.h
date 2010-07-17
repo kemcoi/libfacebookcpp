@@ -58,11 +58,15 @@ protected: // interface
 
 	virtual void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) = 0;
 
+	void _GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const;
+
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, TType *t) const
 	{
 		LIBFACEBOOKCPP_ASSERT(page);
 		LIBFACEBOOKCPP_ASSERT(t);
+
+		// XXX: Need to check if we are .Valid() or not
 
 		Uri uri;
 		request_->GetUri(&uri);
@@ -77,7 +81,15 @@ protected: // interface
 		t->Deserialize(*this, value);
 	}
 
-	void _GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const;
+	template<class TType>
+	void _GetConnection(const std::string& uri, List<TType> *list) const
+	{
+		LIBFACEBOOKCPP_ASSERT(list);
+
+		Json::Value value;
+		request_->GetResponse(uri, &value);
+		list->Deserialize(*this, value);
+	}
 
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, const PagingInfo *paging, List<TType> *list) const
@@ -95,10 +107,7 @@ protected: // interface
 		if(paging)
 			paging->GetUri(&uri);
 
-		Json::Value value;
-		request_->GetResponse(uri.GetUri(), &value);
-
-		list->Deserialize(*this, value);
+		_GetConnection(uri.GetUri(), list);
 	}
 
 	/*

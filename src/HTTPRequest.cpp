@@ -32,30 +32,30 @@ std::string Uri::GetUri() const
 	if(base_uri.empty())
 		throw InvalidArgument("base_uri");
 
-	std::ostringstream oss;
+	StringBuilder builder;
 
-	oss << base_uri;
+	builder << base_uri;
 
 	if(query_params.size() > 0)
 	{
-		oss << "?";
+		builder << "?";
 
 		// Due to the check above, we must have at least one element
 
 		QueryParamMap::const_iterator it = query_params.begin();
 
-		oss << curlpp::escape(it->first) << "=" << curlpp::escape(it->second);
+		builder << curlpp::escape(it->first) << "=" << curlpp::escape(it->second);
 		++it;
 
 		while(it != query_params.end())
 		{
-			oss << '&';
-			oss << curlpp::escape(it->first) << "=" << curlpp::escape(it->second);
+			builder << '&';
+			builder << curlpp::escape(it->first) << "=" << curlpp::escape(it->second);
 			++it;
 		}
 	}
 
-	return oss.str();
+	return builder;
 }
 
 namespace HttpUtils

@@ -92,7 +92,7 @@ void ExtPermissions::requestPermission(FBExtPermissions permission)
 
 std::string ExtPermissions::getPermissionsString() const
 {
-	std::ostringstream oss;	
+	StringBuilder builder;
 	bool firstPermission = false;
 	for(int ii = 0; ii < __COUNT; ii++)
 	{
@@ -100,12 +100,12 @@ std::string ExtPermissions::getPermissionsString() const
 		{
 			if(!firstPermission)
 			{
-				oss	<< ',';
+				builder	<< ',';
 			}
-			oss << permissionStrings[ii];
+			builder << permissionStrings[ii];
 		}
 	}
-	return oss.str();
+	return builder;
 }
 
 }// Extended Permissions 

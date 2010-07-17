@@ -71,9 +71,7 @@ protected: // interface
 		Uri uri;
 		request_->GetUri(&uri);
 
-		std::ostringstream base_uri;
-		base_uri << "https://graph.facebook.com/" << curlpp::escape(id) << "/" << curlpp::escape(page);
-		uri.base_uri = base_uri.str();
+		uri.base_uri = StringBuilder() << "https://graph.facebook.com/" << curlpp::escape(id) << "/" << curlpp::escape(page);
 
 		Json::Value value;
 		request_->GetResponse(uri.GetUri(), &value);
@@ -100,40 +98,13 @@ protected: // interface
 		Uri uri;
 		request_->GetUri(&uri);
 
-		std::ostringstream base_uri;
-		base_uri << "https://graph.facebook.com/" << curlpp::escape(id) << "/" << curlpp::escape(page);
-		uri.base_uri = base_uri.str();
+		uri.base_uri = StringBuilder() << "https://graph.facebook.com/" << curlpp::escape(id) << "/" << curlpp::escape(page);
 
 		if(paging)
 			paging->GetUri(&uri);
 
 		_GetConnection(uri.GetUri(), list);
 	}
-
-	/*
-	template<class TType>
-	void _GetConnection(const std::string &id, const char *page, std::list<TType> *list, const PagingInfo *paging) const
-	{
-		LIBFACEBOOKCPP_ASSERT(page);
-		LIBFACEBOOKCPP_ASSERT(list);
-
-		Uri uri;
-		request_->GetUri(&uri);
-
-		std::ostringstream base_uri;
-		base_uri << "https://graph.facebook.com/" << curlpp::escape(id) << "/" << curlpp::escape(page);
-		uri.base_uri = base_uri.str();
-
-		if(paging)
-			paging->GetUri(&uri);
-
-		Json::Value value;
-		request_->GetResponse(uri, &value);
-
-		Deserializer deserializer(*this, value);
-		deserializer.Deserialize("data", true, list);
-	}
-	*/
 
 private:
 	shared_ptr<HttpRequest> request_;

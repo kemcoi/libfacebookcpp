@@ -21,14 +21,6 @@
 #ifndef LIBFACEBOOKCPP_UTILS_H_
 #define LIBFACEBOOKCPP_UTILS_H_
 
-template<class TData>
-inline std::string toString(const TData &t)
-{
-	std::ostringstream oss;
-	oss << t;
-	return oss.str();
-}
-
 template<class TData, class TStr>
 inline TData fromString(const TStr &str)
 {
@@ -38,5 +30,24 @@ inline TData fromString(const TStr &str)
 	oss >> t;
 	return t;
 }
+
+class StringBuilder
+{
+public:
+	template<class T>
+	inline StringBuilder& operator << (const T& t)
+	{
+		oss << t;
+		return *this;
+	}
+
+	inline operator const std::string ()
+	{
+		return oss.str();
+	}
+
+private:
+	std::ostringstream oss;
+};
 
 #endif // LIBFACEBOOKCPP_UTILS_H_

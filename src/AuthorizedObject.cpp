@@ -47,9 +47,7 @@ void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize 
 	Uri uri;
 	request_->GetUri(&uri);
 
-	std::ostringstream base_uri;
-	base_uri << "https://graph.facebook.com/" << curlpp::escape(id) << "/picture";
-	uri.base_uri = base_uri.str();
+	uri.base_uri = StringBuilder() << "https://graph.facebook.com/" << curlpp::escape(id) << "/picture";
 
 	static const char *s_sizeType[] = {
 		{ "square"}, // FPS_SQUARE

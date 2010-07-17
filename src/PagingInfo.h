@@ -32,8 +32,8 @@ struct PagingInfo
 	void GetUri(Uri *uri) const
 	{
 		LIBFACEBOOKCPP_ASSERT(uri);
-		uri->query_params["limit"] = toString(offset);
-		uri->query_params["offset"] = toString(limit);
+		uri->query_params["limit"] = StringBuilder() << offset;
+		uri->query_params["offset"] = StringBuilder() << limit;
 	}
 
 	unsigned int offset;

@@ -39,6 +39,7 @@ Session::Session(const std::string& accessToken)
 
 Session::Session( std::string& redirectedURL)
 {
+	// XXX: Hack
 	redirectedURL[redirectedURL.find_first_of('#')] = '?';
 
 	Uri redirectedParams;

@@ -39,6 +39,6 @@
 // XXX: TODO: Break on non-arrays
 #define LIBFACEBOOKCPP_NUMELMS(x) sizeof(x) / sizeof(x[0])
 
-#define LIBFACEBOOKCPP_CHKPTR(ptr) if(!ptr) throw InvalidArgument("Invalid NULL pointer " #ptr);
+#define LIBFACEBOOKCPP_CHKARG(arg) if(!(arg)) throw InvalidArgument("Invalid Argument: " #arg);
 
 #endif // LIBFACEBOOKCPP_PRECOMPILE_H_

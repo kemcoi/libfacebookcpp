@@ -38,7 +38,7 @@ struct Uri
 namespace HttpUtils
 {
 
-void DecomposeUri(const std::string& str, Uri& uri);
+void DecomposeUri(const std::string& str, Uri *uri);
 
 } // namespace LibFacebookCpp
 

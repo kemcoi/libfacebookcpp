@@ -61,19 +61,21 @@ std::string Uri::GetUri() const
 namespace HttpUtils
 {
 
-void DecomposeUri(const std::string& str, Uri& uri)
+void DecomposeUri(const std::string& str, Uri *uri)
 {
-	uri.Clear();
+	LIBFACEBOOKCPP_ASSERT(uri);
+
+	uri->Clear();
 
 	std::string::size_type lastPos = str.find('?');
 
 	if(std::string::npos == lastPos)
 	{
-		uri.base_uri = str;
+		uri->base_uri = str;
 	}
 	else
 	{
-		uri.base_uri = str.substr(0, lastPos);
+		uri->base_uri = str.substr(0, lastPos);
 
 		// XXX: This is an inefficient algorithm. Need to speed it up
 
@@ -95,7 +97,7 @@ void DecomposeUri(const std::string& str, Uri& uri)
 		{
 			std::string str1 = *it++;
 			std::string str2 = *it++;
-			uri.query_params.insert(std::pair<std::string, std::string>(curlpp::unescape(str1), curlpp::unescape(str2)));
+			uri->query_params.insert(std::pair<std::string, std::string>(curlpp::unescape(str1), curlpp::unescape(str2)));
 		}
 	}
 }
@@ -176,7 +178,7 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 
 void HttpRequest::GetResponse(const std::string& uri, Json::Value *value)
 {
-	LIBFACEBOOKCPP_CHKPTR(value);
+	LIBFACEBOOKCPP_CHKARG(value);
 
 	ResponseBlob blob;
 	GetResponse(uri, &blob);

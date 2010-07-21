@@ -61,7 +61,7 @@ Session::Session(const std::string& redirectedUri)
 		// We have a part of the query parameters in the string. We need to strip it
 		decomposeUri = redirectedUri;
 		decomposeUri.erase(idxQueryParam, idxAnchor - idxQueryParam);
-		decomposeUri[idxQueryParam] = '#';
+		decomposeUri[idxQueryParam] = '?';
 	}
 	else
 	{

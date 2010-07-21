@@ -21,7 +21,6 @@
 
 #ifndef FACEBOOK_EXTENDED_PERMISSIONS_H
 #define FACEBOOK_EXTENDED_PERMISSIONS_H
-#include "Common.h"
 #include <bitset>
 namespace LibFacebookCpp
 {

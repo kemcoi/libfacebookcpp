@@ -97,7 +97,7 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 												const std::string& redirectURI,
 												const std::string& type, 
 												const std::string& display,
-												ExtPermissions scope)
+												const ExtendedPermissions& scope /* = ExtendedPermissions() */)
 {
 	GetInfoLog() << "Creating Authentication URL" << std::endl;
 	Uri authenticationURL;

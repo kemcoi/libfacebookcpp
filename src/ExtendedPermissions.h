@@ -95,10 +95,10 @@ public:
 	ExtendedPermissions(){};
 	~ExtendedPermissions(){};
 
-	void requestPermission(ExtendedPermission permission);
-	bool permissionsRequested()const { return (0 != permissionFlags_.count()); } 
-	std::string getPermissionsString() const;
-	void clearRequestedPermissions() {permissionFlags_.reset(); }
+	void RequestPermission(ExtendedPermission permission);
+	bool PermissionsRequested() const { return (0 != permissionFlags_.count()); } 
+	std::string GetPermissionsString() const;
+	void ClearRequestedPermissions() {permissionFlags_.reset(); }
 
 private:
 	std::bitset<EP_COUNT> permissionFlags_;

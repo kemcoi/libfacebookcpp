@@ -25,14 +25,14 @@
 namespace LibFacebookCpp
 {
 
-void ExtendedPermissions::requestPermission(ExtendedPermission permission)
+void ExtendedPermissions::RequestPermission(ExtendedPermission permission)
 {
 	LIBFACEBOOKCPP_CHKARG(permission >= EP_PUBLISH_STREAM && permission < EP_COUNT)
 
 	permissionFlags_.set(permission, true);
 }
 
-std::string ExtendedPermissions::getPermissionsString() const
+std::string ExtendedPermissions::GetPermissionsString() const
 {
 	static const char* s_permissionStrings[] = {
 		"publish_stream",

@@ -50,9 +50,9 @@ void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize 
 	uri.base_uri = StringBuilder() << "https://graph.facebook.com/" << curlpp::escape(id) << "/picture";
 
 	static const char *s_sizeType[] = {
-		{ "square"}, // FPS_SQUARE
-		{ "small" }, // FPS_SMALL
-		{ "large" }, // FPS_LARGE
+		{ "square"}, // PS_SQUARE
+		{ "small" }, // PS_SMALL
+		{ "large" }, // PS_LARGE
 	};
 
 	LIBFACEBOOKCPP_CASSERT(PS_SQUARE == 0);

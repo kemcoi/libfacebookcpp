@@ -60,6 +60,9 @@ private:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 	void InitializeSession(const std::string& accessToken);
 
+	// XXX: Implement a copy and assign for making copies of the session
+	// This is useful, if we want to pass stuff into a worker thread, etc. with the same access token,
+	// but different HttpRequest
 	DISALLOW_COPY_AND_ASSIGN(Session);
 };
 

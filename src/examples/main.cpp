@@ -37,7 +37,13 @@ int main()
 		Facebook::List<Facebook::PolymorphicObject> homeList;
 		user.GetHomeConnection(&homeList);
 
-		homeList.GetNext();
+		do 
+		{
+			// TODO: FIX THIS INFINITE LOOP
+			const std::list<Facebook::PolymorphicObject>& list = homeList.GetData();
+			std::cout << homeList.GetData().size() << std::endl;
+
+		} while (homeList.GetNext());
 
 		std::cout << homeList.GetData().size() << std::endl;
 

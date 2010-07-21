@@ -176,7 +176,7 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 
 void HttpRequest::GetResponse(const std::string& uri, Json::Value *value)
 {
-	LIBFACEBOOKCPP_ASSERT(value);
+	LIBFACEBOOKCPP_CHKPTR(value);
 
 	ResponseBlob blob;
 	GetResponse(uri, &blob);

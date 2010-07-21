@@ -47,7 +47,7 @@ std::ostream& Logger::GetStream( FB_LOGLEVEL level, int lineNumber, const char* 
 	stream_[level] << std::endl << s_level[level];
 
 	if(level <= FB_LOGLEVEL_WARN)
-		stream_[level] << " @ " << file << ":" << lineNumber << std::endl;
+		stream_[level] << " @ " << file << ":" << lineNumber << ": ";
 
 	return stream_[level];
 }

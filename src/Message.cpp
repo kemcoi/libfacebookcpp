@@ -25,7 +25,7 @@
 
 namespace LibFacebookCpp
 {
-	void Message::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
+	void Message::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 	{
 		Deserializer d(parent_obj, this, json);
 

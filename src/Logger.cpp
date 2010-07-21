@@ -34,19 +34,19 @@ Logger::Logger()
 	}
 }
 
-std::ostream& Logger::GetStream( FB_LOGLEVEL level, int lineNumber, const char* file )
+std::ostream& Logger::GetStream(LogLevel level, int lineNumber, const char* file)
 {
-	LIBFACEBOOKCPP_ASSERT(level >= FB_LOGLEVEL_ERROR && level < FB_LOGLEVEL_COUNT);
+	LIBFACEBOOKCPP_ASSERT(level >= LL_ERROR && level < LL_COUNT);
 
 	static const char *s_level[] = {
 		"Error: ", "Warning: ", "Info: ", "Debug: "
 	};
 
-	LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(s_level) == FB_LOGLEVEL_COUNT);
+	LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(s_level) == LL_COUNT);
 
 	stream_[level] << std::endl << s_level[level];
 
-	if(level <= FB_LOGLEVEL_WARN)
+	if(level <= LL_WARN)
 		stream_[level] << " @ " << file << ":" << lineNumber << ": ";
 
 	return stream_[level];

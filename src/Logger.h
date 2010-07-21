@@ -31,10 +31,10 @@
 #define LOG_PARAMS __LINE__, __FILE__
 #define GetLog(x) logInstance.GetStream(Logger::x, LOG_PARAMS)
 
-#define GetErrorLog() GetLog(FB_LOGLEVEL_ERROR)
-#define GetWarnLog()  GetLog(FB_LOGLEVEL_WARN)
-#define GetDebugLog() GetLog(FB_LOGLEVEL_DEBUG)
-#define GetInfoLog()  GetLog(FB_LOGLEVEL_INFO)
+#define GetErrorLog() GetLog(LL_ERROR)
+#define GetWarnLog()  GetLog(LL_WARN)
+#define GetDebugLog() GetLog(LL_DEBUG)
+#define GetInfoLog()  GetLog(LL_INFO)
 
 namespace LibFacebookCpp
 {
@@ -54,22 +54,22 @@ private: // private ctor
 class Logger
 {
 public: // public types
-	enum FB_LOGLEVEL
+	enum LogLevel
 	{
-		FB_LOGLEVEL_ERROR,
-		FB_LOGLEVEL_WARN,
-		FB_LOGLEVEL_INFO,
-		FB_LOGLEVEL_DEBUG,
+		LL_ERROR,
+		LL_WARN,
+		LL_INFO,
+		LL_DEBUG,
 
-		FB_LOGLEVEL_COUNT
+		LL_COUNT
 	};
 
 public: // public interface
 	Logger();
-	std::ostream& GetStream(FB_LOGLEVEL level, int lineNumber, const char* file);
+	std::ostream& GetStream(LogLevel level, int lineNumber, const char* file);
 
 private:
-	LogStream stream_[FB_LOGLEVEL_COUNT];
+	LogStream stream_[LL_COUNT];
 };
 
 extern Logger logInstance;

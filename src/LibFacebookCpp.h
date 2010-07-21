@@ -22,8 +22,22 @@
 #define LIBFACEBOOKCPP_H_
 
 #include "Common.h"
-#include "ExtendedPermissions.h"
 #include "List.h"
+
+namespace LibFacebookCpp
+{
+
+#define LIBFACEBOOKCPP_DEFINE_CLASS(x) \
+	class LIBFACEBOOKCPP_API x; \
+	template class LIBFACEBOOKCPP_API List<x>;
+
+	LIBFACEBOOKCPP_DEFINE_CLASS(Photo);
+
+#undef LIBFACEBOOKCPP_DEFINE_CLASS
+
+}
+
+#include "ExtendedPermissions.h"
 
 // Aggregate includes here
 #include "ResponseBlob.h"

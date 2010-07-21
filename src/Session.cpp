@@ -141,7 +141,7 @@ void Session::_Deserialize(const AuthorizedObject & /* parent_obj */, const Json
 	throw UnexpectedException("Session::_Deserialize");
 }
 
-void Session::InitializeSession( const std::string& accessToken)
+void Session::InitializeSession(const std::string& accessToken)
 {
 	GetInfoLog() << "Initializing Session";
 	Init(shared_ptr<HttpRequest>(new HttpRequest(accessToken)));

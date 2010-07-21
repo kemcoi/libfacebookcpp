@@ -55,7 +55,7 @@ public:
 	void GetPhotosConnection(List<Photo> *list, const PagingInfo *paging = NULL) const;
 	void GetCommentsConnection(List<Comment> *list, const PagingInfo *paging = NULL) const;
 
-protected:
+private:
 	//----------------------------------------------
 	// Callbacks
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;

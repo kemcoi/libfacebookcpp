@@ -20,9 +20,9 @@
 #ifndef LIBFACEBOOKCPP_LIST_H_
 #define LIBFACEBOOKCPP_LIST_H_
 
-#include "AuthorizedObject.hpp"
+#include "AuthorizedObject.h"
 // XXX: UGLY!
-#include "Deserializer.hpp"
+#include "Deserializer.h"
 
 namespace LibFacebookCpp
 {
@@ -79,7 +79,7 @@ public: // interface
 		}
 	}
 
-protected: // callbacks
+private: // callbacks
 	 void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 	 {
 		Deserializer d(parent_obj, this, json);

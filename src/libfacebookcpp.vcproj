@@ -45,7 +45,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/wd4251 /wd4275 /wd4481 /wd4512"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\win32\include\"
+				AdditionalIncludeDirectories="..\win32\include\;..\include\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;JSON_DLL;LIBFACEBOOKCPP_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"

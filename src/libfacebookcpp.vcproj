@@ -45,13 +45,13 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/wd4251 /wd4275 /wd4481 /wd4512"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\win32\include\;..\include\"
+				AdditionalIncludeDirectories="..\win3..\include\;..\include\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;JSON_DLL;LIBFACEBOOKCPP_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="1"
-				PrecompiledHeaderThrough="precompile.h"
+				PrecompiledHeaderThrough="precompile.hpp"
 				WarningLevel="4"
 				WarnAsError="true"
 				DebugInformationFormat="4"
@@ -121,13 +121,13 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/wd4251 /wd4275 /wd4481 /wd4512"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\win32\external-libs\include\"
+				AdditionalIncludeDirectories="..\win32\external-lib..\include\"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;JSON_DLL;LIBFACEBOOKCPP_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="1"
-				PrecompiledHeaderThrough="precompile.h"
+				PrecompiledHeaderThrough="precompile.hpp"
 				WarningLevel="4"
 				WarnAsError="true"
 				DebugInformationFormat="3"
@@ -198,11 +198,11 @@
 				AdditionalOptions="/analyze"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\win32\external-libs\include\"
+				AdditionalIncludeDirectories="..\win32\external-lib..\include\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;JSON_DLL;LIBFACEBOOKCPP_EXPORTS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				PrecompiledHeaderThrough="precompile.h"
+				PrecompiledHeaderThrough="precompile.hpp"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -275,11 +275,11 @@
 				AdditionalOptions="/analyze"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\win32\external-libs\include\"
+				AdditionalIncludeDirectories="..\win32\external-lib..\include\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;JSON_DLL;LIBFACEBOOKCPP_EXPORTS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				PrecompiledHeaderThrough="precompile.h"
+				PrecompiledHeaderThrough="precompile.hpp"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -465,11 +465,11 @@
 				AdditionalOptions="/analyze"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\win32\external-libs\include\"
+				AdditionalIncludeDirectories="..\win32\external-lib..\include\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;JSON_DLL;LIBFACEBOOKCPP_EXPORTS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				PrecompiledHeaderThrough="precompile.h"
+				PrecompiledHeaderThrough="precompile.hpp"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -542,11 +542,11 @@
 				AdditionalOptions="/analyze"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\win32\external-libs\include\"
+				AdditionalIncludeDirectories="..\win32\external-lib..\include\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;JSON_DLL;LIBFACEBOOKCPP_EXPORTS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				PrecompiledHeaderThrough="precompile.h"
+				PrecompiledHeaderThrough="precompile.hpp"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 			/>
@@ -676,10 +676,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\precompile.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\ResponseBlob.cpp"
 				>
 			</File>
@@ -718,131 +714,131 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Album.h"
+				RelativePath="..\include\Album.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\AuthorizedObject.h"
+				RelativePath="..\include\AuthorizedObject.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Comment.h"
+				RelativePath="..\include\Comment.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Common.h"
+				RelativePath="..\include\Common.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\DateTime.h"
+				RelativePath="..\include\DateTime.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Deserializer.h"
+				RelativePath="..\include\Deserializer.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Event.h"
+				RelativePath="..\include\Event.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Exception.h"
+				RelativePath="..\include\Exception.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ExtendedPermissions.h"
+				RelativePath="..\include\ExtendedPermissions.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Friend.h"
+				RelativePath="..\include\Friend.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\From.h"
+				RelativePath="..\include\From.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Group.h"
+				RelativePath="..\include\Group.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\HttpRequest.h"
+				RelativePath="..\include\HttpRequest.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\LibFacebookCpp.h"
+				RelativePath="..\include\LibFacebookCpp.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Link.h"
+				RelativePath="..\include\Link.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\List.h"
+				RelativePath="..\include\List.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Logger.h"
+				RelativePath="..\include\Logger.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Message.h"
+				RelativePath="..\include\Message.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Note.h"
+				RelativePath="..\include\Note.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\PagingInfo.h"
+				RelativePath="..\include\PagingInfo.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Photo.h"
+				RelativePath="..\include\Photo.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\PolymorphicObject.h"
+				RelativePath="..\include\PolymorphicObject.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Post.h"
+				RelativePath="..\include\Post.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\precompile.h"
+				RelativePath=".\precompile.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\ResponseBlob.h"
+				RelativePath="..\include\ResponseBlob.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Session.h"
+				RelativePath="..\include\Session.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Status.h"
+				RelativePath="..\include\Status.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\To.h"
+				RelativePath="..\include\To.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\User.h"
+				RelativePath="..\include\User.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Utils.h"
+				RelativePath="..\include\Utils.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Venue.h"
+				RelativePath="..\include\Venue.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\Video.h"
+				RelativePath="..\include\Video.hpp"
 				>
 			</File>
 		</Filter>

@@ -116,9 +116,9 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 		authenticationURL.query_params["display"] = display;
 	}
 
-	if(scope.permissionsRequested())
+	if(scope.PermissionsRequested())
 	{
-		authenticationURL.query_params["scope"]  = scope.getPermissionsString();
+		authenticationURL.query_params["scope"]  = scope.GetPermissionsString();
 	}
 
 	return authenticationURL.GetUri();

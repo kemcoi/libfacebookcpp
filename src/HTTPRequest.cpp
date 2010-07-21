@@ -44,6 +44,7 @@ std::string Uri::GetUri() const
 
 		QueryParamMap::const_iterator it = query_params.begin();
 
+		// XXX: Capture any throws from curlpp::escape
 		builder << curlpp::escape(it->first) << "=" << curlpp::escape(it->second);
 		++it;
 
@@ -97,6 +98,7 @@ void DecomposeUri(const std::string& str, Uri *uri)
 		{
 			std::string str1 = *it++;
 			std::string str2 = *it++;
+			// XXX: Capture any throws from curlpp::unescape
 			uri->query_params.insert(std::pair<std::string, std::string>(curlpp::unescape(str1), curlpp::unescape(str2)));
 		}
 	}
@@ -167,6 +169,7 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 	blobDataSize_ = 0;
 
 	// GetDebugLog() << uri.GetUri();
+	// XXX: Capture any throws from setOpt
 	curl_.setOpt(curlpp::options::Url(uri));
 	curl_.perform();
 
@@ -196,6 +199,7 @@ void HttpRequest::GetUri(Uri *uri) const
 
 HttpRequest::HttpRequest(const std::string &access_token) : access_token_(access_token), blob_(NULL), blobDataSize_(0)
 {
+	// XXX: Capture throws from curlpp
 	curl_.setOpt(curlpp::Options::Verbose(true));
 	curl_.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::DebugFunction)));
 	curl_.setOpt(curlpp::Options::WriteFunction(curlpp::types::WriteFunctionFunctor(this, &HttpRequest::WriteFunction)));

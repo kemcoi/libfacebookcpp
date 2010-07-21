@@ -51,7 +51,7 @@ void Location::_Deserialize(const AuthorizedObject &parent_obj, const Json::Valu
 	d.Deserialize("name", false, &name_);
 }
 
-void User::_Deserialize( const AuthorizedObject &parent_obj, const Json::Value &json )
+void User::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 {
 	Deserializer deserialize(parent_obj, this, json);
 

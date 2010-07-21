@@ -63,6 +63,8 @@
 #define LIBFACEBOOKCPP_ASSERT(x)
 #endif // LIBFACEBOOKCPP_EXPORTS
 
+#define LIBFACEBOOKCPP_CHKARG(arg) if(!(arg)) throw InvalidArgument("Invalid Argument: " #arg);
+
 #define DISALLOW_COPY_AND_ASSIGN(TypeName)   \
 	TypeName(const TypeName&);               \
 	void operator=(const TypeName&)

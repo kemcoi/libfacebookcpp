@@ -34,8 +34,8 @@ class LIBFACEBOOKCPP_API Session : public AuthorizedObject
 {
 	friend class std::auto_ptr<Session>;
 public:
-	Session(const std::string& accessToken);
-	Session(std::string& redirectedURL);
+	// Session(const std::string& accessToken);
+	Session(const std::string& redirectedURL);
 	~Session();
 	//----------------------------------------------
 	/*! 
@@ -59,7 +59,6 @@ private:
 	// stick this as private to avoid being called
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 	void InitializeSession(const std::string& accessToken);
-
 
 	DISALLOW_COPY_AND_ASSIGN(Session);
 };

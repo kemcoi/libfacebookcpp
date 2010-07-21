@@ -42,7 +42,7 @@ void AuthorizedObject::Deserialize(const AuthorizedObject &parent_obj, const Jso
 void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const
 {
 	LIBFACEBOOKCPP_ASSERT(size >= PS_SQUARE && size <= PS_LARGE);
-	LIBFACEBOOKCPP_CHKPTR(blob);
+	LIBFACEBOOKCPP_CHKARG(blob);
 
 	Uri uri;
 	request_->GetUri(&uri);

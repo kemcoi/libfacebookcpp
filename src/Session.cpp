@@ -32,18 +32,45 @@ namespace LibFacebookCpp
 
 //----------------------------------------------
 // Constructor
+	/*
 Session::Session(const std::string& accessToken)
 {
 	InitializeSession(accessToken);
 }
-
-Session::Session( std::string& redirectedURL)
+*/
+Session::Session(const std::string& redirectedUri)
 {
-	// XXX: Hack
-	redirectedURL[redirectedURL.find_first_of('#')] = '?';
+	// Facebook returns us the params we need to parse in the # fragment section of the URL
+	// However, Facebook encodes it in the exact same fashion as you'd encode query parameters.
+	// So, in order to parse this, we'd typically just parse them as query parameters key-pair values
+	// The easiest and hack-ish way to do is to change the '#' character into a '?' character.
+	// However, since the redirectedURL is a custom URL, it might actually have a set of query parameters
+	// In this case, we do this. Strip the part of the string between ? and the #, convert the '#' to a '?'
+	// and then Decompose the Uri. In this case, it allows us to extract the params easily.
+
+	std::string decomposeUri;
+	std::string::size_type idxQueryParam = redirectedUri.find_first_of("?");
+	std::string::size_type idxAnchor = redirectedUri.find_first_of("#");
+
+	LIBFACEBOOKCPP_CHKARG(std::string::npos != idxAnchor);
+
+	if(std::string::npos != idxQueryParam)
+	{
+		LIBFACEBOOKCPP_CHKARG(idxQueryParam < idxAnchor);
+
+		// We have a part of the query parameters in the string. We need to strip it
+		decomposeUri = redirectedUri;
+		decomposeUri.erase(idxQueryParam, idxAnchor - idxQueryParam);
+		decomposeUri[idxQueryParam] = '#';
+	}
+	else
+	{
+		// We don't have any query parameters in the string. Great, just copy over the string
+		decomposeUri = redirectedUri;
+	}
 
 	Uri redirectedParams;
-	HttpUtils::DecomposeUri(redirectedURL, redirectedParams); // THANK YOU ALY
+	HttpUtils::DecomposeUri(decomposeUri, &redirectedParams); // THANK YOU ALY
 
 	Uri::QueryParamMap::const_iterator it = redirectedParams.query_params.find("access_token");
 

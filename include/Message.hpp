@@ -21,9 +21,9 @@
 #ifndef LIBFACEBOOKCPP_MESSAGE_H
 #define LIBFACEBOOKCPP_MESSAGE_H
 
-#include "AuthorizedObject.h"
-#include "To.h"
-#include "From.h"
+#include "AuthorizedObject.hpp"
+#include "To.hpp"
+#include "From.hpp"
 
 namespace LibFacebookCpp
 {

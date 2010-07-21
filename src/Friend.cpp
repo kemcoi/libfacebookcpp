@@ -18,9 +18,9 @@
  *
  */
 
-#include "precompile.h"
-#include "Friend.h"
-#include "Deserializer.h"
+#include "precompile.hpp"
+#include "Friend.hpp"
+#include "Deserializer.hpp"
 
 namespace LibFacebookCpp
 {

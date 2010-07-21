@@ -21,8 +21,8 @@
 #ifndef LIBFACEBOOKCPP_H_
 #define LIBFACEBOOKCPP_H_
 
-#include "Common.h"
-#include "List.h"
+#include "Common.hpp"
+#include "List.hpp"
 
 namespace LibFacebookCpp
 {
@@ -40,28 +40,28 @@ LIBFACEBOOKCPP_DEFINE_CLASS(Photo);
 
 }
 
-#include "ExtendedPermissions.h"
+#include "ExtendedPermissions.hpp"
 
 // Aggregate includes here
-#include "ResponseBlob.h"
-#include "Album.h"
-#include "Comment.h"
-#include "From.h"
-#include "Photo.h"
-#include "Session.h"
-#include "Status.h"
-#include "User.h"
-#include "Video.h"
-#include "Note.h"
-#include "Video.h"
-#include "Venue.h"
-#include "To.h"
-#include "Message.h"
-#include "Link.h"
-#include "Friend.h"
-#include "Group.h"
-#include "Post.h"
-#include "Event.h"
-#include "PolymorphicObject.h"
+#include "ResponseBlob.hpp"
+#include "Album.hpp"
+#include "Comment.hpp"
+#include "From.hpp"
+#include "Photo.hpp"
+#include "Session.hpp"
+#include "Status.hpp"
+#include "User.hpp"
+#include "Video.hpp"
+#include "Note.hpp"
+#include "Video.hpp"
+#include "Venue.hpp"
+#include "To.hpp"
+#include "Message.hpp"
+#include "Link.hpp"
+#include "Friend.hpp"
+#include "Group.hpp"
+#include "Post.hpp"
+#include "Event.hpp"
+#include "PolymorphicObject.hpp"
 
 #endif // LIBFACEBOOKCPP_H_

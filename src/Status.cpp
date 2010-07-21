@@ -18,10 +18,10 @@
  *
  */
 
-#include "precompile.h"
+#include "precompile.hpp"
 
-#include "Deserializer.h"
-#include "Status.h"
+#include "Deserializer.hpp"
+#include "Status.hpp"
 
 namespace LibFacebookCpp
 {

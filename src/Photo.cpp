@@ -18,9 +18,9 @@
  *
  */
 
-#include "precompile.h"
-#include "Deserializer.h"
-#include "Photo.h"
+#include "precompile.hpp"
+#include "Deserializer.hpp"
+#include "Photo.hpp"
 
 namespace LibFacebookCpp
 {

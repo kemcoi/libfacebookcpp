@@ -18,8 +18,8 @@
  *
  */
 
-#include "precompile.h"
-#include "ResponseBlob.h"
+#include "precompile.hpp"
+#include "ResponseBlob.hpp"
 
 namespace LibFacebookCpp
 {

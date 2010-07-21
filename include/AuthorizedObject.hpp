@@ -21,7 +21,7 @@
 #ifndef LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_
 #define LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_
 
-#include "HttpRequest.h"
+#include "HttpRequest.hpp"
 // XXX: Remove the FB prefix to everything
 
 namespace LibFacebookCpp
@@ -117,6 +117,6 @@ private:
 } // namespace LibFacebookCpp
 
 // XXX: Hack!
-#include "List.h"
+#include "List.hpp"
 
 #endif // LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_

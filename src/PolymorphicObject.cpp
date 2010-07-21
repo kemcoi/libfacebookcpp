@@ -18,13 +18,13 @@
  *
  */
 
-#include "precompile.h"
-#include "PolymorphicObject.h"
-#include "Deserializer.h"
-#include "Status.h"
-#include "Link.h"
-#include "Photo.h"
-#include "Video.h"
+#include "precompile.hpp"
+#include "PolymorphicObject.hpp"
+#include "Deserializer.hpp"
+#include "Status.hpp"
+#include "Link.hpp"
+#include "Photo.hpp"
+#include "Video.hpp"
 
 namespace LibFacebookCpp
 {

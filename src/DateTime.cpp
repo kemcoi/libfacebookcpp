@@ -18,9 +18,9 @@
  *
  */
 
-#include "precompile.h"
-#include "DateTime.h"
-#include "Exception.h"
+#include "precompile.hpp"
+#include "DateTime.hpp"
+#include "Exception.hpp"
 
 namespace LibFacebookCpp
 {

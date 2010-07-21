@@ -18,8 +18,8 @@
  *
  */
 
-#include "precompile.h"
-#include "Logger.h"
+#include "precompile.hpp"
+#include "Logger.hpp"
 
 namespace LibFacebookCpp
 {

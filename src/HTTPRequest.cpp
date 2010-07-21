@@ -18,11 +18,11 @@
  *
  */
 
-#include "precompile.h"
+#include "precompile.hpp"
 
-#include "HTTPRequest.h"
-#include "Exception.h"
-#include "ResponseBlob.h"
+#include "HTTPRequest.hpp"
+#include "Exception.hpp"
+#include "ResponseBlob.hpp"
 
 namespace LibFacebookCpp
 {

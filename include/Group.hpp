@@ -21,10 +21,10 @@
 #ifndef LIBFACEBOOKCPP_GROUP_H_
 #define LIBFACEBOOKCPP_GROUP_H_
 
-#include "AuthorizedObject.h"
-#include "Friend.h"
-#include "Venue.h"
-#include "DateTime.h"
+#include "AuthorizedObject.hpp"
+#include "Friend.hpp"
+#include "Venue.hpp"
+#include "DateTime.hpp"
 
 // XXX: Clean up the includes everywhere
 // XXX: Clean up forward references everywhere

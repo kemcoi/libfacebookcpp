@@ -18,14 +18,14 @@
  *
  */
 
-#include "precompile.h"
+#include "precompile.hpp"
 
-#include "Session.h"
+#include "Session.hpp"
 
-#include "HTTPRequest.h"
-#include "User.h"
-#include "Exception.h"
-#include "Photo.h"
+#include "HTTPRequest.hpp"
+#include "User.hpp"
+#include "Exception.hpp"
+#include "Photo.hpp"
 
 namespace LibFacebookCpp
 {

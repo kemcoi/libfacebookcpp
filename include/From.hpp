@@ -21,7 +21,7 @@
 #ifndef LIBFACEBOOKCPP_FROM_H_
 #define LIBFACEBOOKCPP_FROM_H_
 
-#include "AuthorizedObject.h"
+#include "AuthorizedObject.hpp"
 
 namespace LibFacebookCpp
 {

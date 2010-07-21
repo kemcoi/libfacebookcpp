@@ -21,11 +21,11 @@
 #ifndef LIBFACEBOOKCPP_DESERIALIZER_H_
 #define LIBFACEBOOKCPP_DESERIALIZER_H_
 
-#include "AuthorizedObject.h"
-#include "Exception.h"
-#include "DateTime.h"
+#include "AuthorizedObject.hpp"
+#include "Exception.hpp"
+#include "DateTime.hpp"
 // XXX: THIS IS BAD. FIND A WAY TO DO WITHOUT GLOBALLY INCLUDING THIS
-#include "Logger.h"
+#include "Logger.hpp"
 
 namespace LibFacebookCpp
 {

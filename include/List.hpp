@@ -20,9 +20,9 @@
 #ifndef LIBFACEBOOKCPP_LIST_H_
 #define LIBFACEBOOKCPP_LIST_H_
 
-#include "AuthorizedObject.h"
+#include "AuthorizedObject.hpp"
 // XXX: UGLY!
-#include "Deserializer.h"
+#include "Deserializer.hpp"
 
 namespace LibFacebookCpp
 {

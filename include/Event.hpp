@@ -18,10 +18,10 @@
  *
  */
 
-#include "AuthorizedObject.h"
-#include "Friend.h"
-#include "Venue.h"
-#include "DateTime.h"
+#include "AuthorizedObject.hpp"
+#include "Friend.hpp"
+#include "Venue.hpp"
+#include "DateTime.hpp"
 
 namespace LibFacebookCpp
 {

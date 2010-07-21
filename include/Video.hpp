@@ -21,9 +21,9 @@
 #ifndef LIBFACEBOOKCPP_VIDEO_H_
 #define LIBFACEBOOKCPP_VIDEO_H_
 
-#include "AuthorizedObject.h"
-#include "From.h"
-#include "DateTime.h"
+#include "AuthorizedObject.hpp"
+#include "From.hpp"
+#include "DateTime.hpp"
 
 namespace LibFacebookCpp
 {

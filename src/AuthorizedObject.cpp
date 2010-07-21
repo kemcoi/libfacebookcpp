@@ -18,8 +18,8 @@
  *
  */
 
-#include "precompile.h"
-#include "AuthorizedObject.h"
+#include "precompile.hpp"
+#include "AuthorizedObject.hpp"
 
 namespace LibFacebookCpp
 {

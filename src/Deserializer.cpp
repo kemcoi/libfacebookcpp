@@ -18,5 +18,5 @@
  *
  */
 
-#include "precompile.h"
-#include "Deserializer.h"
+#include "precompile.hpp"
+#include "Deserializer.hpp"

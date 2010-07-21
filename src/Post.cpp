@@ -18,11 +18,11 @@
  *
  */
 
-#include "precompile.h"
-#include "Post.h"
-#include "Deserializer.h"
-#include "PagingInfo.h"
-#include "Comment.h"
+#include "precompile.hpp"
+#include "Post.hpp"
+#include "Deserializer.hpp"
+#include "PagingInfo.hpp"
+#include "Comment.hpp"
 
 namespace LibFacebookCpp
 {

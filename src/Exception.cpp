@@ -18,8 +18,8 @@
  *
  */
 
-#include "precompile.h"
-#include "Exception.h"
+#include "precompile.hpp"
+#include "Exception.hpp"
 
 namespace LibFacebookCpp
 {

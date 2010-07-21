@@ -21,9 +21,9 @@
 #ifndef LIBFACEBOOKCPP_LINK_H_
 #define LIBFACEBOOKCPP_LINK_H_
 
-#include "AuthorizedObject.h"
-#include "Friend.h"
-#include "DateTime.h"
+#include "AuthorizedObject.hpp"
+#include "Friend.hpp"
+#include "DateTime.hpp"
 
 namespace LibFacebookCpp
 {

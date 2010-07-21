@@ -18,9 +18,9 @@
  *
  */
 
-#include "precompile.h"
-#include "ExtendedPermissions.h"
-#include "Exception.h"
+#include "precompile.hpp"
+#include "ExtendedPermissions.hpp"
+#include "Exception.hpp"
 
 namespace LibFacebookCpp
 {

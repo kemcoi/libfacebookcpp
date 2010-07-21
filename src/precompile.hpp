@@ -27,11 +27,11 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif // _WIN32
 
-#include "Common.h"
+#include "Common.hpp"
 
 // Internal utilities
-#include "Logger.h"
-#include "Utils.h"
+#include "Logger.hpp"
+#include "Utils.hpp"
 
 #define goto _USE_OF_GOTO_IS_NOT_ALLOWED_
 #define const_cast _USE_OF_CONST_CAST_IS_NOT_ALLOWED_

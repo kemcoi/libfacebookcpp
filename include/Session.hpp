@@ -21,8 +21,8 @@
 #ifndef LIBFACEBOOKCPP_SESSION_H_
 #define LIBFACEBOOKCPP_SESSION_H_
 
-#include "AuthorizedObject.h"
-#include "ExtendedPermissions.h"
+#include "AuthorizedObject.hpp"
+#include "ExtendedPermissions.hpp"
 
 namespace LibFacebookCpp
 {

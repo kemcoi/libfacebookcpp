@@ -21,7 +21,7 @@
 #ifndef LIBFACEBOOKCPP_POLYMORPHIC_OBJECT_H_
 #define LIBFACEBOOKCPP_POLYMORPHIC_OBJECT_H_
 
-#include "AuthorizedObject.h"
+#include "AuthorizedObject.hpp"
 
 namespace LibFacebookCpp
 {

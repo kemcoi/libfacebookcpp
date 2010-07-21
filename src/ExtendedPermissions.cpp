@@ -20,12 +20,21 @@
 
 #include "precompile.h"
 #include "ExtendedPermissions.h"
+#include "Exception.h"
 
 namespace LibFacebookCpp
 {
 
-	
-	static const char* permissionStrings[] = {
+void ExtendedPermissions::requestPermission(ExtendedPermission permission)
+{
+	LIBFACEBOOKCPP_CHKARG(permission >= EP_PUBLISH_STREAM && permission < EP_COUNT)
+
+	permissionFlags_.set(permission, true);
+}
+
+std::string ExtendedPermissions::getPermissionsString() const
+{
+	static const char* s_permissionStrings[] = {
 		"publish_stream",
 		"create_event",
 		"rsvp_event",
@@ -79,30 +88,23 @@ namespace LibFacebookCpp
 		"friends_status",
 		"friends_videos",
 		"friends_website",
-		"user_work_history"};
+		"user_work_history"
+	};
 
+	LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(s_permissionStrings) == EP_COUNT);
 
-void ExtPermissions::requestPermission(FBExtPermissions permission)
-{
-	LIBFACEBOOKCPP_ASSERT(permission >= FBEP_PUBLISH_STREAM && permission <= FBEP_FRIENDS_WORK_HISTORY);
-	LIBFACEBOOKCPP_CASSERT((LIBFACEBOOKCPP_NUMELMS(permissionStrings)) == FBEP_NUMBER_OF_PERMISSIONS);
-
-	permissionFlags_[permission] = 1;
-}
-
-std::string ExtPermissions::getPermissionsString() const
-{
 	StringBuilder builder;
-	bool firstPermission = false;
-	for(int ii = 0; ii < __COUNT; ii++)
+	bool firstPermission = true;
+	for(int ii = 0; ii < EP_COUNT; ++ii)
 	{
 		if(permissionFlags_[ii])
 		{
-			if(!firstPermission)
-			{
+			if(firstPermission)
+				firstPermission = false;
+			else
 				builder	<< ',';
-			}
-			builder << permissionStrings[ii];
+
+			builder << s_permissionStrings[ii];
 		}
 	}
 	return builder;

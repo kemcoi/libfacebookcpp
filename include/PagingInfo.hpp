@@ -31,7 +31,7 @@ struct PagingInfo
 	bool IsValid() const { return 0 != limit; }
 	void GetUri(Uri *uri) const
 	{
-		LIBFACEBOOKCPP_ASSERT(uri);
+		LF_ASSERT(uri);
 		uri->query_params["limit"] = StringBuilder() << offset;
 		uri->query_params["offset"] = StringBuilder() << limit;
 	}

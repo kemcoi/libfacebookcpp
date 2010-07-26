@@ -31,7 +31,7 @@ namespace LibFacebookCpp
 class Photo;
 class Comment;
 
-class LIBFACEBOOKCPP_API Album: public AuthorizedObject
+class LF_API Album: public AuthorizedObject
 {
 public:
 	//----------------------------------------------
@@ -58,7 +58,7 @@ public:
 private:
 	//----------------------------------------------
 	// Callbacks
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
 
 private:
 	std::string id_;

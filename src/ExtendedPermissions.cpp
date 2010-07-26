@@ -27,7 +27,7 @@ namespace LibFacebookCpp
 
 void ExtendedPermissions::RequestPermission(ExtendedPermission permission)
 {
-	LIBFACEBOOKCPP_CHKARG(permission >= EP_PUBLISH_STREAM && permission < EP_COUNT)
+	LF_CHKARG(permission >= EP_PUBLISH_STREAM && permission < EP_COUNT)
 
 	permissionFlags_.set(permission, true);
 }

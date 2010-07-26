@@ -24,28 +24,28 @@
 namespace LibFacebookCpp
 {
 
-class LIBFACEBOOKCPP_API InvalidArgument : public std::invalid_argument
+class LF_API InvalidArgument : public std::invalid_argument
 {
 public:
 	typedef std::invalid_argument inherited;
 	InvalidArgument(const std::string& message);
 };
 
-class LIBFACEBOOKCPP_API FacebookException : public std::runtime_error
+class LF_API FacebookException : public std::runtime_error
 {
 public:
 	typedef std::runtime_error inherited;
 	FacebookException(const std::string &type, const std::string &message);
 };
 
-class LIBFACEBOOKCPP_API NotSupportedException : public std::logic_error
+class LF_API NotSupportedException : public std::logic_error
 {
 public:
 	typedef std::logic_error inherited;
 	NotSupportedException(const std::string& message);
 };
 
-class LIBFACEBOOKCPP_API UnexpectedException : public std::logic_error
+class LF_API UnexpectedException : public std::logic_error
 {
 public:
 	typedef std::logic_error inherited;

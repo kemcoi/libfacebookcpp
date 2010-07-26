@@ -64,7 +64,7 @@ namespace HttpUtils
 
 void DecomposeUri(const std::string& str, Uri *uri)
 {
-	LIBFACEBOOKCPP_ASSERT(uri);
+	LF_ASSERT(uri);
 
 	uri->Clear();
 
@@ -92,7 +92,7 @@ void DecomposeUri(const std::string& str, Uri *uri)
 			pos = str.find_first_of("&=", lastPos);
 		}
 
-		LIBFACEBOOKCPP_ASSERT(list.size() % 2 == 0);
+		LF_ASSERT(list.size() % 2 == 0);
 
 		for(std::list<std::string>::const_iterator it = list.begin(); it != list.end();)
 		{
@@ -116,7 +116,7 @@ size_t HttpRequest::DebugFunction(curl_infotype /* type */, char * /* data */, s
 
 size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 {
-	LIBFACEBOOKCPP_ASSERT(blob_);
+	LF_ASSERT(blob_);
 
 	cmatch result;
 	// TODO: This is inefficient, but making it static makes us leak memory. We need a global ->Init(); call
@@ -144,8 +144,8 @@ size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 
 size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb)
 {
-	LIBFACEBOOKCPP_ASSERT(blob_);
-	LIBFACEBOOKCPP_ASSERT(data);
+	LF_ASSERT(blob_);
+	LF_ASSERT(data);
 
 	if(blobDataSize_ + size * nmemb > blob_->GetLength())
 	{
@@ -161,9 +161,9 @@ size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb)
 
 void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 {
-	LIBFACEBOOKCPP_ASSERT(blob);
-	LIBFACEBOOKCPP_ASSERT(!blob_); // This object isn't thread-safe!
-	LIBFACEBOOKCPP_ASSERT(blobDataSize_ == 0);
+	LF_ASSERT(blob);
+	LF_ASSERT(!blob_); // This object isn't thread-safe!
+	LF_ASSERT(blobDataSize_ == 0);
 
 	blob_ = blob;
 	blobDataSize_ = 0;
@@ -181,7 +181,7 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 
 void HttpRequest::GetResponse(const std::string& uri, Json::Value *value)
 {
-	LIBFACEBOOKCPP_CHKARG(value);
+	LF_CHKARG(value);
 
 	ResponseBlob blob;
 	GetResponse(uri, &blob);
@@ -192,7 +192,7 @@ void HttpRequest::GetResponse(const std::string& uri, Json::Value *value)
 
 void HttpRequest::GetUri(Uri *uri) const
 {
-	LIBFACEBOOKCPP_ASSERT(uri);
+	LF_ASSERT(uri);
 
 	uri->query_params.insert(std::pair<std::string, std::string>("access_token", access_token_));
 }

@@ -26,7 +26,7 @@
 namespace LibFacebookCpp
 {
 
-class LIBFACEBOOKCPP_API Friend: public AuthorizedObject
+class LF_API Friend: public AuthorizedObject
 {
 public:
 	//----------------------------------------------
@@ -35,7 +35,7 @@ public:
 	// XXX: make all _deserialize private
 
 	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
 
 	//----------------------------------------------
 	const std::string& Name() const { return name_; }

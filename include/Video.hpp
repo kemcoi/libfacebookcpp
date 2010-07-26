@@ -30,7 +30,7 @@ namespace LibFacebookCpp
 
 class Comment;
 
-class LIBFACEBOOKCPP_API Video : public AuthorizedObject
+class LF_API Video : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }
@@ -46,7 +46,7 @@ public: // connections
 	void GetComments(List<Comment> *list, const PagingInfo *paging = NULL) const;
 
 protected:
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
 
 private: // member variables
 	std::string id_;

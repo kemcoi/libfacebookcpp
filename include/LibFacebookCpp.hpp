@@ -31,8 +31,8 @@ template<class T>
 class List;
 
 #define LIBFACEBOOKCPP_DEFINE_CLASS(x) \
-	class LIBFACEBOOKCPP_API x; \
-	template class LIBFACEBOOKCPP_API List<x>;
+	class LF_API x; \
+	template class LF_API List<x>;
 
 LIBFACEBOOKCPP_DEFINE_CLASS(Photo);
 

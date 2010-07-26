@@ -29,7 +29,7 @@ namespace LibFacebookCpp
 class PolymorphicObject;
 class Venue;
 
-class LIBFACEBOOKCPP_API Event : public AuthorizedObject
+class LF_API Event : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }

@@ -28,7 +28,7 @@
 namespace LibFacebookCpp
 {
 
-class LIBFACEBOOKCPP_API Message: public AuthorizedObject
+class LF_API Message: public AuthorizedObject
 {
 
 public: // accessors
@@ -39,7 +39,7 @@ public: // accessors
 	const std::string& GetUpdatedTime() const { return updated_time_; }
 
 protected:
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
 
 private: // member variables 
 	std::string id_;

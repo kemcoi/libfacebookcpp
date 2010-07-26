@@ -26,7 +26,7 @@
 namespace LibFacebookCpp
 {
 
-class LIBFACEBOOKCPP_API PolymorphicObject : public AuthorizedObject
+class LF_API PolymorphicObject : public AuthorizedObject
 {
 public: // interface
 	const shared_ptr<AuthorizedObject>& GetPtr() const { return ptr_; }
@@ -45,7 +45,7 @@ private: // member variables
 
 // XXX: We need a way to regularize this. This is a bug in MSVC++
 #ifdef _WIN32
-template class LIBFACEBOOKCPP_API List<PolymorphicObject>;
+template class LF_API List<PolymorphicObject>;
 #endif // _WIN32
 
 } // namespace LibFacebookCpp

@@ -21,6 +21,17 @@
 #ifndef LIBFACEBOOKCPP_HTTPREQUEST_H_
 #define LIBFACEBOOKCPP_HTTPREQUEST_H_
 
+#define CURLPP_TRY() \
+	try \
+	{
+
+#define CURLPP_CATCH() \
+	} \
+	catch(const curlpp::RuntimeError& e) \
+	{ \
+		throw 
+
+
 namespace LibFacebookCpp
 {
 

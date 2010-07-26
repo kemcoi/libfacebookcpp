@@ -22,7 +22,6 @@
 #define LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_
 
 #include "HttpRequest.hpp"
-// XXX: Remove the FB prefix to everything
 
 namespace LibFacebookCpp
 {

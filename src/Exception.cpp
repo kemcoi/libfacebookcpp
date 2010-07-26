@@ -24,6 +24,11 @@
 namespace LibFacebookCpp
 {
 
+Exception::Exception()
+{
+	GetErrorLog() << "General Exception!";
+}
+
 InvalidArgument::InvalidArgument(const std::string& message) : inherited(message)
 {
 	GetErrorLog() << message;
@@ -42,6 +47,11 @@ NotSupportedException::NotSupportedException(const std::string& message) : inher
 UnexpectedException::UnexpectedException(const std::string& message) : inherited(message)
 {
 	GetErrorLog() << message;
+}
+
+CurlppException::CurlppException()
+{
+	GetErrorLog() << "An exception was thrown!";
 }
 
 } // namespace LibFacebookCpp

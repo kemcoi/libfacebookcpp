@@ -38,6 +38,13 @@
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 
+#define LF_MAJOR 1
+#define LF_MAJOR_S #LF_MAJOR
+#define LF_MINOR 0
+#define LF_MINOR_S #LF_MINOR
+#define LF_REVISION 0
+#define LF_REVISION_S #LF_REVISION
+
 // XXX: TODO: Static lib
 #ifdef LIBFACEBOOKCPP_EXPORTS
 #define LF_API __declspec(dllexport)

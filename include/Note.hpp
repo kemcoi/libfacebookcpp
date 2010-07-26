@@ -29,7 +29,7 @@ namespace LibFacebookCpp
 
 class Comment;
 
-class LIBFACEBOOKCPP_API Note: public AuthorizedObject
+class LF_API Note: public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }

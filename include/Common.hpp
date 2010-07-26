@@ -40,30 +40,27 @@
 
 // XXX: TODO: Static lib
 #ifdef LIBFACEBOOKCPP_EXPORTS
-#define LIBFACEBOOKCPP_API __declspec(dllexport)
+#define LF_API __declspec(dllexport)
 // Only if we are building libfacebookcpp that we need to worry about enforcing these macros
 // Compiler specific defines
 #if defined(_MSC_VER)
 // Visual C++
-#define LIBFACEBOOKCPP_INTERFACE struct __declspec(novtable)
-#define LIBFACEBOOKCPP_OVERRIDE override
-#define LIBFACEBOOKCPP_ASSERT(x) assert(x); __assume(x); __analysis_assume(x)
+#define LF_OVERRIDE override
+#define LF_ASSERT(x) assert(x); __assume(x); __analysis_assume(x)
 #else // defined(_MSC_VER)
 // Other compilers
-#define LIBFACEBOOKCPP_INTERFACE struct
-#define LIBFACEBOOKCPP_OVERRIDE
-#define LIBFACEBOOKCPP_ASSERT(x) assert(x)
+#define LF_OVERRIDE
+#define LF_ASSERT(x) assert(x)
 // XXX:
 #error "We need to include shared_ptr"
 #endif // defined(_MSC_VER)
 #else // LIBFACEBOOKCPP_EXPORTS
-#define LIBFACEBOOKCPP_API __declspec(dllimport)
-#define LIBFACEBOOKCPP_INTERFACE
-#define LIBFACEBOOKCPP_OVERRIDE
-#define LIBFACEBOOKCPP_ASSERT(x)
+#define LF_API __declspec(dllimport)
+#define LF_OVERRIDE
+#define LF_ASSERT(x)
 #endif // LIBFACEBOOKCPP_EXPORTS
 
-#define LIBFACEBOOKCPP_CHKARG(arg) if(!(arg)) throw InvalidArgument("Invalid Argument: " #arg);
+#define LF_CHKARG(arg) if(!(arg)) throw InvalidArgument("Invalid Argument: " #arg);
 
 #define DISALLOW_COPY_AND_ASSIGN(TypeName)   \
 	TypeName(const TypeName&);               \

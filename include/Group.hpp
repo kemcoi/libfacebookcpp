@@ -35,7 +35,7 @@ namespace LibFacebookCpp
 class PolymorphicObject;
 class Friend;
 
-class LIBFACEBOOKCPP_API Group : public AuthorizedObject
+class LF_API Group : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }

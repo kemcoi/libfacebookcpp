@@ -35,7 +35,7 @@ class Deserializer
 public: // public ctor and ~()
 	Deserializer(const AuthorizedObject &parent_obj, AuthorizedObject *obj, const Json::Value &json) : json_(json), obj_(parent_obj)
 	{
-		LIBFACEBOOKCPP_ASSERT(obj);
+		LF_ASSERT(obj);
 
 		if(!json_.isObject())
 			throw InvalidArgument("json");
@@ -97,7 +97,7 @@ private: // private helper functions
 	template<class TType>
 	void _DeserializeObject(const Json::Value &json, bool required, TType *t)
 	{
-		LIBFACEBOOKCPP_ASSERT(t);
+		LF_ASSERT(t);
 
 		if(!json.isObject())
 		{
@@ -113,7 +113,7 @@ private: // private helper functions
 	template<>
 	void _DeserializeObject(const Json::Value &json, bool required, std::string *str)
 	{
-		LIBFACEBOOKCPP_ASSERT(str);
+		LF_ASSERT(str);
 
 		if(!json.isConvertibleTo(Json::stringValue))
 		{
@@ -129,7 +129,7 @@ private: // private helper functions
 	template<>
 	void _DeserializeObject(const Json::Value &json, bool required, int *value)
 	{
-		LIBFACEBOOKCPP_ASSERT(value);
+		LF_ASSERT(value);
 
 		if(!json.isConvertibleTo(Json::intValue))
 		{
@@ -145,7 +145,7 @@ private: // private helper functions
 	template<>
 	void _DeserializeObject(const Json::Value &json, bool required, unsigned int *uint)
 	{
-		LIBFACEBOOKCPP_ASSERT(uint);
+		LF_ASSERT(uint);
 
 		if(!json.isConvertibleTo(Json::uintValue))
 		{
@@ -161,7 +161,7 @@ private: // private helper functions
 	template<>
 	void _DeserializeObject(const Json::Value &json, bool required, float *f)
 	{
-		LIBFACEBOOKCPP_ASSERT(f);
+		LF_ASSERT(f);
 
 		if(!json.isConvertibleTo(Json::realValue))
 		{
@@ -177,7 +177,7 @@ private: // private helper functions
 	template<>
 	void _DeserializeObject(const Json::Value &json, bool required, DateTime *dt)
 	{
-		LIBFACEBOOKCPP_ASSERT(dt);
+		LF_ASSERT(dt);
 
 		if(!json.isConvertibleTo(Json::stringValue))
 		{
@@ -195,7 +195,7 @@ private: // private helper functions
 	template<class TType>
 	void _DeserializeObject(const Json::Value &json, bool required, std::list<TType> *list)
 	{
-		LIBFACEBOOKCPP_ASSERT(list);
+		LF_ASSERT(list);
 
 		if(!json.isConvertibleTo(Json::arrayValue))
 		{
@@ -225,8 +225,8 @@ public: // public interface
 	template<class TType>
 	void Deserialize(const char *tag, bool required, TType *t)
 	{
-		LIBFACEBOOKCPP_ASSERT(tag);
-		LIBFACEBOOKCPP_ASSERT(t);
+		LF_ASSERT(tag);
+		LF_ASSERT(t);
 
 		if(!json_.isMember(tag))
 		{

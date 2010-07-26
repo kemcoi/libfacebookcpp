@@ -27,7 +27,7 @@
 namespace LibFacebookCpp
 {
 
-class LIBFACEBOOKCPP_API Status : public AuthorizedObject
+class LF_API Status : public AuthorizedObject
 {
 public:
 	//----------------------------------------------
@@ -35,7 +35,7 @@ public:
 	virtual ~Status() { }
 
 	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
 
 	//----------------------------------------------
 	// Accessors

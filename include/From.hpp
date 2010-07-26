@@ -26,7 +26,7 @@
 namespace LibFacebookCpp
 {
 
-class LIBFACEBOOKCPP_API From : public AuthorizedObject
+class LF_API From : public AuthorizedObject
 {
 public: // public interface
 	typedef AuthorizedObject inherited;
@@ -35,7 +35,7 @@ public: // public interface
 protected:
 	//----------------------------------------------
 	// Callbacks
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
 
 	//----------------------------------------------
 	// Accessors

@@ -28,7 +28,7 @@ namespace LibFacebookCpp
 {
 
 template<typename FBType>
-class LIBFACEBOOKCPP_API List : public AuthorizedObject
+class LF_API List : public AuthorizedObject
 {
 private: // private classes
 	struct PagingUri

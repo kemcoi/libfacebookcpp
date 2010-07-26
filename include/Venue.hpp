@@ -26,7 +26,7 @@
 namespace LibFacebookCpp
 {
 
-class LIBFACEBOOKCPP_API Venue : public AuthorizedObject
+class LF_API Venue : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetStreet() const { return street_; }

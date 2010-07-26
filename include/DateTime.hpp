@@ -25,7 +25,7 @@ namespace LibFacebookCpp
 {
 
 // This is just a simple wrapper around tm
-struct LIBFACEBOOKCPP_API DateTime
+struct LF_API DateTime
 {
 public: // ctor
 	DateTime() { memset(this, 0, sizeof(*this)); }

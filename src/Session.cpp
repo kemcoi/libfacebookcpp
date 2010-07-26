@@ -52,11 +52,11 @@ Session::Session(const std::string& redirectedUri)
 	std::string::size_type idxQueryParam = redirectedUri.find_first_of("?");
 	std::string::size_type idxAnchor = redirectedUri.find_first_of("#");
 
-	LIBFACEBOOKCPP_CHKARG(std::string::npos != idxAnchor);
+	LF_CHKARG(std::string::npos != idxAnchor);
 
 	if(std::string::npos != idxQueryParam)
 	{
-		LIBFACEBOOKCPP_CHKARG(idxQueryParam < idxAnchor);
+		LF_CHKARG(idxQueryParam < idxAnchor);
 
 		// We have a part of the query parameters in the string. We need to strip it
 		decomposeUri = redirectedUri;

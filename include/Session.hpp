@@ -30,7 +30,7 @@ namespace LibFacebookCpp
 class User;
 class HttpRequest;
 
-class LIBFACEBOOKCPP_API Session : public AuthorizedObject
+class LF_API Session : public AuthorizedObject
 {
 	friend class std::auto_ptr<Session>;
 public:

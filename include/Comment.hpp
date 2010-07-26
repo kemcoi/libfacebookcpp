@@ -25,7 +25,7 @@
 namespace LibFacebookCpp
 {
 
-class LIBFACEBOOKCPP_API Comment : public AuthorizedObject
+class LF_API Comment : public AuthorizedObject
 {
 public: // accessors
 	const std::string& GetId() const { return id_; }
@@ -34,7 +34,7 @@ public: // accessors
 	const DateTime& GetCreatedTime() const { return created_time_; }
 
 public: // interface
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
 
 private: // member variables
 	std::string id_;

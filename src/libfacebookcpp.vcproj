@@ -846,6 +846,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Version.h"
+				>
+			</File>
+			<File
 				RelativePath="..\include\Video.hpp"
 				>
 			</File>

@@ -76,12 +76,12 @@ Session::Session(const std::string& redirectedUri)
 
 	if(it == redirectedParams.query_params.end())
 	{
-		GetWarnLog() << "No access_token found" << std::endl;
+		// GetWarnLog() << "No access_token found" << std::endl;
 		throw UnexpectedException("Unable to find access token from redirected URL");
 	}
 	else
 	{
-		GetInfoLog() << "Found Access Token"  << std::endl;
+		// GetInfoLog() << "Found Access Token"  << std::endl;
 		InitializeSession(it->second);
 	}	
 }
@@ -89,7 +89,7 @@ Session::Session(const std::string& redirectedUri)
 //----------------------------------------------
 Session::~Session()
 {
-	GetInfoLog() << "Destroying user session" << std::endl;
+	// GetInfoLog() << "Destroying user session" << std::endl;
 }
 
 //----------------------------------------------
@@ -99,7 +99,7 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 												const std::string& display,
 												const ExtendedPermissions& scope /* = ExtendedPermissions() */)
 {
-	GetInfoLog() << "Creating Authentication URL" << std::endl;
+	// GetInfoLog() << "Creating Authentication URL" << std::endl;
 	Uri authenticationURL;
 	authenticationURL.base_uri = "https://graph.facebook.com/oauth/authorize";
 
@@ -143,9 +143,9 @@ void Session::_Deserialize(const AuthorizedObject & /* parent_obj */, const Json
 
 void Session::InitializeSession(const std::string& accessToken)
 {
-	GetInfoLog() << "Initializing Session";
+	// GetInfoLog() << "Initializing Session";
 	Init(shared_ptr<HttpRequest>(new HttpRequest(accessToken)));
-	GetInfoLog() << "User session created with access token:" << accessToken << std::endl;
+	// GetInfoLog() << "User session created with access token:" << accessToken << std::endl;
 }
 //----------------------------------------------
 

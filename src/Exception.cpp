@@ -26,32 +26,32 @@ namespace LibFacebookCpp
 
 Exception::Exception()
 {
-	GetErrorLog() << "General Exception!";
+	// GetErrorLog() << "General Exception!";
 }
 
-InvalidArgument::InvalidArgument(const std::string& message) : inherited(message)
+InvalidArgument::InvalidArgument(const char *message) : inherited(message)
 {
-	GetErrorLog() << message;
+	// GetErrorLog() << message;
 }
 
-FacebookException::FacebookException(const std::string &type, const std::string &message) : inherited(message)
+FacebookException::FacebookException(const std::string &type, const std::string &message) : inherited(type + ": " + message)
 {
-	GetErrorLog() << type << std::endl << message;
+	// GetErrorLog() << type << std::endl << message;
 }
 
-NotSupportedException::NotSupportedException(const std::string& message) : inherited(message)
+NotSupportedException::NotSupportedException(const char *message) : inherited(message)
 {
-	GetErrorLog() << message;
+	// GetErrorLog() << message;
 }
 
-UnexpectedException::UnexpectedException(const std::string& message) : inherited(message)
+UnexpectedException::UnexpectedException(const char *message) : inherited(message)
 {
-	GetErrorLog() << message;
+	// GetErrorLog() << message;
 }
 
-CurlppException::CurlppException()
+CurlppException::CurlppException(const char *message) : inherited(message)
 {
-	GetErrorLog() << "An exception was thrown!";
+	// GetErrorLog() << message;
 }
 
 } // namespace LibFacebookCpp

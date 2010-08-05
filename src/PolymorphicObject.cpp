@@ -64,7 +64,7 @@ void PolymorphicObject::_Deserialize(const AuthorizedObject &parent_obj, const J
 		}
 		else
 		{
-			GetInfoLog() << "Unable to map the object type: " << type;
+			// GetInfoLog() << "Unable to map the object type: " << type;
 		}
 	}
 }

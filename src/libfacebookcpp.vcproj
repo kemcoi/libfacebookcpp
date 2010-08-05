@@ -656,10 +656,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Logger.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Message.cpp"
 				>
 			</File>

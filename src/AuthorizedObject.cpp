@@ -56,8 +56,8 @@ void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize 
 		{ "large" }, // PS_LARGE
 	};
 
-	LIBFACEBOOKCPP_CASSERT(PS_SQUARE == 0);
-	LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(s_sizeType) == PS_COUNT);
+	LF_CASSERT(PS_SQUARE == 0);
+	LF_CASSERT(LF_NUMELMS(s_sizeType) == PS_COUNT);
 
 	uri.query_params["type"] = s_sizeType[size];
 

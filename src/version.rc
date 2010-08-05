@@ -1,7 +1,7 @@
 // Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
-#include "Version.h"
+#include "..\include\Version.hpp"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -71,12 +71,12 @@ BEGIN
         BLOCK "100904b0"
         BEGIN
             VALUE "FileDescription", "A library to access the Facebook Graph API easily from C++"
-            VALUE "FileVersion", LF_MAJOR_S ", " LF_MINOR_S ", " LF_REVISION_S ", 0"
+            VALUE "FileVersion", LF_MAJOR ", " LF_MINOR ", " LF_REVISION ", 0"
             VALUE "InternalName", "libfacebookcpp"
             VALUE "LegalCopyright", "Copyright (C) 2010 Aly Hirani, James Chou"
             VALUE "OriginalFilename", "libfacebookcpp.dll"
             VALUE "ProductName", "libfacebookcpp"
-            VALUE "ProductVersion", LF_MAJOR_S ", " LF_MINOR_S ", " LF_REVISION_S ", 0"
+            VALUE "ProductVersion", LF_MAJOR ", " LF_MINOR ", " LF_REVISION ", 0"
         END
     END
     BLOCK "VarFileInfo"

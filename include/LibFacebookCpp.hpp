@@ -24,21 +24,7 @@
 #include "Common.hpp"
 #include "List.hpp"
 
-namespace LibFacebookCpp
-{
-
-template<class T>
-class List;
-
-#define LIBFACEBOOKCPP_DEFINE_CLASS(x) \
-	class LF_API x; \
-	template class LF_API List<x>;
-
-LIBFACEBOOKCPP_DEFINE_CLASS(Photo);
-
-#undef LIBFACEBOOKCPP_DEFINE_CLASS
-
-}
+// TODO: Template instantiation
 
 #include "ExtendedPermissions.hpp"
 

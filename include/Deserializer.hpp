@@ -24,8 +24,6 @@
 #include "AuthorizedObject.hpp"
 #include "Exception.hpp"
 #include "DateTime.hpp"
-// XXX: THIS IS BAD. FIND A WAY TO DO WITHOUT GLOBALLY INCLUDING THIS
-#include "Logger.hpp"
 
 namespace LibFacebookCpp
 {
@@ -240,11 +238,11 @@ public: // public interface
 
 			if(it == tags_.end())
 			{
-				GetInfoLog() << "Unable to find " << tag << " in the list of members!";
+				// GetInfoLog() << "Unable to find " << tag << " in the list of members!";
 			}
 			else if(it->second != 0)
 			{
-				GetInfoLog() << "You are trying to access " << tag << " but it has been already deserialized!";
+				// GetInfoLog() << "You are trying to access " << tag << " but it has been already deserialized!";
 			}
 			else
 			{

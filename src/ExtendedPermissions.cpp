@@ -91,7 +91,7 @@ std::string ExtendedPermissions::GetPermissionsString() const
 		"user_work_history"
 	};
 
-	LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(s_permissionStrings) == EP_COUNT);
+	LF_CASSERT(LF_NUMELMS(s_permissionStrings) == EP_COUNT);
 
 	StringBuilder builder;
 	bool firstPermission = true;

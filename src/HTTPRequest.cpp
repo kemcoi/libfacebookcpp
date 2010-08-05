@@ -130,12 +130,12 @@ size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 		if(strcmpi(header.c_str(), "Content-Type") == 0)
 		{
 			blob_->SetContentType(result[5].str());
-			GetDebugLog() << "Got content-type of " << result[5] << std::endl;
+			// GetDebugLog() << "Got content-type of " << result[5] << std::endl;
 		}
 		else if(strcmpi(header.c_str(), "Content-Length") == 0)
 		{
 			blob_->Realloc(fromString<size_t>(result[5].str()));
-			GetDebugLog() << "Got content-length of " << result[5] << std::endl;
+			// GetDebugLog() << "Got content-length of " << result[5] << std::endl;
 		}
 	}
 

@@ -21,11 +21,8 @@
 #ifndef LIBFACEBOOKCPP_VERSION_H_
 #define LIBFACEBOOKCPP_VERSION_H_
 
-#define LF_MAJOR 1
-#define LF_MAJOR_S "1"
-#define LF_MINOR 0
-#define LF_MINOR_S "0"
-#define LF_REVISION 0
-#define LF_REVISION_S "0"
+#define LF_MAJOR "1"
+#define LF_MINOR "0"
+#define LF_REVISION "0"
 
 #endif // LIBFACEBOOKCPP_VERSION_H_

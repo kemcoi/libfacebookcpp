@@ -27,6 +27,7 @@
 // TODO: Template instantiation
 
 #include "ExtendedPermissions.hpp"
+#include "Version.hpp"
 
 // Aggregate includes here
 #include "ResponseBlob.hpp"
@@ -49,5 +50,14 @@
 #include "Post.hpp"
 #include "Event.hpp"
 #include "PolymorphicObject.hpp"
+
+namespace LibFacebookCpp
+{
+
+const char *GetMajorVersion();
+const char *GetMinorVersion();
+const char *GetRevisionVersion();
+
+}
 
 #endif // LIBFACEBOOKCPP_H_

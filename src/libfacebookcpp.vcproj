@@ -842,7 +842,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Version.h"
+				RelativePath=".\Version.hpp"
 				>
 			</File>
 			<File

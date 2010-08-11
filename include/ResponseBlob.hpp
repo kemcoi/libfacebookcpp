@@ -24,7 +24,7 @@
 namespace LibFacebookCpp
 {
 
-class LF_API ResponseBlob
+class LIBFACEBOOKCPP_API ResponseBlob
 {
 public: // ctor and ~()
 	ResponseBlob();

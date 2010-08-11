@@ -44,10 +44,10 @@ class PolymorphicObject;
 template<class FBType>
 class List;
 
-class LF_API Location : public AuthorizedObject
+class LIBFACEBOOKCPP_API Location : public AuthorizedObject
 {
 public: // public interface
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 public: // accessors
 	const std::string& Id() const   { return id_; }
@@ -58,7 +58,7 @@ private: // member variables
 	std::string name_;
 };
 
-class LF_API User: public AuthorizedObject
+class LIBFACEBOOKCPP_API User: public AuthorizedObject
 {
 	typedef AuthorizedObject inherited;
 public:
@@ -68,7 +68,7 @@ public:
 	//----------------------------------------------
 
 	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 	//----------------------------------------------
 	//Getters

@@ -71,12 +71,12 @@ BEGIN
         BLOCK "100904b0"
         BEGIN
             VALUE "FileDescription", "A library to access the Facebook Graph API easily from C++"
-            VALUE "FileVersion", LF_MAJOR ", " LF_MINOR ", " LF_REVISION ", 0"
+            VALUE "FileVersion", LIBFACEBOOKCPP_VERSION_MAJOR ", " LIBFACEBOOKCPP_VERSION_MINOR ", " LIBFACEBOOKCPP_VERSION_REVISION ", 0"
             VALUE "InternalName", "libfacebookcpp"
             VALUE "LegalCopyright", "Copyright (C) 2010 Aly Hirani, James Chou"
             VALUE "OriginalFilename", "libfacebookcpp.dll"
             VALUE "ProductName", "libfacebookcpp"
-            VALUE "ProductVersion", LF_MAJOR ", " LF_MINOR ", " LF_REVISION ", 0"
+            VALUE "ProductVersion", LIBFACEBOOKCPP_VERSION_MAJOR ", " LIBFACEBOOKCPP_VERSION_MINOR ", " LIBFACEBOOKCPP_VERSION_REVISION ", 0"
         END
     END
     BLOCK "VarFileInfo"

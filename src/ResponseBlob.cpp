@@ -38,7 +38,7 @@ ResponseBlob::~ResponseBlob()
 
 void ResponseBlob::Realloc(size_t bytes)
 {
-	LF_ASSERT(bytes >= 0);
+	LIBFACEBOOKCPP_ASSERT(bytes >= 0);
 
 	// Early-out
 	if(bytes_ == bytes)

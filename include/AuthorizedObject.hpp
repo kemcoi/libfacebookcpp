@@ -34,7 +34,7 @@ struct Uri;
 template<class FBType>
 class List;
 
-enum LF_API PictureSize
+enum LIBFACEBOOKCPP_API PictureSize
 {
 	PS_SQUARE,
 	PS_SMALL,
@@ -62,8 +62,8 @@ protected: // interface
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, TType *t) const
 	{
-		LF_ASSERT(page);
-		LF_CHKARG(t);
+		LIBFACEBOOKCPP_ASSERT(page);
+		LIBFACEBOOKCPP_CHKARG(t);
 
 		// XXX: Need to check if we are .Valid() or not
 
@@ -82,7 +82,7 @@ protected: // interface
 	template<class TType>
 	void _GetConnection(const std::string& uri, List<TType> *list) const
 	{
-		LF_CHKARG(list);
+		LIBFACEBOOKCPP_CHKARG(list);
 
 		Json::Value value;
 		request_->GetResponse(uri, &value);
@@ -92,8 +92,8 @@ protected: // interface
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, const PagingInfo *paging, List<TType> *list) const
 	{
-		LF_ASSERT(page);
-		LF_CHKARG(list);
+		LIBFACEBOOKCPP_ASSERT(page);
+		LIBFACEBOOKCPP_CHKARG(list);
 
 		Uri uri;
 		request_->GetUri(&uri);

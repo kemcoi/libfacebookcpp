@@ -28,7 +28,7 @@ namespace LibFacebookCpp
 
 //-------------------------------------------------------------------
 
-enum LF_API ExtendedPermission{
+enum LIBFACEBOOKCPP_API ExtendedPermission{
 	EP_PUBLISH_STREAM,
 	EP_CREATE_EVENT,
 	EP_RSVP_EVENT,
@@ -87,7 +87,7 @@ enum LF_API ExtendedPermission{
 	EP_COUNT
 };
 
-class LF_API ExtendedPermissions
+class LIBFACEBOOKCPP_API ExtendedPermissions
 {
 
 public:

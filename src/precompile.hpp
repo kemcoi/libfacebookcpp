@@ -34,8 +34,8 @@
 
 #define goto _USE_OF_GOTO_IS_NOT_ALLOWED_
 #define const_cast _USE_OF_CONST_CAST_IS_NOT_ALLOWED_
-#define LF_CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
+#define LIBFACEBOOKCPP_CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
 // XXX: TODO: Break on non-arrays
-#define LF_NUMELMS(x) sizeof(x) / sizeof(x[0])
+#define LIBFACEBOOKCPP_NUMELMS(x) sizeof(x) / sizeof(x[0])
 
 #endif // LIBFACEBOOKCPP_PRECOMPILE_H_

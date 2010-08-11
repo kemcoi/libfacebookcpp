@@ -32,7 +32,7 @@ public: // accessors
 	
 	const std::list<Friend>& GetTo(){ return toList; }
 protected:
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LF_OVERRIDE;
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 private: // member variables
 	std::list<Friend> toList;
 

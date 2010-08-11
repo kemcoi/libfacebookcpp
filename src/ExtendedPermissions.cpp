@@ -27,7 +27,7 @@ namespace LibFacebookCpp
 
 void ExtendedPermissions::RequestPermission(ExtendedPermission permission)
 {
-	LF_CHKARG(permission >= EP_PUBLISH_STREAM && permission < EP_COUNT)
+	LIBFACEBOOKCPP_CHKARG(permission >= EP_PUBLISH_STREAM && permission < EP_COUNT)
 
 	permissionFlags_.set(permission, true);
 }
@@ -91,7 +91,7 @@ std::string ExtendedPermissions::GetPermissionsString() const
 		"user_work_history"
 	};
 
-	LF_CASSERT(LF_NUMELMS(s_permissionStrings) == EP_COUNT);
+	LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(s_permissionStrings) == EP_COUNT);
 
 	StringBuilder builder;
 	bool firstPermission = true;

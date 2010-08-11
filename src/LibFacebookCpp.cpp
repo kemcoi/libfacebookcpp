@@ -1,22 +1,22 @@
 #include "precompile.hpp"
-#include "Version.h"
+#include "Version.hpp"
 
 namespace LibFacebookCpp
 {
 
 const char *GetMajorVersion()
 {
-	return LF_MAJOR;
+	return LIBFACEBOOKCPP_VERSION_MAJOR;
 }
 
 const char *GetMinorVersion()
 {
-	return LF_MINOR;
+	return LIBFACEBOOKCPP_VERSION_MINOR;
 }
 
 const char *GetRevisionVersion()
 {
-	return LF_REVISION;
+	return LIBFACEBOOKCPP_VERSION_REVISION;
 }
 
 } // namespace LibFacebookCpp

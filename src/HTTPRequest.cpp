@@ -175,7 +175,7 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 
 	blob_->Realloc(blobDataSize_);
 
-	blob_ = NULL;
+	blob_ = nullptr;
 	blobDataSize_ = 0;
 }
 
@@ -197,7 +197,7 @@ void HttpRequest::GetUri(Uri *uri) const
 	uri->query_params.insert(std::pair<std::string, std::string>("access_token", access_token_));
 }
 
-HttpRequest::HttpRequest(const std::string &access_token) : access_token_(access_token), blob_(NULL), blobDataSize_(0)
+HttpRequest::HttpRequest(const std::string &access_token) : access_token_(access_token), blob_(nullptr), blobDataSize_(0)
 {
 	// XXX: Capture throws from curlpp
 	curl_.setOpt(curlpp::Options::Verbose(true));

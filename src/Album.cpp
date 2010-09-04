@@ -29,12 +29,12 @@
 namespace LibFacebookCpp
 {
 
-void Album::GetPhotosConnection(List<Photo> *list, const PagingInfo *paging /*= NULL*/) const
+void Album::GetPhotosConnection(List<Photo> *list, const PagingInfo *paging /*= nullptr*/) const
 {
 	_GetConnection(id_, "photos", paging, list);
 }
 
-void Album::GetCommentsConnection(List<Comment> *list, const PagingInfo *paging /*= NULL*/) const
+void Album::GetCommentsConnection(List<Comment> *list, const PagingInfo *paging /*= nullptr*/) const
 {
 	_GetConnection(id_, "comments", paging, list);
 }

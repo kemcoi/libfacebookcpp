@@ -44,7 +44,7 @@ class Logger;
 class LogStream : public std::ostream
 {
 private: // private ctor
-	LogStream() : std::ostream(NULL)
+	LogStream() : std::ostream(nullptr)
 	{
 	}
 

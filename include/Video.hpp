@@ -43,7 +43,7 @@ public: // accessors
 	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 public: // connections
-	void GetComments(List<Comment> *list, const PagingInfo *paging = NULL) const;
+	void GetComments(List<Comment> *list, const PagingInfo *paging = nullptr) const;
 
 protected:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;

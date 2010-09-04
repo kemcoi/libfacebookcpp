@@ -38,6 +38,9 @@
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 
+// TODO: only for unsupported compilers
+#define nullptr NULL
+
 // XXX: TODO: Static lib
 #ifdef LIBFACEBOOKCPP_EXPORTS
 #define LIBFACEBOOKCPP_API __declspec(dllexport)
@@ -64,7 +67,7 @@
 
 #define DISALLOW_COPY_AND_ASSIGN(TypeName)   \
 	TypeName(const TypeName&);               \
-	void operator=(const TypeName&)
+	void operator=(const TypeName&);
 
 namespace LibFacebookCpp
 {

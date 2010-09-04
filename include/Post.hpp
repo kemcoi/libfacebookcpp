@@ -51,7 +51,7 @@ public: // accessors
 	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 public: // connections
-	void GetComments(List<Comment> *list, const PagingInfo *paging = NULL);
+	void GetComments(List<Comment> *list, const PagingInfo *paging = nullptr);
 
 protected:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);

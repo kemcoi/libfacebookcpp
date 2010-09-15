@@ -27,32 +27,32 @@
 namespace LibFacebookCpp
 {
 
-void Event::GetFeedConnection(List<PolymorphicObject> *list, const PagingInfo *paging /* = nullptr */) const
+void Event::GetFeedConnection(List<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "feed", paging, list);
 }
 
-void Event::GetNoReplyConnection(List<Friend> *list, const PagingInfo *paging /* = nullptr */) const
+void Event::GetNoReplyConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "noreply", paging, list);
 }
 
-void Event::GetMaybeConnection(List<Friend> *list, const PagingInfo *paging /* = nullptr */) const
+void Event::GetMaybeConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "maybe", paging, list);
 }
 
-void Event::GetInvitedConnection(List<Friend> *list, const PagingInfo *paging /* = nullptr */) const
+void Event::GetInvitedConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "invited", paging, list);
 }
 
-void Event::GetAttendingConnection(List<Friend> *list, const PagingInfo *paging /* = nullptr */) const
+void Event::GetAttendingConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "attending", paging, list);
 }
 
-void Event::GetDeclinedConnection(List<Friend> *list, const PagingInfo *paging /* = nullptr */) const
+void Event::GetDeclinedConnection(List<Friend> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "declined", paging, list);
 }

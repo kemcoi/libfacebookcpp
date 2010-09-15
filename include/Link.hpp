@@ -44,7 +44,7 @@ public: // accessors
 
 public: // connection
 	// XXX: Make sure all connections are const
-	void GetComments(List<Comment> *list, const PagingInfo *paging = nullptr) const;
+	void GetComments(List<Comment> *list, const PagingInfo *paging = NULL) const;
 
 	// XXX: comment callback
 protected: // callback functions

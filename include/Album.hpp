@@ -52,8 +52,8 @@ public:
 
 	//----------------------------------------------
 	// Connections
-	void GetPhotosConnection(List<Photo> *list, const PagingInfo *paging = nullptr) const;
-	void GetCommentsConnection(List<Comment> *list, const PagingInfo *paging = nullptr) const;
+	void GetPhotosConnection(List<Photo> *list, const PagingInfo *paging = NULL) const;
+	void GetCommentsConnection(List<Comment> *list, const PagingInfo *paging = NULL) const;
 
 private:
 	//----------------------------------------------

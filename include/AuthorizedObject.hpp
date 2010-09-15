@@ -26,8 +26,8 @@
 namespace LibFacebookCpp
 {
 
-class ResponseBlob;
 class HttpRequest;
+class ResponseBlob;
 struct PagingInfo;
 struct Uri;
 

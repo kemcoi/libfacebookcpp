@@ -38,9 +38,6 @@
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 
-// TODO: only for unsupported compilers
-#define nullptr NULL
-
 // XXX: TODO: Static lib
 #ifdef LIBFACEBOOKCPP_EXPORTS
 #define LIBFACEBOOKCPP_API __declspec(dllexport)

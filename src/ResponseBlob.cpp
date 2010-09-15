@@ -24,7 +24,7 @@
 namespace LibFacebookCpp
 {
 
-ResponseBlob::ResponseBlob() : data_(nullptr), bytes_(0)
+ResponseBlob::ResponseBlob() : data_(NULL), bytes_(0)
 {
 
 }
@@ -32,7 +32,7 @@ ResponseBlob::ResponseBlob() : data_(nullptr), bytes_(0)
 ResponseBlob::~ResponseBlob()
 {
 	free(data_);
-	data_ = nullptr;
+	data_ = NULL;
 	bytes_ = 0;
 }
 
@@ -44,7 +44,7 @@ void ResponseBlob::Realloc(size_t bytes)
 	if(bytes_ == bytes)
 		return;
 
-	// realloc(nullptr, bytes) makes realloc work like malloc
+	// realloc(NULL, bytes) makes realloc work like malloc
 	void *new_data = realloc(data_, bytes);
 
 	if(!new_data)

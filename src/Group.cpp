@@ -27,12 +27,12 @@
 namespace LibFacebookCpp
 {
 
-void Group::GetFeed(List<PolymorphicObject> *list, const PagingInfo *paging /* = nullptr */) const
+void Group::GetFeed(List<PolymorphicObject> *list, const PagingInfo *paging /* = NULL */) const
 {
 	_GetConnection(id_, "feed", paging, list);
 }
 
-void Group::GetMembers(List<Friend> *list, const PagingInfo *paging /*= nullptr*/) const
+void Group::GetMembers(List<Friend> *list, const PagingInfo *paging /*= NULL*/) const
 {
 	_GetConnection(id_, "members", paging, list);
 }

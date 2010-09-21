@@ -5,3 +5,11 @@
 Debug/
 Release/
 docs/
+.*\.sln
+.*\.suo
+.*\.vcproj
+.*\.vcxproj
+.*\.filters
+CMakeFiles/
+CMakeCache\.txt
+cmake_install\.cmake

@@ -7,6 +7,7 @@ Release/
 docs/
 .*\.sln
 .*\.suo
+.*\.sdf
 .*\.vcproj
 .*\.vcxproj
 .*\.filters

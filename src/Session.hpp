@@ -34,7 +34,6 @@ class LIBFACEBOOKCPP_API Session : public AuthorizedObject
 {
 	friend class std::auto_ptr<Session>;
 public:
-	// Session(const std::string& accessToken);
 	Session(const std::string& redirectedURL);
 	~Session();
 	//----------------------------------------------
@@ -42,9 +41,9 @@ public:
 	// You must call this to receive the authentication URL
 	// This URL must be accepted by the user in order to retrieve 
 	// the access token. */
-	static const std::string GetAuthenticationURL(const std::string& clientID, 
+	static const std::string GetAuthenticationURL(const std::string& clientID,
 												  const std::string& redirectURI,
-												  const std::string& type, 
+												  const std::string& type,
 												  const std::string& display,
 												  const ExtendedPermissions& scope = ExtendedPermissions());
 
@@ -58,11 +57,7 @@ private:
 
 	// stick this as private to avoid being called
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
-	void InitializeSession(const std::string& accessToken);
 
-	// XXX: Implement a copy and assign for making copies of the session
-	// This is useful, if we want to pass stuff into a worker thread, etc. with the same access token,
-	// but different HttpRequest
 	DISALLOW_COPY_AND_ASSIGN(Session);
 };
 

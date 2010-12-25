@@ -28,10 +28,16 @@ Logger logInstance;
 
 Logger::Logger()
 {
-	for(size_t ii = 0; ii < LIBFACEBOOKCPP_NUMELMS(stream_); ++ii)
-	{
-		stream_[ii].rdbuf(std::clog.rdbuf());
-	}
+	// Only initialize streams for ERROR and WARN
+	SetStream(LL_ERROR, std::cerr);
+	SetStream(LL_WARN, std::cerr);
+}
+
+void Logger::SetStream(LogLevel level, std::ostream& stream)
+{
+	LIBFACEBOOKCPP_CHKARG(level < LL_ERROR || level >= LL_COUNT);
+
+	stream_[level].rdbuf(stream.rdbuf());
 }
 
 std::ostream& Logger::GetStream(LogLevel level, int lineNumber, const char* file)

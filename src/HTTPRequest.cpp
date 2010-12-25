@@ -106,11 +106,12 @@ void DecomposeUri(const std::string& str, Uri *uri)
 
 } // namespace HttpUtils
 
-size_t HttpRequest::DebugFunction(curl_infotype /* type */, char * /* data */, size_t /* size */)
+size_t HttpRequest::DebugFunction(curl_infotype type, char *data, size_t size)
 {
-	// Fix for issue #28: Only print to the debug log if we are text-based data
-	//if(CURLINFO_TEXT == type)
-	//	GetDebugLog().write(data, size);
+	// Issue #28: Only print to the debug log if we are text-based data. If not, we'll start printing special control codes
+	// which include the alert code
+	if(CURLINFO_TEXT == type)
+		GetDebugLog().write(data, size);
 	return 0;
 }
 
@@ -130,12 +131,12 @@ size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 		if(strcmpi(header.c_str(), "Content-Type") == 0)
 		{
 			blob_->SetContentType(result[5].str());
-			// GetDebugLog() << "Got content-type of " << result[5] << std::endl;
+			GetDebugLog() << "Got content-type of " << result[5] << std::endl;
 		}
 		else if(strcmpi(header.c_str(), "Content-Length") == 0)
 		{
 			blob_->Realloc(fromString<size_t>(result[5].str()));
-			// GetDebugLog() << "Got content-length of " << result[5] << std::endl;
+			GetDebugLog() << "Got content-length of " << result[5] << std::endl;
 		}
 	}
 
@@ -168,7 +169,7 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 	blob_ = blob;
 	blobDataSize_ = 0;
 
-	// GetDebugLog() << uri.GetUri();
+	GetDebugLog() << uri.GetUri();
 	// XXX: Capture any throws from setOpt
 	curl_.setOpt(curlpp::options::Url(uri));
 	curl_.perform();

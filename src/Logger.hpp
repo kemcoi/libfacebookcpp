@@ -67,6 +67,7 @@ public: // public types
 public: // public interface
 	Logger();
 	std::ostream& GetStream(LogLevel level, int lineNumber, const char* file);
+	void SetStream(LogLevel level, std::ostream& stream);
 
 private:
 	LogStream stream_[LL_COUNT];

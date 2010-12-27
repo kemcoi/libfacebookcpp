@@ -42,7 +42,7 @@ void Logger::SetStream(LogLevel level, std::ostream& stream)
 
 std::ostream& Logger::GetStream(LogLevel level, int lineNumber, const char* file)
 {
-	LF_ASSERT(level >= LL_ERROR && level < LL_COUNT);
+	LIBFACEBOOKCPP_ASSERT(level >= LL_ERROR && level < LL_COUNT);
 
 	static const char *s_level[] = {
 		"Error: ", "Warning: ", "Info: ", "Debug: "

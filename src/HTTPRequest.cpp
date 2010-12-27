@@ -51,7 +51,7 @@ std::string Uri::GetUri() const
 		while(it != query_params.end())
 		{
 			builder << '&';
-			builder << curlpp::escape(it->first) << "=" << curlpp::escape(it->second);
+			builder << HttpUtils::Escape(it->first) << "=" << HttpUtils::Escape(it->second);
 			++it;
 		}
 	}
@@ -99,13 +99,14 @@ void DecomposeUri(const std::string& str, Uri *uri)
 			std::string str1 = *it++;
 			std::string str2 = *it++;
 			// XXX: Capture any throws from curlpp::unescape
-			uri->query_params.insert(std::pair<std::string, std::string>(curlpp::unescape(str1), curlpp::unescape(str2)));
+			uri->query_params.insert(std::pair<std::string, std::string>(HttpUtils::Unescape(str1), HttpUtils::Unescape(str2)));
 		}
 	}
 }
 
 } // namespace HttpUtils
 
+/*
 size_t HttpRequest::DebugFunction(curl_infotype type, char *data, size_t size)
 {
 	// Issue #28: Only print to the debug log if we are text-based data. If not, we'll start printing special control codes
@@ -114,7 +115,9 @@ size_t HttpRequest::DebugFunction(curl_infotype type, char *data, size_t size)
 		GetDebugLog().write(data, size);
 	return 0;
 }
+*/
 
+/*
 size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
 {
 	LIBFACEBOOKCPP_ASSERT(blob_);
@@ -179,6 +182,7 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 	blob_ = NULL;
 	blobDataSize_ = 0;
 }
+*/
 
 void HttpRequest::GetResponse(const std::string& uri, Json::Value *value)
 {
@@ -198,8 +202,14 @@ void HttpRequest::GetUri(Uri *uri) const
 	uri->query_params.insert(std::pair<std::string, std::string>("access_token", access_token_));
 }
 
-HttpRequest::HttpRequest(const std::string &access_token) : access_token_(access_token), blob_(NULL), blobDataSize_(0)
+HttpRequest::HttpRequest(const std::string &access_token) : curl_(NULL), access_token_(access_token)
 {
+	curl_ = curl_easy_init();
+
+	if(!curl)
+		throw CurlppException("Unable to create a CURL handle");
+
+	// TODO: Migrate this code to plain C
 	// XXX: Capture throws from curlpp
 	curl_.setOpt(curlpp::Options::Verbose(true));
 	curl_.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::DebugFunction)));

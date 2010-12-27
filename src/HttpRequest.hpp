@@ -27,7 +27,7 @@
 // it should be understood that I do not want, under _any_ circumstances for
 // this entire library to be dependent on CURL. Hence, this is just a work around
 // to ensure this!
-struct CURL;
+typedef void CURL;
 
 namespace LibFacebookCpp
 {

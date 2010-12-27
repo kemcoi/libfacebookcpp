@@ -60,6 +60,7 @@ public:
 
 class LIBFACEBOOKCPP_API CurlException : public virtual Exception, public virtual std::exception
 {
+public:
 	typedef std::exception inherited;
 	CurlException(const char *message);
 };

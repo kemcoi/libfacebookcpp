@@ -49,7 +49,7 @@ UnexpectedException::UnexpectedException(const char *message) : inherited(messag
 	GetErrorLog() << message;
 }
 
-CurlppException::CurlppException(const char *message) : inherited(message)
+CurlException::CurlException(const char *message) : inherited(message)
 {
 	GetErrorLog() << message;
 }

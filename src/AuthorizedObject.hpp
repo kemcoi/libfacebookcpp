@@ -71,7 +71,7 @@ protected: // interface
 		request_->GetUri(&uri);
 
 		// XXX: Capture any throws from curlpp::escape
-		uri.base_uri = StringBuilder() << "https://graph.facebook.com/" << curlpp::escape(id) << "/" << curlpp::escape(page);
+		uri.base_uri = StringBuilder() << "https://graph.facebook.com/" << HttpUtils::Escape(id) << "/" << HttpUtils::Unescape(page);
 
 		Json::Value value;
 		request_->GetResponse(uri.GetUri(), &value);

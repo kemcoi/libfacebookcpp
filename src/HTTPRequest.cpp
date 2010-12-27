@@ -24,6 +24,8 @@
 #include "Exception.hpp"
 #include "ResponseBlob.hpp"
 
+#include <curl/curl.h>
+
 namespace LibFacebookCpp
 {
 
@@ -44,8 +46,7 @@ std::string Uri::GetUri() const
 
 		QueryParamMap::const_iterator it = query_params.begin();
 
-		// XXX: Capture any throws from curlpp::escape
-		builder << curlpp::escape(it->first) << "=" << curlpp::escape(it->second);
+		builder << HttpUtils::Escape(it->first) << "=" << HttpUtils::Escape(it->second);
 		++it;
 
 		while(it != query_params.end())
@@ -98,7 +99,7 @@ void DecomposeUri(const std::string& str, Uri *uri)
 		{
 			std::string str1 = *it++;
 			std::string str2 = *it++;
-			// XXX: Capture any throws from curlpp::unescape
+
 			uri->query_params.insert(std::pair<std::string, std::string>(HttpUtils::Unescape(str1), HttpUtils::Unescape(str2)));
 		}
 	}
@@ -206,17 +207,17 @@ HttpRequest::HttpRequest(const std::string &access_token) : curl_(NULL), access_
 {
 	curl_ = curl_easy_init();
 
-	if(!curl)
-		throw CurlppException("Unable to create a CURL handle");
+	if(!curl_)
+		throw CurlException("Unable to create a CURL handle");
 
 	// TODO: Migrate this code to plain C
 	// XXX: Capture throws from curlpp
-	curl_.setOpt(curlpp::Options::Verbose(true));
-	curl_.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::DebugFunction)));
-	curl_.setOpt(curlpp::Options::WriteFunction(curlpp::types::WriteFunctionFunctor(this, &HttpRequest::WriteFunction)));
-	curl_.setOpt(curlpp::Options::HeaderFunction(curlpp::types::WriteFunctionFunctor(this, &HttpRequest::HeaderFunction)));
-	curl_.setOpt(curlpp::Options::FollowLocation(true));
-	// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
-	curl_.setOpt(curlpp::options::SslVerifyPeer(false));
+	//curl_.setOpt(curlpp::Options::Verbose(true));
+	//curl_.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::DebugFunction)));
+	//curl_.setOpt(curlpp::Options::WriteFunction(curlpp::types::WriteFunctionFunctor(this, &HttpRequest::WriteFunction)));
+	//curl_.setOpt(curlpp::Options::HeaderFunction(curlpp::types::WriteFunctionFunctor(this, &HttpRequest::HeaderFunction)));
+	//curl_.setOpt(curlpp::Options::FollowLocation(true));
+	//// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
+	//curl_.setOpt(curlpp::options::SslVerifyPeer(false));
 }
 } // namespace LibFacebookCpp

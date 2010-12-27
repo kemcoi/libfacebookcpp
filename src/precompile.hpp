@@ -22,7 +22,7 @@
 #define LIBFACEBOOKCPP_PRECOMPILE_H_
 
 #ifdef _WIN32
-// Workaround for Windows retardness
+// Workaround for Windows retard-ness
 #define _CRT_NONSTDC_NO_DEPRECATE
 #define _CRT_SECURE_NO_WARNINGS
 #endif // _WIN32
@@ -30,6 +30,8 @@
 #include "Common.hpp"
 
 // Internal utilities
+#include "Exception.hpp"
+#include "Logger.hpp"
 #include "Utils.hpp"
 
 #define goto _USE_OF_GOTO_IS_NOT_ALLOWED_

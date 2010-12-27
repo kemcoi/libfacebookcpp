@@ -58,10 +58,10 @@ public:
 	UnexpectedException(const char *message);
 };
 
-class LIBFACEBOOKCPP_API CurlppException : public virtual Exception, public virtual std::exception
+class LIBFACEBOOKCPP_API CurlException : public virtual Exception, public virtual std::exception
 {
 	typedef std::exception inherited;
-	CurlppException(const char *message);
+	CurlException(const char *message);
 };
 
 } // namespace LibFacebookCpp

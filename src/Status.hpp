@@ -35,14 +35,15 @@ public:
 	virtual ~Status() { }
 
 	//----------------------------------------------
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
-
-	//----------------------------------------------
 	// Accessors
 	const std::string& GetId() const { return id_; }
 	const From& GetFrom() const { return from_; }
 	const std::string& GetMessage() const { return message_; }
 	const DateTime& GetUpdatedTime() const { return updated_time_; }
+
+private:
+	//----------------------------------------------
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 private:
 	std::string id_;

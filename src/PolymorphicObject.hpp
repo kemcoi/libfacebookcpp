@@ -36,7 +36,7 @@ public: // interface
 	const AuthorizedObject *operator->() const { return ptr_.get(); }
 	AuthorizedObject *operator->() { return ptr_.get(); }
 
-protected: // callback functions
+private: // callback functions
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
 private: // member variables

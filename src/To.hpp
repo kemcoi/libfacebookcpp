@@ -30,8 +30,10 @@ class To: public AuthorizedObject
 public: // accessors
 	
 	const std::list<Friend>& GetTo(){ return toList; }
-protected:
+
+private:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
+
 private: // member variables
 	std::list<Friend> toList;
 

@@ -53,7 +53,7 @@ public: // connections
 	// XXX: make sure all connections are const
 	void GetPicture(PictureSize size, ResponseBlob *blob) const;
 
-protected:
+private:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
 private: // member variables

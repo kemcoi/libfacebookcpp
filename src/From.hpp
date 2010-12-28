@@ -32,11 +32,13 @@ public: // public interface
 	typedef AuthorizedObject inherited;
 	From() { }
 
-protected:
+private:
 	//----------------------------------------------
 	// Callbacks
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
+	// XXX: WTF. Why are these protected?
+protected:
 	//----------------------------------------------
 	// Accessors
 	const std::string& GetName() const { return name_; }

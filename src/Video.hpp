@@ -45,7 +45,7 @@ public: // accessors
 public: // connections
 	void GetComments(List<Comment> *list, const PagingInfo *paging = NULL) const;
 
-protected:
+private:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 private: // member variables

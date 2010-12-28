@@ -37,7 +37,7 @@ public: // accessors
 	float GetLatitude() const { return latitude_; }
 	float GetLongitude() const { return longitude_; }
 
-protected: // callback functions
+private: // callback functions
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
 private: // member variables

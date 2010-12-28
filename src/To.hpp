@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef LIBFACEBOOKCPP_TO_H
-#define LIBFACEBOOKCPP_TO_H
+#ifndef LIBFACEBOOKCPP_TO_H_
+#define LIBFACEBOOKCPP_TO_H_
 
 namespace LibFacebookCpp
 {
@@ -39,4 +39,4 @@ private: // member variables
 
 }
 
-#endif // LIBFACEBOOKCPP_TO_H
+#endif // LIBFACEBOOKCPP_TO_H_

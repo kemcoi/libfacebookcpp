@@ -82,6 +82,20 @@ Session::Session(const std::string& redirectedUri)
 	}
 }
 
+Session::Session(const Session& rhs)
+{
+	*this = rhs;
+}
+
+Session& Session::operator=(const Session& rhs)
+{
+	if(&rhs == this)
+		return *this;
+
+	// XXX: This will crash
+	Init(shared_ptr<HttpRequest>(new HttpRequest(*rhs.request_)));
+}
+
 //----------------------------------------------
 Session::~Session()
 {
@@ -102,6 +116,7 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 	authenticationURL.query_params["client_id"] = clientID;
 	authenticationURL.query_params["redirect_uri"] = redirectURI;
 
+	// XXX: Should these be enums?
 	if(!type.empty())
 	{	
 		authenticationURL.query_params["type"] = type;

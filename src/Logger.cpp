@@ -35,7 +35,7 @@ Logger::Logger()
 
 void Logger::SetStream(LogLevel level, std::ostream& stream)
 {
-	LIBFACEBOOKCPP_CHKARG(level < LL_ERROR || level >= LL_COUNT);
+	LIBFACEBOOKCPP_CHKARG(level >= LL_ERROR && level < LL_COUNT);
 
 	stream_[level].rdbuf(stream.rdbuf());
 }
@@ -45,7 +45,10 @@ std::ostream& Logger::GetStream(LogLevel level, int lineNumber, const char* file
 	LIBFACEBOOKCPP_ASSERT(level >= LL_ERROR && level < LL_COUNT);
 
 	static const char *s_level[] = {
-		"Error: ", "Warning: ", "Info: ", "Debug: "
+		"Error: ", "Warning: ", 
+#ifdef DEBUG
+		"Info: ", "Debug: "
+#endif // DEBUG
 	};
 
 	LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(s_level) == LL_COUNT);

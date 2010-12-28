@@ -33,8 +33,14 @@
 
 #define GetErrorLog() GetLog(LL_ERROR)
 #define GetWarnLog()  GetLog(LL_WARN)
+#ifdef DEBUG
 #define GetDebugLog() GetLog(LL_DEBUG)
 #define GetInfoLog()  GetLog(LL_INFO)
+#else
+// XXX: Temporarily workaround to get stuff to compile
+#define GetDebugLog() GetLog(LL_WARN)
+#define GetInfoLog() GetLog(LL_WARN)
+#endif // DEBUG
 
 namespace LibFacebookCpp
 {
@@ -51,6 +57,15 @@ private: // private ctor
 	friend class Logger;
 };
 
+class NoopStream
+{
+public:
+	inline NoopStream& operator << (const std::string &rhs)
+	{
+		return *this;
+	}
+};
+
 class Logger
 {
 public: // public types
@@ -58,8 +73,10 @@ public: // public types
 	{
 		LL_ERROR,
 		LL_WARN,
+#ifdef DEBUG
 		LL_INFO,
 		LL_DEBUG,
+#endif // DEBUG
 
 		LL_COUNT
 	};

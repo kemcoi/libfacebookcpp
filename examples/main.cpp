@@ -1,22 +1,32 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 #include <LibFacebookCpp.hpp>
 
 namespace Facebook = LibFacebookCpp;
 
 #include <Windows.h>
 
+std::string GetClientId()
+{
+	std::ifstream fin("clientid.txt");
+	std::string id;
+	getline(fin, id);
+	return id;
+}
+
 int main()
 {
 	{
 		// let's use this for now
-		std::string	clientid = "232486072316";
+		std::string	clientid = GetClientId();
 		std::string redirectURI = "http://www.facebook.com/connect/login_success.html";
-		Facebook::ExtendedPermissions scope;
+		/*Facebook::ExtendedPermissions scope;
 		scope.RequestPermission(Facebook::EP_EMAIL);
 		scope.RequestPermission(Facebook::EP_USER_PHOTOS);
-		scope.RequestPermission(Facebook::EP_READ_MAILBOX);
+		scope.RequestPermission(Facebook::EP_READ_MAILBOX);*/
 
-		std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, "user_agent", std::string(), scope);
+		std::string url = Facebook::Session::GetAuthenticationURL(clientid, redirectURI, "user_agent", std::string());
 
 		std::cout << "PASTE THIS INTO YOUR BROWSER TO ACCEPT" << std::endl;
 		std::cout << std::endl << url << std::endl;

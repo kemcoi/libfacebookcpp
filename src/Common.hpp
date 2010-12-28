@@ -29,11 +29,21 @@
 #include <ostream>
 #include <set>
 #include <ctime>
-#include <regex>
+#include <cassert>
 
 // External libraries
+// XXX: UGLY!
 #include <json/json.h>
 
+#ifdef _MSC_VER
+#define LIBFACEBOOKCPP_OVERRIDE override
+#define LIBFACEBOOKCPP_ASSERT(x) assert(x); __assume(x); __analysis_assume(x)
+#else
+#define LIBFACEBOOKCPP_OVERRIDE
+#define LIBFACEBOOKCPP_ASSERT(x) assert(x);
+#endif // _MSC_VER
+
+/*
 // XXX: TODO: Static lib
 #ifdef LIBFACEBOOKCPP_EXPORTS
 #define LIBFACEBOOKCPP_API __declspec(dllexport)
@@ -55,6 +65,9 @@
 #define LIBFACEBOOKCPP_OVERRIDE
 #define LIBFACEBOOKCPP_ASSERT(x)
 #endif // LIBFACEBOOKCPP_EXPORTS
+*/
+
+#define LIBFACEBOOKCPP_API
 
 #define LIBFACEBOOKCPP_CHKARG(arg) if(!(arg)) throw InvalidArgument("Invalid Argument: " #arg);
 
@@ -66,8 +79,6 @@ namespace LibFacebookCpp
 {
 
 using std::tr1::shared_ptr;
-using std::tr1::regex;
-using std::tr1::cmatch;
 
 } // namespace LibFacebookCpp
 

@@ -21,13 +21,7 @@
 #ifndef LIBFACEBOOKCPP_HTTPREQUEST_H_
 #define LIBFACEBOOKCPP_HTTPREQUEST_H_
 
-// Forward declare the CURL handle object
-// Note: This is considered bad practice in the general field
-// to forward declare stuff that is part of an external library. However,
-// it should be understood that I do not want, under _any_ circumstances for
-// this entire library to be dependent on CURL. Hence, this is just a work around
-// to ensure this!
-typedef void CURL;
+#include <curl/curl.h>
 
 namespace LibFacebookCpp
 {
@@ -60,10 +54,9 @@ private: // private ctor
 	HttpRequest(const std::string &access_token);
 
 private: // private helper functions
-	// TODO: upgrade to curl
-//	size_t HeaderFunction(char *data, size_t size, size_t nmemb);
-//	size_t WriteFunction(char *data, size_t size, size_t nmemb);
-//	size_t DebugFunction(curl_infotype type, char *data, size_t size);
+	static size_t HeaderFunction(char *data, size_t size, size_t nmemb, void *userdata);
+	static size_t WriteFunction(char *data, size_t size, size_t nmemb, void *userdata);
+	static size_t DebugFunction(curl_infotype type, char *data, size_t size, void *userdata);
 
 public: // public interface
 	void GetResponse(const std::string& uri, ResponseBlob *blob);
@@ -72,6 +65,8 @@ public: // public interface
 
 private: // member variables
 	CURL *curl_;
+	ResponseBlob *blob_;
+	size_t blobSize_;
 	std::string access_token_;
 
 	friend class Session;

@@ -138,7 +138,7 @@ size_t HttpRequest::DebugFunction(curl_infotype type, char *data, size_t size, v
 		GetDebugLog().write(data, size);
 	return 0;
 }
-#endif
+#endif // DEBUG
 
 size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb, void *userdata)
 {

@@ -151,4 +151,4 @@ private:
 
 } // namespace LibFacebookCpp
 
-#endif
+#endif // LIBFACEBOOKCPP_USER_H_

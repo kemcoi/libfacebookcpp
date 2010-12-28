@@ -53,4 +53,4 @@ private:
 
 } // namespace LibFacebookCpp
 
-#endif
+#endif // LIBFACEBOOKCPP_STATUS_H_

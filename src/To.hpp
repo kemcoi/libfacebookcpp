@@ -21,7 +21,6 @@
 #ifndef LIBFACEBOOKCPP_TO_H
 #define LIBFACEBOOKCPP_TO_H
 
-
 namespace LibFacebookCpp
 {
 	class Friend;
@@ -37,7 +36,7 @@ private: // member variables
 	std::list<Friend> toList;
 
 };
+
 }
 
-
-#endif
+#endif // LIBFACEBOOKCPP_TO_H

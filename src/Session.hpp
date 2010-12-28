@@ -63,5 +63,4 @@ private:
 
 } // namespace LibFacebookCpp
 
-#endif
-
+#endif LIBFACEBOOKCPP_SESSION_H_

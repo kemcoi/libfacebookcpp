@@ -93,5 +93,6 @@ private: // member variables
 	PagingUri paging_;
 };
 
-}
-#endif
+} // namespace LibFacebookCpp
+
+#endif // LIBFACEBOOKCPP_LIST_H_

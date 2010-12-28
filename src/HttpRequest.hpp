@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef LIBFACEBOOKCPP_HTTPREQUEST_H_
-#define LIBFACEBOOKCPP_HTTPREQUEST_H_
+#ifndef LIBFACEBOOKCPP_HTTP_REQUEST_H_
+#define LIBFACEBOOKCPP_HTTP_REQUEST_H_
 
 #include <curl/curl.h>
 
@@ -74,4 +74,4 @@ private: // member variables
 
 } // namespace LibFacebookCpp
 
-#endif // LIBFACEBOOKCPP_HTTPREQUEST_H_
+#endif // LIBFACEBOOKCPP_HTTP_REQUEST_H_

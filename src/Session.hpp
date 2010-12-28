@@ -54,7 +54,6 @@ public:
 	void GetUserById(const std::string& userID, User *user);
 
 private:
-
 	// stick this as private to avoid being called
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 

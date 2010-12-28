@@ -82,6 +82,8 @@ Session::Session(const std::string& redirectedUri)
 	}
 }
 
+// XXX: TODO: Implement a copy ctor for session
+#if 0
 Session::Session(const Session& rhs)
 {
 	*this = rhs;
@@ -95,6 +97,7 @@ Session& Session::operator=(const Session& rhs)
 	// XXX: This will crash
 	Init(shared_ptr<HttpRequest>(new HttpRequest(*rhs.request_)));
 }
+#endif // 0
 
 //----------------------------------------------
 Session::~Session()

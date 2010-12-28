@@ -30,7 +30,7 @@ int main()
 	std::string redirectURL;
 
 	std::cout << "Press any key to continue...." << std::endl;
-	getch();
+	std::cin.get();
 
 	std::cout << "COPY THE REDIRECTED URL INTO HERE";
 	std::cin >> redirectURL;
@@ -65,7 +65,7 @@ int main()
 	homeList.GetNext();
 
 	std::cout << "Press any key to continue..." << std::endl;
-	getch();
+	std::cin.get();
 
 	return 0;
 }

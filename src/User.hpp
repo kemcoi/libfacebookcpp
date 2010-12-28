@@ -46,7 +46,7 @@ class List;
 
 class LIBFACEBOOKCPP_API Location : public AuthorizedObject
 {
-public: // public interface
+private: // public interface
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 public: // accessors
@@ -67,9 +67,11 @@ public:
 	virtual ~User() { }
 	//----------------------------------------------
 
+private:
 	//----------------------------------------------
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
+public:
 	//----------------------------------------------
 	//Getters
 	const std::string& GetId() const { return id_; }

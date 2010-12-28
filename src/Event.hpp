@@ -52,7 +52,7 @@ public: // connections
 	void GetDeclinedConnection(List<Friend> *list, const PagingInfo *paging = NULL) const;
 	void GetPictureConnection(PictureSize size, ResponseBlob *blob);
 
-protected: // callback functions
+private: // callback functions
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
 private: // member variables

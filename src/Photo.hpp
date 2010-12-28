@@ -36,9 +36,10 @@ public: // ctor and ~()
 	Photo() { }
 	virtual ~Photo() { }
 
-public: // public interface
+private:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
+public: // public interface
 	const std::string& GetId() const { return id_; }
 	const From& GetFrom() const { return from_; }
 	const std::string& GetName() const { return name_; }

@@ -33,7 +33,7 @@ public: // accessors
 	const std::string& GetMessage() const { return message_; }
 	const DateTime& GetCreatedTime() const { return created_time_; }
 
-public: // interface
+private:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 private: // member variables

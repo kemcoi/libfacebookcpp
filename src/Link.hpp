@@ -47,7 +47,7 @@ public: // connection
 	void GetComments(List<Comment> *list, const PagingInfo *paging = NULL) const;
 
 	// XXX: comment callback
-protected: // callback functions
+private: // callback functions
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
 private: // member variables

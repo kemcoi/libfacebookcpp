@@ -38,7 +38,7 @@ public: // accessors
 	const std::string& GetMessageContents() const { return message_; }
 	const std::string& GetUpdatedTime() const { return updated_time_; }
 
-protected:
+private:
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 private: // member variables 

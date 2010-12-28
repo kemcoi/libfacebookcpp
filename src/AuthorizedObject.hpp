@@ -51,11 +51,10 @@ protected:
 
 private:
 	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
+	virtual void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) = 0;
 
 protected: // interface
 	AuthorizedObject() { }
-
-	virtual void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) = 0;
 
 	void _GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const;
 

@@ -62,6 +62,7 @@ Session::Session(const std::string& redirectedUri)
 	{
 		// We don't have any query parameters in the string. Great, just copy over the string
 		decomposeUri = redirectedUri;
+		decomposeUri[idxAnchor] = '?';
 	}
 
 	Uri redirectedParams;

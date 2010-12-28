@@ -24,8 +24,6 @@
 #include "Exception.hpp"
 #include "ResponseBlob.hpp"
 
-#include <curl/curl.h>
-
 namespace LibFacebookCpp
 {
 
@@ -105,10 +103,34 @@ void DecomposeUri(const std::string& str, Uri *uri)
 	}
 }
 
+std::string Escape(const std::string& str)
+{
+	char *escaped = curl_easy_escape(NULL, str.c_str(), str.length());
+
+	if(!escaped)
+		throw CurlException("CURL failed to escape string");
+
+	std::string escapedStr(escaped);
+	curl_free(escaped);
+	return escapedStr;
+}
+
+std::string Unescape(const std::string& str)
+{
+	char *unescaped = curl_easy_unescape(NULL, str.c_str(), str.length(), NULL);
+
+	if(!unescaped)
+		throw CurlException("CURL failed to unescape string");
+
+	std::string unescapedStr(unescaped);
+	curl_free(unescaped);
+	return unescapedStr;
+}
+
 } // namespace HttpUtils
 
-/*
-size_t HttpRequest::DebugFunction(curl_infotype type, char *data, size_t size)
+#ifdef DEBUG
+size_t HttpRequest::DebugFunction(curl_infotype type, char *data, size_t size, void *userdata)
 {
 	// Issue #28: Only print to the debug log if we are text-based data. If not, we'll start printing special control codes
 	// which include the alert code
@@ -116,51 +138,67 @@ size_t HttpRequest::DebugFunction(curl_infotype type, char *data, size_t size)
 		GetDebugLog().write(data, size);
 	return 0;
 }
-*/
+#endif
 
-/*
-size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb)
+size_t HttpRequest::HeaderFunction(char *data, size_t size, size_t nmemb, void *userdata)
 {
-	LIBFACEBOOKCPP_ASSERT(blob_);
+	LIBFACEBOOKCPP_ASSERT(userdata);
 
-	cmatch result;
-	// TODO: This is inefficient, but making it static makes us leak memory. We need a global ->Init(); call
-	// which initializes this regex, etc.
-	regex rx("(\\s)*([^:]+)(\\s)*:(\\s)*(.+)(\\s)*");
+	HttpRequest *request = static_cast<HttpRequest*>(userdata);
+	LIBFACEBOOKCPP_ASSERT(request->blob_);
 
-	if(regex_search((const char*)data, (const char*)data + size * nmemb, result, rx))
+	// This would typically be done by a regex in _any_ language, however... for pure efficiency reasons, do this parsing by hand here
+	// Note: In order to make out lives _a little_ easier, we do an initial string copy. This really does help us a lot in
+	// preventing us from re-writing half of C's string library
+
+	std::string header(data, size * nmemb);
+	std::string::size_type found = header.find(':');
+
+	if(std::string::npos != found)
 	{
-		// regex really only allows us to get a .str() out of the matches
-		std::string header = result[2].str();
-		if(strcmpi(header.c_str(), "Content-Type") == 0)
+		std::string headerKey = header.substr(0, found);
+
+		if(strcmpi(headerKey.c_str(), "Content-Type") == 0)
 		{
-			blob_->SetContentType(result[5].str());
-			GetDebugLog() << "Got content-type of " << result[5] << std::endl;
+			std::string::size_type startPos = header.find_first_not_of(" ", found + 1);
+			std::string::size_type endPos = header.find_last_not_of(" \r\n");
+			std::string headerData = header.substr(startPos, endPos - startPos - 1);
+
+			request->blob_->SetContentType(headerData);
+			GetDebugLog() << "Got content-type of " << headerData << std::endl;
 		}
-		else if(strcmpi(header.c_str(), "Content-Length") == 0)
+		else if(strcmpi(headerKey.c_str(), "Content-Length") == 0)
 		{
-			blob_->Realloc(fromString<size_t>(result[5].str()));
-			GetDebugLog() << "Got content-length of " << result[5] << std::endl;
+			std::string::size_type startPos = header.find_first_not_of(" ", found + 1);
+			std::string::size_type endPos = header.find_last_not_of(" \r\n");
+			std::string headerData = header.substr(startPos, endPos - startPos - 1);
+
+			request->blob_->Realloc(fromString<size_t>(headerData));
+			GetDebugLog() << "Got content-length of " << headerData << std::endl;
 		}
 	}
 
 	return size * nmemb;
 }
 
-size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb)
+size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb, void *userdata)
 {
-	LIBFACEBOOKCPP_ASSERT(blob_);
+	LIBFACEBOOKCPP_ASSERT(userdata);
+
+	HttpRequest *request = static_cast<HttpRequest*>(userdata);
+	LIBFACEBOOKCPP_ASSERT(request->blob_);
+
 	LIBFACEBOOKCPP_ASSERT(data);
 
-	if(blobDataSize_ + size * nmemb > blob_->GetLength())
+	if(request->blobSize_ + size * nmemb > request->blob_->GetLength())
 	{
 		// Extend the buffer by 4k
 		static const size_t s_bufferExtension = 4096;
-		blob_->Realloc(blobDataSize_ + size * nmemb + s_bufferExtension);
+		request->blob_->Realloc(request->blobSize_ + size * nmemb + s_bufferExtension);
 	}
 
-	memcpy((char*)blob_->GetData() + blobDataSize_, data, size * nmemb);
-	blobDataSize_ += size * nmemb;
+	memcpy((char*)request->blob_->GetData() + request->blobSize_, data, size * nmemb);
+	request->blobSize_ += size * nmemb;
 	return size * nmemb;
 }
 
@@ -168,22 +206,28 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 {
 	LIBFACEBOOKCPP_ASSERT(blob);
 	LIBFACEBOOKCPP_ASSERT(!blob_); // This object isn't thread-safe!
-	LIBFACEBOOKCPP_ASSERT(blobDataSize_ == 0);
+	LIBFACEBOOKCPP_ASSERT(blobSize_ == 0);
+
+	GetDebugLog() << uri;
 
 	blob_ = blob;
-	blobDataSize_ = 0;
+	blobSize_ = 0;
 
-	GetDebugLog() << uri.GetUri();
-	// XXX: Capture any throws from setOpt
-	curl_.setOpt(curlpp::options::Url(uri));
-	curl_.perform();
+	CURLcode result;
 
-	blob_->Realloc(blobDataSize_);
+	result = curl_easy_setopt(curl_, CURLOPT_URL, uri.c_str());
+	if(CURLE_OK != result)
+		throw CurlException("Failed to set the URL on CURL");
+
+	result = curl_easy_perform(curl_);
+	if(CURLE_OK != result)
+		throw CurlException("Failed to perform the CURL operation");
+
+	blob_->Realloc(blobSize_);
 
 	blob_ = NULL;
-	blobDataSize_ = 0;
+	blobSize_ = 0;
 }
-*/
 
 void HttpRequest::GetResponse(const std::string& uri, Json::Value *value)
 {
@@ -203,21 +247,35 @@ void HttpRequest::GetUri(Uri *uri) const
 	uri->query_params.insert(std::pair<std::string, std::string>("access_token", access_token_));
 }
 
-HttpRequest::HttpRequest(const std::string &access_token) : curl_(NULL), access_token_(access_token)
+HttpRequest::HttpRequest(const std::string &access_token) : curl_(NULL), blob_(NULL), blobSize_(0), access_token_(access_token)
 {
 	curl_ = curl_easy_init();
 
 	if(!curl_)
 		throw CurlException("Unable to create a CURL handle");
 
-	// TODO: Migrate this code to plain C
-	// XXX: Capture throws from curlpp
-	//curl_.setOpt(curlpp::Options::Verbose(true));
-	//curl_.setOpt(curlpp::options::DebugFunction(curlpp::types::DebugFunctionFunctor(this, &HttpRequest::DebugFunction)));
-	//curl_.setOpt(curlpp::Options::WriteFunction(curlpp::types::WriteFunctionFunctor(this, &HttpRequest::WriteFunction)));
-	//curl_.setOpt(curlpp::Options::HeaderFunction(curlpp::types::WriteFunctionFunctor(this, &HttpRequest::HeaderFunction)));
-	//curl_.setOpt(curlpp::Options::FollowLocation(true));
+#define HTTPREQUEST_CURL_SET(opt, arg) \
+	if(CURLE_OK != curl_easy_setopt(curl_, (opt), (arg))) \
+		throw CurlException("Unable to set CURL argument");
+
+#ifdef DEBUG
+	HTTPREQUEST_CURL_SET(CURLOPT_VERBOSE, 1);
+	HTTPREQUEST_CURL_SET(CURLOPT_DEBUGFUNCTION, &HttpRequest::DebugFunction);
+	HTTPREQUEST_CURL_SET(CURLOPT_DEBUGDATA, this);
+#endif // DEBUG
+
+	HTTPREQUEST_CURL_SET(CURLOPT_WRITEFUNCTION, &HttpRequest::WriteFunction);
+	HTTPREQUEST_CURL_SET(CURLOPT_WRITEDATA, this);
+
+	HTTPREQUEST_CURL_SET(CURLOPT_HEADERFUNCTION, &HttpRequest::HeaderFunction);
+	HTTPREQUEST_CURL_SET(CURLOPT_HEADERDATA, this);
+
+	HTTPREQUEST_CURL_SET(CURLOPT_FOLLOWLOCATION, 1);
+
 	//// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
-	//curl_.setOpt(curlpp::options::SslVerifyPeer(false));
+	HTTPREQUEST_CURL_SET(CURLOPT_SSL_VERIFYPEER, 0);
+
+#undef HTTPREQUEST_CURL_SET
 }
+
 } // namespace LibFacebookCpp

@@ -47,7 +47,6 @@ void AuthorizedObject::_GetPictureConnection(const std::string &id, PictureSize 
 	Uri uri;
 	request_->GetUri(&uri);
 
-	// XXX: Capture an throws from curlpp::escape
 	uri.base_uri = StringBuilder() << "https://graph.facebook.com/" << HttpUtils::Escape(id) << "/picture";
 
 	static const char *s_sizeType[] = {

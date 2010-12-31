@@ -43,31 +43,17 @@
 #define LIBFACEBOOKCPP_ASSERT(x) assert(x);
 #endif // _MSC_VER
 
-/*
-// XXX: TODO: Static lib
-#ifdef LIBFACEBOOKCPP_EXPORTS
+#if defined(LIBFACEBOOKCPP_BUILD_DYNAMIC) && defined(_MSC_VER)
+//Dynamic builds
+#ifdef LIBFACEBOOKCPP_BUILDING
 #define LIBFACEBOOKCPP_API __declspec(dllexport)
-// Only if we are building libfacebookcpp that we need to worry about enforcing these macros
-// Compiler specific defines
-#if defined(_MSC_VER)
-// Visual C++
-#define LIBFACEBOOKCPP_OVERRIDE override
-#define LIBFACEBOOKCPP_ASSERT(x) assert(x); __assume(x); __analysis_assume(x)
-#else // defined(_MSC_VER)
-// Other compilers
-#define LIBFACEBOOKCPP_OVERRIDE
-#define LIBFACEBOOKCPP_ASSERT(x) assert(x)
-// XXX:
-#error "We need to include shared_ptr"
-#endif // defined(_MSC_VER)
-#else // LIBFACEBOOKCPP_EXPORTS
+#else // LIBFACEBOOKCPP_BUILDING
 #define LIBFACEBOOKCPP_API __declspec(dllimport)
-#define LIBFACEBOOKCPP_OVERRIDE
-#define LIBFACEBOOKCPP_ASSERT(x)
-#endif // LIBFACEBOOKCPP_EXPORTS
-*/
-
+#endif // LIBFACEBOOKCPP_BUILDING
+#else // defined(LIBFACEBOOKCPP_BUILD_DYNAMIC) && defined(_MSC_VER)
+// Static builds
 #define LIBFACEBOOKCPP_API
+#endif // defined(LIBFACEBOOKCPP_BUILD_DYNAMIC) && defined(_MSC_VER)
 
 #define LIBFACEBOOKCPP_CHKARG(arg) if(!(arg)) throw InvalidArgument("Invalid Argument: " #arg);
 

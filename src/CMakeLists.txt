@@ -1,6 +1,30 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-#FIND_PACKAGE(jsoncpp)
+SET(LIBFACEBOOKCPP_CURL_VERSION "curl-7.21.3")
+SET(LIBFACEBOOKCPP_JSONCPP_VERSION "jsoncpp-src-0.5.0")
+
+FIND_PACKAGE(curl)
+IF(NOT CURL_FOUND)
+	# If curl not found, build our own
+
+	SET(CURL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LIBFACEBOOKCPP_CURL_VERSION}/include/)
+	SET(CURL_LIBRARIES libcurl)
+
+	SET(BUILD_CURL_EXE OFF)
+	SET(BUILD_CURL_TESTS OFF)
+
+	ADD_SUBDIRECTORY(external-lib/${LIBFACEBOOKCPP_CURL_VERSION})
+ENDIF(NOT CURL_FOUND)
+
+# TODO: We don't have the support to link to jsoncpp right now. There is no standard find* for it and I don't have access
+# to a *nix system to write a unified find* file. Hence, just force include it everytime
+# IF(NOT JSONCPP_FOUND)
+	#If jsoncpp is not found, build our own
+	SET(JSONCPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LIBFACEBOOKCPP_JSONCPP_VERSION}/include/)
+	SET(JSONCPP_LIBRARIES jsoncpp)
+
+	ADD_SUBDIRECTORY(external-lib/${LIBFACEBOOKCPP_JSONCPP_VERSION})
+# ENDIF(NOT JSONCPP_FOUND)
 
 SET(LIBFACEBOOKCPP_SRCS
 	Album.hpp

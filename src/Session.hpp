@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 
+ * Copyright (C) 2010-2011
  * Written by:
  * Aly Hirani <alyhirani@gmail.com>
  * James Chou <uohcsemaj@gmail.com>
@@ -41,17 +41,24 @@ public:
 	// You must call this to receive the authentication URL
 	// This URL must be accepted by the user in order to retrieve 
 	// the access token. */
+	// XXX: This exnteded permissions should be boost::optional, instead of creating an empty pod
 	static const std::string GetAuthenticationURL(const std::string& clientID,
 												  const std::string& redirectURI,
 												  const std::string& type,
 												  const std::string& display,
-												  const ExtendedPermissions& scope = ExtendedPermissions());
+												  const boost::optional<const ExtendedPermissions&> &scope = boost::none_t());
 
 	//----------------------------------------------
 	// Getters
 
-	void GetCurrentUser(User *user);
-	void GetUserById(const std::string& userID, User *user);
+	void GetCurrentUser(User *user) const;
+	void GetUserById(const std::string& userID, User *user) const;
+
+	// Connections
+	// XXX: What does this call return?
+	// XXX: A struct for coordinates
+	// XXX: How should the list be?
+	void CreateCheckin(const std::string &longitude, const std::string &latitude, const std::string &place_id, const boost::optional<const std::list<const std::string>&> &tags, const boost::optional<std::string&>& message);
 
 private:
 	// stick this as private to avoid being called

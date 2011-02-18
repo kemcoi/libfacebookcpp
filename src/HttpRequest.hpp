@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 
+ * Copyright (C) 2010-2011
  * Written by:
  * Aly Hirani <alyhirani@gmail.com>
  * James Chou <uohcsemaj@gmail.com>
@@ -59,6 +59,8 @@ private: // private helper functions
 	static size_t DebugFunction(curl_infotype type, char *data, size_t size, void *userdata);
 
 public: // public interface
+	void PostResponse(const Uri &uri, ResponseBlob *blob);
+
 	void GetResponse(const std::string& uri, ResponseBlob *blob);
 	void GetResponse(const std::string& uri, Json::Value *value);
 	void GetUri(Uri *uri) const;

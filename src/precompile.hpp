@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 
+ * Copyright (C) 2010-2011
  * Written by:
  * Aly Hirani <alyhirani@gmail.com>
  * James Chou <uohcsemaj@gmail.com>
@@ -36,8 +36,8 @@
 
 #define goto _USE_OF_GOTO_IS_NOT_ALLOWED_
 #define const_cast _USE_OF_CONST_CAST_IS_NOT_ALLOWED_
-#define LIBFACEBOOKCPP_CASSERT(x) (void)(sizeof(char[2 * !!(x) - 1]))
+#define LIBFACEBOOKCPP_CASSERT(x) typedef char CASSERT_ASSERT_FAILURE_##__FILE__##__LINE__[2 * !!(x) - 1];
 // XXX: TODO: Break on non-arrays
-#define LIBFACEBOOKCPP_NUMELMS(x) sizeof(x) / sizeof(x[0])
+#define LIBFACEBOOKCPP_NUMELMS(x) (sizeof(x) / sizeof(x[0]))
 
 #endif // LIBFACEBOOKCPP_PRECOMPILE_H_

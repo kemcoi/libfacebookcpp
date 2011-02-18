@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 
+ * Copyright (C) 2010-2011
  * Written by:
  * Aly Hirani <alyhirani@gmail.com>
  * James Chou <uohcsemaj@gmail.com>
@@ -25,6 +25,7 @@
 #include "Friend.hpp"
 #include "Venue.hpp"
 #include "DateTime.hpp"
+#include "Enum.hpp"
 
 // XXX: Clean up the includes everywhere
 // XXX: Clean up forward references everywhere
@@ -37,6 +38,24 @@ class Friend;
 
 class LIBFACEBOOKCPP_API Group : public AuthorizedObject
 {
+private: // private data
+	static const char *s_array_privacy[];
+
+public: // enums
+	enum LIBFACEBOOKCPP_API Privacy
+	{
+		P_NONE,
+
+		P_OPEN,
+		P_CLOSED,
+		P_SECRET,
+
+		P_COUNT
+	};
+
+	// XXX: Fix this when CASSERT is fixed
+	// LIBFACEBOOKCPP_CASSERT(LIBFACEBOOKCPP_NUMELMS(Group::array_privacy_str) == Group::P_COUNT);
+
 public: // accessors
 	const std::string& GetId() const { return id_; }
 	const Friend& GetOwner() const { return owner_; }
@@ -44,7 +63,7 @@ public: // accessors
 	const std::string& GetDescription() const { return description_; }
 	const std::string& GetLink() const { return link_; }
 	const Venue& GetVenue() const { return venue_; }
-	const std::string& GetPrivacy() const { return privacy_; }
+	Privacy GetPrivacy() const { return privacy_; }
 	const DateTime& GetUpdatedTime() const { return updated_time_; }
 
 public: // connections
@@ -64,9 +83,7 @@ private: // member variables
 	std::string description_;
 	std::string link_;
 	Venue venue_;
-	// TODO: Enum?
-	std::string privacy_;
-	// XXX: Need a timestamp class
+	Enum<Privacy, P_NONE, P_COUNT, s_array_privacy> privacy_;
 	DateTime updated_time_;
 };
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 
+ * Copyright (C) 2010-2011
  * Written by:
  * Aly Hirani <alyhirani@gmail.com>
  * James Chou <uohcsemaj@gmail.com>
@@ -26,6 +26,7 @@
 #include "User.hpp"
 #include "Exception.hpp"
 #include "Photo.hpp"
+#include "Serializer.hpp"
 
 namespace LibFacebookCpp
 {
@@ -110,7 +111,7 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 												const std::string& redirectURI,
 												const std::string& type, 
 												const std::string& display,
-												const ExtendedPermissions& scope /* = ExtendedPermissions() */)
+												const boost::optional<const ExtendedPermissions&> &scope /* = boost::none_t() */)
 {
 	// GetInfoLog() << "Creating Authentication URL" << std::endl;
 	Uri authenticationURL;
@@ -130,24 +131,41 @@ const std::string Session::GetAuthenticationURL(const std::string& clientID,
 		authenticationURL.query_params["display"] = display;
 	}
 
-	if(scope.PermissionsRequested())
+	// XXX: We have duplication here!
+	if(scope && scope->PermissionsRequested())
 	{
-		authenticationURL.query_params["scope"]  = scope.GetPermissionsString();
+		authenticationURL.query_params["scope"]  = scope->GetPermissionsString();
 	}
 
 	return authenticationURL.GetUri();
 }
 
 //----------------------------------------------
-void Session::GetCurrentUser(User *user)
+void Session::GetCurrentUser(User *user) const
 {
 	_GetConnection("me", "", user);
 }
 
 //----------------------------------------------
-void Session::GetUserById(const std::string& userID, User *user)
+void Session::GetUserById(const std::string& userID, User *user) const
 {
 	_GetConnection(userID, "", user);
+}
+
+void Session::CreateCheckin(const std::string &longitude, const std::string &latitude, const std::string &place, const boost::optional<const std::list<const std::string>&> &tags, const boost::optional<std::string&>& message)
+{
+	LIBFACEBOOKCPP_CHKARG(!longitude.empty() && !latitude.empty() && !place.empty());
+
+	std::map<std::string, std::string> coordinates;
+	coordinates.insert(make_pair("longitude", longitude));
+	coordinates.insert(make_pair("latitude", latitude));
+
+	Serializer s;
+	s.Serialize("coordinates", coordinates);
+	s.Serialize("place", place);
+	s.Serialize("tags", tags);
+	s.Serialize("message", message);
+	_Post(s);
 }
 
 void Session::_Deserialize(const AuthorizedObject & /* parent_obj */, const Json::Value & /* json */)

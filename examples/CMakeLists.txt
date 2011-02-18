@@ -9,13 +9,13 @@ PROJECT(examples)
 SET(LIBFACEBOOKCPP_CURL_VERSION "curl-7.21.3")
 SET(LIBFACEBOOKCPP_JSONCPP_VERSION "jsoncpp-src-0.5.0")
 
-FIND_PACKAGE(curl)
-IF(NOT CURL_FOUND)
+#FIND_PACKAGE(curl)
+#IF(NOT CURL_FOUND)
 	# If curl not found, build our own
 
-	SET(CURL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../src/external-lib/${LIBFACEBOOKCPP_CURL_VERSION}/include/)
-	SET(CURL_LIBRARIES libcurl)
-ENDIF(NOT CURL_FOUND)
+#	SET(CURL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../src/external-lib/${LIBFACEBOOKCPP_CURL_VERSION}/include/)
+#	SET(CURL_LIBRARIES libcurl)
+#ENDIF(NOT CURL_FOUND)
 
 # TODO: We don't have the support to link to jsoncpp right now. There is no standard find* for it and I don't have access
 # to a *nix system to write a unified find* file. Hence, just force include it everytime

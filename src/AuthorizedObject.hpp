@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 
+ * Copyright (C) 2010-2011
  * Written by:
  * Aly Hirani <alyhirani@gmail.com>
  * James Chou <uohcsemaj@gmail.com>
@@ -56,7 +56,31 @@ private:
 protected: // interface
 	AuthorizedObject() { }
 
+	// XXX: Get rid of the "_". They are reserved for internal C++ library usage only!
+
 	void _GetPictureConnection(const std::string &id, PictureSize size, ResponseBlob *blob) const;
+
+	// XXX: Find class T and replace with TType
+	// XXX: Find a better name for _PostConnection
+	// XXX: Figure out the params required for this
+	// XXX: typedef std::map<>
+	// XXX: Re-use QueryMapParam
+	template<class TType>
+	void _PostConnection(const std::string &url, const std::map<std::string, std::string> &params, TType *t)
+	{
+		Uri uri;
+		request_->GetUri(&uri);
+
+		uri.base_uri = url;
+		uri.query_params.insert(params.begin(), params.end());
+
+		// XXX: Why doesn't GetResponse take a uri directly?
+
+		Json::Value value;
+		request_->PostResponse(uri, &value);
+
+		t->Deserialize(*this, value);
+	}
 
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, TType *t) const

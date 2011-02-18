@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 
+ * Copyright (C) 2010-2011
  * Written by:
  * Aly Hirani <alyhirani@gmail.com>
  * James Chou <uohcsemaj@gmail.com>
@@ -202,6 +202,46 @@ size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb, void *u
 	return size * nmemb;
 }
 
+void HttpRequest::PostResponse(const Uri &uri, ResponseBlob *blob)
+{
+	LIBFACEBOOKCPP_ASSERT(uri.Valid());
+	LIBFACEBOOKCPP_ASSERT(blob);
+	LIBFACEBOOKCPP_ASSERT(!blob_); // This object isn't thread-safe, and neither is this check!
+	LIBFACEBOOKCPP_ASSERT(blobSize_ == 0);
+
+	GetDebugLog() << uri;
+
+	blob_ = blob;
+	blobSize_ = 0;
+
+	CURLcode result;
+
+	// XXX: CRASH! This should be a CURLOPT_URL_COPY!
+	result = curl_easy_setopt(curl_, CURLOPT_URL, uri.base_uri.c_str());
+	if(CURLE_OK != result)
+		throw CurlException("Failed to set the URL on CURL");
+
+	result = curl_easy_setopt(curl_, CURLOPT_HTTPPOST, (long)1);
+	if(CURLE_OK != result)
+		throw CurlException("Failed to set CURL post mode!");
+
+	// XXX: Mangle params together here!
+	std::string params;
+
+	result = curl_easy_setopt(curl_, CURLOPT_COPYPOSTFIELDS, params.c_str());
+	if(CURLE_OK != result)
+		throw CurlException("Unable to set post fields!");
+
+	result = curl_easy_perform(curl_);
+	if(CURLE_OK != result)
+		throw CurlException("Failed to perform CURL operation");
+
+	blob_->Realloc(blobSize_);
+
+	blob_ = NULL;
+	blobSize_ = 0;
+}
+
 void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 {
 	LIBFACEBOOKCPP_ASSERT(blob);
@@ -214,6 +254,10 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 	blobSize_ = 0;
 
 	CURLcode result;
+
+	result = curl_easy_setopt(curl_, CURLOPT_HTTPGET, (long)1);
+	if(CURLE_OK != result)
+		throw CurlException("Failed to set mode on CURL!");
 
 	result = curl_easy_setopt(curl_, CURLOPT_URL, uri.c_str());
 	if(CURLE_OK != result)

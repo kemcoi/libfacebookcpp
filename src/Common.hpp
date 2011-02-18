@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 
+ * Copyright (C) 2010-2011
  * Written by:
  * Aly Hirani <alyhirani@gmail.com>
  * James Chou <uohcsemaj@gmail.com>
@@ -34,6 +34,9 @@
 // External libraries
 // XXX: UGLY!
 #include <json/json.h>
+
+// Boost headers
+#include <boost/optional.hpp>
 
 #ifdef _MSC_VER
 #define LIBFACEBOOKCPP_OVERRIDE override

@@ -48,6 +48,7 @@ SET(LIBFACEBOOKCPP_SRCS
 	LibFacebookCpp.hpp
 	Link.hpp
 	List.hpp
+	Location.hpp
 	Logger.hpp
 	Message.hpp
 	Note.hpp
@@ -81,6 +82,7 @@ SET(LIBFACEBOOKCPP_SRCS
 	HTTPRequest.cpp
 	LibFacebookCpp.cpp
 	Link.cpp
+	Location.cpp
 	Logger.cpp
 	Message.cpp
 	Note.cpp

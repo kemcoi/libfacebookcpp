@@ -18,26 +18,36 @@
  *
  */
 
-#ifndef LIBFACEBOOKCPP_TO_H_
-#define LIBFACEBOOKCPP_TO_H_
+#ifndef LIBFACEBOOKCPP_VIDEO_H_
+#define LIBFACEBOOKCPP_VIDEO_H_
+
+#include "AuthorizedObject.hpp"
+#include "From.hpp"
 
 namespace LibFacebookCpp
 {
 
-class Friend;
-
-class To: public AuthorizedObject
+class LIBFACEBOOKCPP_API Checkin : public AuthorizedObject
 {
 public: // accessors
-	const std::list<Friend>& GetTo() const { return list_; }
+	const std::string& GetId() const { return id_; }
+	const From& GetFrom() const { return from_; }
+	const std::string& GetMessage() const { return message_; }
+	const DateTime& GetCreatedTime() const { return created_time_; }
 
-private:
+private: // callbacks
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
 
 private: // member variables
-	std::list<Friend> list_;
+	std::string id_;
+	From from_;
+	// XXX: How is tags/place listed?
+	std::string message_;
+	// XXX: How is the application listed
+	// XXX: DateTime format changed?
+	DateTime created_time_;
 };
 
-}
+} // namespace LibFacebookCpp
 
-#endif // LIBFACEBOOKCPP_TO_H_
+#endif // LIBFACEBOOKCPP_VIDEO_H_

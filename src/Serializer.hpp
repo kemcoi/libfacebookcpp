@@ -18,26 +18,31 @@
  *
  */
 
-#ifndef LIBFACEBOOKCPP_TO_H_
-#define LIBFACEBOOKCPP_TO_H_
+#ifndef LIBFACEBOOKCPP_SERIALIZER_H_
+#define LIBFACEBOOKCPP_SERIALIZER_H_
 
 namespace LibFacebookCpp
 {
 
-class Friend;
-
-class To: public AuthorizedObject
+class Serializer
 {
-public: // accessors
-	const std::list<Friend>& GetTo() const { return list_; }
+public: // interface
+	template<class T>
+	void Serialize(const char *key, const T &value);
+
+	template<>
+	void Serialize(const char *key, const std::string &str)
+	{
+		LIBFACEBOOKCPP_ASSERT(key);
+		params.insert(std::make_pair(key, str));
+	}
+
+	const std::map<std::string, std::string>& GetParams() const { return params; }
 
 private:
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
-
-private: // member variables
-	std::list<Friend> list_;
+	std::map<std::string, std::string> params;
 };
 
-}
+} // namespace LibFacebookCpp
 
-#endif // LIBFACEBOOKCPP_TO_H_
+#endif // LIBFACEBOOKCPP_SERIALIZER_H_

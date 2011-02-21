@@ -22,6 +22,7 @@
 #define LIBFACEBOOKCPP_USER_H_
 
 #include "AuthorizedObject.hpp"
+#include "Location.hpp"
 
 namespace LibFacebookCpp
 {
@@ -43,20 +44,6 @@ class Message;
 class PolymorphicObject;
 template<class FBType>
 class List;
-
-class LIBFACEBOOKCPP_API Location : public AuthorizedObject
-{
-private: // public interface
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
-
-public: // accessors
-	const std::string& Id() const   { return id_; }
-	const std::string& Name() const { return name_; }
-
-private: // member variables
-	std::string id_;
-	std::string name_;
-};
 
 class LIBFACEBOOKCPP_API User: public AuthorizedObject
 {

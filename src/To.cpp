@@ -30,7 +30,7 @@ void To::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &jso
 {
 	Deserializer deserializer(parent_obj, this, json);
 
-	deserializer.Deserialize("data", true, &toList);
+	deserializer.Deserialize("data", true, &list_);
 }
 
 }

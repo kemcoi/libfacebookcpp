@@ -204,7 +204,7 @@ size_t HttpRequest::WriteFunction(char *data, size_t size, size_t nmemb, void *u
 
 void HttpRequest::PostResponse(const Uri &uri, ResponseBlob *blob)
 {
-	LIBFACEBOOKCPP_ASSERT(uri.Valid());
+	LIBFACEBOOKCPP_ASSERT(uri.IsValid());
 	LIBFACEBOOKCPP_ASSERT(blob);
 	LIBFACEBOOKCPP_ASSERT(!blob_); // This object isn't thread-safe, and neither is this check!
 	LIBFACEBOOKCPP_ASSERT(blobSize_ == 0);
@@ -216,7 +216,8 @@ void HttpRequest::PostResponse(const Uri &uri, ResponseBlob *blob)
 
 	CURLcode result;
 
-	// XXX: CRASH! This should be a CURLOPT_URL_COPY!
+	// The C++ standard garuntees that the const char * returned by the c_str() is valid until any subsequent calls
+	// to the string. Hence, in this code, after the c_str(), we do not do anything with the uri.base_uri
 	result = curl_easy_setopt(curl_, CURLOPT_URL, uri.base_uri.c_str());
 	if(CURLE_OK != result)
 		throw CurlException("Failed to set the URL on CURL");
@@ -228,6 +229,7 @@ void HttpRequest::PostResponse(const Uri &uri, ResponseBlob *blob)
 	// XXX: Mangle params together here!
 	std::string params;
 
+	// Same explanation for the non-crashing behavior as the one stated for the uri.base_uri up-above
 	result = curl_easy_setopt(curl_, CURLOPT_COPYPOSTFIELDS, params.c_str());
 	if(CURLE_OK != result)
 		throw CurlException("Unable to set post fields!");
@@ -271,6 +273,17 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 
 	blob_ = NULL;
 	blobSize_ = 0;
+}
+
+void HttpRequest::PostResponse(const std::string &uri, Json::Value *value)
+{
+	LIBFACEBOOKCPP_ASSERT(value);
+
+	ResponseBlob blob;
+	PostResponse(uri, &blob);
+
+	Json::Reader reader;
+	reader.parse((char*)blob.GetData(), (char*)blob.GetData() + blob.GetLength(), *value);
 }
 
 void HttpRequest::GetResponse(const std::string& uri, Json::Value *value)

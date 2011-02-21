@@ -18,26 +18,19 @@
  *
  */
 
-#ifndef LIBFACEBOOKCPP_TO_H_
-#define LIBFACEBOOKCPP_TO_H_
+#include "precompile.hpp"
+#include "Location.hpp"
+#include "Deserializer.hpp"
 
 namespace LibFacebookCpp
 {
 
-class Friend;
-
-class To: public AuthorizedObject
+void Location::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 {
-public: // accessors
-	const std::list<Friend>& GetTo() const { return list_; }
+	Deserializer deserializer(parent_obj, this, json);
 
-private:
-	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) LIBFACEBOOKCPP_OVERRIDE;
-
-private: // member variables
-	std::list<Friend> list_;
-};
-
+	deserializer.Deserialize("id", false, &id_);
+	deserializer.Deserialize("name", false, &name_);
 }
 
-#endif // LIBFACEBOOKCPP_TO_H_
+} // namespace LibFacebookCpp

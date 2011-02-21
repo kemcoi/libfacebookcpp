@@ -165,7 +165,10 @@ void Session::CreateCheckin(const std::string &longitude, const std::string &lat
 	s.Serialize("place", place);
 	s.Serialize("tags", tags);
 	s.Serialize("message", message);
-	_Post(s);
+	// XXX: First param
+	// XXX: NULL return
+	int temp;
+	_PostConnection("", s.GetParams(), &temp);
 }
 
 void Session::_Deserialize(const AuthorizedObject & /* parent_obj */, const Json::Value & /* json */)

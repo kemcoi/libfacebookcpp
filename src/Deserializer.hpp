@@ -233,6 +233,7 @@ public: // public interface
 		}
 		else
 		{
+			// XXX: Fix this!
 #ifdef _DEBUG
 			std::map<std::string, int>::iterator it = tags_.find(tag);
 

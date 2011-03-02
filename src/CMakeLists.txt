@@ -3,18 +3,15 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 SET(LIBFACEBOOKCPP_CURL_VERSION "curl-7.21.3")
 SET(LIBFACEBOOKCPP_JSONCPP_VERSION "jsoncpp-src-0.5.0")
 
-# FIND_PACKAGE(curl)
-# IF(NOT CURL_FOUND)
-# 	# If curl not found, build our own
-# 
+FIND_PACKAGE(curl)
+IF(NOT CURL_FOUND)
+	# If curl not found, build our own
  	SET(CURL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LIBFACEBOOKCPP_CURL_VERSION}/include/)
  	SET(CURL_LIBRARIES libcurl)
-# 
  	SET(BUILD_CURL_EXE OFF)
  	SET(BUILD_CURL_TESTS OFF)
-# 
  	ADD_SUBDIRECTORY(external-lib/${LIBFACEBOOKCPP_CURL_VERSION})
-# ENDIF(NOT CURL_FOUND)
+ENDIF(NOT CURL_FOUND)
 
 # TODO: We don't have the support to link to jsoncpp right now. There is no standard find* for it and I don't have access
 # to a *nix system to write a unified find* file. Hence, just force include it everytime
@@ -27,7 +24,7 @@ SET(LIBFACEBOOKCPP_JSONCPP_VERSION "jsoncpp-src-0.5.0")
 # ENDIF(NOT JSONCPP_FOUND)
 
 # REQUIRED since we don't carry a boost version
-FIND_PACKAGE(BOOST 1.44.0 REQUIRED)
+FIND_PACKAGE(Boost 1.42.0 REQUIRED)
 
 SET(LIBFACEBOOKCPP_SRCS
 	Album.hpp
@@ -111,4 +108,4 @@ ADD_LIBRARY(libfacebookcpp
 )
 
 INCLUDE_DIRECTORIES(${CURL_INCLUDE_DIRS} ${JSONCPP_INCLUDE_DIRS} ${Boost_INCLUDE_DIR})
-TARGET_LINK_LIBRARIES(libfacebookcpp ${CURL_LIBRARIES} ${JSONCPP_LIBRARIES} ${BOOST_LIBRARIES})
+TARGET_LINK_LIBRARIES(libfacebookcpp ${CURL_LIBRARIES} ${JSONCPP_LIBRARIES} ${Boost_LIBRARIES})

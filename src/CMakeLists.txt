@@ -13,6 +13,8 @@ IF(NOT CURL_FOUND)
  	ADD_SUBDIRECTORY(external-lib/${LIBFACEBOOKCPP_CURL_VERSION})
 ENDIF(NOT CURL_FOUND)
 
+FIND_PACKAGE(JsonCpp 0.5.0 REQUIRED)
+
 # TODO: We don't have the support to link to jsoncpp right now. There is no standard find* for it and I don't have access
 # to a *nix system to write a unified find* file. Hence, just force include it everytime
 # IF(NOT JSONCPP_FOUND)

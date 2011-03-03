@@ -35,6 +35,8 @@
 // XXX: UGLY!
 #include <json/json.h>
 
+// XXX: Some of the CMake stuff includes library (singular, this is bad. It hsould include plurarl!
+
 // Boost headers
 #include <boost/optional.hpp>
 

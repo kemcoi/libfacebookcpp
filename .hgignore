@@ -16,3 +16,4 @@ CMakeCache\.txt
 cmake_install\.cmake
 clientid\.txt
 debug-build/.*
+.*\.swp

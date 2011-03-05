@@ -1,0 +1,6 @@
+@echo Removing debug-build folder...
+@del /s /q debug-build
+@mkdir debug-build
+@cd debug-build
+@echo Running cmake...
+@cmake -G "Visual Studio 9 2008" ..

@@ -1,0 +1,8 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+
+SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "~/Desktop/libfacebookcpp/Modules")
+
+PROJECT(facebookcpp)
+
+ADD_SUBDIRECTORY(src)
+ADD_SUBDIRECTORY(examples)

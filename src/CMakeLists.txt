@@ -22,11 +22,10 @@ FIND_PACKAGE(JsonCpp 0.5.0)
 IF(NOT JSONCPP_FOUND)
 	SET(JSONCPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LIBFACEBOOKCPP_JSONCPP_VERSION}/include/)
 	SET(JSONCPP_LIBRARIES jsoncpp)
-
 	ADD_SUBDIRECTORY(external-lib/${LIBFACEBOOKCPP_JSONCPP_VERSION})
 ENDIF(NOT JSONCPP_FOUND)
 
-# REQUIRED since we don't carry a Boost version because Boost provides installer for Windows
+# REQUIRED since we don't carry a Boost version because it provides a good installer for Windows
 FIND_PACKAGE(Boost 1.42.0 REQUIRED)
 
 SET(LIBFACEBOOKCPP_HDRS

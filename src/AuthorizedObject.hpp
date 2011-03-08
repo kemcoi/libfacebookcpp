@@ -65,30 +65,30 @@ protected: // interface
 	// XXX: Figure out the params required for this
 	// XXX: typedef std::map<>
 	// XXX: Re-use QueryMapParam
-	template<class TType>
-	void _PostConnection(const std::string &url, const std::map<std::string, std::string> &params, TType *t)
-	{
-		Uri uri;
-		request_->GetUri(&uri);
+	//template<class TType>
+	//void _PostConnection(const std::string &url, const std::map<std::string, std::string> &params, TType *t)
+	//{
+	//	Uri uri;
+	//	request_->GetUri(&uri);
 
-		uri.base_uri = url;
-		uri.query_params.insert(params.begin(), params.end());
+	//	uri.base_uri = url;
+	//	uri.query_params.insert(params.begin(), params.end());
 
-		// XXX: Why doesn't GetResponse take a uri directly?
+	//	// XXX: Why doesn't GetResponse take a uri directly?
 
-		Json::Value value;
-		request_->PostResponse(uri, &value);
+	//	Json::Value value;
+	//	request_->PostResponse(uri, &value);
 
-		t->Deserialize(*this, value);
-	}
+	//	t->Deserialize(*this, value);
+	//}
 
 	template<class TType>
 	void _GetConnection(const std::string &id, const char *page, TType *t) const
 	{
 		LIBFACEBOOKCPP_ASSERT(page);
 		LIBFACEBOOKCPP_CHKARG(t);
-
-		// XXX: Need to check if we are .Valid() or not
+		LIBFACEBOOKCPP_ASSERT(request_.get());
+		// XXX: Do we need an IsValid on the request? Can the request not be valid?
 
 		Uri uri;
 		request_->GetUri(&uri);

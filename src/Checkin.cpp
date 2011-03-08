@@ -24,7 +24,7 @@
 namespace LibFacebookCpp
 {
 
-void Checkin::Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+void Checkin::_Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 {
 	Deserializer d(parent_obj, this, json);
 

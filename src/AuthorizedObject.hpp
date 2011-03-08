@@ -47,7 +47,7 @@ class AuthorizedObject
 {
 protected:
 	void Init(const AuthorizedObject &obj);
-	void Init(const shared_ptr<HttpRequest>& request);
+	void Init(const boost::shared_ptr<HttpRequest>& request);
 
 private:
 	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
@@ -129,7 +129,7 @@ protected: // interface
 	}
 
 private:
-	shared_ptr<HttpRequest> request_;
+	boost::shared_ptr<HttpRequest> request_;
 
 	friend class Deserializer;
 };

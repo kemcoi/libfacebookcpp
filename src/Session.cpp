@@ -79,7 +79,7 @@ Session::Session(const std::string& redirectedUri)
 	else
 	{
 		// GetInfoLog() << "Found Access Token"  << std::endl;
-		Init(shared_ptr<HttpRequest>(new HttpRequest(it->second)));
+		Init(boost::shared_ptr<HttpRequest>(new HttpRequest(it->second)));
 	}
 }
 

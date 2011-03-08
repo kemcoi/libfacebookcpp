@@ -67,6 +67,4 @@
 	TypeName(const TypeName&);               \
 	void operator=(const TypeName&);
 
-} // namespace LibFacebookCpp
-
 #endif // LIBFACEBOOKCPP_COMMON_H_

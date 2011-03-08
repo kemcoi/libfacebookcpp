@@ -29,7 +29,7 @@ namespace LibFacebookCpp
 class LIBFACEBOOKCPP_API PolymorphicObject : public AuthorizedObject
 {
 public: // interface
-	const shared_ptr<AuthorizedObject>& GetPtr() const { return ptr_; }
+	const boost::shared_ptr<AuthorizedObject>& GetPtr() const { return ptr_; }
 
 	const AuthorizedObject *operator *() const { return ptr_.get(); }
 	AuthorizedObject *operator *() { return ptr_.get(); }
@@ -40,7 +40,7 @@ private: // callback functions
 	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 
 private: // member variables
-	shared_ptr<AuthorizedObject> ptr_;
+	boost::shared_ptr<AuthorizedObject> ptr_;
 };
 
 // XXX: We need a way to regularize this. This is a bug in MSVC++

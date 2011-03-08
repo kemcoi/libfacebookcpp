@@ -28,6 +28,133 @@
 namespace LibFacebookCpp
 {
 
+// XXX: Should this be an anonymous namespace?
+namespace DeserializerHelper
+{
+
+template<class TType>
+void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bool required, TType *t)
+{
+	LIBFACEBOOKCPP_ASSERT(t);
+
+	if(!json.isObject())
+	{
+		if(required)
+			throw UnexpectedException("object is missing");
+	}
+	else
+	{
+		t->Deserialize(obj, json);
+	}
+}
+
+template<>
+void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bool required, std::string *str)
+{
+	LIBFACEBOOKCPP_ASSERT(str);
+
+	if(!json.isConvertibleTo(Json::stringValue))
+	{
+		if(required)
+			throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
+	}
+	else
+	{
+		*str = json.asString();
+	}
+}
+
+template<>
+void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bool required, int *value)
+{
+	LIBFACEBOOKCPP_ASSERT(value);
+
+	if(!json.isConvertibleTo(Json::intValue))
+	{
+		if(required)
+			throw UnexpectedException("!value.isConvertibleTo(Json::intValue)");
+	}
+	else
+	{
+		*value = json.asInt();
+	}
+}
+
+template<>
+void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bool required, unsigned int *uint)
+{
+	LIBFACEBOOKCPP_ASSERT(uint);
+
+	if(!json.isConvertibleTo(Json::uintValue))
+	{
+		if(required)
+			throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");
+	}
+	else
+	{
+		*uint = json.asUInt();
+	}
+}
+
+template<>
+void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bool required, float *f)
+{
+	LIBFACEBOOKCPP_ASSERT(f);
+
+	if(!json.isConvertibleTo(Json::realValue))
+	{
+		if(required)
+			throw UnexpectedException("!value.isConvertibleTo(Json::realValue)");
+	}
+	else
+	{
+		*f = (float)json.asDouble();
+	}
+}
+
+template<>
+void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bool required, DateTime *dt)
+{
+	LIBFACEBOOKCPP_ASSERT(dt);
+
+	if(!json.isConvertibleTo(Json::stringValue))
+	{
+		if(required)
+			throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
+	}
+	else
+	{
+		dt->Parse(json.asString());
+	}
+}
+
+// XXX: Update exception comments
+
+template<class TType>
+void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bool required, std::list<TType> *list)
+{
+	LIBFACEBOOKCPP_ASSERT(list);
+
+	if(!json.isConvertibleTo(Json::arrayValue))
+	{
+		if(required)
+			throw UnexpectedException("!value.isConvertibleTo(Json::arrayValue)");
+	}
+	else
+	{
+		list->clear();
+
+		for(Json::UInt ii = 0; ii < json.size(); ++ii)
+		{
+			TType t;
+			_DeserializeObject(obj, json[ii], required, &t);
+			list->push_back(t);
+		}
+	}
+}
+
+} // namespace DeserializerHelper
+
 class Deserializer
 {
 public: // public ctor and ~()
@@ -91,133 +218,11 @@ public: // public ctor and ~()
 #endif // _DEBUG
 	}
 
-private: // private helper class
-	template<class TType>
-	void _DeserializeObject(const Json::Value &json, bool required, TType *t)
-	{
-		LIBFACEBOOKCPP_ASSERT(t);
-
-		if(!json.isObject())
-		{
-			if(required)
-				throw UnexpectedException("object is missing");
-		}
-		else
-		{
-			t->Deserialize(obj_, json);
-		}
-	}
-
-	template<>
-	void _DeserializeObject(const Json::Value &json, bool required, std::string *str)
-	{
-		LIBFACEBOOKCPP_ASSERT(str);
-
-		if(!json.isConvertibleTo(Json::stringValue))
-		{
-			if(required)
-				throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
-		}
-		else
-		{
-			*str = json.asString();
-		}
-	}
-
-	template<>
-	void _DeserializeObject(const Json::Value &json, bool required, int *value)
-	{
-		LIBFACEBOOKCPP_ASSERT(value);
-
-		if(!json.isConvertibleTo(Json::intValue))
-		{
-			if(required)
-				throw UnexpectedException("!value.isConvertibleTo(Json::intValue)");
-		}
-		else
-		{
-			*value = json.asInt();
-		}
-	}
-
-	template<>
-	void _DeserializeObject(const Json::Value &json, bool required, unsigned int *uint)
-	{
-		LIBFACEBOOKCPP_ASSERT(uint);
-
-		if(!json.isConvertibleTo(Json::uintValue))
-		{
-			if(required)
-				throw UnexpectedException("!value.isConvertibleTo(Json::uintValue)");
-		}
-		else
-		{
-			*uint = json.asUInt();
-		}
-	}
-
-	template<>
-	void _DeserializeObject(const Json::Value &json, bool required, float *f)
-	{
-		LIBFACEBOOKCPP_ASSERT(f);
-
-		if(!json.isConvertibleTo(Json::realValue))
-		{
-			if(required)
-				throw UnexpectedException("!value.isConvertibleTo(Json::realValue)");
-		}
-		else
-		{
-			*f = (float)json.asDouble();
-		}
-	}
-
-	template<>
-	void _DeserializeObject(const Json::Value &json, bool required, DateTime *dt)
-	{
-		LIBFACEBOOKCPP_ASSERT(dt);
-
-		if(!json.isConvertibleTo(Json::stringValue))
-		{
-			if(required)
-				throw UnexpectedException("!value.isConvertibleTo(Json::stringValue)");
-		}
-		else
-		{
-			dt->Parse(json.asString());
-		}
-	}
-
-	// XXX: Update exception comments
-
-	template<class TType>
-	void _DeserializeObject(const Json::Value &json, bool required, std::list<TType> *list)
-	{
-		LIBFACEBOOKCPP_ASSERT(list);
-
-		if(!json.isConvertibleTo(Json::arrayValue))
-		{
-			if(required)
-				throw UnexpectedException("!value.isConvertibleTo(Json::arrayValue)");
-		}
-		else
-		{
-			list->clear();
-
-			for(Json::UInt ii = 0; ii < json.size(); ++ii)
-			{
-				TType t;
-				_DeserializeObject(json[ii], required, &t);
-				list->push_back(t);
-			}
-		}
-	}
-
 public: // public interface
 	template<class TType>
 	void DeserializeObject(bool required, TType *t)
 	{
-		_DeserializeObject(json_, required, t);
+		DeserializerHelper::_DeserializeObject(obj_, json_, required, t);
 	}
 
 	template<class TType>
@@ -250,7 +255,7 @@ public: // public interface
 				++(it->second);
 			}
 #endif // _DEBUG
-			_DeserializeObject(json_[tag], required, t);
+			DeserializerHelper::_DeserializeObject(obj_, json_[tag], required, t);
 		}
 	}
 

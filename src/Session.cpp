@@ -152,24 +152,26 @@ void Session::GetUserById(const std::string& userID, User *user) const
 	_GetConnection(userID, "", user);
 }
 
-void Session::CreateCheckin(const std::string &longitude, const std::string &latitude, const std::string &place, const boost::optional<const std::list<const std::string>&> &tags, const boost::optional<std::string&>& message)
-{
-	LIBFACEBOOKCPP_CHKARG(!longitude.empty() && !latitude.empty() && !place.empty());
-
-	std::map<std::string, std::string> coordinates;
-	coordinates.insert(make_pair("longitude", longitude));
-	coordinates.insert(make_pair("latitude", latitude));
-
-	Serializer s;
-	s.Serialize("coordinates", coordinates);
-	s.Serialize("place", place);
-	s.Serialize("tags", tags);
-	s.Serialize("message", message);
-	// XXX: First param
-	// XXX: NULL return
-	int temp;
-	_PostConnection("", s.GetParams(), &temp);
-}
+// XXX: Fix this!
+//
+//void Session::CreateCheckin(const std::string &longitude, const std::string &latitude, const std::string &place, const boost::optional<const std::list<const std::string>&> &tags, const boost::optional<std::string&>& message)
+//{
+//	LIBFACEBOOKCPP_CHKARG(!longitude.empty() && !latitude.empty() && !place.empty());
+//
+//	std::map<std::string, std::string> coordinates;
+//	coordinates.insert(make_pair("longitude", longitude));
+//	coordinates.insert(make_pair("latitude", latitude));
+//
+//	Serializer s;
+//	s.Serialize("coordinates", coordinates);
+//	s.Serialize("place", place);
+//	s.Serialize("tags", tags);
+//	s.Serialize("message", message);
+//	// XXX: First param
+//	// XXX: NULL return
+//	int temp;
+//	_PostConnection("", s.GetParams(), &temp);
+//}
 
 void Session::_Deserialize(const AuthorizedObject & /* parent_obj */, const Json::Value & /* json */)
 {

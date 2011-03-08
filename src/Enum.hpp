@@ -36,7 +36,7 @@ public: // public interface
 	operator T() const { return t_; }
 
 private: // callback methods
-	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
+	void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json)
 	{
 		if(!json.isConvertibleTo(Json::stringValue))
 			throw UnexpectedException("!json.isConvertibleTo(Json::stringValue)");

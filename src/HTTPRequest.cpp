@@ -61,6 +61,40 @@ std::string Uri::GetUri() const
 namespace HttpUtils
 {
 
+template<class T>
+static void CurlEasySetOpt(CURL *curl, CURLoption opt, T val);
+
+template<>
+static void CurlEasySetOpt(CURL *curl, CURLoption opt, long val)
+{
+	CURLcode result = curl_easy_setopt(curl, opt, val);
+	if(CURLE_OK != result)
+		throw CurlException("Unable to set opt on CURL");
+}
+
+template<>
+static void CurlEasySetOpt(CURL *curl, CURLoption opt, const char *val)
+{
+	CURLcode result = curl_easy_setopt(curl, opt, val);
+	if(CURLE_OK != result)
+		throw CurlException("Unable to set opt on CURL");
+}
+
+template<>
+static void CurlEasySetOpt(CURL *curl, CURLoption opt, void *val)
+{
+	CURLcode result = curl_easy_setopt(curl, opt, val);
+	if(CURLE_OK != result)
+		throw CurlException("Unable to set opt on CURL");
+}
+
+static void CurlEasyPerform(CURL *curl)
+{
+	CURLcode result = curl_easy_perform(curl);
+	if(CURLE_OK != result)
+		throw CurlException("Failed to perform CURL operation");
+}
+
 void DecomposeUri(const std::string& str, Uri *uri)
 {
 	LIBFACEBOOKCPP_ASSERT(uri);
@@ -209,34 +243,24 @@ void HttpRequest::PostResponse(const Uri &uri, ResponseBlob *blob)
 	LIBFACEBOOKCPP_ASSERT(!blob_); // This object isn't thread-safe, and neither is this check!
 	LIBFACEBOOKCPP_ASSERT(blobSize_ == 0);
 
-	GetDebugLog() << uri;
+	// XXX: Fix this!
+//	GetDebugLog() << uri;
 
 	blob_ = blob;
 	blobSize_ = 0;
 
-	CURLcode result;
-
 	// The C++ standard garuntees that the const char * returned by the c_str() is valid until any subsequent calls
 	// to the string. Hence, in this code, after the c_str(), we do not do anything with the uri.base_uri
-	result = curl_easy_setopt(curl_, CURLOPT_URL, uri.base_uri.c_str());
-	if(CURLE_OK != result)
-		throw CurlException("Failed to set the URL on CURL");
-
-	result = curl_easy_setopt(curl_, CURLOPT_HTTPPOST, (long)1);
-	if(CURLE_OK != result)
-		throw CurlException("Failed to set CURL post mode!");
+	HttpUtils::CurlEasySetOpt<const char*>(curl_, CURLOPT_URL, uri.base_uri.c_str());
+	HttpUtils::CurlEasySetOpt<long>(curl_, CURLOPT_HTTPPOST, 1);
 
 	// XXX: Mangle params together here!
 	std::string params;
 
 	// Same explanation for the non-crashing behavior as the one stated for the uri.base_uri up-above
-	result = curl_easy_setopt(curl_, CURLOPT_COPYPOSTFIELDS, params.c_str());
-	if(CURLE_OK != result)
-		throw CurlException("Unable to set post fields!");
+	HttpUtils::CurlEasySetOpt<const char*>(curl_, CURLOPT_POSTFIELDS, params.c_str());
 
-	result = curl_easy_perform(curl_);
-	if(CURLE_OK != result)
-		throw CurlException("Failed to perform CURL operation");
+	HttpUtils::CurlEasyPerform(curl_);
 
 	blob_->Realloc(blobSize_);
 
@@ -255,19 +279,9 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 	blob_ = blob;
 	blobSize_ = 0;
 
-	CURLcode result;
-
-	result = curl_easy_setopt(curl_, CURLOPT_HTTPGET, (long)1);
-	if(CURLE_OK != result)
-		throw CurlException("Failed to set mode on CURL!");
-
-	result = curl_easy_setopt(curl_, CURLOPT_URL, uri.c_str());
-	if(CURLE_OK != result)
-		throw CurlException("Failed to set the URL on CURL");
-
-	result = curl_easy_perform(curl_);
-	if(CURLE_OK != result)
-		throw CurlException("Failed to perform the CURL operation");
+	HttpUtils::CurlEasySetOpt<long>(curl_, CURLOPT_HTTPGET, 1);
+	HttpUtils::CurlEasySetOpt<const char*>(curl_, CURLOPT_URL, uri.c_str());
+	HttpUtils::CurlEasyPerform(curl_);
 
 	blob_->Realloc(blobSize_);
 
@@ -275,16 +289,17 @@ void HttpRequest::GetResponse(const std::string& uri, ResponseBlob *blob)
 	blobSize_ = 0;
 }
 
-void HttpRequest::PostResponse(const std::string &uri, Json::Value *value)
-{
-	LIBFACEBOOKCPP_ASSERT(value);
-
-	ResponseBlob blob;
-	PostResponse(uri, &blob);
-
-	Json::Reader reader;
-	reader.parse((char*)blob.GetData(), (char*)blob.GetData() + blob.GetLength(), *value);
-}
+// XXX: Fix this!
+//void HttpRequest::PostResponse(const std::string &uri, Json::Value *value)
+//{
+//	LIBFACEBOOKCPP_ASSERT(value);
+//
+//	ResponseBlob blob;
+//	PostResponse(uri, &blob);
+//
+//	Json::Reader reader;
+//	reader.parse((char*)blob.GetData(), (char*)blob.GetData() + blob.GetLength(), *value);
+//}
 
 void HttpRequest::GetResponse(const std::string& uri, Json::Value *value)
 {
@@ -311,28 +326,23 @@ HttpRequest::HttpRequest(const std::string &access_token) : curl_(NULL), blob_(N
 	if(!curl_)
 		throw CurlException("Unable to create a CURL handle");
 
-#define HTTPREQUEST_CURL_SET(opt, arg) \
-	if(CURLE_OK != curl_easy_setopt(curl_, (opt), (arg))) \
-		throw CurlException("Unable to set CURL argument");
-
+	// XXX: This should be fixed and be set as a dynamic value!
 #ifdef DEBUG
-	HTTPREQUEST_CURL_SET(CURLOPT_VERBOSE, 1);
-	HTTPREQUEST_CURL_SET(CURLOPT_DEBUGFUNCTION, &HttpRequest::DebugFunction);
-	HTTPREQUEST_CURL_SET(CURLOPT_DEBUGDATA, this);
+	HttpUtils::CurlEasySetOpt<long>(curl_, CURLOPT_VERBOSE, 1);
+	HttpUtils::CurlEasySetOpt<void*>(curl_, CURLOPT_DEBUGFUNCTION, &HttpRequest::DebugFunction);
+	HttpUtils::CurlEasySetOpt<void*>(curl_, CURLOPT_DEBUGDATA, this);
 #endif // DEBUG
 
-	HTTPREQUEST_CURL_SET(CURLOPT_WRITEFUNCTION, &HttpRequest::WriteFunction);
-	HTTPREQUEST_CURL_SET(CURLOPT_WRITEDATA, this);
+	HttpUtils::CurlEasySetOpt<void*>(curl_, CURLOPT_WRITEFUNCTION, &HttpRequest::WriteFunction);
+	HttpUtils::CurlEasySetOpt<void*>(curl_, CURLOPT_WRITEDATA, this);
 
-	HTTPREQUEST_CURL_SET(CURLOPT_HEADERFUNCTION, &HttpRequest::HeaderFunction);
-	HTTPREQUEST_CURL_SET(CURLOPT_HEADERDATA, this);
+	HttpUtils::CurlEasySetOpt<void*>(curl_, CURLOPT_HEADERFUNCTION, &HttpRequest::HeaderFunction);
+	HttpUtils::CurlEasySetOpt<void*>(curl_, CURLOPT_HEADERDATA, this);
 
-	HTTPREQUEST_CURL_SET(CURLOPT_FOLLOWLOCATION, 1);
+	HttpUtils::CurlEasySetOpt<long>(curl_, CURLOPT_FOLLOWLOCATION, 1);
 
 	//// TODO: We shouldn't be disabling this. Instead, implementing our own Ctx
-	HTTPREQUEST_CURL_SET(CURLOPT_SSL_VERIFYPEER, 0);
-
-#undef HTTPREQUEST_CURL_SET
+	HttpUtils::CurlEasySetOpt<long>(curl_, CURLOPT_SSL_VERIFYPEER, 0);
 }
 
 } // namespace LibFacebookCpp

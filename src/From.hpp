@@ -52,4 +52,4 @@ private: // private members
 
 } // namespace LibFacebookCpp
 
-#endif LIBFACEBOOKCPP_FROM_H_
+#endif // LIBFACEBOOKCPP_FROM_H_

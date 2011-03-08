@@ -91,7 +91,7 @@ public: // public ctor and ~()
 #endif // _DEBUG
 	}
 
-private: // private helper functions
+private: // private helper class
 	template<class TType>
 	void _DeserializeObject(const Json::Value &json, bool required, TType *t)
 	{

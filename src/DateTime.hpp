@@ -21,6 +21,8 @@
 #ifndef LIBFACEBOOKCPP_DATE_TIME_H_
 #define LIBFACEBOOKCPP_DATE_TIME_H_
 
+#include <cstring>
+
 namespace LibFacebookCpp
 {
 

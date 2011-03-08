@@ -147,7 +147,7 @@ void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bo
 		for(Json::UInt ii = 0; ii < json.size(); ++ii)
 		{
 			TType t;
-			_DeserializeObject(json[ii], required, &t);
+			_DeserializeObject(obj, json[ii], required, &t);
 			list->push_back(t);
 		}
 	}
@@ -222,7 +222,7 @@ public: // public interface
 	template<class TType>
 	void DeserializeObject(bool required, TType *t)
 	{
-		_DeserializeObject(json_, required, t);
+		DeserializerHelper::_DeserializeObject(obj_, json_, required, t);
 	}
 
 	template<class TType>

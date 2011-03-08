@@ -31,44 +31,45 @@ ENDIF(NOT JSONCPP_FOUND)
 # REQUIRED since we don't carry a Boost version because it provides a good installer for Windows
 FIND_PACKAGE(Boost 1.42.0 REQUIRED)
 
+# XXX: Hack. This should be done better
 SET(LIBFACEBOOKCPP_HDRS
-	Album.hpp
-	AuthorizedObject.hpp
-	Checkin.hpp
-	Comment.hpp
-	Common.hpp
-	DateTime.hpp
-	Deserializer.hpp
-	Event.hpp
-	Exception.hpp
-	ExtendedPermissions.hpp
-	Enum.hpp
-	Friend.hpp
-	From.hpp
-	Group.hpp
-	HttpRequest.hpp
-	LibFacebookCpp.hpp
-	Link.hpp
-	List.hpp
-	Location.hpp
-	Logger.hpp
-	Message.hpp
-	Note.hpp
-	PagingInfo.hpp
-	Photo.hpp
-	PolymorphicObject.hpp
-	Post.hpp
-	precompile.hpp
-	ResponseBlob.hpp
-	Serializer.hpp
-	Session.hpp
-	Status.hpp
-	To.hpp
-	User.hpp
-	Utils.hpp
-	Venue.hpp
-	Version.hpp
-	Video.hpp
+	../include/LibFacebookCpp/Album.hpp
+	../include/LibFacebookCpp/AuthorizedObject.hpp
+	../include/LibFacebookCpp/Checkin.hpp
+	../include/LibFacebookCpp/Comment.hpp
+	../include/LibFacebookCpp/Common.hpp
+	../include/LibFacebookCpp/DateTime.hpp
+	../include/LibFacebookCpp/Deserializer.hpp
+	../include/LibFacebookCpp/Event.hpp
+	../include/LibFacebookCpp/Exception.hpp
+	../include/LibFacebookCpp/ExtendedPermissions.hpp
+	../include/LibFacebookCpp/Enum.hpp
+	../include/LibFacebookCpp/Friend.hpp
+	../include/LibFacebookCpp/From.hpp
+	../include/LibFacebookCpp/Group.hpp
+	../include/LibFacebookCpp/HttpRequest.hpp
+	../include/LibFacebookCpp.hpp
+	../include/LibFacebookCpp/Link.hpp
+	../include/LibFacebookCpp/List.hpp
+	../include/LibFacebookCpp/Location.hpp
+	../include/LibFacebookCpp/Logger.hpp
+	../include/LibFacebookCpp/Message.hpp
+	../include/LibFacebookCpp/Note.hpp
+	../include/LibFacebookCpp/PagingInfo.hpp
+	../include/LibFacebookCpp/Photo.hpp
+	../include/LibFacebookCpp/PolymorphicObject.hpp
+	../include/LibFacebookCpp/Post.hpp
+	../include/LibFacebookCpp/precompile.hpp
+	../include/LibFacebookCpp/ResponseBlob.hpp
+	../include/LibFacebookCpp/Serializer.hpp
+	../include/LibFacebookCpp/Session.hpp
+	../include/LibFacebookCpp/Status.hpp
+	../include/LibFacebookCpp/To.hpp
+	../include/LibFacebookCpp/User.hpp
+	../include/LibFacebookCpp/Utils.hpp
+	../include/LibFacebookCpp/Venue.hpp
+	../include/LibFacebookCpp/Version.hpp
+	../include/LibFacebookCpp/Video.hpp
 )
 
 SET(LIBFACEBOOKCPP_SRCS
@@ -112,8 +113,9 @@ IF(WIN32)
 	)
 ENDIF(WIN32)
 
+# XXX: BAD BAD HACKS!
 ADD_LIBRARY(libfacebookcpp ${LIBFACEBOOKCPP_HDRS} ${LIBFACEBOOKCPP_SRCS})
-INCLUDE_DIRECTORIES(${CURL_INCLUDE_DIRS} ${JSONCPP_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+INCLUDE_DIRECTORIES(../include/ ../include/LibFacebookCpp/ ${CURL_INCLUDE_DIRS} ${JSONCPP_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 TARGET_LINK_LIBRARIES(libfacebookcpp ${CURL_LIBRARIES} ${JSONCPP_LIBRARIES} ${Boost_LIBRARIES})
 
 SET_TARGET_PROPERTIES(libfacebookcpp PROPERTIES SOVERSION ${VERSION_MAJOR} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_RELEASE}")

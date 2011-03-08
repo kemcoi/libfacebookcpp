@@ -84,7 +84,7 @@ SET(LIBFACEBOOKCPP_SRCS
 	Friend.cpp
 	From.cpp
 	Group.cpp
-	HTTPRequest.cpp
+	HttpRequest.cpp
 	LibFacebookCpp.cpp
 	Link.cpp
 	Location.cpp

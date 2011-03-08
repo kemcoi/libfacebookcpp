@@ -49,7 +49,7 @@ protected:
 	void Init(const AuthorizedObject &obj);
 	void Init(const boost::shared_ptr<HttpRequest>& request);
 
-private:
+public: // XXX: These were private! Hacked it!
 	void Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json);
 	virtual void _Deserialize(const AuthorizedObject &parent_obj, const Json::Value &json) = 0;
 

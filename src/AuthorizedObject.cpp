@@ -24,7 +24,7 @@
 namespace LibFacebookCpp
 {
 
-void AuthorizedObject::Init(const shared_ptr<HttpRequest>& request)
+void AuthorizedObject::Init(const boost::shared_ptr<HttpRequest>& request)
 {
 	request_ = request;
 }

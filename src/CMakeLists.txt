@@ -8,9 +8,11 @@ SET(VERSION_MINOR 2)
 SET(VERSION_RELEASE 0)
 
 # Since CURL and JsonCpp is hard to find on Windows, we package a version of these libraries in our source-tree
-
-FIND_PACKAGE(CURL)
+# Quiet so we don't produce too much chatter
+# TODO: Find the minimum sane CURL version
+FIND_PACKAGE(CURL QUIET)
 IF(NOT CURL_FOUND)
+	MESSAGE(STATUS "Unable to find a pre-build version of CURL. Using the packaged version in the source-tree")
  	SET(CURL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LIBFACEBOOKCPP_CURL_VERSION}/include/)
  	SET(CURL_LIBRARIES libcurl)
  	SET(BUILD_CURL_EXE OFF)
@@ -18,8 +20,9 @@ IF(NOT CURL_FOUND)
  	ADD_SUBDIRECTORY(external-lib/${LIBFACEBOOKCPP_CURL_VERSION})
 ENDIF(NOT CURL_FOUND)
 
-FIND_PACKAGE(JsonCpp 0.5.0)
+FIND_PACKAGE(JsonCpp 0.5.0 QUIET)
 IF(NOT JSONCPP_FOUND)
+	MESSAGE(STATUS "Unable to find a pre-build version of JsonCpp. Using the packaged version in the source-tree")
 	SET(JSONCPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LIBFACEBOOKCPP_JSONCPP_VERSION}/include/)
 	SET(JSONCPP_LIBRARIES jsoncpp)
 	ADD_SUBDIRECTORY(external-lib/${LIBFACEBOOKCPP_JSONCPP_VERSION})
@@ -115,4 +118,7 @@ TARGET_LINK_LIBRARIES(libfacebookcpp ${CURL_LIBRARIES} ${JSONCPP_LIBRARIES} ${Bo
 
 SET_TARGET_PROPERTIES(libfacebookcpp PROPERTIES SOVERSION ${VERSION_MAJOR} VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_RELEASE}")
 INSTALL(FILES ${LIBFACEBOOKCPP_HDRS} DESTINATION /usr/local/include/libfacebookcpp)
-INSTALL(TARGETS libfacebookcpp LIBRARY DESTINATION /usr/local/lib)
+INSTALL(TARGETS libfacebookcpp
+	RUNTIME DESTINATION /usr/local/bin
+	LIBRARY DESTINATION /usr/local/lib
+	ARCHIVE DESTINATION /usr/local/lib)

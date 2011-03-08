@@ -39,6 +39,7 @@
 
 // Boost headers
 #include <boost/optional.hpp>
+#include <boost/shared_ptr.hpp>
 
 #ifdef _MSC_VER
 #define LIBFACEBOOKCPP_OVERRIDE override
@@ -65,11 +66,6 @@
 #define DISALLOW_COPY_AND_ASSIGN(TypeName)   \
 	TypeName(const TypeName&);               \
 	void operator=(const TypeName&);
-
-namespace LibFacebookCpp
-{
-
-using std::tr1::shared_ptr;
 
 } // namespace LibFacebookCpp
 

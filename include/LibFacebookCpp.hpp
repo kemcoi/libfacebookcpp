@@ -21,35 +21,31 @@
 #ifndef LIBFACEBOOKCPP_H_
 #define LIBFACEBOOKCPP_H_
 
-#include "Common.hpp"
-#include "List.hpp"
-
 // TODO: Template instantiation
-
-#include "ExtendedPermissions.hpp"
-#include "Version.hpp"
-
-// Aggregate includes here
-#include "ResponseBlob.hpp"
-#include "Album.hpp"
-#include "Comment.hpp"
-#include "From.hpp"
-#include "Photo.hpp"
-#include "Session.hpp"
-#include "Status.hpp"
-#include "User.hpp"
-#include "Video.hpp"
-#include "Note.hpp"
-#include "Video.hpp"
-#include "Venue.hpp"
-#include "To.hpp"
-#include "Message.hpp"
-#include "Link.hpp"
-#include "Friend.hpp"
-#include "Group.hpp"
-#include "Post.hpp"
-#include "Event.hpp"
-#include "PolymorphicObject.hpp"
+#include "LibFacebookCpp/Common.hpp"
+#include "LibFacebookCpp/List.hpp"
+#include "LibFacebookCpp/ExtendedPermissions.hpp"
+#include "LibFacebookCpp/Version.hpp"
+#include "LibFacebookCpp/ResponseBlob.hpp"
+#include "LibFacebookCpp/Album.hpp"
+#include "LibFacebookCpp/Comment.hpp"
+#include "LibFacebookCpp/From.hpp"
+#include "LibFacebookCpp/Photo.hpp"
+#include "LibFacebookCpp/Session.hpp"
+#include "LibFacebookCpp/Status.hpp"
+#include "LibFacebookCpp/User.hpp"
+#include "LibFacebookCpp/Video.hpp"
+#include "LibFacebookCpp/Note.hpp"
+#include "LibFacebookCpp/Video.hpp"
+#include "LibFacebookCpp/Venue.hpp"
+#include "LibFacebookCpp/To.hpp"
+#include "LibFacebookCpp/Message.hpp"
+#include "LibFacebookCpp/Link.hpp"
+#include "LibFacebookCpp/Friend.hpp"
+#include "LibFacebookCpp/Group.hpp"
+#include "LibFacebookCpp/Post.hpp"
+#include "LibFacebookCpp/Event.hpp"
+#include "LibFacebookCpp/PolymorphicObject.hpp"
 
 namespace LibFacebookCpp
 {

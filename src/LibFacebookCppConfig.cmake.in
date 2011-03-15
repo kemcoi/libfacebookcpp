@@ -1,0 +1,15 @@
+# - Config file for the FooBar package
+# It defines the following variables
+#  FOOBAR_INCLUDE_DIRS - include directories for FooBar
+#  FOOBAR_LIBRARY_DIRS - library directories for FooBar (normally not used!)
+#  FOOBAR_LIBRARIES    - libraries to link against
+#  FOOBAR_EXECUTABLE   - the bar executable
+ 
+# Tell the user project where to find our headers and libraries
+SET(LibFacebookCpp_INCLUDE_DIRS "@LibFacebookCpp_INCLUDE_DIRS@")
+ 
+# Our library dependencies (contains definitions for IMPORTED targets)
+# INCLUDE("C:\\Users\\Aly Hirani\\Desktop\\My Projects\\libfacebookcpp\\debug-build\\LibFacebookCppDepends.cmake")
+ 
+# These are IMPORTED targets created by LibFacebookCppLibraryDepends.cmake
+SET(LibFacebookCpp_LIBRARIES @LibFacebookCpp_LIBRARIES@)

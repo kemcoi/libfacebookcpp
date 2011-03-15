@@ -3,4 +3,4 @@
 @mkdir debug-build
 @cd debug-build
 @echo Running cmake...
-@cmake -G "NMake Makefiles" ..
+@cmake -G "Visual Studio 9 2008" ..

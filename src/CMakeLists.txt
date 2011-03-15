@@ -13,19 +13,19 @@ SET(VERSION_RELEASE 0)
 FIND_PACKAGE(CURL QUIET)
 IF(NOT CURL_FOUND)
 	MESSAGE(STATUS "Unable to find a pre-build version of CURL. Using the packaged version in the source-tree")
- 	SET(CURL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LibFacebookCpp_CURL_VERSION}/include/)
+ 	SET(CURL_INCLUDE_DIRS external-lib/${LibFacebookCpp_CURL_VERSION}/include/)
  	SET(CURL_LIBRARIES libcurl)
  	SET(BUILD_CURL_EXE OFF)
  	SET(BUILD_CURL_TESTS OFF)
- 	ADD_SUBDIRECTORY(external-lib/${LibFacebookCpp_CURL_VERSION})
+ 	ADD_SUBDIRECTORY("external-lib/${LibFacebookCpp_CURL_VERSION}")
 ENDIF(NOT CURL_FOUND)
 
 FIND_PACKAGE(JsonCpp 0.5.0 QUIET)
 IF(NOT JSONCPP_FOUND)
 	MESSAGE(STATUS "Unable to find a pre-build version of JsonCpp. Using the packaged version in the source-tree")
-	SET(JSONCPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LibFacebookCpp_JSONCPP_VERSION}/include/)
+	SET(JSONCPP_INCLUDE_DIRS external-lib/${LibFacebookCpp_JSONCPP_VERSION}/include/)
 	SET(JSONCPP_LIBRARIES jsoncpp)
-	ADD_SUBDIRECTORY(external-lib/${LibFacebookCpp_JSONCPP_VERSION})
+	ADD_SUBDIRECTORY("external-lib/${LibFacebookCpp_JSONCPP_VERSION}")
 ENDIF(NOT JSONCPP_FOUND)
 
 # REQUIRED since we don't carry a Boost version because it provides a good installer for Windows
@@ -127,13 +127,12 @@ INCLUDE_DIRECTORIES(${LibFacebookCpp_DIRS})
 TARGET_LINK_LIBRARIES(LibFacebookCpp ${LibFacebookCpp_DEPENDS})
 
 
-SET(LibFacebookCpp_CMAKE_DIR ${PROJECT_BINARY_DIR})
-EXPORT(TARGETS ${LibFacebookCpp_DEPENDS} FILE "${PROJECT_BINARY_DIR}/LibFacebookCppDepends.cmake")
+EXPORT(TARGETS ${LibFacebookCpp_LIBRARIES} FILE "${PROJECT_BINARY_DIR}/LibFacebookCppDepends.cmake")
 EXPORT(PACKAGE LibFacebookCpp)
 
 CONFIGURE_FILE(LibFacebookCppConfig.cmake.in "${PROJECT_BINARY_DIR}/LibFacebookCppConfig.cmake" @ONLY)
 
-INSTALL(EXPORT LibFacebookCpp DESTINATION "${INSTALL_DATA_DIR}/LibFacebookCpp/CMake" COMPONENT dev)
+#INSTALL(EXPORT LibFacebookCpp DESTINATION "${INSTALL_DATA_DIR}/LibFacebookCpp/CMake" COMPONENT dev)
 
 
  

@@ -13,7 +13,7 @@ SET(VERSION_RELEASE 0)
 FIND_PACKAGE(CURL QUIET)
 IF(NOT CURL_FOUND)
 	MESSAGE(STATUS "Unable to find a pre-build version of CURL. Using the packaged version in the source-tree")
- 	SET(CURL_INCLUDE_DIRS external-lib/${LibFacebookCpp_CURL_VERSION}/include/)
+ 	SET(CURL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LibFacebookCpp_CURL_VERSION}/include/)
  	SET(CURL_LIBRARIES libcurl)
  	SET(BUILD_CURL_EXE OFF)
  	SET(BUILD_CURL_TESTS OFF)
@@ -23,7 +23,7 @@ ENDIF(NOT CURL_FOUND)
 FIND_PACKAGE(JsonCpp 0.5.0 QUIET)
 IF(NOT JSONCPP_FOUND)
 	MESSAGE(STATUS "Unable to find a pre-build version of JsonCpp. Using the packaged version in the source-tree")
-	SET(JSONCPP_INCLUDE_DIRS external-lib/${LibFacebookCpp_JSONCPP_VERSION}/include/)
+	SET(JSONCPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LibFacebookCpp_JSONCPP_VERSION}/include/)
 	SET(JSONCPP_LIBRARIES jsoncpp)
 	ADD_SUBDIRECTORY("external-lib/${LibFacebookCpp_JSONCPP_VERSION}")
 ENDIF(NOT JSONCPP_FOUND)
@@ -59,7 +59,6 @@ SET(LibFacebookCpp_HDRS
 	../include/LibFacebookCpp/Photo.hpp
 	../include/LibFacebookCpp/PolymorphicObject.hpp
 	../include/LibFacebookCpp/Post.hpp
-	../include/LibFacebookCpp/precompile.hpp
 	../include/LibFacebookCpp/ResponseBlob.hpp
 	../include/LibFacebookCpp/Serializer.hpp
 	../include/LibFacebookCpp/Session.hpp
@@ -95,6 +94,7 @@ SET(LibFacebookCpp_SRCS
 	Photo.cpp
 	PolymorphicObject.cpp
 	Post.cpp
+	precompile.hpp
 	ResponseBlob.cpp
 	Session.cpp
 	Status.cpp
@@ -118,12 +118,13 @@ SET(LibFacebookCpp_LIBRARIES LibFacebookCpp ${LibFacebookCpp_DEPENDS})
 
 #TEMP:
 # XXX: BAD BAD HACKS!
-SET(LibFacebookCpp_INCLUDE_DIRS ../include/ ../include/LibFacebookCpp/ ${CURL_INCLUDE_DIRS} ${JSONCPP_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+SET(LibFacebookCpp_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include/ ${CURL_INCLUDE_DIRS} ${JSONCPP_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 # XXX: Eh, I am linking to myself here? Haha, I want to see how bad this blows up on *nix
 SET(LibFacebookCpp_LIBRARIES ${LibFacebookCpp_DEPENDS})
 
 ADD_LIBRARY(LibFacebookCpp ${LibFacebookCpp_HDRS} ${LibFacebookCpp_SRCS})
-INCLUDE_DIRECTORIES(${LibFacebookCpp_DIRS})
+# XXX: HACK!
+INCLUDE_DIRECTORIES(${LibFacebookCpp_INCLUDE_DIRS} ../include/LibFacebookCpp/)
 TARGET_LINK_LIBRARIES(LibFacebookCpp ${LibFacebookCpp_DEPENDS})
 
 

@@ -13,4 +13,4 @@ IF(BUILD_SHARED_LIBS)
 ENDIF()
 
 ADD_EXECUTABLE(examples main.cpp)
-TARGET_LINK_LIBRARIES(examples ${LibFacebookCpp_LIBRARIES})
+TARGET_LINK_LIBRARIES(examples LibFacebookCpp ${LibFacebookCpp_LIBRARIES})

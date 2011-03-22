@@ -32,6 +32,8 @@ namespace LibFacebookCpp
 namespace DeserializerHelper
 {
 
+#ifdef LIBFACEBOOKCPP_BUILDING
+
 template<class TType>
 void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bool required, TType *t)
 {
@@ -152,6 +154,10 @@ void _DeserializeObject(const AuthorizedObject &obj, const Json::Value &json, bo
 		}
 	}
 }
+
+#else // LIBFACEBOOKCPP_BUILDING
+
+#endif // LIBFACEBOOKCPP_BUILDING
 
 } // namespace DeserializerHelper
 

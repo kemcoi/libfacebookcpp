@@ -119,8 +119,7 @@ SET(LibFacebookCpp_LIBRARIES LibFacebookCpp ${LibFacebookCpp_DEPENDS})
 #TEMP:
 # XXX: BAD BAD HACKS!
 SET(LibFacebookCpp_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include/ ${CURL_INCLUDE_DIRS} ${JSONCPP_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
-# XXX: Eh, I am linking to myself here? Haha, I want to see how bad this blows up on *nix
-SET(LibFacebookCpp_LIBRARIES ${LibFacebookCpp_DEPENDS})
+SET(LibFacebookCpp_LIBRARIES LibFacebookCpp ${LibFacebookCpp_DEPENDS})
 
 ADD_LIBRARY(LibFacebookCpp ${LibFacebookCpp_HDRS} ${LibFacebookCpp_SRCS})
 ADD_DEFINITIONS(-DLIBFACEBOOKCPP_BUILDING)

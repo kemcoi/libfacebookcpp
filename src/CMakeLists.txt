@@ -123,6 +123,8 @@ SET(LibFacebookCpp_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include/ ${CURL_I
 SET(LibFacebookCpp_LIBRARIES ${LibFacebookCpp_DEPENDS})
 
 ADD_LIBRARY(LibFacebookCpp ${LibFacebookCpp_HDRS} ${LibFacebookCpp_SRCS})
+ADD_DEFINITIONS(-DLIBFACEBOOKCPP_BUILDING)
+
 # XXX: HACK!
 INCLUDE_DIRECTORIES(${LibFacebookCpp_INCLUDE_DIRS} ../include/LibFacebookCpp/)
 TARGET_LINK_LIBRARIES(LibFacebookCpp ${LibFacebookCpp_DEPENDS})

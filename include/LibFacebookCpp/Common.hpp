@@ -30,6 +30,7 @@
 #include <set>
 #include <ctime>
 #include <cassert>
+#include <stdexcept>
 
 // External libraries
 // XXX: UGLY!

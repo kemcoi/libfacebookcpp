@@ -22,13 +22,13 @@
 #define LIBFACEBOOKCPP_AUTHORIZED_OBJECT_H_
 
 #include "HttpRequest.hpp"
+#include "PagingInfo.hpp"
 
 namespace LibFacebookCpp
 {
 
 class HttpRequest;
 class ResponseBlob;
-struct PagingInfo;
 struct Uri;
 
 template<class FBType>

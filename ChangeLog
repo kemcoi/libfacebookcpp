@@ -1,0 +1,10 @@
+ChangeLog
+==========
+
+version 0.2 (released xxxx-xx-xx)
+  * Switch build system to CMake
+  * Initial cross-platform support (tested with an Ubuntu)
+  * XXX: More things here
+
+version 0.1 (released 2010-12-30)
+  * Initial version

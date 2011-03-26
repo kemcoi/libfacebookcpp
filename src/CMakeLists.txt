@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 SET(LibFacebookCpp_CURL_VERSION "curl-7.21.3")
-SET(LibFacebookCpp_JSONCPP_VERSION "jsoncpp-src-0.5.0")
+SET(LibFacebookCpp_JsonCpp_VERSION "jsoncpp-src-0.5.0")
 
 SET(VERSION_MAJOR 0)
 SET(VERSION_MINOR 2)
@@ -10,7 +10,9 @@ SET(VERSION_RELEASE 0)
 # Since CURL and JsonCpp is hard to find on Windows, we package a version of these libraries in our source-tree
 # Quiet so we don't produce too much chatter
 # TODO: Find the minimum sane CURL version
-FIND_PACKAGE(CURL QUIET)
+
+# XXX: Disabling all global find packages for now. Use internal libraries until I can get CMake to properly build everything nicely
+# FIND_PACKAGE(CURL QUIET)
 IF(NOT CURL_FOUND)
 	MESSAGE(STATUS "Unable to find a pre-build version of CURL. Using the packaged version in the source-tree")
  	SET(CURL_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LibFacebookCpp_CURL_VERSION}/include/)
@@ -18,18 +20,24 @@ IF(NOT CURL_FOUND)
  	SET(BUILD_CURL_EXE OFF)
  	SET(BUILD_CURL_TESTS OFF)
  	ADD_SUBDIRECTORY("external-lib/${LibFacebookCpp_CURL_VERSION}")
-ENDIF(NOT CURL_FOUND)
+ENDIF()
 
-FIND_PACKAGE(JsonCpp 0.5.0 QUIET)
-IF(NOT JSONCPP_FOUND)
+# XXX: Disabling all global find packages for now. Use internal libraries until I can get CMake to properly build everything nicely
+# FIND_PACKAGE(JsonCpp 0.5.0 QUIET)
+IF(NOT JsonCpp_FOUND)
 	MESSAGE(STATUS "Unable to find a pre-build version of JsonCpp. Using the packaged version in the source-tree")
-	SET(JSONCPP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LibFacebookCpp_JSONCPP_VERSION}/include/)
-	SET(JSONCPP_LIBRARIES jsoncpp)
-	ADD_SUBDIRECTORY("external-lib/${LibFacebookCpp_JSONCPP_VERSION}")
-ENDIF(NOT JSONCPP_FOUND)
+	SET(JsonCpp_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external-lib/${LibFacebookCpp_JsonCpp_VERSION}/include/)
+	SET(JsonCpp_LIBRARIES jsoncpp)
+	ADD_SUBDIRECTORY("external-lib/${LibFacebookCpp_JsonCpp_VERSION}")
+
+ENDIF()
 
 # REQUIRED since we don't carry a Boost version because it provides a good installer for Windows
 FIND_PACKAGE(Boost 1.42.0 REQUIRED)
+
+FILE(GLOB LibFacebookCpp_HDRS RELATIVE ../include/LibFacebookCpp/ "*.hpp")
+
+MESSAGE(STATUS ${LibFacebookCpp_HDRS})
 
 # XXX: Hack. This should be done better
 SET(LibFacebookCpp_HDRS
@@ -111,14 +119,14 @@ IF(WIN32)
 		${LibFacebookCpp_SRCS}
 		libfacebookcpp.rc
 	)
-ENDIF(WIN32)
+ENDIF()
 
-SET(LibFacebookCpp_DEPENDS ${CURL_LIBRARIES} ${JSONCPP_LIBRARIES} ${Boost_LIBRARIES})
+SET(LibFacebookCpp_DEPENDS ${CURL_LIBRARIES} ${JsonCpp_LIBRARIES} ${Boost_LIBRARIES})
 SET(LibFacebookCpp_LIBRARIES LibFacebookCpp ${LibFacebookCpp_DEPENDS})
 
 #TEMP:
 # XXX: BAD BAD HACKS!
-SET(LibFacebookCpp_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include/ ${CURL_INCLUDE_DIRS} ${JSONCPP_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+SET(LibFacebookCpp_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include/ ${CURL_INCLUDE_DIRS} ${JsonCpp_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 SET(LibFacebookCpp_LIBRARIES LibFacebookCpp ${LibFacebookCpp_DEPENDS})
 
 ADD_LIBRARY(LibFacebookCpp ${LibFacebookCpp_HDRS} ${LibFacebookCpp_SRCS})
@@ -132,7 +140,6 @@ ENDIF()
 # XXX: HACK!
 INCLUDE_DIRECTORIES(${LibFacebookCpp_INCLUDE_DIRS} ../include/LibFacebookCpp/)
 TARGET_LINK_LIBRARIES(LibFacebookCpp ${LibFacebookCpp_DEPENDS})
-
 
 EXPORT(TARGETS ${LibFacebookCpp_LIBRARIES} FILE "${PROJECT_BINARY_DIR}/LibFacebookCppDepends.cmake")
 EXPORT(PACKAGE LibFacebookCpp)

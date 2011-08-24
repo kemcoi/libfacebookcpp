@@ -1,0 +1,12 @@
+diff -r 369de9760d00 src/external-lib/curl-7.21.3/CMakeLists.txt
+--- a/src/external-lib/curl-7.21.3/CMakeLists.txt	Fri Mar 25 17:07:49 2011 -0700
++++ b/src/external-lib/curl-7.21.3/CMakeLists.txt	Wed Aug 24 02:00:16 2011 -0400
+@@ -63,7 +63,7 @@
+ endif()
+ 
+ option(BUILD_CURL_EXE "Set to ON to build cURL executable." ON)
+-option(BUILD_CURL_TESTS "Set to ON to build cURL tests." ON)
++option(BUILD_CURL_TESTS "Set to ON to build cURL tests." OFF)
+ option(CURL_STATICLIB "Set to ON to build libcurl with static linking." OFF)
+ option(CURL_USE_ARES "Set to ON to enable c-ares support" OFF)
+ # initialize CURL_LIBS

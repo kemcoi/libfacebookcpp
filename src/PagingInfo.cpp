@@ -18,24 +18,18 @@
  *
  */
 
-#ifndef LIBFACEBOOKCPP_PAGING_INFO_H_
-#define LIBFACEBOOKCPP_PAGING_INFO_H_
+#include "precompile.hpp"
+#include "PagingInfo.hpp"
+#include "HttpRequest.hpp"
 
 namespace LibFacebookCpp
 {
 
-struct Uri;
-
-struct PagingInfo
+void PagingInfo::GetUri(Uri *uri) const
 {
-	PagingInfo(unsigned int offset_, unsigned int limit_) : offset(offset_), limit(limit_) { }
-
-	bool IsValid() const { return 0 != limit; }
-	void GetUri(Uri *uri) const;
-	unsigned int offset;
-	unsigned int limit;
-};
+	LIBFACEBOOKCPP_ASSERT(uri);
+	uri->query_params["limit"] = StringBuilder() << offset;
+	uri->query_params["offset"] = StringBuilder() << limit;
+}
 
 } // namespace LibFacebookCpp
-
-#endif // LIBFACEBOOKCPP_PAGING_INFO_H_
